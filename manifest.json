@@ -1,0 +1,42 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "Boxy SVG",
+  "description": "Vector graphics editor. Generates clean SVG files. Works on Mac, Linux, Windows and ChromeOS.",
+  "version": "2.0.2",
+  "author": "Jarosław Foksa",
+  "manifest_version": 2,
+  "minimum_chrome_version": "40",
+  "offline_enabled": true,
+  "icons": {
+    "512": "images/logo.png"
+  },
+  "app": {
+    "background": {
+      "page": "background.html"
+    }
+  },
+  "webview": {
+    "partitions": [
+      {
+        "name": "boxy",
+        "accessible_resources": ["*"]
+      }
+    ]
+  },
+  "file_handlers": {
+    "svg":  { "extensions": ["svg"]  },
+    "svgz": { "extensions": ["svgz"] },
+    "html": { "extensions": ["html"] }
+  },
+  "permissions": [
+    "alwaysOnTopWindows",
+    "webview",
+    "storage",
+    "clipboardRead",
+    "clipboardWrite",
+    {
+      "fileSystem": ["write", "retainEntries"]
+    }
+  ]
+}

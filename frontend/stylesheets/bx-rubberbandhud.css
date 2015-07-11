@@ -1,0 +1,19 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  outline: none;
+}
+
+rect {
+  fill: rgba(149, 198, 253, 0.3);
+  stroke: rgba(55, 136, 236, 0.77);
+  stroke-width: 1;
+  visibility: hidden;
+  pointer-events: none;
+  shape-rendering: crispEdges;
+  vector-effect: non-scaling-stroke;
+}

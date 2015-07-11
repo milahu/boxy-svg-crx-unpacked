@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:boxy="http://www.boxy-svg.com/boxyNS" width="500" height="500" boxy:zoom="68" boxy:scrollX="-289" boxy:scrollY="-49" viewBox="0 0 500 500">
+  <defs/>
+  <g transform="matrix(1 0 0 1 572.453 1.88129)">
+    <ellipse cx="251.107" cy="253.369" rx="250.012" ry="76.4582" transform="matrix(1 0 0 1 -567.453 -7.88129) matrix(-0.00993873 0.999951 -0.999951 -0.00993873 499.312 7.47718)" style="fill: rgb(115, 188, 225); opacity: 0.81; perspective-origin: 50% 50%; -webkit-perspective-origin-x: 50%; -webkit-perspective-origin-y: 50%;"/>
+    <ellipse cx="251.107" cy="253.369" rx="250.012" ry="76.4582" transform="matrix(-0.717002 0.697072 -0.697072 -0.717002 32.6675 254.799)" style="fill: rgb(203, 93, 93); opacity: 0.772549; perspective-origin: 50% 50%; -webkit-perspective-origin-x: 50%; -webkit-perspective-origin-y: 50%;"/>
+    <ellipse cx="251.107" cy="253.369" rx="250.012" ry="76.4582" transform="matrix(0.999978 -0.00660495 0.00660495 0.999978 -576.768 -3.53261)" style="fill: rgb(230, 241, 107); opacity: 0.772549; perspective-origin: 50% 50%; -webkit-perspective-origin-x: 50%; -webkit-perspective-origin-y: 50%;"/>
+    <ellipse cx="251.107" cy="253.369" rx="250.012" ry="76.4582" transform="matrix(-0.743667 -0.668551 0.668551 -0.743667 -306.643 604.472)" style="fill: rgb(255, 245, 208); opacity: 0.721569; perspective-origin: 50% 50%; -webkit-perspective-origin-x: 50%; -webkit-perspective-origin-y: 50%;"/>
+  </g>
+</svg>

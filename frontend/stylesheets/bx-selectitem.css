@@ -1,0 +1,53 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  height: 32px;
+}
+
+main {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 4px;
+}
+:host([disabled]) main {
+  opacity: 0.6;
+}
+:host([highlighted]) main {
+  background: rgb(11, 128, 222);
+  color: #fff;
+}
+
+bx-icon {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px 0 8px;
+  align-self: center;
+  pointer-events: none;
+}
+:host(:not(:empty)) bx-icon {
+  visibility: hidden;
+}
+bx-icon::shadow svg {
+  fill: white;
+  stroke: white;
+}
+
+#label {
+  box-sizing: border-box;
+  overflow: hidden;
+  align-self: center;
+  flex: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-family: "Roboto";
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+}

@@ -1,0 +1,75 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  width: 100px;
+  height: 40px;
+  display: block;
+}
+:host(:unresolved) {
+  visibility: hidden;
+}
+:host([disabled]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+bx-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+bx-icon:not([name]) {
+  display: none;
+}
+bx-icon::shadow svg {
+  fill: #f0f0dc;
+  stroke: #f0f0dc;
+}
+:host([pressed]) bx-icon::shadow svg {
+  fill: #93d9ff;
+  stroke: #93d9ff;
+}
+:host(:active) bx-icon::shadow svg {
+  fill: #69CAFF;
+  stroke: #69CAFF;
+}
+:host([mixed][pressed]) bx-icon {
+  opacity: 0.65;
+}
+
+label {
+  flex: 0 1 auto;
+  padding: 0 5px;
+  overflow: hidden;
+  color: #f0f0dc;
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+}
+:host([pressed]) label {
+  color: #93d9ff;
+}
+:host(:active) label {
+  color: #69CAFF;
+}
+label:empty {
+  display: none;
+}

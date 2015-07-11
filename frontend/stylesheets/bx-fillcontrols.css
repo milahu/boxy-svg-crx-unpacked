@@ -1,0 +1,28 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+}
+
+/* Opacity section */
+
+#opacity-slider {
+  width: 100%;
+}
+
+/* Fill rule section */
+
+#fill-rule-buttons {
+  display: flex;
+  margin: 2px 0px 5px 0px;
+}
+
+#fill-rule-buttons bx-button {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+}

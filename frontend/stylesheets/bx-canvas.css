@@ -1,0 +1,47 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+#canvas {
+  display: block;
+  overflow: hidden;
+  background: white;
+  width: 100%;
+  height: 100%;
+}
+
+#canvas #huds > g {
+  display: none;
+}
+#canvas #huds > g[enabled] {
+  display: block;
+}
+
+#canvas #content {
+  font-family: serif;
+}
+
+#canvas #content > #master-artboard:not(:last-child) {
+  display: none;
+}
+
+#canvas #content text {
+  /* Make text non-editable and non-selectable */
+  -webkit-user-modify: read-only;
+  -webkit-user-select: none;
+  /* Hide native caret */
+  color: transparent;
+}
+#canvas[contenteditable] #content text {
+  cursor: text;
+  /* Make text editable and selectable */
+  -webkit-user-modify: read-write-plaintext-only;
+  -webkit-user-select: text;
+}
+
+#canvas #content ::selection {
+  /* Hide native selection rect */
+  background: rgba(0, 0, 0, 0);
+}

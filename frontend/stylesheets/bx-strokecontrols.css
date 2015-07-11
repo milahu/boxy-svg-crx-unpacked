@@ -1,0 +1,51 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+}
+
+/* Opacity section */
+
+#opacity-slider {
+  width: 100%;
+}
+
+/* Width section */
+
+#width-slider {
+  width: 100%;
+}
+
+#non-scaling-stroke-checkbox {
+  margin-bottom: 0;
+}
+
+/* Line cap section */
+
+#line-cap-buttons {
+  display: flex;
+  margin: 2px 0px 5px 0px;
+}
+
+#line-cap-buttons bx-button {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Line join section */
+
+#line-join-buttons {
+  display: flex;
+  margin: 2px 0px 5px 0px;
+}
+
+#line-join-buttons bx-button {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}

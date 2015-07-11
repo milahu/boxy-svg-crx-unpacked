@@ -1,0 +1,28 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 20px;
+  background-clip: padding-box;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.35),inset 0 -1px 0 rgba(255,255,255,0.35);
+  border: none;
+}
+
+::-webkit-scrollbar-track {
+  border: 0px solid transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent
+  height: 0px;
+}

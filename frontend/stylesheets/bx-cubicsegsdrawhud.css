@@ -1,0 +1,11 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+#node-grippies .node-grippie {
+  fill: red;
+  stroke: none; 
+  opacity: 1;
+}

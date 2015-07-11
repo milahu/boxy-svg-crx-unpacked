@@ -1,0 +1,26 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+#caret-line {
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+  stroke: gray;
+}
+:host-context([contenteditable]:focus) #caret-line {
+  stroke: blue;
+}
+
+#selection-rects {
+  opacity: 0.4;
+}
+#selection-rects rect {
+  fill: rgb(158, 158, 158);
+  pointer-events: none;
+}
+:host-context([contenteditable]:focus) #selection-rects rect {
+  fill: rgb(0, 157, 255);
+}

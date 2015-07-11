@@ -1,0 +1,63 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+}
+
+/* Viewbox section */
+
+#viewbox-x-slider,
+#viewbox-y-slider,
+#viewbox-width-slider,
+#viewbox-height-slider {
+  margin: 0px 0 4px 0;
+  width: 100%;
+}
+
+/* Viewport section */
+
+#viewport-section .row-div {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: left;
+}
+
+#viewport-section bx-slider {
+  margin: 0;
+  width: 100%;
+}
+
+#viewport-section bx-select {
+  flex: 0 0 auto;
+  width: 61px;
+  margin: 0 0 0 -1px;
+}
+
+#viewport-section #viewport-width-div {
+  margin-bottom: 10px;
+}
+
+#viewport-section #viewport-height-div {
+  margin-bottom: 10px;
+}
+
+/* Aspect ratio section */
+
+#aspect-ratio-section #align-label {
+  color: #D9D9D9;
+  font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+#aspect-ratio-section #align-label[disabled] {
+  opacity: 0.5;
+}
+
+#aspect-ratio-section #align-select {
+  width: 100%;
+}

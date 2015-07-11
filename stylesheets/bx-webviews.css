@@ -1,0 +1,28 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #3c3c3c;
+}
+
+::content > webview {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}

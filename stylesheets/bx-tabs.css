@@ -1,0 +1,34 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  width: 100%;
+  height: 30px;
+  display: block;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+:host([disabled]) main {
+  opacity: 0.5;
+}
+
+#new-tab-button {
+  width: 22px;
+  height: 22px;
+  opacity: 1;
+  margin: 4px 6px 0 3px;
+  transition: opacity 0.15s ease-in-out;
+  order: 9999;
+}
+
+::content bx-tab {
+  z-index: 100;
+  transition: 0.5s max-width;
+}

@@ -1,0 +1,96 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+}
+
+/* Font family section */
+
+#font-family-select {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#font-family-textinput {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Font size section */
+
+#font-size-slider {
+  width: 100%;
+}
+
+/* Font weight section */
+
+#font-weight-select {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Font style section */
+
+#font-style-select {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Font variant section */
+
+#font-variant-select {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Text transform section */
+
+#text-transform-select {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Text decoration section */
+
+#text-decoration-select {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Letter spacing section */
+
+#letter-spacing-checkbox {
+  margin-bottom: 0;
+}
+
+#letter-spacing-slider {
+  width: 100%;
+  margin: 5px 0 0 0;
+}
+
+/* Word spacing section */
+
+#word-spacing-checkbox {
+  margin-bottom: 0;
+}
+
+#word-spacing-slider {
+  width: 100%;
+  margin: 5px 0 0 0;
+}
+
+/* Text on path section */
+
+#text-on-path-buttons bx-button,
+#text-on-path-buttons bx-button {
+  width: 100%
+}
+
+#text-on-path-buttons bx-button:first-child,
+#text-on-path-buttons bx-button:first-child{
+  margin-bottom: 4px;
+}

@@ -1,0 +1,33 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  outline: none;
+}
+
+#scale-grippies > .grippie {
+  fill: rgb(46, 102, 249);
+  stroke: white;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  filter: url(#grippie-drop-shadow);
+}
+
+#rotate-grippies > .grippie {
+  fill: red;
+  stroke: white;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  filter: url(#grippie-drop-shadow);
+}
+
+#skew-grippies > .grippie {
+  fill: orange;
+  stroke: white;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  filter: url(#grippie-drop-shadow);
+}

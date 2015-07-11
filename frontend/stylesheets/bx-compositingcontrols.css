@@ -1,0 +1,39 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+}
+
+/* Opacity section */
+
+#opacity-slider {
+  width: 100%;
+}
+
+/* Blend mode section */
+
+#blend-mode-select {
+  width: 100%;
+}
+
+#isolate-checkbox {
+  margin-bottom: 0px;
+}
+
+/* Clip section */
+
+#clip-buttons bx-button,
+#mask-buttons bx-button {
+  width: 100%;
+}
+
+/* Mask section */
+
+#clip-buttons bx-button:first-child,
+#mask-buttons bx-button:first-child{
+  margin-bottom: 4px;
+}

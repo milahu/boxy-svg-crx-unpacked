@@ -1,0 +1,26 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  width: 42px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+bx-scrollableview {
+  width: 100%;
+  height: 100%;
+}
+
+::content bx-button {
+  width: 100%;
+  pointer-events: auto;
+  border-bottom: 5px solid transparent;
+}
+::content bx-button:last-child {
+  border-bottom: none;
+}

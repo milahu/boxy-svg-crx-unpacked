@@ -1,0 +1,51 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+#inner-area {
+  fill: rgba(0, 0, 0, 0);
+  opacity: 1;
+  shape-rendering: crispEdges;
+  stroke: rgb(106, 106, 106);
+  stroke-width: 1;
+}
+#inner-area:hover {
+  cursor: -webkit-grab;
+}
+#inner-area:active {
+  cursor: -webkit-grabbing;
+}
+
+#outer-area {
+  fill: black;
+  stroke: none;
+  opacity: 0.4;
+  vector-effect: non-scaling-stroke;
+  stroke-width: 4;
+}
+
+.resize-grippie {
+  opacity: 0;
+}
+.resize-grippie[data-position="left"]:hover,
+.resize-grippie[data-position="right"]:hover {
+  cursor: ew-resize;
+}
+.resize-grippie[data-position="top"]:hover,
+.resize-grippie[data-position="bottom"]:hover {
+  cursor: ns-resize;
+}
+.resize-grippie[data-position="top-left"]:hover {
+  cursor: nwse-resize;
+}
+.resize-grippie[data-position="top-right"]:hover {
+  cursor: nesw-resize;
+}
+.resize-grippie[data-position="bottom-left"]:hover {
+  cursor: nesw-resize;
+}
+.resize-grippie[data-position="bottom-right"]:hover {
+  cursor: nwse-resize;
+}
