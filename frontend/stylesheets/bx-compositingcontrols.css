@@ -23,17 +23,3 @@
 #isolate-checkbox {
   margin-bottom: 0px;
 }
-
-/* Clip section */
-
-#clip-buttons bx-button,
-#mask-buttons bx-button {
-  width: 100%;
-}
-
-/* Mask section */
-
-#clip-buttons bx-button:first-child,
-#mask-buttons bx-button:first-child{
-  margin-bottom: 4px;
-}

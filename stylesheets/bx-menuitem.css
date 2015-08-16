@@ -21,7 +21,7 @@ main {
   opacity: 0.6;
 }
 :host([highlighted]) main {
-  background: rgb(11, 128, 222);
+  background: #3878d9;
   color: #fff;
 }
 
@@ -31,18 +31,12 @@ bx-icon#state {
   align-self: center;
   margin-left: 5px;
   pointer-events: none;
-  --color: white;
 }
 bx-icon#state[name="circle"] {
   transform: scale(0.65);
 }
 :host(:not(:empty)) bx-icon#state {
   visibility: hidden;
-}
-/* @todo: remove when Chrome adds support for CSS variables */
-bx-icon#state::shadow svg {
-  fill: white;
-  stroke: white;
 }
 
 #label {
@@ -83,9 +77,4 @@ bx-icon#arrow {
   align-self: center;
   margin-left: 5px;
   margin-right: 5px;
-}
-/* @todo: remove when Chrome adds support for CSS variables */
-bx-icon#arrow::shadow svg {
-  fill: white;
-  stroke: white;
 }

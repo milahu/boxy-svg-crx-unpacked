@@ -29,27 +29,22 @@ main {
   box-sizing: border-box;
 }
 
-bx-icon {
+#icon {
   flex: 0 0 auto;
   width: 20px;
   height: 20px;
-}
-bx-icon:not([name]) {
-  display: none;
-}
-bx-icon::shadow svg {
   fill: #f0f0dc;
   stroke: #f0f0dc;
   transition: fill 0.3s, stroke 0.3s;
 }
-:host(:active) bx-icon::shadow svg {
+:host(:active) #icon {
   fill: #93d9ff;
   stroke: #93d9ff;
 }
-:host([mixed]) bx-icon {
+:host([mixed]) #icon {
   opacity: 0.65;
 }
-:host([checked]) bx-icon::shadow svg {
+:host([checked]) #icon {
   fill: #C7E15A;
   stroke: #C7E15A;
 }

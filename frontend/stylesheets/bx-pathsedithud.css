@@ -32,13 +32,16 @@
   filter: url(#grippie-drop-shadow);
 }
 .node-grippie[data-selected] {
+  fill: #7C7CFF;
+}
+:host(:focus) .node-grippie[data-selected] {
   fill: blue;
 }
 
 .control-grippie {
   fill: red;
   stroke: white;
-  stroke-width: 2;
+  stroke-width: 1.5;
   vector-effect: non-scaling-stroke;
   filter: url(#grippie-drop-shadow);
 }
@@ -48,4 +51,5 @@
   stroke-width: 2;
   vector-effect: non-scaling-stroke;
   pointer-events: none;
+  opacity: 0.3;
 }

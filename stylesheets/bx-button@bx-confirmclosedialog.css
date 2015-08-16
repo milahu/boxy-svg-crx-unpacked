@@ -17,15 +17,18 @@ main {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  background-image: -webkit-linear-gradient(top, #cccccc 0%, #3c3c3c 2%, #252525 100%);
-  border: 1px solid #141619;
+  background-color: #4A4848;
+  border: 1px solid #242424;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 :host(:active) main {
   background: #444444;
 }
 :host([default]) main,
 :host([pressed]) main {
-  background: #3282cc;
+  background: #3878d9;
   border: 1px solid black;
 }
 :host([default]:active) main,
@@ -33,7 +36,7 @@ main {
   background: #2f71ae;
 }
 
-bx-icon {
+#icon {
   display: none;
 }
 

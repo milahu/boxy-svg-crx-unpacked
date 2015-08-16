@@ -39,29 +39,15 @@ main {
   background: #2f71ae;
 }
 
-bx-icon {
-  flex: 0 0 auto;
+#icon {
   width: 24px;
   height: 24px;
-  margin: 0px 11px;
-}
-bx-icon:not([name]) {
-  display: none;
-}
-bx-icon::shadow svg {
+  margin: 0px 2px 0px 11px;
   fill: white;
   stroke: white;
 }
-:host([disabled]) bx-icon {
+:host([disabled]) #icon {
   opacity: 0.5;
-}
-
-#label-wrapper {
-  border-left: 1px solid rgba(255, 255, 255, 0.27);
-  height: 100%;
-  display: flex;
-  flex-flow: row;
-  align-items: center;
 }
 
 label {

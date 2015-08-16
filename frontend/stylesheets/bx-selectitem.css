@@ -35,10 +35,6 @@ bx-icon {
 :host(:not(:empty)) bx-icon {
   visibility: hidden;
 }
-bx-icon::shadow svg {
-  fill: white;
-  stroke: white;
-}
 
 #label {
   box-sizing: border-box;

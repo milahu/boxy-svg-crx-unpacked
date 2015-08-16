@@ -8,11 +8,12 @@
   width: 200px;
   height: 34px;
   display: block;
+  outline: none;
   touch-action: pan-y;
 }
 :host([disabled]) {
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.4;
 }
 :host([hidden]) {
   display: none;
@@ -40,13 +41,20 @@ input {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
+  pointer-events: none;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 input:focus {
   border: 1px solid rgb(23, 23, 21);
-  box-shadow: 0 0 0 3px #238be7;
-  outline: none;
+  outline: 3px solid #238be7;
+  outline-offset: 0px;
   background: white;
+  z-index: 998;
+  pointer-events: auto;
+}
+input::selection {
+  background: transparent;
 }
 input:focus::selection {
   background: #8fc9fc;
@@ -55,13 +63,7 @@ input:focus:invalid::selection {
   background: #ffc3c3;
 }
 input:focus:invalid {
-  box-shadow: 0 0 0 3px #ed5c49;
-}
-input:not(:focus) {
-  pointer-events: none;
-}
-input:not(:focus)::selection {
-  background: transparent;
+  outline-color: #ed5c49;
 }
 :host([mixed]) input:not(:focus) {
   color: rgba(0,0,0, 0.65);
@@ -75,4 +77,5 @@ input:not(:focus)::selection {
   height: 4px;
   background: #69821d;
   opacity: 0.5;
+  pointer-events: none;
 }

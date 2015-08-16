@@ -33,19 +33,17 @@ main {
   background: rgba(255, 255, 255, 0.4);
 }
 
-bx-icon {
+#icon {
   flex: 0 0 auto;
   width: 24px;
   height: 24px;
   opacity: 0.8;
-}
-:host(:hover) bx-icon,
-:host(:active) bx-icon {
-  opacity: 1;
-}
-bx-icon::shadow svg {
   fill: white;
   stroke: white;
+}
+:host(:hover) #icon,
+:host(:active) #icon {
+  opacity: 1;
 }
 
 label {

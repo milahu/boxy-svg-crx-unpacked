@@ -19,6 +19,7 @@ bx-about main {
   width: 100%;
   height: 100%;
   position: relative;
+  background: #333;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -26,7 +27,6 @@ bx-about main {
   text-align: center;
   color: white;
   font-size: 10px;
-  background: #2D2D2D;
 }
 
 bx-about a {
@@ -60,7 +60,7 @@ bx-about #version {
 bx-about #scroll {
   width: 100%;
   height: 135px;
-  background: rgba(61, 61, 61, 1);
+  background: #404040;
   overflow: auto;
   border-top: 1px solid #1E1E1E;
   border-bottom: 1px solid #1E1E1E;

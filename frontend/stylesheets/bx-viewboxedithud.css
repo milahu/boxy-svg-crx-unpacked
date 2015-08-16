@@ -10,6 +10,7 @@
   shape-rendering: crispEdges;
   stroke: rgb(106, 106, 106);
   stroke-width: 1;
+  vector-effect: non-scaling-stroke;
 }
 #inner-area:hover {
   cursor: -webkit-grab;
@@ -22,11 +23,30 @@
   fill: black;
   stroke: none;
   opacity: 0.4;
-  vector-effect: non-scaling-stroke;
-  stroke-width: 4;
 }
 
-.resize-grippie {
+.resize-grippie[data-position="left"],
+.resize-grippie[data-position="right"],
+.resize-grippie[data-position="top"],
+.resize-grippie[data-position="bottom"] {
+  stroke: red;
+  vector-effect: non-scaling-stroke;
+  stroke-width: 6;
+  opacity: 0;
+}
+.resize-grippie[data-position="top-left"] path,
+.resize-grippie[data-position="top-right"] path,
+.resize-grippie[data-position="bottom-left"] path,
+.resize-grippie[data-position="bottom-right"] path {
+  fill: white;
+  stroke: rgb(88, 88, 88);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.resize-grippie[data-position="top-left"] rect,
+.resize-grippie[data-position="top-right"] rect,
+.resize-grippie[data-position="bottom-left"] rect,
+.resize-grippie[data-position="bottom-right"] rect {
   opacity: 0;
 }
 .resize-grippie[data-position="left"]:hover,

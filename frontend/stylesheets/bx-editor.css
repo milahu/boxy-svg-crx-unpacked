@@ -16,18 +16,27 @@ main {
   position: relative;
 }
 
-#tools-dock,
-#panels-dock {
+#navigator {
+  position: absolute;
+  top: 5px;
+  left: 52px;
+  max-width: calc(100% - 104px);
+}
+
+#tools-dock {
   position: absolute;
   top: 0px;
+  left: 0px;
   height: calc(100% - 10px);
   margin: 5px;
 }
-#tools-dock {
-  left: 0px;
-}
+
 #panels-dock {
+  position: absolute;
+  top: 0px;
   right: 0px;
+  height: calc(100% - 10px);
+  margin: 5px;
 }
 
 #panels {

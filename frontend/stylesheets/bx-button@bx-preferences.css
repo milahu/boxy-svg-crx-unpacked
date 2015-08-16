@@ -25,19 +25,21 @@ main {
   background: #444444;
 }
 :host([pressed]) main {
-  background: #4183c4;
+  background: #3878d9;
 }
 :host([pressed]:active) main {
   background: #2f71ae;
 }
 
-bx-icon {
+#icon {
   opacity: 0.8;
-  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
   margin: 0 0 0 11px;
+  fill: white;
 }
-:host([pressed]) bx-icon,
-:host(:hover) bx-icon {
+:host([pressed]) #icon,
+:host(:hover) #icon {
   opacity: 1;
 }
 

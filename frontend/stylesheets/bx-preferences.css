@@ -12,7 +12,6 @@ main {
   display: flex;
   height: 100%;
   width: 100%;
-  background: #2D2D2D;
   border-top: 1px solid rgb(16, 16, 16);
   color: white;
 }
@@ -29,7 +28,7 @@ main {
 
 #views {
   flex: 1;
-  background: rgba(61, 61, 61, 1);
+  background: #404040;
   padding: 15px 25px;
 }
 
@@ -40,7 +39,7 @@ main {
 }
 
 .view header bx-icon {
-  margin: 0px 5px 0 -5px;
+  margin: 0px 7px 0 -5px;
   width: 30px;
   height: 30px;
 }
