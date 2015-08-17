@@ -38,21 +38,41 @@
 #align-buttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 215px;
-}
-
-#align-buttons .column {
-  margin: 0 8px 0 0;
 }
 
 #align-buttons bx-button {
   width: 35px;
   height: 35px;
-  margin-bottom: 6px;
 }
-#align-buttons bx-button:last-child {
-  margin-bottom: 0;
+
+#align-buttons #align-inside-buttons {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+#align-buttons #align-inside-buttons .column {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column;
+}
+#align-buttons #align-inside-buttons .column:nth-child(2) {
+  flex-flow: column;
+  height: 100%;
+  margin: 0 -5px 0 -5px;
+}
+
+#align-buttons #center-buttons {
+  margin: 0px 13px;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+}
+
+#align-buttons #stretch-buttons {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
 }
 
 /* Z-order section */

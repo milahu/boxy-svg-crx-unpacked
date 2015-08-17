@@ -14,7 +14,7 @@ main {
 
 h2 {
   width: 100%;
-  margin: 13px 0 8px 0;
+  margin: 0;
   padding: 0px;
   color: rgb(240, 240, 240);
   line-height: 1;
@@ -29,7 +29,7 @@ h2[disabled] {
 
 h3 {
   width: 100%;
-  margin: 0px 0px 5px 0px;
+  margin: 0px 0px 8px 0px;
   padding: 0px;
   color: rgb(240, 240, 240);
   line-height: 1;
@@ -43,78 +43,77 @@ h3[disabled] {
   opacity: 0.5;
 }
 
-/* Paint type section */
+/**
+ * Header
+ */
 
-#paint-type-section {
+#section-header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: left;
   margin-bottom: 10px;
 }
 
-#paint-type-section h2 {
-  margin-top: 0;
-}
+/**
+ * Paint type subsection
+ */
 
-#paint-type-section #paint-type-label {
-  color: #D9D9D9;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-#paint-type-buttons {
+#paint-type-subsection #paint-type-buttons {
   display: flex;
-  margin: 2px 0px 5px 0px;
 }
 
-#paint-type-buttons bx-button {
+#paint-type-subsection #paint-type-buttons bx-button {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 
-/* Color section */
+/**
+ * Spread method subsection
+ */
 
-#color-label {
-  color: #D9D9D9;
-  font-size: 12px;
-  margin-bottom: 5px;
+#spread-method-subsection {
+  margin-top: 12px;
 }
 
-bx-colorpicker {
+#spread-method-subsection #spread-method-buttons {
+  display: flex;
+  margin: 2px 0px 10px 0px;
+}
+
+#spread-method-subsection #spread-method-buttons bx-button {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+/**
+ * Color subsection
+ */
+
+#color-subsection {
+  margin-top: 12px;
+}
+
+#color-subsection #color-picker {
   height: 250px;
 }
 
-#color-picker-hint {
+#color-subsection #color-picker-hint {
   font-size: 12px;
   margin: 0;
   line-height: 1;
   opacity: 0.6;
 }
-#color-picker-hint:empty {
+#color-subsection #color-picker-hint:empty {
   display: none;
 }
 
-#edit-tool-span {
+#color-subsection #edit-tool-span {
   text-decoration: underline;
   text-transform: uppercase;;
 }
-#edit-tool-span:hover {
+#color-subsection #edit-tool-span:hover {
   cursor: pointer;
-}
-
-/* Spread method section */
-
-#spread-label {
-  color: #D9D9D9;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-#spread-method-buttons {
-  display: flex;
-  margin: 2px 0px 10px 0px;
-}
-
-#spread-method-buttons bx-button {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
 }

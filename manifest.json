@@ -3,7 +3,7 @@
 
   "name": "Boxy SVG",
   "description": "Vector graphics editor. Generates clean SVG files. Works on Mac, Linux, Windows and ChromeOS.",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": "Jarosław Foksa",
   "manifest_version": 2,
   "minimum_chrome_version": "40",
@@ -31,6 +31,7 @@
   },
   "permissions": [
     "alwaysOnTopWindows",
+    "browser",
     "webview",
     "storage",
     "clipboardRead",

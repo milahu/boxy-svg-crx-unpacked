@@ -536,6 +536,7 @@ var e=System.get("utils/array").iterateSeries,n=System.get("utils/chrome"),i=n.g
 }),t.shadowRoot.addEventListener("mousedown",function(e){return t._onMouseDown(e)
 }),t.bridge.addMessageHandler("setChangeCounter",function(e,n){t.editors.setEditorChangeCounter(n,e)
 }),t.bridge.addMessageHandler("getVersion",function(t,e,n){n(o)}),t.bridge.addMessageHandler("openFiles",function(e){t._openFiles(e)
+}),t.bridge.addMessageHandler("openBrowserTab",function(t){chrome.browser.openTab({url:t})
 }),t.bridge.addMessageHandler("getMenubarCommandDescriptors",function(e,n,i){t._getMenubarCommandDescriptors(function(t){return i(t)
 })}),setTimeout(function(){t.bridge.postMessage("background","ready")},1e3)})},_onMouseDown:function(t){"bx-editors"!==t.target.localName&&t.preventDefault()
 },_onMenuItemClick:function(t){var e,n,i=this,r=t.detail;r.id.startsWith("open-recent-")?(e=r.id.substring(12),chrome.fileSystem.restoreEntry(e,function(t){i.editors.openEditorWithArtworkFromFileEntry(t),i.editors.registerRecentFile(t)
