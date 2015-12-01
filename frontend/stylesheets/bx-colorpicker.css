@@ -45,13 +45,14 @@ div {
   align-items: center;
 }
 
-bx-textinput {
+bx-input {
   height: 34px;
-  margin: 0 6px 0 0;
+  margin: 0;
   flex: 1;
 }
 
 bx-button {
-  width: 23px;
-  height: 23px;
+  width: 25px;
+  height: 25px;
+  margin-left: 6px;
 }

@@ -6,91 +6,163 @@
 
 :host {
   display: block;
+  height: calc(100% - 53px);
 }
 
-/* Font family section */
+.hbox {
+  display: flex;
+  align-items: center;
+}
 
-#font-family-select {
+/******************************************************************************************************************
+ Master view
+ *****************************************************************************************************************/
+
+#master-view[hidden] {
+  display: none;
+}
+
+/*
+ * Font section
+ */
+
+/* Family */
+
+#font-section #font-family-div {
+  margin-bottom: 12px;
+}
+
+#font-section #font-family-select {
   width: 100%;
   margin-bottom: 0;
 }
 
-#font-family-textinput {
+/* Variant */
+
+#font-section #font-variant-div {
+  margin-bottom: 12px;
+}
+
+#font-section #font-weight-select {
+  flex: 1;
+  margin: 0;
   width: 100%;
-  margin-bottom: 0;
 }
 
-/* Font size section */
+#font-section #italic-font-style-button {
+  width: 30px;
+  height: 30px;
+  margin: 0 7px;
+}
 
-#font-size-slider {
+#font-section #small-caps-font-variant-button {
+  width: 30px;
+  height: 30px;
+}
+
+/* Size */
+
+#font-section #font-size-slider {
   width: 100%;
 }
 
-/* Font weight section */
+/*
+ * Transform section
+ */
 
-#font-weight-select {
+#transform-section #transform-buttons {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+#transform-section #transform-buttons bx-button {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+#transform-section #text-on-path-button {
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+}
+
+/*
+ * Decoration section
+ */
+
+#decoration-section #decoration-buttons {
+  display: flex;
+  align-items: center;
+}
+
+#decoration-section #decoration-buttons bx-button {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+/*
+ * Spacing section
+ */
+
+#spacing-section #letter-spacing-div {
+  margin-bottom: 14px;
+}
+
+#spacing-section #letter-spacing-slider,
+#spacing-section #word-spacing-slider {
   width: 100%;
-  margin-bottom: 0;
 }
 
-/* Font style section */
+/******************************************************************************************************************
+ Font family view
+ *****************************************************************************************************************/
 
-#font-style-select {
+#font-family-view {
+  height: 100%;
   width: 100%;
-  margin-bottom: 0;
+  display: flex;
+  flex-flow: column;
+}
+#font-family-view[hidden] {
+  display: none;
 }
 
-/* Font variant section */
+/**
+ * Navbar
+ */
 
-#font-variant-select {
-  width: 100%;
-  margin-bottom: 0;
+#navbar {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  background: #353535;
+  padding: 5px 13px;
+  border-bottom: 1px solid #1B1B1B;
 }
 
-/* Text transform section */
-
-#text-transform-select {
-  width: 100%;
-  margin-bottom: 0;
+#navbar #back-button {
+  width: 30px;
+  height: 30px;
 }
 
-/* Text decoration section */
-
-#text-decoration-select {
-  width: 100%;
-  margin-bottom: 0;
+#navbar h1 {
+  margin: 0 0 0 8px;
+  color: rgb(240, 240, 240);
+  line-height: 1;
+  font-size: 14px;
+  font-family: "Roboto";
+  font-weight: 500;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 
-/* Letter spacing section */
+/**
+ * Font family picker
+ */
 
-#letter-spacing-checkbox {
-  margin-bottom: 0;
-}
-
-#letter-spacing-slider {
-  width: 100%;
-  margin: 5px 0 0 0;
-}
-
-/* Word spacing section */
-
-#word-spacing-checkbox {
-  margin-bottom: 0;
-}
-
-#word-spacing-slider {
-  width: 100%;
-  margin: 5px 0 0 0;
-}
-
-/* Text on path section */
-
-#text-on-path-buttons bx-button,
-#text-on-path-buttons bx-button {
-  width: 100%
-}
-
-#text-on-path-buttons bx-button:first-child,
-#text-on-path-buttons bx-button:first-child{
-  margin-bottom: 4px;
+#font-family-picker-section {
+  height: calc(100% - 41px);
+  padding-top: 5px;
 }

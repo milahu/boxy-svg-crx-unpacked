@@ -23,7 +23,7 @@
   font-family: serif;
 }
 
-#canvas #content > #master-artboard:not(:last-child) {
+#canvas #content > g:not(:last-child) {
   display: none;
 }
 

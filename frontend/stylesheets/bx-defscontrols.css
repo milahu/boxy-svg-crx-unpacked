@@ -7,7 +7,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 30px);
+  height: calc(100% - 38px);
   overflow: hidden;
 }
 
@@ -19,6 +19,7 @@ main {
 #buttons {
   display: flex;
   height: 35px;
+  margin-bottom: 6px;
 }
 
 #buttons bx-button {
@@ -33,7 +34,4 @@ main {
 
 .list {
   height: 100%;
-}
-.list[hidden] {
-  display: none;
 }

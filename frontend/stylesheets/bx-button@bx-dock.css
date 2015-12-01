@@ -30,7 +30,7 @@ main {
   background: #444444;
 }
 :host([pressed]) main {
-  background: #3878d9;
+  background: #006be5;
   border: 1px solid black;
 }
 :host([pressed]:active) main {

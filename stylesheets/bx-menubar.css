@@ -11,7 +11,7 @@
 
 ::content > bx-menu {
   padding-right: 7px;
-  border-top: 2px solid #3878d9;
+  border-top: 2px solid #006be5;
 }
 
 #overlay {
@@ -55,5 +55,5 @@
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 #strip li[highlighted] {
-  background: #3878d9;
+  background: #006be5;
 }

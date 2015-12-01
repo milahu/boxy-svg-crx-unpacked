@@ -21,19 +21,30 @@ main {
   opacity: 0.6;
 }
 :host([highlighted]) main {
-  background: rgb(11, 128, 222);
+  background: #006be5;
   color: #fff;
 }
 
-bx-icon {
+#icon {
   width: 12px;
   height: 12px;
   margin: 0 5px 0 8px;
   align-self: center;
   pointer-events: none;
 }
-:host(:not(:empty)) bx-icon {
+:host(:not(:empty)) #icon {
   visibility: hidden;
+}
+
+#thumbnail {
+  width: 30px;
+  height: 30px;
+  background: white;
+  margin: 0 8px 0 0;
+  display: none;
+}
+#thumbnail[src] {
+  display: block;
 }
 
 #label {

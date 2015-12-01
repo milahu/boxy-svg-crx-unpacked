@@ -16,7 +16,7 @@ main {
   position: relative;
 }
 
-#navigator {
+#breadcrumb {
   position: absolute;
   top: 5px;
   left: 52px;

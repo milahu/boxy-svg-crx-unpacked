@@ -34,8 +34,8 @@ main {
   stroke: #f0f0dc;
 }
 :host([pressed]) #icon {
-  fill: #3878d9;
-  stroke: #3878d9;
+  fill: #006be5;
+  stroke: #006be5;
 }
 :host(:active) #icon {
   fill: #69CAFF;

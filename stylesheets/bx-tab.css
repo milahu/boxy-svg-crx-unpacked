@@ -24,7 +24,7 @@ main {
   transition: opacity 0.15s ease-out;
 }
 :host([highlighted]) main {
-  background: #3878d9;
+  background: #006be5;
 }
 
 #label {

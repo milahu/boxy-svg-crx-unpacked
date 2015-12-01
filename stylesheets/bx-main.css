@@ -22,6 +22,11 @@
   border-top: none;
 }
 
+dialog::backdrop {
+  background: rgba(0,0,0,0.35);
+  margin-top: 60px;
+}
+
 bx-menubar {
   width: 100%;
   height: 30px;

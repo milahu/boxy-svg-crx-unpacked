@@ -21,21 +21,21 @@ main {
   opacity: 0.6;
 }
 :host([highlighted]) main {
-  background: #3878d9;
+  background: #006be5;
   color: #fff;
 }
 
-bx-icon#state {
+#state-icon {
   width: 12px;
   height: 12px;
   align-self: center;
   margin-left: 5px;
   pointer-events: none;
 }
-bx-icon#state[name="circle"] {
+#state-icon[name="circle"] {
   transform: scale(0.65);
 }
-:host(:not(:empty)) bx-icon#state {
+:host(:not(:empty)) #state-icon {
   visibility: hidden;
 }
 
@@ -66,11 +66,11 @@ bx-icon#state[name="circle"] {
   display: none;
 }
 
-bx-icon#arrow {
+#arrow-icon {
   display: none;
   pointer-events: none;
 }
-:host(:not(:empty)) bx-icon#arrow {
+:host(:not(:empty)) #arrow-icon {
   display: block;
   width: 8px;
   height: 8px;

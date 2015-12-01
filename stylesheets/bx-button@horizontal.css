@@ -6,7 +6,7 @@
 
 :host {
   width: 100px;
-  height: 42px;
+  height: 36px;
   display: block;
 }
 :host([disabled]) {
@@ -14,50 +14,48 @@
 }
 
 main {
+  padding: 0 11px;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  background-color: #4A4848;
-  border: 1px solid #242424;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-:host(:active) main {
-  background: #444444;
+  border: 1px solid #232323;
+  background-image: -webkit-linear-gradient(bottom, #2D2D2D 0%, #3D3D3D 100%);
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.26) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.11);
 }
 :host([default]) main,
 :host([pressed]) main {
-  background: #3878d9;
-  border: 1px solid black;
+  border: 1px solid #0F3C7F;
+  background: #006be5;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.45) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.16);
+}
+:host(:active) main {
+  -webkit-filter: brightness(125%);
 }
 :host([default]:active) main,
 :host([pressed]:active) main {
-  background: #2f71ae;
+  -webkit-filter: brightness(110%);
 }
 
 #icon {
   display: none;
 }
 
-#label-wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
 label {
   overflow: hidden;
-  color: white;
+  color: #ffffff;
   opacity: 0.85;
   font-family: "Roboto";
   font-size: 13px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 100%;
-  text-align: center;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+}
+:host([default]) label,
+:host([pressed]) label {
+  opacity: 1;
 }
 
 :host([disabled]) label {

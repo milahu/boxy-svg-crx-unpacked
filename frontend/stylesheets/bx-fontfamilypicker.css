@@ -1,0 +1,101 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+h2 {
+  width: 100%;
+  margin: 0px 0px 0px 8px;
+  padding: 0px;
+  color: rgb(240, 240, 240);
+  line-height: 1;
+  font-size: 14px;
+  font-family: "Roboto";
+  font-weight: 500;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  min-height: 29px;
+  align-items: center;
+  font-family: "Roboto";
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  box-shadow: 0 1px 0 #000000, 0 2px 0 #636262, 0 -1px 0 #636262, 0 -2px 0 #000000;
+  margin-bottom: 3px;
+}
+
+#font-provider-select {
+  width: 100%;
+  margin: 2px 0 10px 0;
+  box-sizing: border-box;
+}
+
+/**
+ * Fonts list
+ */
+
+#fonts-list {
+  height: calc(100% - 80px);
+  width: 100%;
+}
+
+#fonts-list #categories {
+  height: calc(100% - 32px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  position: relative; /* needed for item.offsetTop */
+}
+
+#categories #used-system-category *:last-child,
+#categories #used-google-category *:last-child {
+  box-shadow: 0 1px 0 #000000, 0 2px 0 #636262;
+  margin-bottom: 3px;
+}
+
+#categories #used-system-category,
+#categories #used-google-category {
+  background: #313131;
+}
+
+#fonts-list .item {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+#fonts-list .item[data-selected] {
+  background: #006be5;
+}
+
+#fonts-list .item .thumbnail {
+  padding: 0 6px;
+  opacity: 0.8;
+}
+#fonts-list .item[data-selected] .thumbnail,
+#fonts-list .item:hover .thumbnail {
+  opacity: 1;
+  height: 40px;
+}
+
+#fonts-list #filter-input {
+  margin: 5px 0 0 0;
+  width: 100%;
+}

@@ -1,0 +1,24 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+}
+
+.hbox {
+  display: flex;
+  align-items: center;
+}
+
+/* "Bool ops" section */
+
+#boolops-section .hbox {
+  margin-bottom: 5px;
+}
+#boolops-section .hbox bx-button:first-child {
+  margin-right: 5px;
+}
+

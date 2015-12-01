@@ -59,14 +59,20 @@ h3[disabled] {
  * Paint type subsection
  */
 
-#paint-type-subsection #paint-type-buttons {
+#paint-type-buttons {
   display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+  margin-right: -5px;
 }
 
-#paint-type-subsection #paint-type-buttons bx-button {
+#paint-type-buttons bx-button {
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin: 5px;
+}
+#paint-type-buttons bx-button[hidden] {
+  display: none;
 }
 
 /**
@@ -110,10 +116,50 @@ h3[disabled] {
   display: none;
 }
 
-#color-subsection #edit-tool-span {
+#color-subsection #color-picker-hint span {
   text-decoration: underline;
-  text-transform: uppercase;;
 }
-#color-subsection #edit-tool-span:hover {
+#color-subsection #color-picker-hint span:hover {
+  cursor: pointer;
+}
+
+/**
+ * Pattern subsection
+ */
+
+#pattern-subsection {
+  margin-top: 12px;
+}
+
+#pattern-subsection .hbox {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: left;
+}
+
+#pattern-subsection #pattern-select {
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  flex: 1;
+}
+
+#pattern-subsection #edit-pattern-button {
+  width: 28px;
+  margin: 0 0 0 8px;
+}
+
+#pattern-subsection #pattern-select-hint {
+  font-size: 12px;
+  margin: 9px 0 0 0;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+#pattern-subsection #pattern-select-hint span {
+  text-decoration: underline;
+}
+#pattern-subsection #pattern-select-hint span:hover {
   cursor: pointer;
 }

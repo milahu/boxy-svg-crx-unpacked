@@ -39,7 +39,7 @@ main {
   fill: #93d9ff;
   stroke: #93d9ff;
 }
-:host([pressed][mixed]) #icon {
+:host([mixed]) #icon {
   opacity: 0.65;
 }
 

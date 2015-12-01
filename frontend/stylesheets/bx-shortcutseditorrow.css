@@ -33,7 +33,7 @@ main {
   background: rgb(82, 82, 82);
 }
 :host([highlighted]:focus) main {
-  background: #3878d9;
+  background: #006be5;
 }
 :host([editable]) main {
   background: transparent;
@@ -41,7 +41,7 @@ main {
 }
 :host([editable]:focus) main {
   background: transparent;
-  border-color: #3878d9;
+  border-color: #006be5;
 }
 :host([conflicting]:focus) main {
   background: rgb(219, 50, 39);
@@ -86,7 +86,6 @@ bx-button:first-child {
 /* Shortcut preview */
 
 #shortcut-preview {
-  width: 60px;
   text-align: right;
   padding: 7px;
   opacity: 0.4;

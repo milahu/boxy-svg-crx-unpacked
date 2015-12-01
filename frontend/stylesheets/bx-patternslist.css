@@ -43,12 +43,12 @@ header h2 {
   font-weight: 500;
 }
 
-header #delete-symbol-button {
+header #delete-pattern-button {
   width: 20px;
   height: 20px;
 }
 
-header #create-symbol-button {
+header #create-pattern-button {
   width: 20px;
   height: 20px;
   margin-left: 6px;
@@ -68,13 +68,13 @@ header #create-symbol-button {
   display: none;
 }
 
-#items bx-symbolslistitem:unresolved {
+#items bx-patternslistitem:unresolved {
   width: 100%;
   height: 42px;
   display: block;
   visibility: hidden;
 }
-#items bx-symbolslistitem[hidden] {
+#items bx-patternslistitem[hidden] {
   display: none;
 }
 

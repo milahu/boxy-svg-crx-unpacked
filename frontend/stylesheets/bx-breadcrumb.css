@@ -45,19 +45,19 @@ main:empty {
 }
 
 /*
- * Breadcrumb
+ * Trail
  */
 
-#breadcrumb {
+#trail {
   display: flex;
   height: 100%;
   border: 1px solid #141619;
   box-sizing: border-box;
 }
-#breadcrumb:empty {
+#trail:empty {
   border: none;
 }
-#back-button:not([hidden]) + #breadcrumb {
+#back-button:not([hidden]) + #trail {
   margin-left: -1px;
 }
 
@@ -75,7 +75,7 @@ main:empty {
   border-right: none;
 }
 .item[pressed] {
-  background: #3878d9;
+  background: #006be5;
 }
 .item:not([pressed]):hover {
   background: #545454;

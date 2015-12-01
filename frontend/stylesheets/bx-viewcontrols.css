@@ -16,6 +16,10 @@
   display: none;
 }
 
+#viewport-section h3 {
+  margin: 0;
+}
+
 #viewport-section .row-div {
   display: flex;
   flex-flow: row;
