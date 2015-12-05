@@ -1,0 +1,77 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  width: 150px;
+  height: 300px;
+}
+:host([disabled]) {
+  display: none;
+}
+:host(:focus) {
+  outline: none;
+}
+
+h2 {
+  width: 100%;
+  margin: 0px 0px 0px 8px;
+  padding: 0px;
+  color: rgb(240, 240, 240);
+  line-height: 1;
+  font-size: 14px;
+  font-family: "Roboto";
+  font-weight: 500;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+#header {
+  display: flex;
+  min-height: 29px;
+  align-items: center;
+  font-family: "Roboto";
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  box-shadow: 0 1px 0 #000000, 0 2px 0 #636262, 0 -1px 0 #636262, 0 -2px 0 #000000;
+  margin-bottom: 3px;
+}
+
+#items {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative; /* needed for item.offsetTop */
+}
+
+#items #used-items {
+  background: #313131;
+}
+
+#items #used-items *:last-child {
+  box-shadow: 0 1px 0 #000000, 0 2px 0 #636262;
+  margin-bottom: 3px;
+}
+
+#placeholder {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.6;
+  padding: 10px 0 0 8px;
+}
+
+#filter-input {
+  margin: 5px 0 0 0;
+  width: 100%;
+}

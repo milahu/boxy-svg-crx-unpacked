@@ -8,9 +8,7 @@
   width: 100%;
   height: 40px;
   display: block;
-}
-:host([highlighted]) {
-  background: #006be5;
+  outline: none;
 }
 :host([hidden]) {
   display: none;
@@ -28,6 +26,21 @@ main {
 :host([highlighted]) main {
   background: rgb(93, 93, 93);
 }
+:host([highlighted]:focus) main {
+  background: #006be5;
+}
+
+#label {
+  margin: 0px 9px;
+  font-size: 15px;
+  font-family: Roboto;
+  opacity: 0.8;
+  white-space: pre;
+  overflow: hidden;
+}
+:host([highlighted]:focus) #label {
+  opacity: 1;
+}
 
 #thumbnail {
   height: 40px;
@@ -37,5 +50,8 @@ main {
   -webkit-user-drag: none;
 }
 :host(:hover) #thumbnail {
+  opacity: 1;
+}
+:host([highlighted]:focus) #thumbnail {
   opacity: 1;
 }
