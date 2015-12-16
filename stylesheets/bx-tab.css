@@ -42,7 +42,7 @@ main {
   opacity: 0.65;
 }
 
-bx-button {
+#close-button {
   width: 20px;
   height: 20px;
   margin: 0 5px 0 3px;

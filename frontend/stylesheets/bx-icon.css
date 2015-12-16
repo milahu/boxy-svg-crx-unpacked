@@ -23,4 +23,8 @@ svg {
   pointer-events: none;
   fill: white;
   stroke: white;
+  /* Work around the bug that causes small icons to aligned incorrectly */
+  position: absolute;
+  top: 0;
+  left: 0;
 }

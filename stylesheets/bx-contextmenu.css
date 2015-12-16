@@ -4,6 +4,10 @@
  *   © 2012-2015 Jarosław Foksa
  */
 
+:host {
+  cursor: default;
+}
+
 #overlay {
   display: none;
   position: fixed;

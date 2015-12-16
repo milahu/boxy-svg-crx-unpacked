@@ -1,0 +1,11 @@
+
+/*
+ * @copyright
+ *   © 2012-2015 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
