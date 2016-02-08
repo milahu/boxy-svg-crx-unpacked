@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
@@ -56,6 +56,7 @@ header #help-icon {
   width: 16px;
   height: 16px;
   margin-right: 8px;
+  fill: white;
 }
 header #help-icon[hidden] {
   display: none;

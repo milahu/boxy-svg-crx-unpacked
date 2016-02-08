@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
@@ -43,6 +43,7 @@ input {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: inherit;
 }
 input:focus {
   color: white;

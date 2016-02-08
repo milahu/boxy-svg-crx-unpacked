@@ -1,1 +1,0 @@
-<script src="frontend.js"></script>

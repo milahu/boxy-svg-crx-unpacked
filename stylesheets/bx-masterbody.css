@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
@@ -36,15 +36,11 @@
   width: 100%;
   height: calc(100% - 30px - 30px);
   position: relative;
+  background: #404040;
 }
 
 #editors bx-editor[disabled] {
   /* @bug: https://groups.google.com/a/chromium.org/forum/#!topic/chromium-apps/gscfpSCKFtQ */
   pointer-events: none !important;
   opacity: 0 !important;
-}
-
-#confirm-dialog::backdrop {
-  background: rgba(0,0,0,0.35);
-  margin-top: 60px;
 }

@@ -1,22 +1,23 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
-  top: 50%;
-  transform: translate(0, -50%);
   border: 1px solid #333333;
   background: #3b3b3b;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
-  max-width: 400px;
+  max-width: 500px;
 }
 :host(:focus) {
   outline: none;
 }
+:host::backdrop {
+  background: rgba(53, 53, 53, 0.34902);
+}
 
-#message {
+#inner {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -36,32 +37,39 @@
   color: white;
 }
 
-#headers #title {
+#headers #message {
   margin: 0 0 8px 0;
   font-family: "Roboto";
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 500;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
 }
 
-#headers #description {
+#headers #detail {
   font-family: "Roboto";
   font-size: 13px;
   font-weight: 400;
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
+#headers #detail:empty {
+  display: none;
+}
 
 #buttons {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   margin: 10px;
 }
 
 #buttons bx-button {
-  width: 100%;
+  width: auto;
   height: 38px;
   margin-right: 12px;
 }
 div#buttons bx-button:last-child {
   margin-right: 0;
+}
+div#buttons bx-button[label="Don't Save"] {
+  margin-right: auto;
 }

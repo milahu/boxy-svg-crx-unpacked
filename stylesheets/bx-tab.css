@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
@@ -12,7 +12,7 @@
 }
 
 main {
-  background: #555555;
+  background: #505050;
   overflow: hidden;
   outline: 1px solid rgb(42, 42, 42);
   width: 100%;
@@ -23,8 +23,14 @@ main {
   opacity: 1;
   transition: opacity 0.15s ease-out;
 }
+:host([disabled]) main {
+  background: #404040;
+}
 :host([highlighted]) main {
   background: #006be5;
+}
+:host(:hover:not([highlighted]):not([disabled])) main {
+  background: #656565;
 }
 
 #label {
@@ -39,7 +45,7 @@ main {
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 :host([disabled]) #label {
-  opacity: 0.65;
+  opacity: 0.4;
 }
 
 #close-button {

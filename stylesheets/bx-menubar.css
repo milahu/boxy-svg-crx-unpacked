@@ -1,21 +1,16 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
   width: 100%;
   height: 30px;
-}
-
-::content > bx-menu {
-  padding-right: 7px;
-  border-top: 2px solid #006be5;
+  outline: none;
 }
 
 #overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -23,9 +18,8 @@
   height: 100%;
   z-index: 998;
 }
-:host([debug]) #overlay {
-  background: red;
-  opacity: 0.5;
+#overlay[hidden] {
+  display: none;
 }
 
 #strip {
@@ -56,4 +50,12 @@
 }
 #strip li[highlighted] {
   background: #006be5;
+}
+#strip li[hidden] {
+  display: none;
+}
+
+#menus > bx-menu {
+  padding-right: 7px;
+  border-top: 2px solid #006be5;
 }

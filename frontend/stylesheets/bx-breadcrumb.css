@@ -1,92 +1,19 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
   display: block;
-  height: 30px;
+  height: 25px;
 }
 
 main {
   height: 100%;
   overflow: hidden;
-  display: flex;
-  color: white;
-  font-family: "Roboto";
-  font-size: 13px;
-}
-main:empty {
-  display: none;
 }
 
-/*
- * Back button
- */
-
-#back-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 32px;
-  height: 100%;
-  background: #454545;
-  border: 1px solid #141619;
-}
-#back-button[hidden] {
-  display: none;
-}
-
-#back-button bx-icon {
-  width: 15px;
-  height: 15px;
-}
-
-/*
- * Trail
- */
-
-#trail {
-  display: flex;
-  height: 100%;
-  border: 1px solid #141619;
-  box-sizing: border-box;
-}
-#trail:empty {
-  border: none;
-}
-#back-button:not([hidden]) + #trail {
+bx-breadcrumbitem:not(:first-child) {
   margin-left: -1px;
-}
-
-.item {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  background: #454545;
-  border-right: 1px solid #141619;
-  box-sizing: border-box;
-  padding: 0 10px 0 10px;
-  white-space: pre;
-}
-.item:last-child {
-  border-right: none;
-}
-.item[pressed] {
-  background: #006be5;
-}
-.item:not([pressed]):hover {
-  background: #545454;
-}
-.item[mixed] {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.item .name {
-}
-
-.item .id {
-  opacity: 0.5;
 }

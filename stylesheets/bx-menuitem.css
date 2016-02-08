@@ -1,12 +1,15 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
   display: block;
   height: 32px;
+}
+:host([hidden]) {
+  display: none;
 }
 
 main {
@@ -25,18 +28,26 @@ main {
   color: #fff;
 }
 
-#state-icon {
+#state-icons {
   width: 12px;
   height: 12px;
   align-self: center;
   margin-left: 5px;
   pointer-events: none;
 }
-#state-icon[name="circle"] {
-  transform: scale(0.65);
+
+#state-icons .icon {
+  width: 100%;
+  height: 100%;
+  fill: white;
+  stroke: white;
 }
-:host(:not(:empty)) #state-icon {
-  visibility: hidden;
+#state-icons .icon[hidden] {
+  display: none;
+}
+
+#selected-state-icon {
+  transform: scale(0.65);
 }
 
 #label {
@@ -54,27 +65,29 @@ main {
 
 #shortcut {
   box-sizing: border-box;
-  margin-left: 5px;
+  margin: 0 5px;
   min-width: 25px;
   text-align: right;
   align-self: center;
-}
-#shortcut:not(:empty) {
-  margin-right: 5px;
-}
-:host(:not(:empty)) #shortcut {
   display: none;
+}
+#shortcut:empty {
+  margin-right: 0px;
+}
+:host(:empty) #shortcut {
+  display: block;
 }
 
 #arrow-icon {
-  display: none;
-  pointer-events: none;
-}
-:host(:not(:empty)) #arrow-icon {
   display: block;
   width: 8px;
   height: 8px;
   align-self: center;
   margin-left: 5px;
   margin-right: 5px;
+  fill: white;
+  stroke: white;
+}
+:host(:empty) #arrow-icon {
+  display: none;
 }

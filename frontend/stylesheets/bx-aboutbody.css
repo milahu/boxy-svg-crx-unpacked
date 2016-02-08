@@ -1,12 +1,13 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 main {
@@ -21,6 +22,13 @@ main {
   text-align: center;
   color: white;
   font-size: 10px;
+  -webkit-app-region: drag;
+}
+
+#titlebar {
+  width: 100%;
+  height: 24px;
+  background: transparent;
 }
 
 a {
@@ -38,11 +46,17 @@ a:hover {
   margin: 10px 0;
 }
 
+#headings {
+  cursor: text;
+  -webkit-user-select: text;
+  -webkit-app-region: no-drag;
+  width: 100%;
+}
+
 #app-name {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 5px;
-  width: 100%;
 }
 
 #version {
@@ -59,7 +73,12 @@ a:hover {
   border-top: 1px solid #1E1E1E;
   border-bottom: 1px solid #1E1E1E;
   font-size: 12px;
+  padding-left: 7px;
   flex: 1;
+  -webkit-app-region: no-drag;
+  cursor: text;
+  -webkit-user-select: text;
+  -webkit-app-region: no-drag;
 }
 
 #scroll h3 {
@@ -85,8 +104,16 @@ a:hover {
   color: #b4b4b4;
 }
 
+#scroll #powered-by li:not(:last-child) {
+  margin-bottom: 3px;
+}
+
 #copyright {
   width: 100%;
   margin: 10px 0;
   font-size: 11px;
+  -webkit-app-region: no-drag;
+  cursor: text;
+  -webkit-user-select: text;
+  -webkit-app-region: no-drag;
 }

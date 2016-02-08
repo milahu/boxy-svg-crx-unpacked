@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 :host {
@@ -13,7 +13,7 @@
 }
 
 .slider {
-  stroke: white; 
+  stroke: white;
   stroke-width: 7;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
@@ -21,7 +21,7 @@
 }
 
 .slider-shadow {
-  stroke: rgba(0, 0, 0, 0.3); 
+  stroke: rgba(0, 0, 0, 0.3);
   stroke-width: 10;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;

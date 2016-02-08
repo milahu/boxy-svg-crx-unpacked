@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 html,
@@ -10,4 +10,11 @@ body {
   height: 100%;
   margin: 0;
   background: #333;
+  font-family: "Roboto";
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  overflow: hidden;
+  cursor: default;
+  -webkit-user-select: none;
 }

@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  */
 
 #control-line-1,
@@ -16,7 +16,7 @@
 
 #control-point-grippie {
   fill: red;
-  stroke: none; 
+  stroke: none;
   pointer-events: none;
   opacity: 1;
 }

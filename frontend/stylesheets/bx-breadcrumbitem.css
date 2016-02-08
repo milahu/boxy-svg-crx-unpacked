@@ -1,0 +1,39 @@
+
+/*
+ * @copyright
+ *   © 2012-2016 Jarosław Foksa
+ */
+
+:host {
+  display: inline-block;
+  height: 100%;
+}
+
+main {
+  padding: 0 8px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: "Roboto";
+  font-size: 12px;
+  background: #404040;
+  border: 1px solid #141619;
+  box-sizing: border-box;
+}
+:host([highlighted]) main {
+  background: #006be5;
+  border: 1px solid black;
+}
+main:empty {
+  display: none;
+}
+
+#icon {
+  width: 12px;
+  height: 12px;
+  fill: white;
+  stroke: white;
+  margin-right: 4px;
+}

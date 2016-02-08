@@ -1,7 +1,7 @@
 
 /*
  * @copyright
- *   © 2012-2015 Jarosław Foksa
+ *   © 2012-2016 Jarosław Foksa
  *
  * @info
  *   Roboto font http://www.google.com/design/spec/style/typography.html
@@ -19,12 +19,6 @@
   font-style: normal;
   font-weight: 500;
 }
-@font-face {
-  font-family: "Roboto";
-  src: url("../fonts/roboto-700.woff") format("woff");
-  font-style: normal;
-  font-weight: 700;
-}
 
 @font-face {
   font-family: "Roboto";
@@ -37,10 +31,4 @@
   src: url("../fonts/roboto-italic-500.woff") format("woff");
   font-style: italic;
   font-weight: 500;
-}
-@font-face {
-  font-family: "Roboto";
-  src: url("../fonts/roboto-italic-700.woff") format("woff");
-  font-style: italic;
-  font-weight: 700;
 }
