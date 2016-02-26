@@ -28,7 +28,7 @@ main {
 :host([default]) main,
 :host([pressed]) main {
   border: 1px solid #0F3C7F;
-  background: #006be5;
+  background: #1668f7;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.45) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.16);
 }
 :host(:active) main {

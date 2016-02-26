@@ -33,7 +33,7 @@ main {
   background: rgb(82, 82, 82);
 }
 :host([highlighted]:focus) main {
-  background: #006be5;
+  background: #1668f7;
 }
 :host([editable]) main {
   background: transparent;
@@ -41,7 +41,7 @@ main {
 }
 :host([editable]:focus) main {
   background: transparent;
-  border-color: #006be5;
+  border-color: #1668f7;
 }
 :host([conflicting]:focus) main {
   background: rgb(219, 50, 39);

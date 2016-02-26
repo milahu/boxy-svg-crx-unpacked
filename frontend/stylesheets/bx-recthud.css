@@ -5,7 +5,10 @@
  */
 
 :host {
-  outline: none;
+  display: none;
+}
+:host([enabled]) {
+  display: initial;
 }
 
 .grippie {

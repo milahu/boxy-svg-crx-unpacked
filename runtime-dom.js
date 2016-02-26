@@ -73,12 +73,12 @@ if (!Node.prototype.replace) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-// Element polyfills
+// HTMLHeadingElement polyfills
 //
 
 // @info
-//   Not standard yet, but allows me to avoid a lot of code repetition
-Object.defineProperty(Element.prototype, "disabled", {
+//   Add support for "disabled" property on h1, h2, h3, h4, h5, h6 elements (non-standard).
+Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
   enumerable: false,
   configurable: false,
 

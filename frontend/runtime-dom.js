@@ -73,12 +73,12 @@ if (!Node.prototype.replace) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-// Element polyfills
+// HTMLHeadingElement polyfills
 //
 
 // @info
-//   Not standard yet, but allows me to avoid a lot of code repetition
-Object.defineProperty(Element.prototype, "disabled", {
+//   Add support for "disabled" property on h1, h2, h3, h4, h5, h6 elements (non-standard).
+Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
   enumerable: false,
   configurable: false,
 
@@ -333,14 +333,16 @@ SVGUseElement.prototype.getBBox = function() {
     return this;
   };
 
-  SVGMatrix.prototype.skewXSelf = function(sx) {
-    let skewTransform = {a: 1, b: 0, c: tan(sx), d: 1, e: 0, f: 0};
+  SVGMatrix.prototype.skewXSelf = function(angle) {
+    let angleRad = (Math.PI * angle) / 180;
+    let skewTransform = {a: 1, b: 0, c: Math.tan(angleRad), d: 1, e: 0, f: 0};
     this.multiplySelf(skewTransform);
     return this;
   };
 
-  SVGMatrix.prototype.skewYSelf = function(sy) {
-    let skewTransform = {a: 1, b: tan(sy), c: 0, d: 1, e: 0, f: 0};
+  SVGMatrix.prototype.skewYSelf = function(angle) {
+    let angleRad = (Math.PI * angle) / 180;
+    let skewTransform = {a: 1, b: Math.tan(angleRad), c: 0, d: 1, e: 0, f: 0};
     this.multiplySelf(skewTransform);
     return this;
   };
@@ -680,16 +682,16 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
           return null;
         }
 
-        var flag = false;
+        var flag = null;
         var flagChar = this._string[this._currentIndex];
 
         this._currentIndex += 1;
 
         if (flagChar === "0") {
-          flag = false;
+          flag = 0;
         }
         else if (flagChar === "1") {
-          flag = true;
+          flag = 1;
         }
         else {
           return null;

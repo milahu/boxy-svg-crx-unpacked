@@ -27,7 +27,7 @@ main {
   background: #404040;
 }
 :host([highlighted]) main {
-  background: #006be5;
+  background: #1668f7;
 }
 :host(:hover:not([highlighted]):not([disabled])) main {
   background: #656565;

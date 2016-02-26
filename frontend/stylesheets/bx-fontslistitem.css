@@ -27,7 +27,7 @@ main {
   background: rgb(93, 93, 93);
 }
 :host([highlighted]:focus) main {
-  background: #006be5;
+  background: #1668f7;
 }
 
 #label {

@@ -9,6 +9,10 @@
   height: 35px;
   display: block;
 }
+:host([disabled]) {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
 main {
   width: 100%;

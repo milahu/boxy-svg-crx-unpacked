@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background: #4d8dfb;
+  color: white;
+}
+
 main {
   width: 100%;
   height: 100%;
@@ -48,9 +53,9 @@ a:hover {
 
 #headings {
   cursor: text;
+  width: 100%;
   -webkit-user-select: text;
   -webkit-app-region: no-drag;
-  width: 100%;
 }
 
 #app-name {
@@ -75,7 +80,6 @@ a:hover {
   font-size: 12px;
   padding-left: 7px;
   flex: 1;
-  -webkit-app-region: no-drag;
   cursor: text;
   -webkit-user-select: text;
   -webkit-app-region: no-drag;
@@ -104,7 +108,7 @@ a:hover {
   color: #b4b4b4;
 }
 
-#scroll #powered-by li:not(:last-child) {
+#scroll #libraries li:not(:last-child) {
   margin-bottom: 3px;
 }
 
@@ -112,7 +116,6 @@ a:hover {
   width: 100%;
   margin: 10px 0;
   font-size: 11px;
-  -webkit-app-region: no-drag;
   cursor: text;
   -webkit-user-select: text;
   -webkit-app-region: no-drag;

@@ -21,7 +21,7 @@ main {
   opacity: 0.6;
 }
 :host([highlighted]) main {
-  background: #006be5;
+  background: #1668f7;
   color: #fff;
 }
 

@@ -7,8 +7,6 @@
 :host {
   display: block;
   position: fixed;
-  top: 99999px;
-  right: 99999px;
   width: 235px;
   height: 450px;
   min-height: 27px;

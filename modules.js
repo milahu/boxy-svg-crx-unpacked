@@ -75,8 +75,8 @@ this.dispatchEvent(new CustomEvent("change",{detail:{key:o,value:l}}))}}catch(u)
 r=!0,a=u}finally{try{t||null==s["return"]||s["return"]()}finally{if(r)throw a}}},
 _openMasterAppWindow:function(){var e,n,r,a;return $traceurRuntime.asyncWrap(function(i){
 for(;;)switch(i.state){case 0:e=this,this._masterAppWindowState="opening",a={id:"master",
-resizable:!0,hidden:!0,frame:{type:"chrome",color:"#333"},outerBounds:{width:1e3,
-height:600,minWidth:100,minHeight:440}},i.state=5;break;case 5:return void Promise.resolve(t("master.html",a)).then(i.createCallback(3),i.errback);
+resizable:!0,hidden:!0,frame:{type:"chrome",color:"#333"},outerBounds:{width:800,
+height:550,minWidth:100,minHeight:440}},i.state=5;break;case 5:return void Promise.resolve(t("master.html",a)).then(i.createCallback(3),i.errback);
 case 3:this._masterAppWindow=i.value,i.state=2;break;case 2:this._masterAppWindow.contentWindow.addEventListener("load",n=function(){
 e._masterAppWindow.contentWindow.removeEventListener("load",n),e._masterAppWindow.focus(),
 e._masterAppWindow.show()}),this._masterAppWindow.onClosed.addListener(r=function(){
@@ -93,30 +93,36 @@ case 7:r.state=1===n?13:12;break;case 13:n=2,r.state=14;break;case 14:return voi
 case 12:return void Promise.resolve(e.setConfig("!bx-background:version",n)).then(r.createCallback(17),r.errback);
 case 17:t(),r.state=-2;break;default:return r.end()}},this)})}},{},e)}(HTMLBodyElement),a=e("body","bx-backgroundbody",r);
 return{get default(){return a}}}),System.registerModule("elements/bx-button",[],function(){
-"use strict";var e=System.get("utils/dom"),t=e.createElement,n=e.registerElement,r=Number.parseInt,a='\n<style id="stylesheet"></style>\n\n<main>\n  <svg id="icon" preserveAspectRatio="none" viewBox="0 0 100 100">\n    <use id="icon-use" x="0" y="0" width="100%" height="100%"></use>\n  </svg>\n\n  <label id="label"></label>\n</main>\n',i=function(e){
+"use strict";var e=System.get("utils/dom"),t=e.createElement,n=e.registerElement,r=Number.parseInt,a='\n  <style id="skin-stylesheet"></style>\n\n  <main>\n    <svg id="icon" preserveAspectRatio="none" viewBox="0 0 100 100" style="width: 20px; height: 20px;">\n      <use id="icon-use" x="0" y="0" width="100%" height="100%"></use>\n    </svg>\n\n    <label id="label"></label>\n  </main>\n',i=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
 createdCallback:function(){this._shadowRoot=this.createShadowRoot({mode:"closed"}),
 this._shadowRoot.innerHTML=a;var e=!0,t=!1,n=void 0;try{for(var r=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(e=(r=i.next()).done);e=!0){
 var s=r.value;this["#"+s.id]=s}}catch(o){t=!0,n=o}finally{try{e||null==i["return"]||i["return"]();
-}finally{if(t)throw n}}this._onLabelChange(),this._onIconChange(),this._onIconSizeChange(),
-this._onSkinChange()},attributeChangedCallback:function(e,t,n){t!==n&&("label"===e?this._onLabelChange():"icon"===e?this._onIconChange():"iconsize"===e?this._onIconSizeChange():"skin"===e&&this._onSkinChange());
+}finally{if(t)throw n}}var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=this.attributes[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
+var b=d.value;this.attributeChangedCallback(b.name)}}catch(m){u=!0,c=m}finally{try{
+l||null==h["return"]||h["return"]()}finally{if(u)throw c}}this._updateSkin()},attributeChangedCallback:function(e){
+"label"===e?this._onLabelAttributeChange():"icon"===e?this._onIconAttributeChange():"iconsize"===e?this._onIconSizeAttributeChange():"skin"===e?this._onSkinAttributeChange():"hidden"===e&&this._onHiddenAttributeChange();
 },get label(){return this.hasAttribute("label")?this.getAttribute("label"):""},set label(e){
 this.setAttribute("label",e)},get value(){return this.getAttribute("value")},set value(e){
-null===e?this.removeAttribute("value"):this.setAttribute("value",e)},get icon(){return this.hasAttribute("icon")?this.getAttribute("icon"):"stub";
-},set icon(e){this.setAttribute("icon",e)},get iconSize(){return this.hasAttribute("iconsize")?r(this.getAttribute("iconsize")):20;
-},set iconSize(e){this.setAttribute("iconsize",e)},get skin(){return this.hasAttribute("skin")?this.getAttribute("skin"):"horizontal";
-},set skin(e){this.setAttribute("skin",e)},get href(){return this.hasAttribute("href")?this.getAttribute("href"):"";
-},set href(e){this.setAttribute("href",e)},get pressed(){return this.hasAttribute("pressed")?!0:!1;
-},set pressed(e){e===!0?this.setAttribute("pressed",""):this.removeAttribute("pressed");
-},get mixed(){return this.hasAttribute("mixed")},set mixed(e){e?this.setAttribute("mixed",""):this.removeAttribute("mixed");
-},_onLabelChange:function(){this["#label"].textContent=this.label},_onIconChange:function(){
+null===e?this.removeAttribute("value"):this.setAttribute("value",e)},get icon(){return this.getAttribute("icon");
+},set icon(e){null===e?this.removeAttribute("icon"):this.setAttribute("icon",e)},
+get iconSize(){return this.hasAttribute("iconsize")?r(this.getAttribute("iconsize")):20;
+},set iconSize(e){this.setAttribute("iconsize",e)},get skin(){return this.getAttribute("skin");
+},set skin(e){e?this.setAttribute("skin",e):this.removeAttribute("skin")},get href(){
+return this.hasAttribute("href")?this.getAttribute("href"):""},set href(e){this.setAttribute("href",e);
+},get pressed(){return this.hasAttribute("pressed")},set pressed(e){e===!0?this.setAttribute("pressed",""):this.removeAttribute("pressed");
+},get mixed(){return this.hasAttribute("mixed")},set mixed(e){e===!0?this.setAttribute("mixed",""):this.removeAttribute("mixed");
+},get disabled(){return this.hasAttribute("disabled")},set disabled(e){e===!0?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},_onLabelAttributeChange:function(){this["#label"].textContent=this.label},_onIconAttributeChange:function(){
 this["#icon-use"].remove(),this["#icon-use"]=t("svg:use"),this["#icon"].append(this["#icon-use"]),
-this["#icon-use"].setAttribute("href","images/icons.svg#"+this.icon)},_onIconSizeChange:function(){
-this["#icon"].style.width=this.iconSize+"px",this["#icon"].style.height=this.iconSize+"px";
-},_onSkinChange:function(){this["#stylesheet"].innerText='@import url("stylesheets/bx-button@'+this.skin+'.css");';
+this.icon&&this["#icon-use"].setAttribute("href","images/icons.svg#"+this.icon)},
+_onIconSizeAttributeChange:function(){this["#icon"].style.width=this.iconSize+"px",
+this["#icon"].style.height=this.iconSize+"px"},_onSkinAttributeChange:function(){
+this._updateSkin()},_onHiddenAttributeChange:function(){this.dispatchEvent(new CustomEvent("hiddenchange",{
+detail:this,bubbles:!0}))},_updateSkin:function(){this.skin?this["#skin-stylesheet"].innerText='@import url("stylesheets/bx-button@'+this.skin+'.css");':this["#skin-stylesheet"].innerText='@import url("stylesheets/bx-button.css");';
 }},{},e)}(HTMLElement),s=n("bx-button",i);return{get default(){return s}}}),System.registerModule("elements/bx-editor",[],function(){
 "use strict";var e=System.get("utils/artwork"),t=e.compressArtwork,n=e.uncompressArtwork,r=e.createArtworkFromBitmapDataURL,a=System.get("utils/dom"),i=(a.createElement,
-a.registerElement),s=(System.get("utils/time").sleep,System.get("utils/filesystem")),o=s.getEntryExtension,l=s.chooseEntry,u=s.readEntry,c=s.writeEntry,d='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"></svg>',h="\n  width: 100%;\n  height: calc(100% - 30px - 30px);\n  display: block;\n  position: fixed;\n  top: 60px;\n  left; 0;\n",b='\n  <style>@import url("stylesheets/bx-editor.css");</style>\n\n  <webview\n    id="webview"\n    tabindex="-1"\n    partition="persist:boxy"\n    src="frontend/editor.html"\n    style="'+h+'"\n    allowtransparency>\n  </webview>\n',m=function(e){
+a.registerElement),s=(System.get("utils/time").sleep,System.get("utils/filesystem")),o=s.getEntryExtension,l=s.chooseEntry,u=s.readEntry,c=s.writeEntry,d='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"></svg>',h="\n  width: 100%;\n  height: calc(100% - 30px - 30px);\n  display: block;\n  position: fixed;\n  top: 60px;\n  left; 0;\n",b='\n  <style>@import url("stylesheets/bx-editor.css");</style>\n\n  <webview\n    id="webview"\n    tabindex="-1"\n    partition="persist:boxy"\n    src="frontend/editor.html"\n    style="'+h+'"\n    allowtransparency="on">\n  </webview>\n',m=function(e){
 function a(){$traceurRuntime.superConstructor(a).apply(this,arguments)}return $traceurRuntime.createClass(a,{
 createdCallback:function(){var e=this;this._messageCounter=0,this._messageRequestCallbacks={},
 this._messageResponseCallbacks={},this._webviewLoadedCallbacks=[],this._webviewInitializedCallbacks=[],
@@ -141,7 +147,9 @@ return e._exportFile(t)})},get entry(){return this._entry},set entry(e){throw ne
 },get edited(){return 0!==this._changeCounter},set edited(e){throw new Error("This property is read-only");
 },get ready(){return null===this._webviewInitializedCallbacks},get textInputMode(){
 return this._textInputModeCounter>0},get currentToolID(){return this._currentToolID;
-},get currentPanelID(){return this._currentPanelID},init:function(){var e=void 0!==arguments[0]?arguments[0]:null,t=void 0!==arguments[1]?arguments[1]:null,a=this;
+},get currentPanelID(){return this._currentPanelID},get disabled(){return this.hasAttribute("disabled");
+},set disabled(e){e===!0?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},init:function(){var e=void 0!==arguments[0]?arguments[0]:null,t=void 0!==arguments[1]?arguments[1]:null,a=this;
 return new Promise(function(i){var s,l,c,h,b;return $traceurRuntime.asyncWrap(function(m){
 for(;;)switch(m.state){case 0:m.state=null===e&&null===t?34:33;break;case 34:s=d,
 m.state=35;break;case 33:m.state=e&&null===t?31:30;break;case 31:s=e,a._setChangeCounter("increment"),
@@ -164,8 +172,9 @@ for(;;)switch(t.state){case 0:t.returnValue=new Promise(function(t){e.edited?e.p
 }),t.state=2;break;case 2:t.state=-2;break;default:return t.end()}},this)},a.state=12;
 break;case 12:a.state=e.entry?4:1;break;case 4:r=null,e._setChangeCounter("reset"),
 a.state=5;break;case 1:return void Promise.resolve(n()).then(a.createCallback(3),a.errback);
-case 3:r=a.value,a.state=5;break;case 5:e._webviewLoadedCallbacks=[],e._webviewInitializedCallbacks=[],
-e["#webview"].reload(),a.state=14;break;case 14:return void Promise.resolve(e._promiseWebviewLoaded()).then(a.createCallback(8),a.errback);
+case 3:r=a.value,a.state=5;break;case 5:e._cache=null,e._webviewLoadedCallbacks=[],
+e._webviewInitializedCallbacks=[],e["#webview"].reload(),a.state=14;break;case 14:
+return void Promise.resolve(e._promiseWebviewLoaded()).then(a.createCallback(8),a.errback);
 case 8:return void Promise.resolve(e.init(r,e._entry)).then(a.createCallback(10),a.errback);
 case 10:t(),a.state=-2;break;default:return a.end()}},this)})},reloadArtworkFromDisk:function(){
 var e=this;return new Promise(function(t){var r,a,i,s;return $traceurRuntime.asyncWrap(function(l){
@@ -183,8 +192,7 @@ a=r?o(r):null,f.state=60;break;case 60:f.state="svg"===a||"svgz"===a||"html"===a
 break;case 49:i="html"===a?"html":"xml",f.state=50;break;case 50:return void Promise.resolve(e.getArtwork(i)).then(f.createCallback(3),f.errback);
 case 3:s=f.value,f.state=2;break;case 2:f.pushTry(42,null),f.state=45;break;case 45:
 f.state="svg"===a?4:13;break;case 4:return void Promise.resolve(c(r,s,"image/svg+xml;charset=utf-8")).then(f.createCallback(5),f.errback);
-case 13:f.state="svgz"===a?8:12;break;case 8:l=t(s),console.log("data",l),f.state=9;
-break;case 9:return void Promise.resolve(c(r,l,"image/svg+xml;charset=utf-8")).then(f.createCallback(5),f.errback);
+case 13:f.state="svgz"===a?8:12;break;case 8:l=t(s),f.state=9;break;case 9:return void Promise.resolve(c(r,l,"image/svg+xml;charset=utf-8")).then(f.createCallback(5),f.errback);
 case 12:f.state="html"===a?10:5;break;case 10:return void Promise.resolve(c(r,s,"text/html;charset=utf-8")).then(f.createCallback(5),f.errback);
 case 5:f.popTry(),f.state=47;break;case 42:f.popTry(),f.maybeUncatchable(),m=f.storedException,
 f.state=41;break;case 41:f.state="READ_ONLY"===m?15:33;break;case 15:return void Promise.resolve(body.showMessageBox({
@@ -200,33 +208,33 @@ f.state=37;break;case 37:f.state=-2;break;case 47:e._setChangeCounter("reset"),n
 f.state=-2;break;case 53:return void Promise.resolve(e.saveAs()).then(f.createCallback(55),f.errback);
 case 55:b=f.value,f.state=54;break;case 54:n(b),f.state=-2;break;default:return f.end();
 }},this)})},saveAs:function(){var e=this;return new Promise(function(n){var r,a,i,s,u,d,h,b,m,f;
-return $traceurRuntime.asyncWrap(function(g){for(;;)switch(g.state){case 0:g.pushTry(21,null),
-g.state=24;break;case 24:return void Promise.resolve(l({type:"saveFile",suggestedName:e._entry?e._entry.name:"Untitled",
+return $traceurRuntime.asyncWrap(function(v){for(;;)switch(v.state){case 0:v.pushTry(21,null),
+v.state=24;break;case 24:return void Promise.resolve(l({type:"saveFile",suggestedName:e._entry?e._entry.name:"Untitled.svg",
 acceptsAllTypes:!1,accepts:[{description:"SVG",extensions:["svg"]},{description:"SVGZ",
-extensions:["svgz"]},{description:"HTML",extensions:["html"]}]})).then(g.createCallback(3),g.errback);
-case 3:r=g.value,g.state=2;break;case 2:g.popTry(),g.state=26;break;case 21:g.popTry(),
-g.maybeUncatchable(),f=g.storedException,g.state=4;break;case 4:return void Promise.resolve(body.showMessageBox({
+extensions:["svgz"]},{description:"HTML",extensions:["html"]}]})).then(v.createCallback(3),v.errback);
+case 3:r=v.value,v.state=2;break;case 2:v.popTry(),v.state=26;break;case 21:v.popTry(),
+v.maybeUncatchable(),f=v.storedException,v.state=4;break;case 4:return void Promise.resolve(body.showMessageBox({
 message:"Can't save file.",detail:"Selected directory is read-only.",buttons:["Cancel","Save As…"]
-})).then(g.createCallback(6),g.errback);case 6:a=g.value,g.state=5;break;case 5:g.state=0===a?10:12;
-break;case 10:n(!1),g.state=11;break;case 11:g.returnValue=void 0,g.state=8;break;
-case 8:g.state=-2;break;case 12:return void Promise.resolve(e.saveAs()).then(g.createCallback(14),g.errback);
-case 14:i=g.value,g.state=13;break;case 13:n(i),g.state=19;break;case 19:g.returnValue=void 0,
-g.state=16;break;case 16:g.state=-2;break;case 26:g.state=r?67:71;break;case 67:s=o(r),
-u="html"===s?"html":"xml",g.state=68;break;case 68:return void Promise.resolve(e.getArtwork(u)).then(g.createCallback(30),g.errback);
-case 30:d=g.value,g.state=29;break;case 29:g.pushTry(60,null),g.state=63;break;case 63:
-g.state="svg"===s?31:40;break;case 31:return void Promise.resolve(c(r,d,"image/svg+xml;charset=utf-8")).then(g.createCallback(32),g.errback);
-case 40:g.state="svgz"===s?35:39;break;case 35:h=t(d),g.state=36;break;case 36:return void Promise.resolve(c(r,h,"image/svg+xml;charset=utf-8")).then(g.createCallback(32),g.errback);
-case 39:g.state="html"===s?37:32;break;case 37:return void Promise.resolve(c(r,d,"text/html;charset=utf-8")).then(g.createCallback(32),g.errback);
-case 32:g.popTry(),g.state=65;break;case 60:g.popTry(),g.maybeUncatchable(),f=g.storedException,
-g.state=42;break;case 42:return void Promise.resolve(body.showMessageBox({message:"Can't save file.",
-detail:'The file "'+r.name+'" is read-only.',buttons:["Cancel","Save As…"]})).then(g.createCallback(44),g.errback);
-case 44:b=g.value,g.state=43;break;case 43:g.state=0===b?48:58;break;case 48:n(!1),
-g.state=49;break;case 49:g.returnValue=void 0,g.state=46;break;case 46:g.state=-2;
-break;case 58:g.state=1===b?50:65;break;case 50:return void Promise.resolve(e.saveAs()).then(g.createCallback(52),g.errback);
-case 52:m=g.value,g.state=51;break;case 51:n(m),g.state=57;break;case 57:g.returnValue=void 0,
-g.state=54;break;case 54:g.state=-2;break;case 65:e._entry=r,e._setChangeCounter("reset"),
-e.dispatchEvent(new CustomEvent("entrychange",{bubbles:!0,detail:e})),n(!0),g.state=-2;
-break;case 71:n(!1),g.state=-2;break;default:return g.end()}},this)})},getArtwork:function(){
+})).then(v.createCallback(6),v.errback);case 6:a=v.value,v.state=5;break;case 5:v.state=0===a?10:12;
+break;case 10:n(!1),v.state=11;break;case 11:v.returnValue=void 0,v.state=8;break;
+case 8:v.state=-2;break;case 12:return void Promise.resolve(e.saveAs()).then(v.createCallback(14),v.errback);
+case 14:i=v.value,v.state=13;break;case 13:n(i),v.state=19;break;case 19:v.returnValue=void 0,
+v.state=16;break;case 16:v.state=-2;break;case 26:v.state=r?67:71;break;case 67:s=o(r).toLowerCase(),
+u="html"===s?"html":"xml",v.state=68;break;case 68:return void Promise.resolve(e.getArtwork(u)).then(v.createCallback(30),v.errback);
+case 30:d=v.value,v.state=29;break;case 29:v.pushTry(60,null),v.state=63;break;case 63:
+v.state="svg"===s||""===s?31:40;break;case 31:return void Promise.resolve(c(r,d,"image/svg+xml;charset=utf-8")).then(v.createCallback(32),v.errback);
+case 40:v.state="svgz"===s?35:39;break;case 35:h=t(d),v.state=36;break;case 36:return void Promise.resolve(c(r,h,"image/svg+xml;charset=utf-8")).then(v.createCallback(32),v.errback);
+case 39:v.state="html"===s?37:32;break;case 37:return void Promise.resolve(c(r,d,"text/html;charset=utf-8")).then(v.createCallback(32),v.errback);
+case 32:v.popTry(),v.state=65;break;case 60:v.popTry(),v.maybeUncatchable(),f=v.storedException,
+v.state=42;break;case 42:return void Promise.resolve(body.showMessageBox({message:"Can't save file.",
+detail:'The file "'+r.name+'" is read-only.',buttons:["Cancel","Save As…"]})).then(v.createCallback(44),v.errback);
+case 44:b=v.value,v.state=43;break;case 43:v.state=0===b?48:58;break;case 48:n(!1),
+v.state=49;break;case 49:v.returnValue=void 0,v.state=46;break;case 46:v.state=-2;
+break;case 58:v.state=1===b?50:65;break;case 50:return void Promise.resolve(e.saveAs()).then(v.createCallback(52),v.errback);
+case 52:m=v.value,v.state=51;break;case 51:n(m),v.state=57;break;case 57:v.returnValue=void 0,
+v.state=54;break;case 54:v.state=-2;break;case 65:e._entry=r,e._setChangeCounter("reset"),
+e.dispatchEvent(new CustomEvent("entrychange",{bubbles:!0,detail:e})),n(!0),v.state=-2;
+break;case 71:n(!1),v.state=-2;break;default:return v.end()}},this)})},getArtwork:function(){
 var e=void 0!==arguments[0]?arguments[0]:"xml",t=this;return new Promise(function(n,r){
 return $traceurRuntime.asyncWrap(function(r){for(;;)switch(r.state){case 0:return void Promise.resolve(t.promiseReady()).then(r.createCallback(2),r.errback);
 case 2:t._cache&&t._cache.changeCounter===t._changeCounter&&t._cache.serialization===e?n(t._cache.artwork):t.postMessage("getArtwork",e,function(r){
@@ -257,7 +265,7 @@ return new Promise(function(t){e._webviewLoadedCallbacks?e._webviewLoadedCallbac
 e._webviewInitializedCallbacks?e._webviewInitializedCallbacks.push(t):t()})},_exportFile:function(e){
 var t,n,r,a,i,s,u,d,h,b,m;return $traceurRuntime.asyncWrap(function(f){for(;;)switch(f.state){
 case 0:t=e,n=t.format,r=t.data,f.state=54;break;case 54:f.pushTry(13,null),f.state=16;
-break;case 16:return void Promise.resolve(l({type:"saveFile",suggestedName:"Untitled",
+break;case 16:return void Promise.resolve(l({type:"saveFile",suggestedName:"Untitled."+n,
 acceptsAllTypes:!1,accepts:[{description:n,extensions:[n]}]})).then(f.createCallback(3),f.errback);
 case 3:a=f.value,f.state=2;break;case 2:f.popTry(),f.state=18;break;case 13:f.popTry(),
 f.maybeUncatchable(),m=f.storedException,f.state=4;break;case 4:return void Promise.resolve(body.showMessageBox({
@@ -275,8 +283,8 @@ f.state=30;break;case 30:return void Promise.resolve(body.showMessageBox({messag
 detail:'The file "'+a.name+'" is read-only.',buttons:["Cancel","Save As…"]})).then(f.createCallback(32),f.errback);
 case 32:b=f.value,f.state=31;break;case 31:f.state=0===b?33:41;break;case 33:f.returnValue=void 0,
 f.state=34;break;case 34:f.state=-2;break;case 41:f.state=1===b?39:-2;break;case 39:
-this._exportFile(),f.state=40;break;case 40:f.returnValue=void 0,f.state=37;break;
-case 37:f.state=-2;break;default:return f.end()}},this)},_toggleTextInputMode:function(e){
+this._exportFile({format:n,data:r}),f.state=40;break;case 40:f.returnValue=void 0,
+f.state=37;break;case 37:f.state=-2;break;default:return f.end()}},this)},_toggleTextInputMode:function(e){
 e===!0?this._textInputModeCounter+=1:e===!1&&(this._textInputModeCounter-=1),this._textInputModeCounter<0&&(this._textInputModeCounter=0);
 },_setChangeCounter:function(e){var t=this._changeCounter;"increment"===e?this._changeCounter+=1:"decrement"===e?this._changeCounter-=1:"reset"===e&&(this._changeCounter=0),
 this.dispatchEvent(new CustomEvent("artworkchange",{bubbles:!0,detail:this})),0!==t!=(0!==this._changeCounter)&&this.dispatchEvent(new CustomEvent("editedchange",{
@@ -284,7 +292,7 @@ bubbles:!0,detail:this}))}},{},e)}(HTMLElement),f=i("bx-editor",m);return{get de
 return f}}}),System.registerModule("elements/bx-masterbody",[],function(){"use strict";
 System.get("elements/bx-editor"),System.get("elements/bx-messagebox"),System.get("elements/bx-menubar"),
 System.get("elements/bx-menu"),System.get("elements/bx-menuitem"),System.get("elements/bx-tabs");
-var e=System.get("utils/dom"),t=e.createElement,n=e.registerElement,r=System.get("utils/string").toDashCase,a=System.get("utils/time"),i=a.debounce,s=a.sleep,o=System.get("utils/vendor").getOperatingSystemName,l=System.get("utils/window"),u=l.createAppWindow,c=l.getBackgroundWindow,d=System.get("utils/constants"),h=d.APP_NAME,b=d.APP_VERSION,m=System.get("utils/filesystem"),f=m.getEntryBaseName,g=m.getEntryDisplayPath,v=m.getEntryExtension,p=m.chooseEntry,_=m.compareEntries,w=m.restoreEntry,k=System.get("classes/shortcut")["default"],y=Number.parseInt,x="frontend/about.html",C="frontend/preferences.html",E=10,S=["transform-tool","edit-tool","quad-bezier-tool","cubic-bezier-tool","freehand-tool","text-tool","rect-tool","ellipse-tool","star-tool","ring-tool"],A=["fill-panel","stroke-panel","compositing-panel","view-panel","arrangement-panel","typography-panel","defs-panel","mask-panel","pathfinder-panel","export-panel"],R={
+var e=System.get("utils/dom"),t=e.createElement,n=e.registerElement,r=System.get("utils/string").toDashCase,a=System.get("utils/time"),i=a.debounce,s=a.sleep,o=System.get("utils/vendor").getOperatingSystemName,l=System.get("utils/window"),u=l.createAppWindow,c=l.getBackgroundWindow,d=System.get("utils/constants"),h=d.APP_NAME,b=d.APP_VERSION,m=System.get("utils/filesystem"),f=m.getEntryBaseName,v=m.getEntryDisplayPath,g=m.getEntryExtension,p=m.chooseEntry,_=m.compareEntries,w=m.restoreEntry,k=System.get("classes/shortcut")["default"],y=Number.parseInt,x="frontend/about.html",C="frontend/preferences.html",E=10,S=["transform-tool","edit-tool","quad-bezier-tool","cubic-bezier-tool","freehand-tool","text-tool","rect-tool","ellipse-tool","star-tool","ring-tool"],A=["fill-panel","stroke-panel","compositing-panel","view-panel","arrangement-panel","typography-panel","defs-panel","mask-panel","path-panel","export-panel"],R={
 "Boxy SVG":{backend:"chrome",badge:!0,debugMenu:!1,reviewsURL:"https://chrome.google.com/webstore/detail/boxy-svg/gaoogdonmngmdlbinmiclicjpbjhgomg/reviews",
 supportURL:"https://chrome.google.com/webstore/detail/boxy-svg/gaoogdonmngmdlbinmiclicjpbjhgomg/support",
 tools:$traceurRuntime.spread(S),panels:$traceurRuntime.spread(A)},"Boxy SVG Pro":{
@@ -297,7 +305,7 @@ tools:$traceurRuntime.spread(S),panels:$traceurRuntime.spread(A)}},T={id:"prefer
 resizable:!1,hidden:!0,frame:{type:"chrome",color:"#333"},outerBounds:{width:700,
 minWidth:700,maxWidth:700,height:450,minHeight:450,maxHeight:450}},L={id:"aboutAppWindow",
 resizable:!1,hidden:!0,frame:{type:"chrome",color:"#333"},outerBounds:{width:340,
-minWidth:340,maxWidth:340,height:400,minHeight:400,maxHeight:400}},M='\n  <style>@import url("stylesheets/bx-masterbody.css");</style>\n\n  <bx-menubar id="menubar">\n    <bx-menu label="File">\n      <bx-menuitem commandid="new" label="New" shortcut="Control+N"></bx-menuitem>\n      <bx-menuitem commandid="newFromSelected" label="New from Selected" shortcut="Control+Shift+N"></bx-menuitem>\n      <bx-menuitem commandid="open" label="Open…" shortcut="Control+O"></bx-menuitem>\n      <bx-menuitem id="open-recent-menu-item" label="Open Recent">\n        <bx-menu id="open-recent-menu"></bx-menu>\n      </bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="save" label="Save" shortcut="Control+S"></bx-menuitem>\n      <bx-menuitem commandid="saveAs" label="Save As…" shortcut="Control+Shift+S"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="reloadFromDisk" label="Reload from Disk"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="close" label="Close" shortcut="Control+W"></bx-menuitem>\n      <bx-menuitem commandid="quit" label="Quit Boxy SVG" shortcut="Control+Q"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Edit">\n      <bx-menuitem commandid="undo" label="Undo" shortcut="Control+Z"></bx-menuitem>\n      <bx-menuitem commandid="redo" label="Redo" shortcut="Control+Shift+Z"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="cut" label="Cut" shortcut="Control+X"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy" shortcut="Control+C"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste" shortcut="Control+V"></bx-menuitem>\n      <bx-menuitem commandid="duplicate" label="Duplicate" shortcut="Control+D"></bx-menuitem>\n      <bx-menuitem commandid="delete" label="Delete"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="selectAll" label="Select All" shortcut="Control+A"></bx-menuitem>\n      <bx-menuitem commandid="deselectAll" label="Deselect All" shortcut="Control+Shift+A"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="preferences" label="Preferences…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="View">\n      <bx-menuitem commandid="zoomIn" label="Zoom In" shortcut="="></bx-menuitem>\n      <bx-menuitem commandid="zoomOut"label="Zoom Out" shortcut="-"></bx-menuitem>\n      <bx-menuitem commandid="resetZoom" label="Reset Zoom" shortcut="1"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToViewBox" label="Zoom to View Box" shortcut="2"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxWidth" label="Zoom to View Box Width" shortcut="3"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxHeight" label="Zoom to View Box Height" shortcut="4"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToFitAll"label="Zoom to Fit All" shortcut="5"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Object">\n      <bx-menuitem commandid="group" label="Group" shortcut="Control+G"></bx-menuitem>\n      <bx-menuitem commandid="ungroup" label="Ungroup" shortcut="Control+Shift+G"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="raise" label="Raise" shortcut="]"></bx-menuitem>\n      <bx-menuitem commandid="lower" label="Lower" shortcut="["></bx-menuitem>\n      <bx-menuitem commandid="raiseToFront" label="Raise to Front" shortcut="Control+]"></bx-menuitem>\n      <bx-menuitem commandid="lowerToBack" label="Lower to Back" shortcut="Control+["></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="clip" label="Clip"></bx-menuitem>\n      <bx-menuitem commandid="unclip"label="Unclip"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="mask" label="Mask"></bx-menuitem>\n      <bx-menuitem commandid="unmask" label="Unmask"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="rotateClockwise" label="Rotate +90°" shortcut="Control+Shift+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="rotateCounterclockwise" label="Rotate -90°" shortcut="Control+Shift+ArrowLeft"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="flipX" label="Flip X" shortcut="Control+Shift+ArrowUp"></bx-menuitem>\n      <bx-menuitem commandid="flipY" label="Flip Y" shortcut="Control+Shift+ArrowDown"></bx-menuitem>\n      <hr/>\n      <bx-menuitem label="Move">\n        <bx-menu>\n          <bx-menuitem commandid="moveOneUnitLeft" label="Move 1 Unit Left"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitRight" label="Move 1 Unit Right"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitUp" label="Move 1 Unit Up"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitDown" label="Move 1 Unit Down"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="moveTenUnitsLeft" label="Move 10 Units Left"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsRight" label="Move 10 Units Right"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsUp" label="Move 10 Units Up"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsDown" label="Move 10 Units Down"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Tools" id="tools-menu">\n      <bx-menuitem commandid="previousTool" label="Previous Tool" shortcut="Space"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="transformTool" label="Transform Tool" shortcut="Alt+1"></bx-menuitem>\n      <bx-menuitem commandid="editTool" label="Edit Tool" shortcut="Alt+2"></bx-menuitem>\n      <bx-menuitem commandid="quadBezierTool" label="Quad Bezier Tool" shortcut="Alt+3"></bx-menuitem>\n      <bx-menuitem commandid="cubicBezierTool" label="Cubic Bezier Tool" shortcut="Alt+4"></bx-menuitem>\n      <bx-menuitem commandid="freehandTool" label="Freehand Tool" shortcut="Alt+5"></bx-menuitem>\n      <bx-menuitem commandid="textTool" label="Text Tool" shortcut="Alt+6"></bx-menuitem>\n      <bx-menuitem commandid="rectTool" label="Rectangle Tool" shortcut="Alt+7"></bx-menuitem>\n      <bx-menuitem commandid="ellipseTool" label="Ellipse Tool" shortcut="Alt+8"></bx-menuitem>\n      <bx-menuitem commandid="starTool" label="Star Tool" shortcut="Alt+9"></bx-menuitem>\n      <bx-menuitem commandid="ringTool" label="Ring Tool" shortcut="Alt+0"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Panels" id="panels-menu">\n      <bx-menuitem commandid="fillPanel" label="Fill Panel" shortcut="F"></bx-menuitem>\n      <bx-menuitem commandid="strokePanel" label="Stroke Panel" shortcut="S"></bx-menuitem>\n      <bx-menuitem commandid="compositingPanel" label="Compositing Panel" shortcut="C"></bx-menuitem>\n      <bx-menuitem commandid="viewPanel" label="View Panel" shortcut="V"></bx-menuitem>\n      <bx-menuitem commandid="arrangementPanel" label="Arrangement Panel" shortcut="A"></bx-menuitem>\n      <bx-menuitem commandid="typographyPanel" label="Typography Panel"  shortcut="T"></bx-menuitem>\n      <bx-menuitem commandid="defsPanel" label="Defs Panel" shortcut="D"></bx-menuitem>\n      <bx-menuitem commandid="maskPanel" label="Mask Panel" shortcut="M"></bx-menuitem>\n      <bx-menuitem commandid="pathfinderPanel" label="Pathfinder Panel" shortcut="P"></bx-menuitem>\n      <bx-menuitem commandid="exportPanel" label="Export Panel" shortcut="E"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Window" id="window-menu">\n      <bx-menuitem commandid="showPreviousTab" label="Show Previous Tab" shortcut="Control+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="showNextTab" label="Show Next Tab" shortcut="Control+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="moveTabLeft" label="Move Tab Left" shortcut="Control+Alt+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="moveTabRight" label="Move Tab Right" shortcut="Control+Alt+ArrowRight"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="minimizeWindow" label="Minimize"></bx-menuitem>\n      <bx-menuitem commandid="maximizeWindow" label="Maximize"></bx-menuitem>\n      <bx-menuitem commandid="fullscreen" label="Fullscreen"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Help">\n      <bx-menuitem commandid="about" label="About"></bx-menuitem>\n      <bx-menuitem commandid="rate" label="Rate on Chrome Web Store…"></bx-menuitem>\n      <bx-menuitem commandid="support" label="Get Support…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Debug" id="debug-menu">\n      <bx-menuitem commandid="reloadApp" label="Reload App" shortcut="Control+Shift+R"></bx-menuitem>\n      <bx-menuitem commandid="reloadCurrentEditor" label="Reload Editor" shortcut="Control+R"></bx-menuitem>\n    </bx-menu>\n  </bx-menubar>\n\n  <bx-tabs id="tabs"></bx-tabs>\n  <div id="editors"></div>\n  <dialog id="message-box" is="bx-messagebox"></dialog>\n',P=function(e){
+minWidth:340,maxWidth:340,height:400,minHeight:400,maxHeight:400}},M='\n  <style>@import url("stylesheets/bx-masterbody.css");</style>\n\n  <bx-menubar id="menubar">\n    <bx-menu label="File">\n      <bx-menuitem commandid="new" label="New" shortcut="Control+N"></bx-menuitem>\n      <bx-menuitem commandid="newFromSelected" label="New from Selected" shortcut="Control+Shift+N"></bx-menuitem>\n      <bx-menuitem commandid="open" label="Open…" shortcut="Control+O"></bx-menuitem>\n      <bx-menuitem id="open-recent-menu-item" label="Open Recent">\n        <bx-menu id="open-recent-menu"></bx-menu>\n      </bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="save" label="Save" shortcut="Control+S"></bx-menuitem>\n      <bx-menuitem commandid="saveAs" label="Save As…" shortcut="Control+Shift+S"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="reloadFromDisk" label="Reload from Disk"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="close" label="Close" shortcut="Control+W"></bx-menuitem>\n      <bx-menuitem commandid="quit" label="Quit Boxy SVG" shortcut="Control+Q"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Edit">\n      <bx-menuitem commandid="undo" label="Undo" shortcut="Control+Z"></bx-menuitem>\n      <bx-menuitem commandid="redo" label="Redo" shortcut="Control+Shift+Z"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="cut" label="Cut" shortcut="Control+X"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy" shortcut="Control+C"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste" shortcut="Control+V"></bx-menuitem>\n      <bx-menuitem commandid="duplicate" label="Duplicate" shortcut="Control+D"></bx-menuitem>\n      <bx-menuitem commandid="delete" label="Delete"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="selectAll" label="Select All" shortcut="Control+A"></bx-menuitem>\n      <bx-menuitem commandid="deselectAll" label="Deselect All" shortcut="Control+Shift+A"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="preferences" label="Preferences…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="View">\n      <bx-menuitem commandid="zoomIn" label="Zoom In" shortcut="="></bx-menuitem>\n      <bx-menuitem commandid="zoomOut"label="Zoom Out" shortcut="-"></bx-menuitem>\n      <bx-menuitem commandid="resetZoom" label="Reset Zoom" shortcut="1"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToViewBox" label="Zoom to View Box" shortcut="2"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxWidth" label="Zoom to View Box Width" shortcut="3"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxHeight" label="Zoom to View Box Height" shortcut="4"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToFitAll"label="Zoom to Fit All" shortcut="5"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Element">\n      <bx-menuitem commandid="group" label="Group" shortcut="Control+G"></bx-menuitem>\n      <bx-menuitem commandid="ungroup" label="Ungroup" shortcut="Control+Shift+G"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="raise" label="Raise" shortcut="]"></bx-menuitem>\n      <bx-menuitem commandid="lower" label="Lower" shortcut="["></bx-menuitem>\n      <bx-menuitem commandid="raiseToFront" label="Raise to Front" shortcut="Control+]"></bx-menuitem>\n      <bx-menuitem commandid="lowerToBack" label="Lower to Back" shortcut="Control+["></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="clip" label="Clip"></bx-menuitem>\n      <bx-menuitem commandid="unclip"label="Unclip"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="mask" label="Mask"></bx-menuitem>\n      <bx-menuitem commandid="unmask" label="Unmask"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="rotateClockwise" label="Rotate +90°" shortcut="Control+Shift+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="rotateCounterclockwise" label="Rotate -90°" shortcut="Control+Shift+ArrowLeft"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="flipX" label="Flip X" shortcut="Control+Shift+ArrowUp"></bx-menuitem>\n      <bx-menuitem commandid="flipY" label="Flip Y" shortcut="Control+Shift+ArrowDown"></bx-menuitem>\n      <hr/>\n      <bx-menuitem label="Path">\n        <bx-menu>\n          <bx-menuitem commandid="convertToPath" label="Convert to Path"></bx-menuitem>\n          <bx-menuitem commandid="reversePath" label="Reverse Path"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="unite" label="Unite"></bx-menuitem>\n          <bx-menuitem commandid="subtract" label="Subtract"></bx-menuitem>\n          <bx-menuitem commandid="intersect" label="Intersect"></bx-menuitem>\n          <bx-menuitem commandid="exclude" label="Exclude"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="combine" label="Combine"></bx-menuitem>\n          <bx-menuitem commandid="breakApart" label="Break Apart"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n      <bx-menuitem label="Move">\n        <bx-menu>\n          <bx-menuitem commandid="moveOneUnitLeft" label="Move 1 Unit Left"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitRight" label="Move 1 Unit Right"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitUp" label="Move 1 Unit Up"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitDown" label="Move 1 Unit Down"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="moveTenUnitsLeft" label="Move 10 Units Left"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsRight" label="Move 10 Units Right"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsUp" label="Move 10 Units Up"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsDown" label="Move 10 Units Down"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Tools" id="tools-menu">\n      <bx-menuitem commandid="previousTool" label="Previous Tool" shortcut="Space"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="transformTool" label="Transform Tool" shortcut="Alt+1"></bx-menuitem>\n      <bx-menuitem commandid="editTool" label="Edit Tool" shortcut="Alt+2"></bx-menuitem>\n      <bx-menuitem commandid="quadBezierTool" label="Quad Bezier Tool" shortcut="Alt+3"></bx-menuitem>\n      <bx-menuitem commandid="cubicBezierTool" label="Cubic Bezier Tool" shortcut="Alt+4"></bx-menuitem>\n      <bx-menuitem commandid="freehandTool" label="Freehand Tool" shortcut="Alt+5"></bx-menuitem>\n      <bx-menuitem commandid="textTool" label="Text Tool" shortcut="Alt+6"></bx-menuitem>\n      <bx-menuitem commandid="rectTool" label="Rectangle Tool" shortcut="Alt+7"></bx-menuitem>\n      <bx-menuitem commandid="ellipseTool" label="Ellipse Tool" shortcut="Alt+8"></bx-menuitem>\n      <bx-menuitem commandid="starTool" label="Star Tool" shortcut="Alt+9"></bx-menuitem>\n      <bx-menuitem commandid="ringTool" label="Ring Tool" shortcut="Alt+0"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Panels" id="panels-menu">\n      <bx-menuitem commandid="fillPanel" label="Fill Panel" shortcut="F"></bx-menuitem>\n      <bx-menuitem commandid="strokePanel" label="Stroke Panel" shortcut="S"></bx-menuitem>\n      <bx-menuitem commandid="compositingPanel" label="Compositing Panel" shortcut="C"></bx-menuitem>\n      <bx-menuitem commandid="viewPanel" label="View Panel" shortcut="V"></bx-menuitem>\n      <bx-menuitem commandid="arrangementPanel" label="Arrangement Panel" shortcut="A"></bx-menuitem>\n      <bx-menuitem commandid="typographyPanel" label="Typography Panel"  shortcut="T"></bx-menuitem>\n      <bx-menuitem commandid="defsPanel" label="Defs Panel" shortcut="D"></bx-menuitem>\n      <bx-menuitem commandid="maskPanel" label="Mask Panel" shortcut="M"></bx-menuitem>\n      <bx-menuitem commandid="pathPanel" label="Path Panel" shortcut="X"></bx-menuitem>\n      <bx-menuitem commandid="exportPanel" label="Export Panel" shortcut="E"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Window" id="window-menu">\n      <bx-menuitem commandid="showPreviousTab" label="Show Previous Tab" shortcut="Control+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="showNextTab" label="Show Next Tab" shortcut="Control+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="moveTabLeft" label="Move Tab Left" shortcut="Control+Alt+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="moveTabRight" label="Move Tab Right" shortcut="Control+Alt+ArrowRight"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="minimizeWindow" label="Minimize"></bx-menuitem>\n      <bx-menuitem commandid="maximizeWindow" label="Maximize"></bx-menuitem>\n      <bx-menuitem commandid="fullscreen" label="Fullscreen"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Help">\n      <bx-menuitem commandid="about" label="About"></bx-menuitem>\n      <bx-menuitem commandid="rate" label="Rate on Chrome Web Store…"></bx-menuitem>\n      <bx-menuitem commandid="support" label="Get Support…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Debug" id="debug-menu">\n      <bx-menuitem commandid="reloadApp" label="Reload App" shortcut="Control+Shift+R"></bx-menuitem>\n      <bx-menuitem commandid="reloadCurrentEditor" label="Reload Editor" shortcut="Control+R"></bx-menuitem>\n    </bx-menu>\n  </bx-menubar>\n\n  <bx-tabs id="tabs"></bx-tabs>\n  <div id="editors"></div>\n  <dialog id="message-box" is="bx-messagebox"></dialog>\n',j=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
 createdCallback:function(){var e,t,n,r,a,l,u;return $traceurRuntime.asyncWrap(function(d){
 for(;;)switch(d.state){case 0:e=this,this._commands={"new":{exec:function(){return e._openEditorWidthDefaultArtwork();
@@ -412,14 +420,14 @@ delete this._messageResponseCallbacks[a])}},_onConfigChange:function(e){this.dis
 detail:e}));var t=e,n=t.key,r=t.value;this.postMessage("about","configChanged",{key:n,
 value:r}),this.postMessage("preferences","configChanged",{key:n,value:r});var a=!0,i=!1,s=void 0;
 try{for(var o=void 0,l=this["#editors"].children[Symbol.iterator]();!(a=(o=l.next()).done);a=!0){
-var u=o.value;u.postMessage("configChanged",{key:n,value:r})}}catch(c){i=!0,s=c}finally{
-try{a||null==l["return"]||l["return"]()}finally{if(i)throw s}}"bx-shortcutseditor:userShortcuts"===n&&this._updateMainMenuWithUserShortcuts();
+var u=o.value;u.postMessage&&u.postMessage("configChanged",{key:n,value:r})}}catch(c){
+i=!0,s=c}finally{try{a||null==l["return"]||l["return"]()}finally{if(i)throw s}}"bx-shortcutseditor:userShortcuts"===n&&this._updateMainMenuWithUserShortcuts();
 },_onUserIdleStateChange:function(e){"idle"===e&&this._shouldStoreSessionOnUserIdle&&(this._shouldStoreSessionOnUserIdle=!1,
 this._storeSession())},_onKeyDown:function(e){var t=k.fromEvent(e);this.currentEditor&&this.currentEditor.textInputMode?(t.ctrl||t.alt||t.meta)&&this["#menubar"].triggerItemForShortcut(t):this["#menubar"].triggerItemForShortcut(t);
 },_onDragOver:function(e){e.preventDefault(),e.dataTransfer.effectAllowed="copy",
 e.dataTransfer.dropEffect="copy"},_onDrop:function(e){e.preventDefault();var t=[],n=!0,r=!1,a=void 0;
 try{for(var i=void 0,s=e.dataTransfer.items[Symbol.iterator]();!(n=(i=s.next()).done);n=!0){
-var o=i.value,l=o.webkitGetAsEntry(),u=v(l).toLowerCase();["svg","svgz","html"].includes(u)?t.push(l):["png","jpg","jpeg","webp","gif"].includes(u)&&t.push(l);
+var o=i.value,l=o.webkitGetAsEntry(),u=g(l).toLowerCase();["svg","svgz","html"].includes(u)?t.push(l):["png","jpg","jpeg","webp","gif"].includes(u)&&t.push(l);
 }}catch(c){r=!0,a=c}finally{try{n||null==s["return"]||s["return"]()}finally{if(r)throw a;
 }}this._openEditorsWithEntries(t),this._addRecentEntries(t)},_onMenubarDragOver:function(e){
 this._onDragOver(e)},_onMenubarDrop:function(e){this._onDrop(e)},_onTabSlotChange:function(e){
@@ -441,7 +449,7 @@ break;case 4:n=t.id.substring(12),a.state=5;break;case 5:return void Promise.res
 case 3:r=a.value,a.state=2;break;case 2:r&&(this._openEditorsWithEntries([r]),this._addRecentEntries([r])),
 a.state=-2;break;case 8:this.commands[t.commandID]?this.commands[t.commandID].exec():this.currentEditor&&this.currentEditor.postMessage("execCommand",t.commandID),
 a.state=-2;break;default:return a.end()}},this)},_validateMenu:function(e){var t=this;
-return new Promise(function(n){var a,i,o,l,u,c,d,h,b,m,f,g,v,p,_,k,y,x,C,E,S,A,R,T,L,M,P,j,W,D,O,I,B,z,U,F;
+return new Promise(function(n){var a,i,o,l,u,c,d,h,b,m,f,v,g,p,_,k,y,x,C,E,S,A,R,T,L,M,j,P,W,D,O,I,B,z,U,F;
 return $traceurRuntime.asyncWrap(function($){for(;;)switch($.state){case 0:a=!0,i=!1,
 o=void 0;try{for(l=void 0,u=e.children[Symbol.iterator]();!(a=(l=u.next()).done);a=!0)c=l.value,
 t._validateMenuItem(c)}catch(N){i=!0,o=N}finally{try{a||null==u["return"]||u["return"]();
@@ -449,13 +457,13 @@ t._validateMenuItem(c)}catch(N){i=!0,o=N}finally{try{a||null==u["return"]||u["re
 break;case 1:return void Promise.resolve(t.getRetainedRecentEntries()).then($.createCallback(3),$.errback);
 case 3:d=$.value,$.state=2;break;case 2:h="",$.state=33;break;case 33:$.state=d.length>0?27:19;
 break;case 27:b=!0,m=!1,f=void 0,$.state=28;break;case 28:$.pushTry(14,15),$.state=17;
-break;case 17:g=void 0,v=d[Symbol.iterator](),$.state=13;break;case 13:$.state=(b=(g=v.next()).done)?11:9;
-break;case 8:b=!0,$.state=13;break;case 9:p=g.value,$.state=10;break;case 10:return void Promise.resolve(w(p)).then($.createCallback(6),$.errback);
+break;case 17:v=void 0,g=d[Symbol.iterator](),$.state=13;break;case 13:$.state=(b=(v=g.next()).done)?11:9;
+break;case 8:b=!0,$.state=13;break;case 9:p=v.value,$.state=10;break;case 10:return void Promise.resolve(w(p)).then($.createCallback(6),$.errback);
 case 6:_=$.value,$.state=5;break;case 5:_&&(h+='<bx-menuitem id="open-recent-'+p+'" label="'+_.name+'"></bx-menuitem>'),
 $.state=8;break;case 11:$.popTry(),$.state=15,$.finallyFallThrough=19;break;case 14:
 $.popTry(),$.maybeUncatchable(),F=$.storedException,$.state=20;break;case 20:m=!0,
 f=F,$.state=15,$.finallyFallThrough=19;break;case 15:$.popTry(),$.state=26;break;case 26:
-try{b||null==v["return"]||v["return"]()}finally{if(m)throw f}$.state=24;break;case 19:
+try{b||null==g["return"]||g["return"]()}finally{if(m)throw f}$.state=24;break;case 19:
 e.innerHTML="\n          "+h+'\n          <hr/>\n          <bx-menuitem id="clear-recent-menu-item" commandid="clearRecent" label="Clear Recent"></bx-menuitem>\n        ',
 $.state=35;break;case 35:return void Promise.resolve(s(30)).then($.createCallback(31),$.errback);
 case 36:if("tools-menu"===e.id){k=t.currentEditor?t.currentEditor.currentToolID:null,
@@ -463,9 +471,9 @@ y=!0,x=!1,C=void 0;try{for(E=void 0,S=e.children[Symbol.iterator]();!(y=(E=S.nex
 A.commandID&&(A.state=A.commandID===k?"toggled":null,"previousTool"!==A.commandID&&(A.hidden=!t.distribution.tools.includes(r(A.commandID))));
 }catch(q){x=!0,C=q}finally{try{y||null==S["return"]||S["return"]()}finally{if(x)throw C;
 }}}else if("panels-menu"===e.id){R=t.currentEditor?t.currentEditor.currentPanelID:null,
-T=!0,L=!1,M=void 0;try{for(P=void 0,j=e.children[Symbol.iterator]();!(T=(P=j.next()).done);T=!0)W=P.value,
+T=!0,L=!1,M=void 0;try{for(j=void 0,P=e.children[Symbol.iterator]();!(T=(j=P.next()).done);T=!0)W=j.value,
 W.commandID&&(W.state=W.commandID===R?"toggled":null,W.hidden=!t.distribution.panels.includes(r(W.commandID)));
-}catch(H){L=!0,M=H}finally{try{T||null==j["return"]||j["return"]()}finally{if(L)throw M;
+}catch(H){L=!0,M=H}finally{try{T||null==P["return"]||P["return"]()}finally{if(L)throw M;
 }}}else if("window-menu"===e.id){D=!0,O=!1,I=void 0;try{for(B=void 0,z=e.children[Symbol.iterator]();!(D=(B=z.next()).done);D=!0)U=B.value,
 "maximizeWindow"===U.commandID?chrome.app.window.current().isMaximized()?U.label="Restore":U.label="Maximize":"fullscreen"===U.commandID&&(chrome.app.window.current().isFullscreen()?U.label="Leave Fullscreen":U.label="Enter Fullscreen");
 }catch(Z){O=!0,I=Z}finally{try{D||null==z["return"]||z["return"]()}finally{if(O)throw I;
@@ -487,7 +495,7 @@ var s=a.value;if(s.hidden===!1){for(var o=[],l=s;l!==this["#menubar"];l=l.parent
 var u=!0,c=!1,d=void 0;try{for(var h=void 0,b=s.children[Symbol.iterator]();!(u=(h=b.next()).done);u=!0){
 var m=h.value;m.commandID&&m.hidden===!1&&e.push({id:m.commandID,label:$traceurRuntime.spread(o,[m.label]).join(" ‣ "),
 shortcut:m.shortcut?m.shortcut.toString():null})}}catch(f){c=!0,d=f}finally{try{u||null==b["return"]||b["return"]();
-}finally{if(c)throw d}}}}}catch(g){n=!0,r=g}finally{try{t||null==i["return"]||i["return"]();
+}finally{if(c)throw d}}}}}catch(v){n=!0,r=v}finally{try{t||null==i["return"]||i["return"]();
 }finally{if(n)throw r}}return e},_openPreferencesAppWindow:function(){var e=this;return new Promise(function(t){
 var n,r;return $traceurRuntime.asyncWrap(function(a){for(;;)switch(a.state){case 0:
 a.state=e._preferencesAppWindow?6:1;break;case 6:e._preferencesAppWindow.focus(),
@@ -529,7 +537,7 @@ s.id=a,s.href="#"+i,s.disabled=!0,o=t("bx-editor"),o.id=i,o.disabled=!0,e["#edit
 e._toggleEditor(o.id),l.state=4;break;case 4:return void Promise.resolve(o.init(r)).then(l.createCallback(2),l.errback);
 case 2:s.disabled=!1,e._storeSessionDebounced(),n(o),l.state=-2;break;default:return l.end();
 }},this)})})},_openEditorsWithEntries:function(e){var n=this,r=function(e){return new Promise(function(r){
-var a,i,s,o,l,u,c,d,h,b,m,g,p,w,k;return $traceurRuntime.asyncWrap(function(y){for(;;)switch(y.state){
+var a,i,s,o,l,u,c,d,h,b,m,v,p,w,k;return $traceurRuntime.asyncWrap(function(y){for(;;)switch(y.state){
 case 0:a=null,i=!0,s=!1,o=void 0,y.state=29;break;case 29:y.pushTry(15,16),y.state=18;
 break;case 18:l=void 0,u=$traceurRuntime.spread(n["#editors"].children)[Symbol.iterator](),
 y.state=14;break;case 14:y.state=(i=(l=u.next()).done)?12:10;break;case 5:i=!0,y.state=14;
@@ -539,16 +547,16 @@ d=y.value,y.state=2;break;case 2:y.state=d?6:5;break;case 6:a=c,y.state=12;break
 y.popTry(),y.state=16,y.finallyFallThrough=20;break;case 15:y.popTry(),y.maybeUncatchable(),
 k=y.storedException,y.state=21;break;case 21:s=!0,o=k,y.state=16,y.finallyFallThrough=20;
 break;case 16:y.popTry(),y.state=27;break;case 27:try{i||null==u["return"]||u["return"]();
-}finally{if(s)throw o}y.state=25;break;case 20:h=f(e),b=v(e).toLowerCase(),m=null,
-g=null,p=function(){a?m=n["#tabs"].querySelector('[href="#'+a.id+'"]'):(m=n["#tabs"].openTab(),
+}finally{if(s)throw o}y.state=25;break;case 20:h=f(e),b=g(e).toLowerCase(),m=null,
+v=null,p=function(){a?m=n["#tabs"].querySelector('[href="#'+a.id+'"]'):(m=n["#tabs"].openTab(),
 m.id=n._createUniqueTabID(),m.href="#"+m.id.replace("tab","editor"),m.label=h+"."+("svgz"===b||"html"===b?b:"svg"),
 m.disabled=!0)},w=function(r){return new Promise(function(i){return $traceurRuntime.asyncWrap(function(s){
-for(;;)switch(s.state){case 0:s.state=a?7:3;break;case 7:g=a,r&&n._toggleEditor(g.id),
-i(g),s.state=-2;break;case 3:g=t("bx-editor"),g.id=m.id.replace("tab","editor"),g.disabled=!0,
-n["#editors"].append(g),r&&n._toggleEditor(g.id),s.state=4;break;case 4:return void Promise.resolve(g.init(null,e)).then(s.createCallback(2),s.errback);
-case 2:m.disabled=!1,i(g),s.state=-2;break;default:return s.end()}},this)})},r({createTab:p,
+for(;;)switch(s.state){case 0:s.state=a?7:3;break;case 7:v=a,r&&n._toggleEditor(v.id),
+i(v),s.state=-2;break;case 3:v=t("bx-editor"),v.id=m.id.replace("tab","editor"),v.disabled=!0,
+n["#editors"].append(v),r&&n._toggleEditor(v.id),s.state=4;break;case 4:return void Promise.resolve(v.init(null,e)).then(s.createCallback(2),s.errback);
+case 2:m.disabled=!1,i(v),s.state=-2;break;default:return s.end()}},this)})},r({createTab:p,
 createEditor:w}),y.state=-2;break;case 25:y.state=y.finallyFallThrough;break;default:
-return y.end()}},this)})};return new Promise(function(t){var a,i,s,o,l,u,c,d,h,b,m,f,g,v,p,_,w;
+return y.end()}},this)})};return new Promise(function(t){var a,i,s,o,l,u,c,d,h,b,m,f,v,g,p,_,w;
 return $traceurRuntime.asyncWrap(function(k){for(;;)switch(k.state){case 0:a=[],i=!0,
 s=!1,o=void 0,k.state=29;break;case 29:k.pushTry(11,12),k.state=14;break;case 14:
 l=void 0,u=e[Symbol.iterator](),k.state=10;break;case 10:k.state=(i=(l=u.next()).done)?8:6;
@@ -558,9 +566,9 @@ k.state=12,k.finallyFallThrough=16;break;case 11:k.popTry(),k.maybeUncatchable()
 w=k.storedException,k.state=17;break;case 17:s=!0,o=w,k.state=12,k.finallyFallThrough=16;
 break;case 12:k.popTry(),k.state=23;break;case 23:try{i||null==u["return"]||u["return"]();
 }finally{if(s)throw o}k.state=21;break;case 16:h=a[a.length-1],b=a.slice(0,a.length-1),
-m=!0,f=!1,g=void 0;try{for(v=void 0,p=a[Symbol.iterator]();!(m=(v=p.next()).done);m=!0)_=v.value,
-_.createTab()}catch(y){f=!0,g=y}finally{try{m||null==p["return"]||p["return"]()}finally{
-if(f)throw g}}k.state=31;break;case 31:return void Promise.resolve(h.createEditor(!0)).then(k.createCallback(25),k.errback);
+m=!0,f=!1,v=void 0;try{for(g=void 0,p=a[Symbol.iterator]();!(m=(g=p.next()).done);m=!0)_=g.value,
+_.createTab()}catch(y){f=!0,v=y}finally{try{m||null==p["return"]||p["return"]()}finally{
+if(f)throw v}}k.state=31;break;case 31:return void Promise.resolve(h.createEditor(!0)).then(k.createCallback(25),k.errback);
 case 25:return void Promise.resolve(Promise.all(b.map(function(e){return e.createEditor(!1);
 }))).then(k.createCallback(27),k.errback);case 27:n._storeSessionDebounced(),t(),
 k.state=-2;break;case 21:k.state=k.finallyFallThrough;break;default:return k.end();
@@ -617,7 +625,7 @@ return t.id!==e}),r=!0,a=!1,i=void 0;try{for(var s=void 0,o=n[Symbol.iterator]()
 var l=s.value;l.disabled=!0}}catch(u){a=!0,i=u}finally{try{r||null==o["return"]||o["return"]();
 }finally{if(a)throw i}}var c=this["#tabs"].querySelector('[href="#'+e+'"]');this["#tabs"].highlightTab(c.id),
 this._onCurrentEditorChange()}else{var d=!0,h=!1,b=void 0;try{for(var m=void 0,f=this["#editors"].children[Symbol.iterator]();!(d=(m=f.next()).done);d=!0){
-var g=m.value;g.disabled=!0}}catch(v){h=!0,b=v}finally{try{d||null==f["return"]||f["return"]();
+var v=m.value;v.disabled=!0}}catch(g){h=!0,b=g}finally{try{d||null==f["return"]||f["return"]();
 }finally{if(h)throw b}}this["#tabs"].highlightTab(null),this._onCurrentEditorChange();
 }},_toggleEditorForPreviousTab:function(){var e=this["#tabs"].querySelector("[highlighted]"),t=this["#tabs"].getTabsByScreenPosition();
 if(t=t.filter(function(t){return t.disabled===!1||t===e}),e){var n=t.indexOf(e),r=t[n-1],a=t[t.length-1];
@@ -635,46 +643,46 @@ this._storeSessionDebounced()},_focusCurrentEditor:function(){this.currentEditor
 },_createUniqueTabID:function(){for(var e=0;;){var t="tab-"+e;if(!this["#tabs"].querySelector("#"+t))return t;
 e+=1}},_createUniqueEditorID:function(){for(var e=void 0!==arguments[0]?arguments[0]:[],t=0;;){
 var n="editor-"+t;if(!this["#editors"].querySelector("#"+n)&&!e.includes(n))return n;
-t+=1}},_addRecentEntries:function(e){var t=this;return new Promise(function(n){var r,a,i,s,o,l,u,c,d,h,b,m,f,p,_,k,y,x,C,S,A,R,T,L,M,P;
-return $traceurRuntime.asyncWrap(function(j){for(;;)switch(j.state){case 0:j.state=0===e.length?71:63;
-break;case 71:n(),j.state=-2;break;case 63:r=[],a=Symbol(),i=!0,s=!1,o=void 0,j.state=64;
-break;case 64:j.pushTry(22,23),j.state=25;break;case 25:l=void 0,C=t._dbGetRecent,
-S=C.call(t),j.state=5;break;case 5:return void Promise.resolve(S).then(j.createCallback(3),j.errback);
-case 3:A=j.value,j.state=2;break;case 2:R=Symbol.iterator,T=A[R],L=T.call(A),u=L,
-j.state=7;break;case 7:j.state=21;break;case 21:j.state=(i=(l=u.next()).done)?19:17;
-break;case 15:i=!0,j.state=21;break;case 17:c=l.value,j.state=18;break;case 18:return void Promise.resolve(w(c)).then(j.createCallback(10),j.errback);
-case 10:d=j.value,j.state=9;break;case 9:j.state=d?11:15;break;case 11:return void Promise.resolve(g(d)).then(j.createCallback(13),j.errback);
-case 13:h=j.value,j.state=12;break;case 12:d[a]=h,r.push(d),j.state=15;break;case 19:
-j.popTry(),j.state=23,j.finallyFallThrough=27;break;case 22:j.popTry(),j.maybeUncatchable(),
-M=j.storedException,j.state=28;break;case 28:s=!0,o=M,j.state=23,j.finallyFallThrough=27;
-break;case 23:j.popTry(),j.state=34;break;case 34:try{i||null==u["return"]||u["return"]();
-}finally{if(s)throw o}j.state=32;break;case 27:b=!0,m=!1,f=void 0,j.state=66;break;
-case 66:j.pushTry(48,49),j.state=51;break;case 51:p=void 0,_=e[Symbol.iterator](),
-j.state=47;break;case 47:j.state=(b=(p=_.next()).done)?45:43;break;case 39:b=!0,j.state=47;
-break;case 43:k=p.value,j.state=44;break;case 44:y=v(k).toLowerCase(),j.state=42;break;
-case 42:j.state="svg"===y||"svgz"===y||"html"===y?35:39;break;case 35:return void Promise.resolve(g(k)).then(j.createCallback(37),j.errback);
-case 37:k[a]=j.value,j.state=36;break;case 36:r=r.filter(function(e){return e[a]!==k[a];
-}),r.push(k),j.state=39;break;case 45:j.popTry(),j.state=49,j.finallyFallThrough=53;
-break;case 48:j.popTry(),j.maybeUncatchable(),P=j.storedException,j.state=54;break;
-case 54:m=!0,f=P,j.state=49,j.finallyFallThrough=53;break;case 49:j.popTry(),j.state=60;
-break;case 60:try{b||null==_["return"]||_["return"]()}finally{if(m)throw f}j.state=58;
+t+=1}},_addRecentEntries:function(e){var t=this;return new Promise(function(n){var r,a,i,s,o,l,u,c,d,h,b,m,f,p,_,k,y,x,C,S,A,R,T,L,M,j;
+return $traceurRuntime.asyncWrap(function(P){for(;;)switch(P.state){case 0:P.state=0===e.length?71:63;
+break;case 71:n(),P.state=-2;break;case 63:r=[],a=Symbol(),i=!0,s=!1,o=void 0,P.state=64;
+break;case 64:P.pushTry(22,23),P.state=25;break;case 25:l=void 0,C=t._dbGetRecent,
+S=C.call(t),P.state=5;break;case 5:return void Promise.resolve(S).then(P.createCallback(3),P.errback);
+case 3:A=P.value,P.state=2;break;case 2:R=Symbol.iterator,T=A[R],L=T.call(A),u=L,
+P.state=7;break;case 7:P.state=21;break;case 21:P.state=(i=(l=u.next()).done)?19:17;
+break;case 15:i=!0,P.state=21;break;case 17:c=l.value,P.state=18;break;case 18:return void Promise.resolve(w(c)).then(P.createCallback(10),P.errback);
+case 10:d=P.value,P.state=9;break;case 9:P.state=d?11:15;break;case 11:return void Promise.resolve(v(d)).then(P.createCallback(13),P.errback);
+case 13:h=P.value,P.state=12;break;case 12:d[a]=h,r.push(d),P.state=15;break;case 19:
+P.popTry(),P.state=23,P.finallyFallThrough=27;break;case 22:P.popTry(),P.maybeUncatchable(),
+M=P.storedException,P.state=28;break;case 28:s=!0,o=M,P.state=23,P.finallyFallThrough=27;
+break;case 23:P.popTry(),P.state=34;break;case 34:try{i||null==u["return"]||u["return"]();
+}finally{if(s)throw o}P.state=32;break;case 27:b=!0,m=!1,f=void 0,P.state=66;break;
+case 66:P.pushTry(48,49),P.state=51;break;case 51:p=void 0,_=e[Symbol.iterator](),
+P.state=47;break;case 47:P.state=(b=(p=_.next()).done)?45:43;break;case 39:b=!0,P.state=47;
+break;case 43:k=p.value,P.state=44;break;case 44:y=g(k).toLowerCase(),P.state=42;break;
+case 42:P.state="svg"===y||"svgz"===y||"html"===y?35:39;break;case 35:return void Promise.resolve(v(k)).then(P.createCallback(37),P.errback);
+case 37:k[a]=P.value,P.state=36;break;case 36:r=r.filter(function(e){return e[a]!==k[a];
+}),r.push(k),P.state=39;break;case 45:P.popTry(),P.state=49,P.finallyFallThrough=53;
+break;case 48:P.popTry(),P.maybeUncatchable(),j=P.storedException,P.state=54;break;
+case 54:m=!0,f=j,P.state=49,P.finallyFallThrough=53;break;case 49:P.popTry(),P.state=60;
+break;case 60:try{b||null==_["return"]||_["return"]()}finally{if(m)throw f}P.state=58;
 break;case 53:for(;r.length>E;)r.shift();x=r.map(function(e){return chrome.fileSystem.retainEntry(e);
-}),j.state=68;break;case 68:return void Promise.resolve(t._dbSetRecent(x)).then(j.createCallback(62),j.errback);
-case 62:n(),j.state=-2;break;case 32:j.state=j.finallyFallThrough;break;case 58:j.state=j.finallyFallThrough;
-break;default:return j.end()}},this)})},_clearRecentEntries:function(){var e=this;
+}),P.state=68;break;case 68:return void Promise.resolve(t._dbSetRecent(x)).then(P.createCallback(62),P.errback);
+case 62:n(),P.state=-2;break;case 32:P.state=P.finallyFallThrough;break;case 58:P.state=P.finallyFallThrough;
+break;default:return P.end()}},this)})},_clearRecentEntries:function(){var e=this;
 return new Promise(function(t){e._dbSetRecent([])})},_storeSessionOnUserIdle:function(){
 this._shouldStoreSessionOnUserIdle=!0},_storeSession:function(){var e=this;return new Promise(function(t){
-var n,r,a,i,s,o,l,u,c,d,h,b,m,f,g,v,p,_,w,k,y,x,C,E;return $traceurRuntime.asyncWrap(function(S){
+var n,r,a,i,s,o,l,u,c,d,h,b,m,f,v,g,p,_,w,k,y,x,C,E;return $traceurRuntime.asyncWrap(function(S){
 for(;;)switch(S.state){case 0:S.state=e._storingSession||e._restoringSession?44:40;
 break;case 44:t(),S.state=-2;break;case 40:e._storingSession=!0,n=[],r=e["#tabs"].getTabsByScreenPosition(),
 a=!0,i=!1,s=void 0,S.state=41;break;case 41:S.pushTry(25,26),S.state=28;break;case 28:
 o=void 0,l=r[Symbol.iterator](),S.state=24;break;case 24:S.state=(a=(o=l.next()).done)?22:20;
 break;case 16:a=!0,S.state=24;break;case 20:u=o.value,S.state=21;break;case 21:c=e["#editors"].querySelector(u.href),
 S.state=19;break;case 19:S.state=c?11:16;break;case 11:h=c.entry,h?(b=chrome.fileSystem,
-m=b.retainEntry,f=c.entry,g=m.call(b,f),v=g):v=null,p=c.edited,S.state=12;break;case 12:
+m=b.retainEntry,f=c.entry,v=m.call(b,f),g=v):g=null,p=c.edited,S.state=12;break;case 12:
 S.state=p?4:8;break;case 4:_=c.getArtwork,w=_.call(c),S.state=5;break;case 5:return void Promise.resolve(w).then(S.createCallback(3),S.errback);
 case 3:k=S.value,S.state=2;break;case 2:y=k,S.state=7;break;case 8:y=null,S.state=7;
-break;case 7:x=u.highlighted,C={retainedEntry:v,unsavedArtwork:y,primary:x},d=C,S.state=14;
+break;case 7:x=u.highlighted,C={retainedEntry:g,unsavedArtwork:y,primary:x},d=C,S.state=14;
 break;case 14:n.push(d),S.state=16;break;case 22:S.popTry(),S.state=26,S.finallyFallThrough=30;
 break;case 25:S.popTry(),S.maybeUncatchable(),E=S.storedException,S.state=31;break;
 case 31:i=!0,s=E,S.state=26,S.finallyFallThrough=30;break;case 26:S.popTry(),S.state=37;
@@ -682,47 +690,47 @@ break;case 37:try{a||null==l["return"]||l["return"]()}finally{if(i)throw s}S.sta
 break;case 30:return void Promise.resolve(e._dbSetSession(n)).then(S.createCallback(39),S.errback);
 case 39:e._storingSession=!1,t(),S.state=-2;break;case 35:S.state=S.finallyFallThrough;
 break;default:return S.end()}},this)})},_restoreSession:function(){var e=this;return new Promise(function(n,r){
-var a,i,s,o,l,u,c,d,h,b,m,g,p,k,y,x,C,E,S,A,R,T,L,M,P,j,W,D,O,I,B,z,U,F,$,N,q,H,Z,V,K,G,X,Y,Q,J,ee,te,ne,re,ae,ie,se,oe,le;
+var a,i,s,o,l,u,c,d,h,b,m,v,p,k,y,x,C,E,S,A,R,T,L,M,j,P,W,D,O,I,B,z,U,F,$,N,q,H,Z,V,K,G,X,Y,Q,J,ee,te,ne,re,ae,ie,se,oe,le,ue,ce,de,he,be;
 return $traceurRuntime.asyncWrap(function(r){for(;;)switch(r.state){case 0:e._restoringSession=!0,
-r.state=107;break;case 107:return void Promise.resolve(e._dbGetSession()).then(r.createCallback(3),r.errback);
-case 3:a=r.value,r.state=2;break;case 2:i=!0,s=!1,o=void 0,r.state=109;break;case 109:
+r.state=119;break;case 119:return void Promise.resolve(e._dbGetSession()).then(r.createCallback(3),r.errback);
+case 3:a=r.value,r.state=2;break;case 2:i=!0,s=!1,o=void 0,r.state=121;break;case 121:
 r.pushTry(23,24),r.state=26;break;case 26:l=void 0,u=a[Symbol.iterator](),r.state=22;
 break;case 22:r.state=(i=(l=u.next()).done)?20:18;break;case 17:i=!0,r.state=22;break;
-case 18:c=l.value,r.state=19;break;case 19:X=c.retainedEntry,r.state=15;break;case 15:
-r.state=X?7:11;break;case 7:Y=c.retainedEntry,Q=w(Y),r.state=8;break;case 8:return void Promise.resolve(Q).then(r.createCallback(6),r.errback);
-case 6:J=r.value,r.state=5;break;case 5:ee=J,r.state=10;break;case 11:ee=null,r.state=10;
-break;case 10:c.entry=ee,r.state=17;break;case 20:r.popTry(),r.state=24,r.finallyFallThrough=28;
-break;case 23:r.popTry(),r.maybeUncatchable(),te=r.storedException,r.state=29;break;
-case 29:s=!0,o=te,r.state=24,r.finallyFallThrough=28;break;case 24:r.popTry(),r.state=35;
+case 18:c=l.value,r.state=19;break;case 19:Y=c.retainedEntry,r.state=15;break;case 15:
+r.state=Y?7:11;break;case 7:Q=c.retainedEntry,J=w(Q),r.state=8;break;case 8:return void Promise.resolve(J).then(r.createCallback(6),r.errback);
+case 6:ee=r.value,r.state=5;break;case 5:te=ee,r.state=10;break;case 11:te=null,r.state=10;
+break;case 10:c.entry=te,r.state=17;break;case 20:r.popTry(),r.state=24,r.finallyFallThrough=28;
+break;case 23:r.popTry(),r.maybeUncatchable(),ne=r.storedException,r.state=29;break;
+case 29:s=!0,o=ne,r.state=24,r.finallyFallThrough=28;break;case 24:r.popTry(),r.state=35;
 break;case 35:try{i||null==u["return"]||u["return"]()}finally{if(s)throw o}r.state=33;
 break;case 28:a=a.filter(function(e){return e.entry||e.unsavedArtwork||null===e.retainedEntry;
-}),r.state=111;break;case 111:return void Promise.resolve(e._getLaunchEntries()).then(r.createCallback(38),r.errback);
+}),r.state=123;break;case 123:return void Promise.resolve(e._getLaunchEntries()).then(r.createCallback(38),r.errback);
 case 38:d=r.value,r.state=37;break;case 37:r.state=d.length>0?96:88;break;case 96:
 h=!0,b=!1,m=void 0,r.state=97;break;case 97:r.pushTry(83,84),r.state=86;break;case 86:
-g=void 0,p=d[Symbol.iterator](),r.state=82;break;case 82:r.state=(h=(g=p.next()).done)?80:78;
-break;case 77:h=!0,r.state=82;break;case 78:k=g.value,r.state=79;break;case 79:y=void 0,
+v=void 0,p=d[Symbol.iterator](),r.state=82;break;case 82:r.state=(h=(v=p.next()).done)?80:78;
+break;case 77:h=!0,r.state=82;break;case 78:k=v.value,r.state=79;break;case 79:y=void 0,
 x=!0,C=!1,E=void 0,r.state=75;break;case 75:r.pushTry(61,62),r.state=64;break;case 64:
 S=void 0,A=a[Symbol.iterator](),r.state=60;break;case 60:r.state=(x=(S=A.next()).done)?58:56;
-break;case 52:x=!0,r.state=60;break;case 56:R=S.value,r.state=57;break;case 57:ne=R.entry,
-r.state=50;break;case 50:r.state=ne?42:46;break;case 42:re=R.entry,ae=_(k,re),r.state=43;
-break;case 43:return void Promise.resolve(ae).then(r.createCallback(41),r.errback);
-case 41:ie=r.value,r.state=40;break;case 40:se=ie,r.state=45;break;case 46:se=ne,
-r.state=45;break;case 45:r.state=se?53:52;break;case 53:y=R,r.state=58;break;case 58:
+break;case 52:x=!0,r.state=60;break;case 56:R=S.value,r.state=57;break;case 57:re=R.entry,
+r.state=50;break;case 50:r.state=re?42:46;break;case 42:ae=R.entry,ie=_(k,ae),r.state=43;
+break;case 43:return void Promise.resolve(ie).then(r.createCallback(41),r.errback);
+case 41:se=r.value,r.state=40;break;case 40:oe=se,r.state=45;break;case 46:oe=re,
+r.state=45;break;case 45:r.state=oe?53:52;break;case 53:y=R,r.state=58;break;case 58:
 r.popTry(),r.state=62,r.finallyFallThrough=66;break;case 61:r.popTry(),r.maybeUncatchable(),
-oe=r.storedException,r.state=67;break;case 67:C=!0,E=oe,r.state=62,r.finallyFallThrough=66;
+le=r.storedException,r.state=67;break;case 67:C=!0,E=le,r.state=62,r.finallyFallThrough=66;
 break;case 62:r.popTry(),r.state=73;break;case 73:try{x||null==A["return"]||A["return"]();
-}finally{if(C)throw E}r.state=71;break;case 66:if(y){T=!0,L=!1,M=void 0;try{for(P=void 0,
-j=a[Symbol.iterator]();!(T=(P=j.next()).done);T=!0)W=P.value,W.primary=W===y}catch(ue){
-L=!0,M=ue}finally{try{T||null==j["return"]||j["return"]()}finally{if(L)throw M}}}else{
+}finally{if(C)throw E}r.state=71;break;case 66:if(y){T=!0,L=!1,M=void 0;try{for(j=void 0,
+P=a[Symbol.iterator]();!(T=(j=P.next()).done);T=!0)W=j.value,W.primary=W===y}catch(me){
+L=!0,M=me}finally{try{T||null==P["return"]||P["return"]()}finally{if(L)throw M}}}else{
 D=!0,O=!1,I=void 0;try{for(B=void 0,z=a[Symbol.iterator]();!(D=(B=z.next()).done);D=!0)U=B.value,
-U.primary=!1}catch(ce){O=!0,I=ce}finally{try{D||null==z["return"]||z["return"]()}finally{
+U.primary=!1}catch(fe){O=!0,I=fe}finally{try{D||null==z["return"]||z["return"]()}finally{
 if(O)throw I}}a.push({entry:k,unsavedArtwork:null,primary:!0})}r.state=77;break;case 80:
 r.popTry(),r.state=84,r.finallyFallThrough=88;break;case 83:r.popTry(),r.maybeUncatchable(),
-le=r.storedException,r.state=89;break;case 89:b=!0,m=le,r.state=84,r.finallyFallThrough=88;
+ue=r.storedException,r.state=89;break;case 89:b=!0,m=ue,r.state=84,r.finallyFallThrough=88;
 break;case 84:r.popTry(),r.state=95;break;case 95:try{h||null==p["return"]||p["return"]();
 }finally{if(b)throw m}r.state=93;break;case 88:r.state=a.length>0?103:102;break;case 103:
 F=[],a.forEach(function(n){var r=null,a=null,i="Untitled",s=n.primary;if(n.entry){
-var o=f(n.entry),l=v(n.entry).toLowerCase();i=o+"."+("svgz"===l?"svgz":"svg")}var u=function(){
+var o=f(n.entry),l=g(n.entry).toLowerCase();i=o+"."+("svgz"===l?"svgz":"svg")}var u=function(){
 r=e["#tabs"].openTab(),r.id=e._createUniqueTabID(),r.href="#"+r.id.replace("tab","editor"),
 r.label=i,r.disabled=!0,n.unsavedArtwork&&(r.edited=!0)},c=function(i){return new Promise(function(s){
 return $traceurRuntime.asyncWrap(function(o){for(;;)switch(o.state){case 0:a=t("bx-editor"),
@@ -731,11 +739,16 @@ o.state=4;break;case 4:return void Promise.resolve(a.init(n.unsavedArtwork,n.ent
 case 2:r.disabled=!1,s(a),o.state=-2;break;default:return o.end()}},this)})};F.push({
 primary:s,createTab:u,createEditor:c})}),$=F.find(function(e){return e.primary})||F[F.length-1],
 N=F.filter(function(e){return e!==$}),q=!0,H=!1,Z=void 0;try{for(V=void 0,K=F[Symbol.iterator]();!(q=(V=K.next()).done);q=!0)G=V.value,
-G.createTab()}catch(de){H=!0,Z=de}finally{try{q||null==K["return"]||K["return"]();
+G.createTab()}catch(ve){H=!0,Z=ve}finally{try{q||null==K["return"]||K["return"]();
 }finally{if(H)throw Z}}r.state=104;break;case 104:return void Promise.resolve($.createEditor(!0)).then(r.createCallback(100),r.errback);
 case 100:return void Promise.resolve(Promise.all(N.map(function(e){return e.createEditor(!1);
-}))).then(r.createCallback(102),r.errback);case 102:e._restoringSession=!1,d.length>0&&e._storeSessionDebounced(),
-n(),r.state=-2;break;case 33:r.state=r.finallyFallThrough;break;case 93:r.state=r.finallyFallThrough;
+}))).then(r.createCallback(102),r.errback);case 102:ce=e.getConfig,de=ce.call(e,"!bx-masterbody:isSubsequentLaunch"),
+r.state=110;break;case 110:return void Promise.resolve(de).then(r.createCallback(108),r.errback);
+case 108:he=r.value,r.state=107;break;case 107:be=he?he:!1,X=be,r.state=112;break;
+case 112:r.state=X===!1?115:114;break;case 115:e.setConfig("!bx-masterbody:isSubsequentLaunch",!0),
+r.state=116;break;case 116:return void Promise.resolve(e._openEditorWidthDefaultArtwork()).then(r.createCallback(114),r.errback);
+case 114:e._restoringSession=!1,d.length>0&&e._storeSessionDebounced(),n(),r.state=-2;
+break;case 33:r.state=r.finallyFallThrough;break;case 93:r.state=r.finallyFallThrough;
 break;case 71:switch(r.finallyFallThrough){case 97:case 86:case 82:case 77:case 78:
 case 79:case 75:case 64:case 60:case 52:case 56:case 57:case 50:case 42:case 43:case 41:
 case 40:case 46:case 45:case 53:case 54:case 58:case 61:case 67:case 62:case 73:case 71:
@@ -776,17 +789,18 @@ i.onsuccess=function(e){return r(e.target.result)},i.onerror=function(e){return 
 }})}),Promise.all(a).then(n,r),i.state=-2;break;default:return i.end()}},this)})},
 _dbClearSession:function(){var e=this;return new Promise(function(t,n){var r=e._db.transaction(["session"],"readwrite").objectStore("session").clear();
 r.onsuccess=function(e){return t(e.target.result)},r.onerror=function(e){return n(e.target.result);
-}})}},{},e)}(HTMLBodyElement),j=n("body","bx-masterbody",P);return{get default(){
-return j}}}),System.registerModule("elements/bx-menu",[],function(){"use strict";System.get("elements/bx-menuitem");
+}})}},{},e)}(HTMLBodyElement),P=n("body","bx-masterbody",j);return{get default(){
+return P}}}),System.registerModule("elements/bx-menu",[],function(){"use strict";System.get("elements/bx-menuitem");
 var e=System.get("utils/dom").registerElement,t=System.get("utils/time").sleep,n=75,r=300,a='\n  <style>\n    @import url("stylesheets/scrollbars.css");\n    @import url("stylesheets/bx-menu.css");\n  </style>\n\n  <main id="main">\n    <content id="content"></content>\n  </main>\n',i=function(e){
 function i(){$traceurRuntime.superConstructor(i).apply(this,arguments)}return $traceurRuntime.createClass(i,{
-createdCallback:function(){var e=this;this._shadowRoot=this.createShadowRoot({mode:"closed"
-}),this._shadowRoot.innerHTML=a;var t=!0,n=!1,r=void 0;try{for(var i=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(i=s.next()).done);t=!0){
+createdCallback:function(){var e=this;this._mouseLocs=[],this._mouseInsideMenuBlock=!1,
+this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=a;
+var t=!0,n=!1,r=void 0;try{for(var i=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(i=s.next()).done);t=!0){
 var o=i.value;this["#"+o.id]=o}}catch(l){n=!0,r=l}finally{try{t||null==s["return"]||s["return"]();
-}finally{if(n)throw r}}this._mouseLocs=[],this._mouseInsideMenuBlock=!1,this["#main"].addEventListener("mousemove",function(t){
-return e._onMouseMove(t)}),this.addEventListener("mouseover",function(t){return e._onMouseOver(t);
-}),this.addEventListener("mouseout",function(t){return e._onMouseOut(t)}),this.addEventListener("click",function(t){
-return e._onClick(t)})},menuWillShow:function(){return Promise.resolve()},menuItemWillTrigger:function(e){
+}finally{if(n)throw r}}this["#main"].addEventListener("mousemove",function(t){return e._onMouseMove(t);
+}),this.addEventListener("mouseover",function(t){return e._onMouseOver(t)}),this.addEventListener("mouseout",function(t){
+return e._onMouseOut(t)}),this.addEventListener("click",function(t){return e._onClick(t);
+})},menuWillShow:function(){return Promise.resolve()},menuItemWillTrigger:function(e){
 return Promise.resolve()},get label(){return this.hasAttribute("label")?this.getAttribute("label"):"";
 },set label(e){this.setAttribute("label",e)},get opened(){return this.hasAttribute("opened");
 },set opened(e){throw new Error("This property is read-only")},get items(){var e=[],t=!0,n=!1,r=void 0;
@@ -866,7 +880,7 @@ if(!this._openedSubmenu)return 0;if(!t)return 0;a||(a=t);var i=this.getBoundingC
 x:i.left,y:i.top-n},o={x:i.left+i.width,y:s.y},l={x:i.left,y:i.top+i.height+n},u={
 x:i.left+i.width,y:l.y};if(a.x<i.left||a.x>u.x||a.y<i.top||a.y>u.y)return 0;if(this._lastDelayLoc&&t.x==this._lastDelayLoc.x&&t.y==this._lastDelayLoc.y)return 0;
 var c=o,d=u;"left"==e?(c=l,d=s):"below"==e?(c=u,d=l):"above"==e&&(c=s,d=o);var h=function(e,t){
-return(t.y-e.y)/(t.x-e.x)},b=h(t,c),m=h(t,d),f=h(a,c),g=h(a,d);return f>b&&m>g?(this._lastDelayLoc=t,
+return(t.y-e.y)/(t.x-e.x)},b=h(t,c),m=h(t,d),f=h(a,c),v=h(a,d);return f>b&&m>v?(this._lastDelayLoc=t,
 r):(this._lastDelayLoc=null,0)}},{},e)}(HTMLElement),s=e("bx-menu",i);return{get default(){
 return s}}}),System.registerModule("elements/bx-menubar",[],function(){"use strict";
 var e=(System.get("utils/array").compareArrays,System.get("utils/dom")),t=e.createElement,n=e.registerElement,r=e.getClosestShadowRoot,a=(System.get("utils/filesystem").restoreEntry,
@@ -878,23 +892,25 @@ createdCallback:function(){var e=this;this.tabIndex=0,this._highlightedStripItem
 this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=o;
 var t=!0,n=!1,r=void 0;try{for(var a=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
 var l=a.value;this["#"+l.id]=l}}catch(u){n=!0,r=u}finally{try{t||null==i["return"]||i["return"]();
-}finally{if(n)throw r}}this.addEventListener("keydown",function(t){return e._onKeyDown(t);
+}finally{if(n)throw r}}$traceurRuntime.spread(this.querySelectorAll("bx-menu")).forEach(function(t){
+t.menuWillShow=function(){return e.menuWillShow(t)},t.menuItemWillTrigger=function(t){
+return e.menuItemWillTrigger(t)}});var c=new MutationObserver(function(t){return e._onChildrenMutation(t);
+});c.observe(this,s),this.addEventListener("keydown",function(t){return e._onKeyDown(t);
 }),this.addEventListener("menuitemtrigger",function(t){return e._onMenuItemTrigger(t);
 }),this["#strip"].addEventListener("mousedown",function(t){return e._onStripMouseDown(t);
 }),this["#strip"].addEventListener("mouseover",function(t){return e._onStripMouseOver(t);
 }),this["#overlay"].addEventListener("mousedown",function(t){return e._onOverlayMouseDown(t);
-}),$traceurRuntime.spread(this.querySelectorAll("bx-menu")).forEach(function(t){t.menuWillShow=function(){
-return e.menuWillShow(t)},t.menuItemWillTrigger=function(t){return e.menuItemWillTrigger(t);
-}});var c=new MutationObserver(function(t){return e._onChildrenMutation(t)});c.observe(this,s),
-this._updateStrip()},attachedCallback:function(){var e=this;window.addEventListener("blur",this._windowBlurListener=function(t){
+}),this._updateStrip()},attachedCallback:function(){var e=this;window.addEventListener("blur",this._windowBlurListener=function(t){
 return e._onWindowBlur(t)}),window.addEventListener("resize",this._windowResizeListener=function(t){
 return e._onWindowResize(t)})},detachedCallback:function(){window.removeEventListener("blur",this._windowBlurListener),
-window.removeEventListener("resize",this._windowResizeListener)},menuWillShow:function(e){
-return Promise.resolve()},menuItemWillTrigger:function(e){return Promise.resolve();
-},_onChildrenMutation:function(e){var t=!0,n=!1,r=void 0;try{for(var a=void 0,i=e[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
-var s=a.value;(s.target===this||s.target.parentElement===this)&&this._updateStrip();
-}}catch(o){n=!0,r=o}finally{try{t||null==i["return"]||i["return"]()}finally{if(n)throw r;
-}}},_onMenuItemTrigger:function(e){this._collapse();var t=e.target,n=$traceurRuntime.spread(this.children).find(function(e){
+window.removeEventListener("resize",this._windowResizeListener)},get disabled(){return this.hasAttribute("disabled");
+},set disabled(e){e===!0?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},menuWillShow:function(e){return Promise.resolve()},menuItemWillTrigger:function(e){
+return Promise.resolve()},_onChildrenMutation:function(e){var t=!0,n=!1,r=void 0;try{
+for(var a=void 0,i=e[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){var s=a.value;
+(s.target===this||s.target.parentElement===this)&&this._updateStrip()}}catch(o){n=!0,
+r=o}finally{try{t||null==i["return"]||i["return"]()}finally{if(n)throw r}}},_onMenuItemTrigger:function(e){
+this._collapse();var t=e.target,n=$traceurRuntime.spread(this.children).find(function(e){
 return e.contains(t)}),r=$traceurRuntime.spread(this["#strip"].children).find(function(e){
 return e.menu===n});r&&r.hasAttribute("highlighted")===!1&&(r.setAttribute("highlighted",""),
 a(150).then(function(){return r.removeAttribute("highlighted")}))},_onStripMouseDown:function(e){
@@ -915,7 +931,7 @@ if(e.preventDefault(),e.stopImmediatePropagation(),"ArrowUp"===s)if(l){var c=l.p
 c.highlightPreviousItem()}else{var d=u.length>0?u[u.length-1]:null;d&&d.highlightPreviousItem();
 }else if("ArrowDown"===s)if(l){var h=l.parentElement;h.highlightNextItem()}else{var b=u.length>0?u[u.length-1]:null;
 b&&b.highlightNextItem()}else if("ArrowRight"===s){var m=l?l.querySelector("bx-menu"):null;
-if(m){var f=m.getBoundingClientRect(),g=l.getBoundingClientRect(),v=f.x+f.width/2,p=g.y+g.height/2,_=r(this).elementFromPoint(v,p);
+if(m){var f=m.getBoundingClientRect(),v=l.getBoundingClientRect(),g=f.x+f.width/2,p=v.y+v.height/2,_=r(this).elementFromPoint(g,p);
 if(_.disabled)for(var w=_.nextElementSibling;w;w=w.nextElementSibling)if("bx-menuitem"===w.localName&&w.disabled===!1&&w.hidden===!1){
 _=w;break}if(_.disabled)for(var k=m.children[0];k;k=k.nextElementSibling)if("bx-menuitem"===k.localName&&k.disabled===!1&&k.hidden===!1){
 _=k;break}_.disabled?this._expandNext():m.highlightItem(_)}else this._expandNext();
@@ -945,13 +961,15 @@ this["#strip"].innerHTML="";for(var e=0;e<this.childElementCount;e+=1)this["#str
 }for(var n=0;n<this.childElementCount;n+=1)this["#strip"].children[n].textContent=this.children[n].getAttribute("label"),
 this["#strip"].children[n].menu=this.children[n],this["#strip"].children[n].hidden=this.children[n].hasAttribute("hidden");
 }},{},e)}(HTMLElement),u=n("bx-menubar",l);return{get default(){return u}}}),System.registerModule("elements/bx-menuitem",[],function(){
-"use strict";var e=System.get("utils/dom").registerElement,t=System.get("classes/shortcut")["default"],n="images/icons.svg#arrow-right",r="images/icons.svg#circle",a="images/icons.svg#check-mark",i='\n<style>@import url("stylesheets/bx-menuitem.css");</style>\n\n<main>\n  <div id="state-icons">\n    <svg class="icon" id="selected-state-icon" viewBox="0 0 100 100" hidden>\n      <use xlink:href="'+r+'" width="100" height="100"></use>\n    </svg>\n\n    <svg class="icon" id="toggled-state-icon" viewBox="0 0 100 100" hidden>\n      <use xlink:href="'+a+'" width="100" height="100"></use>\n    </svg>\n  </div>\n\n  <div id="label"></div>\n  <div id="shortcut"></div>\n  <svg id="arrow-icon" viewBox="0 0 100 100"><use xlink:href="'+n+'" width="100" height="100"></use></svg>\n</main>\n\n<content select="bx-menu"></content>\n',s=function(e){
+"use strict";var e=System.get("utils/dom").registerElement,t=System.get("classes/shortcut")["default"],n="images/icons.svg#arrow-right",r="images/icons.svg#circle",a="images/icons.svg#check-mark",i='\n  <style>@import url("stylesheets/bx-menuitem.css");</style>\n\n  <main>\n    <div id="state-icons">\n      <svg class="icon" id="selected-state-icon" viewBox="0 0 100 100" hidden>\n        <use xlink:href="'+r+'" width="100" height="100"></use>\n      </svg>\n\n      <svg class="icon" id="toggled-state-icon" viewBox="0 0 100 100" hidden>\n        <use xlink:href="'+a+'" width="100" height="100"></use>\n      </svg>\n    </div>\n\n    <div id="label"></div>\n    <div id="shortcut"></div>\n    <svg id="arrow-icon" viewBox="0 0 100 100"><use xlink:href="'+n+'" width="100" height="100"></use></svg>\n  </main>\n\n  <content select="bx-menu"></content>\n',s=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
 createdCallback:function(){this._shadowRoot=this.createShadowRoot({mode:"closed"}),
 this._shadowRoot.innerHTML=i;var e=!0,t=!1,n=void 0;try{for(var r=void 0,a=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(e=(r=a.next()).done);e=!0){
 var s=r.value;this["#"+s.id]=s}}catch(o){t=!0,n=o}finally{try{e||null==a["return"]||a["return"]();
-}finally{if(t)throw n}}this._onLabelChange(),this._onStateChange(),this._onShortcutChange();
-},attributeChangedCallback:function(e,t,n){t!==n&&("label"===e?this._onLabelChange():"state"===e?this._onStateChange():("shortcut"===e||"usershortcut"===e)&&this._onShortcutChange());
+}finally{if(t)throw n}}var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=this.attributes[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
+var b=d.value;this.attributeChangedCallback(b.name)}}catch(m){u=!0,c=m}finally{try{
+l||null==h["return"]||h["return"]()}finally{if(u)throw c}}},attributeChangedCallback:function(e){
+"label"===e?this._onLabelAttributeChange():"state"===e?this._onStateAttributeChange():("shortcut"===e||"usershortcut"===e)&&this._onShortcutAttributeChange();
 },get label(){return this.hasAttribute("label")?this.getAttribute("label"):""},set label(e){
 this.setAttribute("label",e)},get state(){return this.hasAttribute("state")?this.getAttribute("state"):null;
 },set state(e){null===e?this.removeAttribute("state"):this.setAttribute("state",e);
@@ -961,21 +979,22 @@ this.setAttribute("label",e)},get state(){return this.hasAttribute("state")?this
 },get userShortcut(){return this.hasAttribute("usershortcut")?t.fromString(this.getAttribute("usershortcut")):null;
 },set userShortcut(e){null===e?this.removeAttribute("usershortcut"):this.setAttribute("usershortcut",e.toString());
 },get highlighted(){return this.hasAttribute("highlighted")},set highlighted(e){e?this.setAttribute("highlighted",""):this.removeAttribute("highlighted");
-},_onLabelChange:function(){this["#label"].textContent=this.label},_onStateChange:function(){
+},get disabled(){return this.hasAttribute("disabled")},set disabled(e){e?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},_onLabelAttributeChange:function(){this["#label"].textContent=this.label},_onStateAttributeChange:function(){
 "selected"===this.state?(this["#selected-state-icon"].removeAttribute("hidden"),this["#toggled-state-icon"].setAttribute("hidden","")):"toggled"===this.state?(this["#selected-state-icon"].setAttribute("hidden",""),
 this["#toggled-state-icon"].removeAttribute("hidden")):(this["#selected-state-icon"].setAttribute("hidden",""),
-this["#toggled-state-icon"].setAttribute("hidden",""))},_onShortcutChange:function(){
+this["#toggled-state-icon"].setAttribute("hidden",""))},_onShortcutAttributeChange:function(){
 var e=this.userShortcut||this.shortcut||null;e?this["#shortcut"].textContent=e.toDisplayString():this["#shortcut"].textContent="";
 }},{},e)}(HTMLElement),o=e("bx-menuitem",s);return{get default(){return o}}}),System.registerModule("elements/bx-messagebox",[],function(){
 "use strict";System.get("elements/bx-button");var e=System.get("utils/dom"),t=e.createElement,n=e.registerElement,r=System.get("utils/time").sleep,a="images/icons.svg#warning",i={
 message:"Sample message",detail:"",buttons:["Confirm","Cancel"]},s='\n  <style>@import url("stylesheets/bx-messagebox.css");</style>\n\n  <div id="inner">\n    <svg id="icon" viewBox="0 0 100 100"><use xlink:href="'+a+'" width="100" height="100"></use></svg>\n\n    <div id="headers">\n      <h1 id="message"></h1>\n      <h2 id="detail"></h2>\n    </div>\n  </div>\n\n  <div id="buttons"></div>\n',o=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
-createdCallback:function(){var e=this;this._shadowRoot=this.createShadowRoot({mode:"closed"
-}),this._shadowRoot.innerHTML=s;var t=!0,n=!1,r=void 0;try{for(var a=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
+createdCallback:function(){var e=this;this.tabIndex=1,this._shadowRoot=this.createShadowRoot({
+mode:"closed"}),this._shadowRoot.innerHTML=s;var t=!0,n=!1,r=void 0;try{for(var a=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
 var o=a.value;this["#"+o.id]=o}}catch(l){n=!0,r=l}finally{try{t||null==i["return"]||i["return"]();
-}finally{if(n)throw r}}this.tabIndex=1,this["#buttons"].addEventListener("click",function(t){
-return e._onButtonClick(t)}),this.addEventListener("keydown",function(t){return e._onKeyDown(t);
-})},showModal:function(){var e=void 0!==arguments[0]?arguments[0]:i,r=e.message||i.message,a=e.detail||i.detail;
+}finally{if(n)throw r}}this["#buttons"].addEventListener("click",function(t){return e._onButtonClick(t);
+}),this.addEventListener("keydown",function(t){return e._onKeyDown(t)})},showModal:function(){
+var e=void 0!==arguments[0]?arguments[0]:i,r=e.message||i.message,a=e.detail||i.detail;
 e.buttons||i.buttons;this["#message"].innerHTML=r,this["#detail"].innerHTML=a,this["#buttons"].innerHTML="";
 for(var s=0;s<e.buttons.length;s+=1){var o=t("bx-button");o.value=s,o.label=e.buttons[s],
 o.skin="bx-messagebox",this["#buttons"].append(o)}this["#buttons"].lastElementChild&&this["#buttons"].lastElementChild.setAttribute("default",""),
@@ -993,19 +1012,21 @@ function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $t
 createdCallback:function(){var e=this;this._shadowRoot=this.createShadowRoot({mode:"closed"
 }),this._shadowRoot.innerHTML=t;var n=!0,r=!1,a=void 0;try{for(var i=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(n=(i=s.next()).done);n=!0){
 var o=i.value;this["#"+o.id]=o}}catch(l){r=!0,a=l}finally{try{n||null==s["return"]||s["return"]();
-}finally{if(r)throw a}}this._shadowRoot.addEventListener("mousedown",function(t){
+}finally{if(r)throw a}}var u=!0,c=!1,d=void 0;try{for(var h=void 0,b=this.attributes[Symbol.iterator]();!(u=(h=b.next()).done);u=!0){
+var m=h.value;this.attributeChangedCallback(m.name)}}catch(f){c=!0,d=f}finally{try{
+u||null==b["return"]||b["return"]()}finally{if(c)throw d}}this._shadowRoot.addEventListener("mousedown",function(t){
 return e._onShadowRootMouseDown(t)}),this["#close-button"].addEventListener("click",function(t){
-return e._onCloseButtonClick(t)}),this._onLabelChange(),this._onEditedChange(),this._onDisabledChange();
-},attachedCallback:function(){this.dispatchEvent(new CustomEvent("tabopen",{bubbles:!0,
-detail:this}))},detachedCallback:function(){this.dispatchEvent(new CustomEvent("tabclose",{
-bubbles:!0,detail:this}))},attributeChangedCallback:function(e,t,n){t!==n&&("label"===e?this._onLabelChange():"edited"===e?this._onEditedChange():"disabled"===e&&this._onDisabledChange());
+return e._onCloseButtonClick(t)})},attachedCallback:function(){this.dispatchEvent(new CustomEvent("tabopen",{
+bubbles:!0,detail:this}))},detachedCallback:function(){this.dispatchEvent(new CustomEvent("tabclose",{
+bubbles:!0,detail:this}))},attributeChangedCallback:function(e){"label"===e?this._onLabelChange():"edited"===e?this._onEditedChange():"disabled"===e&&this._onDisabledChange();
 },get label(){return this.hasAttribute("label")?this.getAttribute("label"):""},set label(e){
 this.setAttribute("label",e)},get edited(){return this.hasAttribute("edited")},set edited(e){
 e?this.setAttribute("edited",""):this.removeAttribute("edited")},get highlighted(){
 return this.hasAttribute("highlighted")},set highlighted(e){e?this.setAttribute("highlighted",""):this.removeAttribute("highlighted");
 },get href(){return this.hasAttribute("href")?this.getAttribute("href"):""},set href(e){
-e?this.setAttribute("href",e):this.removeAttribute("href")},_onShadowRootMouseDown:function(e){
-0===e.button&&e.target!==this["#close-button"]&&e.target.disabled===!1&&this.dispatchEvent(new CustomEvent("tabdown",{
+e?this.setAttribute("href",e):this.removeAttribute("href")},get disabled(){return this.hasAttribute("disabled");
+},set disabled(e){e===!0?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},_onShadowRootMouseDown:function(e){0===e.button&&e.target!==this["#close-button"]&&this.disabled===!1&&this.dispatchEvent(new CustomEvent("tabdown",{
 bubbles:!0,detail:this}))},_onCloseButtonClick:function(e){0===e.button&&this.dispatchEvent(new CustomEvent("tabcloseintent",{
 bubbles:!0,detail:this}))},_onLabelChange:function(){this["#label"].textContent=this.label;
 },_onEditedChange:function(){this["#close-button"].icon=this.edited?"close-edited":"close";
@@ -1020,24 +1041,26 @@ var s=a.value;this["#"+s.id]=s}}catch(o){n=!0,r=o}finally{try{t||null==i["return
 }finally{if(n)throw r}}this.addEventListener("tabcloseintent",function(e){return e.stopPropagation();
 }),this.addEventListener("tabdown",function(t){return e._onTabDown(t)}),this._shadowRoot.addEventListener("mousedown",function(t){
 return e._onMouseDown(t)}),this["#new-tab-button"].addEventListener("click",function(t){
-return e._onNewTabButtonClick(t)})},openTab:function(){var e=t("bx-tab");return e.style.maxWidth="0px",
-e.style.order=this.childElementCount,this.append(e),r(50).then(function(){return e.style.maxWidth=null;
-}),e},closeTab:function(e){var t=this;return new Promise(function(n){var a,i,s,o,l,u,c,d,h,b,m,f,g,v,p;
-return $traceurRuntime.asyncWrap(function(_){for(;;)switch(_.state){case 0:if(a=t.querySelector("#"+e),
-i=a.getBoundingClientRect().width,s=t._getSlotForTab(a),a.isClosing=!0,s<t.childElementCount-1){
-o=!0,l=!1,u=void 0;try{for(c=void 0,d=t.children[Symbol.iterator]();!(o=(c=d.next()).done);o=!0)h=c.value,
+return e._onNewTabButtonClick(t)})},get disabled(){return this.hasAttribute("disabled");
+},set disabled(e){e===!0?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},openTab:function(){var e=t("bx-tab");return e.style.maxWidth="0px",e.style.order=this.childElementCount,
+this.append(e),r(50).then(function(){return e.style.maxWidth=null}),e},closeTab:function(e){
+var t=this;return new Promise(function(n){var a,i,s,o,l,u,c,d,h,b,m,f,v,g,p;return $traceurRuntime.asyncWrap(function(_){
+for(;;)switch(_.state){case 0:if(a=t.querySelector("#"+e),i=a.getBoundingClientRect().width,
+s=t._getSlotForTab(a),a.isClosing=!0,s<t.childElementCount-1){o=!0,l=!1,u=void 0;try{
+for(c=void 0,d=t.children[Symbol.iterator]();!(o=(c=d.next()).done);o=!0)h=c.value,
 h.isClosing||(h.style.transition="none",h.style.maxWidth=i+"px")}catch(w){l=!0,u=w;
 }finally{try{o||null==d["return"]||d["return"]()}finally{if(l)throw u}}}a.style.transition=null,
 a.style.maxWidth="0px",a.style.pointerEvents="none",t._waitingForTabToClose=!0,_.state=4;
 break;case 4:return void Promise.resolve(r(300)).then(_.createCallback(2),_.errback);
 case 2:a.remove(),t._waitingForTabToClose=!1,delete a.isClosing,t._waitingForMouseMoveAfterClosingTab||(t._waitingForMouseMoveAfterClosingTab=!0,
-g=null,v=null,p=function(){window.removeEventListener("mousemove",b),window.removeEventListener("mouseout",m),
+v=null,g=null,p=function(){window.removeEventListener("mousemove",b),window.removeEventListener("mouseout",m),
 window.removeEventListener("blur",f),t._waitingForMouseMoveAfterClosingTab=!1;var e=!0,r=!1,a=void 0;
 try{for(var i=void 0,s=t.children[Symbol.iterator]();!(e=(i=s.next()).done);e=!0){
 var o=i.value;o.style.transition=null,o.style.maxWidth=null,o.style.order=t._getSlotForTab(o);
 }}catch(l){r=!0,a=l}finally{try{e||null==s["return"]||s["return"]()}finally{if(r)throw a;
-}}n()},window.addEventListener("mousemove",b=function(e){return null===g&&null===v?(g=e.clientX,
-void(v=e.clientY)):void(e.clientX>=g-3&&e.clientX<=g+3&&e.clientY>=v-3&&e.clientY<=v+3||p());
+}}n()},window.addEventListener("mousemove",b=function(e){return null===v&&null===g?(v=e.clientX,
+void(g=e.clientY)):void(e.clientX>=v-3&&e.clientX<=v+3&&e.clientY>=g-3&&e.clientY<=g+3||p());
 }),window.addEventListener("mouseout",m=function(e){null===e.toElement&&p()}),window.addEventListener("blur",f=function(){
 p()})),_.state=-2;break;default:return _.end()}},this)})},highlightTab:function(e){
 var t=this.querySelector("bx-tab#"+e),n=this.querySelector("bx-tab[highlighted]");
@@ -1048,16 +1071,16 @@ var l=i.value;l.style.order=this._getSlotForTab(l)}}catch(u){r=!0,a=u}finally{tr
 n||null==o["return"]||o["return"]()}finally{if(r)throw a}}if(0===s(e.style.order)){
 var c=!0,d=!1,h=void 0;try{for(var b=void 0,m=this.children[Symbol.iterator]();!(c=(b=m.next()).done);c=!0){
 var f=b.value;f===e?f.style.order=this.childElementCount-1:f.style.order=s(f.style.order)-1;
-}}catch(g){d=!0,h=g}finally{try{c||null==m["return"]||m["return"]()}finally{if(d)throw h;
-}}}else{var v=this._getTabForSlot(t-1);v.style.order=s(v.style.order)+1,e.style.order=s(e.style.order)-1;
+}}catch(v){d=!0,h=v}finally{try{c||null==m["return"]||m["return"]()}finally{if(d)throw h;
+}}}else{var g=this._getTabForSlot(t-1);g.style.order=s(g.style.order)+1,e.style.order=s(e.style.order)-1;
 }},moveHighlightedTabRight:function(){var e=this.querySelector("bx-tab[highlighted]"),t=this._getSlotForTab(e),n=!0,r=!1,a=void 0;
 try{for(var i=void 0,o=this.children[Symbol.iterator]();!(n=(i=o.next()).done);n=!0){
 var l=i.value;l.style.order=this._getSlotForTab(l)}}catch(u){r=!0,a=u}finally{try{
 n||null==o["return"]||o["return"]()}finally{if(r)throw a}}if(s(e.style.order)===this.childElementCount-1){
 var c=!0,d=!1,h=void 0;try{for(var b=void 0,m=this.children[Symbol.iterator]();!(c=(b=m.next()).done);c=!0){
-var f=b.value;f===e?f.style.order=0:f.style.order=s(f.style.order)+1}}catch(g){d=!0,
-h=g}finally{try{c||null==m["return"]||m["return"]()}finally{if(d)throw h}}}else{var v=this._getTabForSlot(t+1);
-v.style.order=s(v.style.order)-1,e.style.order=s(e.style.order)+1}},getTabsByScreenPosition:function(){
+var f=b.value;f===e?f.style.order=0:f.style.order=s(f.style.order)+1}}catch(v){d=!0,
+h=v}finally{try{c||null==m["return"]||m["return"]()}finally{if(d)throw h}}}else{var g=this._getTabForSlot(t+1);
+g.style.order=s(g.style.order)-1,e.style.order=s(e.style.order)+1}},getTabsByScreenPosition:function(){
 var e={slot:Symbol()},t=!0,n=!1,r=void 0;try{for(var a=void 0,i=this.children[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
 var s=a.value;s[e.slot]=this._getSlotForTab(s)}}catch(o){n=!0,r=o}finally{try{t||null==i["return"]||i["return"]();
 }finally{if(n)throw r}}return $traceurRuntime.spread(this.children).sort(function(t,n){
@@ -1078,13 +1101,13 @@ h!==t&&(h.style.transition="transform 0.15s ease-out")}}catch(m){l=!0,u=m}finall
 try{o||null==d["return"]||d["return"]()}finally{if(l)throw u}}var f=function(e,r){
 if(r>e+1)for(var i=e;r>i;i+=1)f(i,i+1);else if(e-1>r)for(var o=e;o>r;o-=1)f(o,o-1);else{
 var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=n.children[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
-var b=d.value;if(b!==t){b[s.slot]===r&&(b[s.slot]=e);for(var m=-b[s.flexOffset],g=0;g<b[s.slot];g+=1)m+=a;
-0===m?b.style.transform=null:b.style.transform="translate("+m+"px)"}}}catch(v){u=!0,
-c=v}finally{try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}}},g=function(r){
+var b=d.value;if(b!==t){b[s.slot]===r&&(b[s.slot]=e);for(var m=-b[s.flexOffset],v=0;v<b[s.slot];v+=1)m+=a;
+0===m?b.style.transform=null:b.style.transform="translate("+m+"px)"}}}catch(g){u=!0,
+c=g}finally{try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}}},v=function(r){
 var o=r.clientX-e.clientX;o+t[s.flexOffset]<=0?o=-t[s.flexOffset]:o+t[s.flexOffset]+a>i&&(o=i-t[s.flexOffset]-a),
 t.style.transform="translate("+o+"px)";var l=n._getSlotForTab(t);if(l!==t[s.slot]){
-var u=t[s.slot];t[s.slot]=l,f(u,t[s.slot])}},v=function(e){var i,o,l,u,c,d,h,b;return $traceurRuntime.asyncWrap(function(e){
-for(;;)switch(e.state){case 0:for(document.removeEventListener("mousemove",g),document.removeEventListener("mouseup",v),
+var u=t[s.slot];t[s.slot]=l,f(u,t[s.slot])}},g=function(e){var i,o,l,u,c,d,h,b;return $traceurRuntime.asyncWrap(function(e){
+for(;;)switch(e.state){case 0:for(document.removeEventListener("mousemove",v),document.removeEventListener("mouseup",g),
 i=-t[s.flexOffset],o=0;o<t[s.slot];o+=1)i+=a;t.style.transition="transform 0.15s ease-out",
 t.style.transform="translate("+i+"px)",t[s.initialSlot]!==t[s.slot]&&n.dispatchEvent(new CustomEvent("tabslotchange",{
 detail:{tab:t,slot:t[s.slot]}})),e.state=4;break;case 4:return void Promise.resolve(r(150)).then(e.createCallback(2),e.errback);
@@ -1092,7 +1115,7 @@ case 2:t.style.zIndex=null,n["#new-tab-button"].style.opacity=null,l=!0,u=!1,c=v
 try{for(d=void 0,h=n.children[Symbol.iterator]();!(l=(d=h.next()).done);l=!0)b=d.value,
 b.style.transition=null,b.style.transform=null,b.style.order=b[s.slot]}catch(m){u=!0,
 c=m}finally{try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}e.state=-2;
-break;default:return e.end()}},this)};document.addEventListener("mouseup",v),document.addEventListener("mousemove",g);
+break;default:return e.end()}},this)};document.addEventListener("mouseup",g),document.addEventListener("mousemove",v);
 },_onNewTabButtonClick:function(e){0===e.button&&this.dispatchEvent(new CustomEvent("tabopenintent"));
 },_getSlotForTab:function(e){var t=e.getBoundingClientRect();if(t.left<t.width/2)return 0;
 for(var n=t.width/2,r=1;o>r;r+=1){if(t.left>=n&&t.left<n+t.width)return r>this.childElementCount-1?this.childElementCount-1:r;
@@ -1108,21 +1131,21 @@ throw new Error("Cannot find module '"+s+"'")}var u=n[s]={exports:{}};t[s][0].ca
 var n=t[s][1][e];return a(n?n:e)},u,u.exports,e,t,n,r)}return n[s].exports}for(var i="function"==typeof require&&require,s=0;s<r.length;s++)a(r[s]);
 return a}({1:[function(e,t,n){var r=e("./lib/zlib/utils").assign,a=e("./lib/deflate"),i=e("./lib/inflate"),s=e("./lib/zlib/constants"),o={};
 r(o,a,i,s),t.exports=o},{"./lib/deflate":2,"./lib/inflate":3,"./lib/zlib/constants":5,
-"./lib/zlib/utils":13}],2:[function(e,t,n){function r(e,t){var n=new v(t);if(n.push(e,!0),
+"./lib/zlib/utils":13}],2:[function(e,t,n){function r(e,t){var n=new g(t);if(n.push(e,!0),
 n.err)throw n.msg;return n.result}function a(e,t){return t=t||{},t.raw=!0,r(e,t)}
-function i(e,t){return t=t||{},t.gzip=!0,r(e,t)}var s=e("./zlib/deflate.js"),o=e("./zlib/utils"),l=e("./zlib/messages"),u=e("./zlib/zstream"),c=0,d=4,h=0,b=1,m=-1,f=0,g=8,v=function(e){
-this.options=o.assign({level:m,method:g,chunkSize:16384,windowBits:15,memLevel:8,
+function i(e,t){return t=t||{},t.gzip=!0,r(e,t)}var s=e("./zlib/deflate.js"),o=e("./zlib/utils"),l=e("./zlib/messages"),u=e("./zlib/zstream"),c=0,d=4,h=0,b=1,m=-1,f=0,v=8,g=function(e){
+this.options=o.assign({level:m,method:v,chunkSize:16384,windowBits:15,memLevel:8,
 strategy:f},e||{});var t=this.options;t.raw&&t.windowBits>0?t.windowBits=-t.windowBits:t.gzip&&t.windowBits>0&&t.windowBits<16&&(t.windowBits+=16),
 this.err=0,this.msg="",this.ended=!1,this.chunks=[],this.strm=new u;var n=s.deflateInit2(this.strm,t.level,t.method,t.windowBits,t.memLevel,t.strategy);
-if(n!==h)throw new Error(l[n])};v.prototype.push=function(e,t){var n,r,a=this.strm,i=this.options.chunkSize;
+if(n!==h)throw new Error(l[n])};g.prototype.push=function(e,t){var n,r,a=this.strm,i=this.options.chunkSize;
 if(this.ended)return!1;r=t===~~t?t:t===!0?d:c,a.next_in=e,a.next_in_index=0,a.avail_in=a.next_in.length,
 a.next_out=new o.Buf8(i);do{if(a.avail_out=this.options.chunkSize,a.next_out_index=0,
 n=s.deflate(a,r),n!==b&&n!==h)return this.onEnd(n),this.ended=!0,!1;a.next_out_index&&(this.onData(o.shrinkBuf(a.next_out,a.next_out_index)),
 (a.avail_in>0||0===a.avail_out)&&(a.next_out=new o.Buf8(this.options.chunkSize)));
 }while(a.avail_in>0||0===a.avail_out);return r===d?(n=s.deflateEnd(this.strm),this.onEnd(n),
-this.ended=!0,n===h):!0},v.prototype.onData=function(e){this.chunks.push(e)},v.prototype.onEnd=function(e){
+this.ended=!0,n===h):!0},g.prototype.onData=function(e){this.chunks.push(e)},g.prototype.onEnd=function(e){
 e===h&&(this.result=o.flattenChunks(this.chunks)),this.chunks=[],this.err=e,this.msg=this.strm.msg;
-},n.Deflate=v,n.deflate=r,n.deflateRaw=a,n.gzip=i},{"./zlib/deflate.js":7,"./zlib/messages":11,
+},n.Deflate=g,n.deflate=r,n.deflateRaw=a,n.gzip=i},{"./zlib/deflate.js":7,"./zlib/messages":11,
 "./zlib/utils":13,"./zlib/zstream":14}],3:[function(e,t,n){function r(e,t){var n=new c(t);
 if(n.push(e,!0),n.err)throw n.msg;return n.result}function a(e,t){return t=t||{},
 t.raw=!0,r(e,t)}var i=e("./zlib/inflate.js"),s=e("./zlib/utils"),o=e("./zlib/constants"),l=e("./zlib/messages"),u=e("./zlib/zstream"),c=function(e){
@@ -1171,12 +1194,12 @@ if(n=c(e.strm,e.window,e.strstart+e.lookahead,a),e.lookahead+=n,e.lookahead+e.in
 e.ins_h=e.window[i],e.ins_h=(e.ins_h<<e.hash_shift^e.window[i+1])&e.hash_mask;e.insert&&(e.ins_h=(e.ins_h<<e.hash_shift^e.window[i+se-1])&e.hash_mask,
 e.prev[i&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=i,i++,e.insert--,!(e.lookahead+e.insert<se)););
 }while(e.lookahead<le&&0!==e.strm.avail_in)}function b(e,t){var n=65535;for(n>e.pending_buf_size-5&&(n=e.pending_buf_size-5);;){
-if(e.lookahead<=1){if(h(e),0===e.lookahead&&t===P)return ve;if(0===e.lookahead)break;
+if(e.lookahead<=1){if(h(e),0===e.lookahead&&t===j)return ge;if(0===e.lookahead)break;
 }e.strstart+=e.lookahead,e.lookahead=0;var r=e.block_start+n;if((0===e.strstart||e.strstart>=r)&&(e.lookahead=e.strstart-r,
-e.strstart=r,o(e,!1),0===e.strm.avail_out))return ve;if(e.strstart-e.block_start>=e.w_size-le&&(o(e,!1),
-0===e.strm.avail_out))return ve}return e.insert=0,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.strstart>e.block_start&&(o(e,!1),
-0===e.strm.avail_out)?ve:ve}function m(e,t){for(var n,r;;){if(e.lookahead<le){if(h(e),
-e.lookahead<le&&t===P)return ve;if(0===e.lookahead)break}if(n=0,e.lookahead>=se&&(e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+se-1])&e.hash_mask,
+e.strstart=r,o(e,!1),0===e.strm.avail_out))return ge;if(e.strstart-e.block_start>=e.w_size-le&&(o(e,!1),
+0===e.strm.avail_out))return ge}return e.insert=0,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.strstart>e.block_start&&(o(e,!1),
+0===e.strm.avail_out)?ge:ge}function m(e,t){for(var n,r;;){if(e.lookahead<le){if(h(e),
+e.lookahead<le&&t===j)return ge;if(0===e.lookahead)break}if(n=0,e.lookahead>=se&&(e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+se-1])&e.hash_mask,
 n=e.prev[e.strstart&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=e.strstart),0!==n&&e.strstart-n<=e.w_size-le&&(e.match_length=d(e,n)),
 e.match_length>=se)if(r=R._tr_tally(e,e.strstart-e.match_start,e.match_length-se),
 e.lookahead-=e.match_length,e.match_length<=e.max_lazy_match&&e.lookahead>=se){e.match_length--;
@@ -1184,9 +1207,9 @@ do e.strstart++,e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+se-1])&e.hash
 n=e.prev[e.strstart&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=e.strstart;while(0!==--e.match_length);
 e.strstart++}else e.strstart+=e.match_length,e.match_length=0,e.ins_h=e.window[e.strstart],
 e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+1])&e.hash_mask;else r=R._tr_tally(e,0,e.window[e.strstart]),
-e.lookahead--,e.strstart++;if(r&&(o(e,!1),0===e.strm.avail_out))return ve}return e.insert=e.strstart<se-1?e.strstart:se-1,
-t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ve:pe;
-}function f(e,t){for(var n,r,a;;){if(e.lookahead<le){if(h(e),e.lookahead<le&&t===P)return ve;
+e.lookahead--,e.strstart++;if(r&&(o(e,!1),0===e.strm.avail_out))return ge}return e.insert=e.strstart<se-1?e.strstart:se-1,
+t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ge:pe;
+}function f(e,t){for(var n,r,a;;){if(e.lookahead<le){if(h(e),e.lookahead<le&&t===j)return ge;
 if(0===e.lookahead)break}if(n=0,e.lookahead>=se&&(e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+se-1])&e.hash_mask,
 n=e.prev[e.strstart&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=e.strstart),e.prev_length=e.match_length,
 e.prev_match=e.match_start,e.match_length=se-1,0!==n&&e.prev_length<e.max_lazy_match&&e.strstart-n<=e.w_size-le&&(e.match_length=d(e,n),
@@ -1194,24 +1217,24 @@ e.match_length<=5&&(e.strategy===N||e.match_length===se&&e.strstart-e.match_star
 e.prev_length>=se&&e.match_length<=e.prev_length){a=e.strstart+e.lookahead-se,r=R._tr_tally(e,e.strstart-1-e.prev_match,e.prev_length-se),
 e.lookahead-=e.prev_length-1,e.prev_length-=2;do++e.strstart<=a&&(e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+se-1])&e.hash_mask,
 n=e.prev[e.strstart&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=e.strstart);while(0!==--e.prev_length);
-if(e.match_available=0,e.match_length=se-1,e.strstart++,r&&(o(e,!1),0===e.strm.avail_out))return ve;
+if(e.match_available=0,e.match_length=se-1,e.strstart++,r&&(o(e,!1),0===e.strm.avail_out))return ge;
 }else if(e.match_available){if(r=R._tr_tally(e,0,e.window[e.strstart-1]),r&&o(e,!1),
-e.strstart++,e.lookahead--,0===e.strm.avail_out)return ve}else e.match_available=1,
+e.strstart++,e.lookahead--,0===e.strm.avail_out)return ge}else e.match_available=1,
 e.strstart++,e.lookahead--}return e.match_available&&(r=R._tr_tally(e,0,e.window[e.strstart-1]),
 e.match_available=0),e.insert=e.strstart<se-1?e.strstart:se-1,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),
-0===e.strm.avail_out)?ve:pe}function g(e,t){for(var n,r,a,i,s=e.window;;){if(e.lookahead<=oe){
-if(h(e),e.lookahead<=oe&&t===P)return ve;if(0===e.lookahead)break}if(e.match_length=0,
+0===e.strm.avail_out)?ge:pe}function v(e,t){for(var n,r,a,i,s=e.window;;){if(e.lookahead<=oe){
+if(h(e),e.lookahead<=oe&&t===j)return ge;if(0===e.lookahead)break}if(e.match_length=0,
 e.lookahead>=se&&e.strstart>0&&(a=e.strstart-1,r=s[a],r===s[++a]&&r===s[++a]&&r===s[++a])){
 i=e.strstart+oe;do;while(r===s[++a]&&r===s[++a]&&r===s[++a]&&r===s[++a]&&r===s[++a]&&r===s[++a]&&r===s[++a]&&r===s[++a]&&i>a);
 e.match_length=oe-(i-a),e.match_length>e.lookahead&&(e.match_length=e.lookahead)}
 if(e.match_length>=se?(n=R._tr_tally(e,1,e.match_length-se),e.lookahead-=e.match_length,
 e.strstart+=e.match_length,e.match_length=0):(n=R._tr_tally(e,0,e.window[e.strstart]),
-e.lookahead--,e.strstart++),n&&(o(e,!1),0===e.strm.avail_out))return ve}return e.insert=0,
-t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ve:pe;
-}function v(e,t){for(var n;;){if(0===e.lookahead&&(h(e),0===e.lookahead)){if(t===P)return ve;
+e.lookahead--,e.strstart++),n&&(o(e,!1),0===e.strm.avail_out))return ge}return e.insert=0,
+t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ge:pe;
+}function g(e,t){for(var n;;){if(0===e.lookahead&&(h(e),0===e.lookahead)){if(t===j)return ge;
 break}if(e.match_length=0,n=R._tr_tally(e,0,e.window[e.strstart]),e.lookahead--,e.strstart++,
-n&&(o(e,!1),0===e.strm.avail_out))return ve}return e.insert=0,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),
-0===e.strm.avail_out)?ve:pe}function p(e){e.window_size=2*e.w_size,i(e.head),e.max_lazy_match=S[e.level].max_lazy,
+n&&(o(e,!1),0===e.strm.avail_out))return ge}return e.insert=0,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),
+0===e.strm.avail_out)?ge:pe}function p(e){e.window_size=2*e.w_size,i(e.head),e.max_lazy_match=S[e.level].max_lazy,
 e.good_match=S[e.level].good_length,e.nice_match=S[e.level].nice_length,e.max_chain_length=S[e.level].max_chain,
 e.strstart=0,e.block_start=0,e.lookahead=0,e.insert=0,e.match_length=e.prev_length=se-1,
 e.match_available=0,e.ins_h=0}function _(){this.strm=null,this.status=0,this.pending_buf=null,
@@ -1229,7 +1252,7 @@ i(this.depth),this.l_buf=0,this.lit_bufsize=0,this.last_lit=0,this.d_buf=0,this.
 this.static_len=0,this.matches=0,this.insert=0,this.bi_buf=0,this.bi_valid=0,this.high_water=0;
 }function w(e){var t;return e&&e.state?(e.total_in=e.total_out=0,e.data_type=K,t=e.state,
 t.pending=0,t.pending_out=0,t.wrap<0&&(t.wrap=-t.wrap),t.status=t.wrap?ce:fe,e.adler=2===t.wrap?0:1,
-t.last_flush=P,R._tr_init(t),I):r(e,z)}function k(e){var t=w(e);return t===I&&p(e.state),
+t.last_flush=j,R._tr_init(t),I):r(e,z)}function k(e){var t=w(e);return t===I&&p(e.state),
 t}function y(e,t,n,a,i,s){if(!e)return r(e,z);var o=1;if(t===$&&(t=6),0>a?(o=0,a=-a):a>15&&(o=2,
 a-=16),1>i||i>X||n!==G||8>a||a>15||0>t||t>9||0>s||s>Z)return r(e,z);8===a&&(a=9);var l=new _;
 return e.state=l,l.strm=e,l.wrap=o,l.gzhead=null,l.w_bits=a,l.w_size=1<<l.w_bits,
@@ -1238,76 +1261,76 @@ l.hash_shift=~~((l.hash_bits+se-1)/se),l.window=new A.Buf8(2*l.w_size),l.head=ne
 l.prev=new A.Buf16(l.w_size),l.high_water=0,l.lit_bufsize=1<<i+6,l.pending_buf_size=4*l.lit_bufsize,
 l.pending_buf=new A.Buf8(l.pending_buf_size),l.d_buf=l.lit_bufsize>>1,l.l_buf=3*l.lit_bufsize,
 l.level=t,l.strategy=s,l.method=n,k(e)}function x(e,t){return y(e,t,G,Y,Q,V)}function C(e,t){
-var n,o;if(!e||!e.state||t>O||0>t)return r(e,z);if(o=e.state,!e.next_out||!e.next_in&&0!==e.avail_in||o.status===ge&&t!==D)return r(e,0===e.avail_out?F:z);
+var n,o;if(!e||!e.state||t>O||0>t)return r(e,z);if(o=e.state,!e.next_out||!e.next_in&&0!==e.avail_in||o.status===ve&&t!==D)return r(e,0===e.avail_out?F:z);
 if(o.strm=e,n=o.last_flush,o.last_flush=t,o.status===ce)if(2===o.wrap){if(e.adler=0,
 l(o,31),l(o,139),l(o,8),o.gzhead)throw new Error("Custom GZIP headers not supported");
 l(o,0),l(o,0),l(o,0),l(o,0),l(o,0),l(o,9===o.level?2:o.strategy>=q||o.level<2?4:0),
 l(o,ke),o.status=fe}else{var c=G+(o.w_bits-8<<4)<<8,d=-1;d=o.strategy>=q||o.level<2?0:o.level<6?1:6===o.level?2:3,
 c|=d<<6,0!==o.strstart&&(c|=ue),c+=31-c%31,o.status=fe,u(o,c),0!==o.strstart&&(u(o,e.adler>>>16),
 u(o,65535&e.adler)),e.adler=1}if(0!==o.pending){if(s(e),0===e.avail_out)return o.last_flush=-1,
-I}else if(0===e.avail_in&&a(t)<=a(n)&&t!==D)return r(e,F);if(o.status===ge&&0!==e.avail_in)return r(e,F);
-if(0!==e.avail_in||0!==o.lookahead||t!==P&&o.status!==ge){var h=o.strategy===q?v(o,t):o.strategy===H?g(o,t):S[o.level].func(o,t);
-if((h===_e||h===we)&&(o.status=ge),h===ve||h===_e)return 0===e.avail_out&&(o.last_flush=-1),
-I;if(h===pe&&(t===j?R._tr_align(o):t!==O&&(R._tr_stored_block(o,0,0,!1),t===W&&(i(o.head),
+I}else if(0===e.avail_in&&a(t)<=a(n)&&t!==D)return r(e,F);if(o.status===ve&&0!==e.avail_in)return r(e,F);
+if(0!==e.avail_in||0!==o.lookahead||t!==j&&o.status!==ve){var h=o.strategy===q?g(o,t):o.strategy===H?v(o,t):S[o.level].func(o,t);
+if((h===_e||h===we)&&(o.status=ve),h===ge||h===_e)return 0===e.avail_out&&(o.last_flush=-1),
+I;if(h===pe&&(t===P?R._tr_align(o):t!==O&&(R._tr_stored_block(o,0,0,!1),t===W&&(i(o.head),
 0===o.lookahead&&(o.strstart=0,o.block_start=0,o.insert=0))),s(e),0===e.avail_out))return o.last_flush=-1,
 I}return t!==D?I:o.wrap<=0?B:(2===o.wrap?(l(o,255&e.adler),l(o,e.adler>>8&255),l(o,e.adler>>16&255),
 l(o,e.adler>>24&255),l(o,255&e.total_in),l(o,e.total_in>>8&255),l(o,e.total_in>>16&255),
 l(o,e.total_in>>24&255)):(u(o,e.adler>>>16),u(o,65535&e.adler)),s(e),o.wrap>0&&(o.wrap=-o.wrap),
-0!==o.pending?I:B)}function E(e){var t=e.state.status;return t!==ce&&t!==de&&t!==he&&t!==be&&t!==me&&t!==fe&&t!==ge?r(e,z):(e.state=null,
-t===fe?r(e,U):I)}var S,A=e("./utils"),R=e("./trees"),T=e("./adler32"),L=e("./crc32"),M=e("./messages"),P=0,j=1,W=3,D=4,O=5,I=0,B=1,z=-2,U=-3,F=-5,$=-1,N=1,q=2,H=3,Z=4,V=0,K=2,G=8,X=9,Y=15,Q=8,J=29,ee=256,te=ee+1+J,ne=30,re=19,ae=2*te+1,ie=15,se=3,oe=258,le=oe+se+1,ue=32,ce=42,de=69,he=73,be=91,me=103,fe=113,ge=666,ve=1,pe=2,_e=3,we=4,ke=3,ye=function(e,t,n,r,a){
+0!==o.pending?I:B)}function E(e){var t=e.state.status;return t!==ce&&t!==de&&t!==he&&t!==be&&t!==me&&t!==fe&&t!==ve?r(e,z):(e.state=null,
+t===fe?r(e,U):I)}var S,A=e("./utils"),R=e("./trees"),T=e("./adler32"),L=e("./crc32"),M=e("./messages"),j=0,P=1,W=3,D=4,O=5,I=0,B=1,z=-2,U=-3,F=-5,$=-1,N=1,q=2,H=3,Z=4,V=0,K=2,G=8,X=9,Y=15,Q=8,J=29,ee=256,te=ee+1+J,ne=30,re=19,ae=2*te+1,ie=15,se=3,oe=258,le=oe+se+1,ue=32,ce=42,de=69,he=73,be=91,me=103,fe=113,ve=666,ge=1,pe=2,_e=3,we=4,ke=3,ye=function(e,t,n,r,a){
 this.good_length=e,this.max_lazy=t,this.nice_length=n,this.max_chain=r,this.func=a;
 };S=[new ye(0,0,0,0,b),new ye(4,4,8,4,m),new ye(4,5,16,8,m),new ye(4,6,32,32,m),new ye(4,4,16,16,f),new ye(8,16,32,32,f),new ye(8,16,128,128,f),new ye(8,32,128,256,f),new ye(32,128,258,1024,f),new ye(32,258,258,4096,f)],
 n.deflateInit=x,n.deflateInit2=y,n.deflateReset=k,n.deflate=C,n.deflateEnd=E,n.deflateInfo="pako deflate (from Nodeca project)";
 },{"./adler32":4,"./crc32":6,"./messages":11,"./trees":12,"./utils":13}],8:[function(e,t,n){
-var r=30,a=12;t.exports=function(e,t){var n,i,s,o,l,u,c,d,h,b,m,f,g,v,p,_,w,k,y,x,C,E,S,A,R;
+var r=30,a=12;t.exports=function(e,t){var n,i,s,o,l,u,c,d,h,b,m,f,v,g,p,_,w,k,y,x,C,E,S,A,R;
 n=e.state,i=e.next_in_index,A=e.next_in,s=i+(e.avail_in-5),o=e.next_out_index,R=e.next_out,
 l=o-(t-e.avail_out),u=o+(e.avail_out-257),c=n.dmax,d=n.wsize,h=n.whave,b=n.wnext,
-m=n.window,f=n.hold,g=n.bits,v=n.lencode,p=n.distcode,_=(1<<n.lenbits)-1,w=(1<<n.distbits)-1;
-e:do{15>g&&(f+=A[i++]<<g,g+=8,f+=A[i++]<<g,g+=8),k=v[f&_];t:for(;;){if(y=k>>>24,f>>>=y,
-g-=y,y=k>>>16&255,0===y)R[o++]=65535&k;else{if(!(16&y)){if(0===(64&y)){k=v[(65535&k)+(f&(1<<y)-1)];
+m=n.window,f=n.hold,v=n.bits,g=n.lencode,p=n.distcode,_=(1<<n.lenbits)-1,w=(1<<n.distbits)-1;
+e:do{15>v&&(f+=A[i++]<<v,v+=8,f+=A[i++]<<v,v+=8),k=g[f&_];t:for(;;){if(y=k>>>24,f>>>=y,
+v-=y,y=k>>>16&255,0===y)R[o++]=65535&k;else{if(!(16&y)){if(0===(64&y)){k=g[(65535&k)+(f&(1<<y)-1)];
 continue t}if(32&y){n.mode=a;break e}e.msg="invalid literal/length code",n.mode=r;
-break e}x=65535&k,y&=15,y&&(y>g&&(f+=A[i++]<<g,g+=8),x+=f&(1<<y)-1,f>>>=y,g-=y),15>g&&(f+=A[i++]<<g,
-g+=8,f+=A[i++]<<g,g+=8),k=p[f&w];n:for(;;){if(y=k>>>24,f>>>=y,g-=y,y=k>>>16&255,!(16&y)){
+break e}x=65535&k,y&=15,y&&(y>v&&(f+=A[i++]<<v,v+=8),x+=f&(1<<y)-1,f>>>=y,v-=y),15>v&&(f+=A[i++]<<v,
+v+=8,f+=A[i++]<<v,v+=8),k=p[f&w];n:for(;;){if(y=k>>>24,f>>>=y,v-=y,y=k>>>16&255,!(16&y)){
 if(0===(64&y)){k=p[(65535&k)+(f&(1<<y)-1)];continue n}e.msg="invalid distance code",
-n.mode=r;break e}if(C=65535&k,y&=15,y>g&&(f+=A[i++]<<g,g+=8,y>g&&(f+=A[i++]<<g,g+=8)),
+n.mode=r;break e}if(C=65535&k,y&=15,y>v&&(f+=A[i++]<<v,v+=8,y>v&&(f+=A[i++]<<v,v+=8)),
 C+=f&(1<<y)-1,C>c){e.msg="invalid distance too far back",n.mode=r;break e}if(f>>>=y,
-g-=y,y=o-l,C>y){if(y=C-y,y>h&&n.sane){e.msg="invalid distance too far back",n.mode=r;
+v-=y,y=o-l,C>y){if(y=C-y,y>h&&n.sane){e.msg="invalid distance too far back",n.mode=r;
 break e}if(E=0,S=m,0===b){if(E+=d-y,x>y){x-=y;do R[o++]=m[E++];while(--y);E=o-C,S=R;
 }}else if(y>b){if(E+=d+b-y,y-=b,x>y){x-=y;do R[o++]=m[E++];while(--y);if(E=0,x>b){
 y=b,x-=y;do R[o++]=m[E++];while(--y);E=o-C,S=R}}}else if(E+=b-y,x>y){x-=y;do R[o++]=m[E++];while(--y);
 E=o-C,S=R}for(;x>2;)R[o++]=S[E++],R[o++]=S[E++],R[o++]=S[E++],x-=3;x&&(R[o++]=S[E++],
 x>1&&(R[o++]=S[E++]))}else{E=o-C;do R[o++]=R[E++],R[o++]=R[E++],R[o++]=R[E++],x-=3;while(x>2);
-x&&(R[o++]=R[E++],x>1&&(R[o++]=R[E++]))}break}}break}}while(s>i&&u>o);x=g>>3,i-=x,
-g-=x<<3,f&=(1<<g)-1,e.next_in_index=i,e.next_out_index=o,e.avail_in=s>i?5+(s-i):5-(i-s),
-e.avail_out=u>o?257+(u-o):257-(o-u),n.hold=f,n.bits=g}},{}],9:[function(e,t,n){function r(e){
+x&&(R[o++]=R[E++],x>1&&(R[o++]=R[E++]))}break}}break}}while(s>i&&u>o);x=v>>3,i-=x,
+v-=x<<3,f&=(1<<v)-1,e.next_in_index=i,e.next_out_index=o,e.avail_in=s>i?5+(s-i):5-(i-s),
+e.avail_out=u>o?257+(u-o):257-(o-u),n.hold=f,n.bits=v}},{}],9:[function(e,t,n){function r(e){
 return(e>>>24&255)+(e>>>8&65280)+((65280&e)<<8)+((255&e)<<24)}function a(){this.mode=0,
 this.last=!1,this.wrap=0,this.havedict=!1,this.flags=0,this.dmax=0,this.check=0,this.total=0,
 this.head=null,this.wbits=0,this.wsize=0,this.whave=0,this.wnext=0,this.window=null,
 this.hold=0,this.bits=0,this.length=0,this.offset=0,this.extra=0,this.lencode=null,
 this.distcode=null,this.lenbits=0,this.distbits=0,this.ncode=0,this.nlen=0,this.ndist=0,
 this.have=0,this.next=null,this.next_index=0,this.lens=new p.Buf16(320),this.work=new p.Buf16(288),
-this.codes=new p.Buf32(ve),this.sane=0,this.back=0,this.was=0}function i(e,t,n,r,a,i,s,o){
+this.codes=new p.Buf32(ge),this.sane=0,this.back=0,this.was=0}function i(e,t,n,r,a,i,s,o){
 this.type=e,this.lens=t,this.lens_index=n,this.codes=r,this.table=a,this.table_index=i,
 this.bits=s,this.work=o}function s(e){var t;return e&&e.state?(t=e.state,e.total_in=e.total_out=t.total=0,
 t.wrap&&(e.adler=1&t.wrap),t.mode=I,t.last=0,t.havedict=0,t.dmax=32768,t.head=null,
-t.hold=0,t.bits=0,t.lencode=new p.Buf32(ve),t.distcode=new p.Buf32(ve),t.sane=1,t.back=-1,
-T):P}function o(e){var t;return e&&e.state?(t=e.state,t.wsize=0,t.whave=0,t.wnext=0,
-s(e)):P}function l(e,t){var n,r;return e&&e.state?(r=e.state,0>t?(n=0,t=-t):(n=(t>>4)+1,
-48>t&&(t&=15)),t&&(8>t||t>15)?P:(null!==r.window&&r.wbits!==t&&(r.window=null),r.wrap=n,
-r.wbits=t,o(e))):P}function u(e,t){var n,r;return e?(r=new a,e.state=r,r.window=null,
-n=l(e,t),n!==T&&(e.state=null),n):P}function c(e){return u(e,_e)}function d(e,t,n){
-var r;return e&&e.state?(r=e.state,0>t?(r.hold=0,r.bits=0,T):t>16||r.bits+t>32?P:(n&=(1<<t)-1,
-r.hold+=n<<r.bits,r.bits+=t,T)):P}function h(e){if(we){var t,n;for(g=new p.Buf32(512),
-v=new p.Buf32(32),t=0;144>t;)e.lens[t++]=8;for(;256>t;)e.lens[t++]=9;for(;280>t;)e.lens[t++]=7;
-for(;288>t;)e.lens[t++]=8;for(n=9,y(new i(C,e.lens,0,288,g,0,n,e.work)),t=0;32>t;)e.lens[t++]=5;
-n=5,y(new i(E,e.lens,0,32,v,0,n,e.work)),we=!1}e.lencode=g,e.lenbits=9,e.distcode=v,
+t.hold=0,t.bits=0,t.lencode=new p.Buf32(ge),t.distcode=new p.Buf32(ge),t.sane=1,t.back=-1,
+T):j}function o(e){var t;return e&&e.state?(t=e.state,t.wsize=0,t.whave=0,t.wnext=0,
+s(e)):j}function l(e,t){var n,r;return e&&e.state?(r=e.state,0>t?(n=0,t=-t):(n=(t>>4)+1,
+48>t&&(t&=15)),t&&(8>t||t>15)?j:(null!==r.window&&r.wbits!==t&&(r.window=null),r.wrap=n,
+r.wbits=t,o(e))):j}function u(e,t){var n,r;return e?(r=new a,e.state=r,r.window=null,
+n=l(e,t),n!==T&&(e.state=null),n):j}function c(e){return u(e,_e)}function d(e,t,n){
+var r;return e&&e.state?(r=e.state,0>t?(r.hold=0,r.bits=0,T):t>16||r.bits+t>32?j:(n&=(1<<t)-1,
+r.hold+=n<<r.bits,r.bits+=t,T)):j}function h(e){if(we){var t,n;for(v=new p.Buf32(512),
+g=new p.Buf32(32),t=0;144>t;)e.lens[t++]=8;for(;256>t;)e.lens[t++]=9;for(;280>t;)e.lens[t++]=7;
+for(;288>t;)e.lens[t++]=8;for(n=9,y(new i(C,e.lens,0,288,v,0,n,e.work)),t=0;32>t;)e.lens[t++]=5;
+n=5,y(new i(E,e.lens,0,32,g,0,n,e.work)),we=!1}e.lencode=v,e.lenbits=9,e.distcode=g,
 e.distbits=5}function b(e,t,n,r){var a,i=e.state;return null===i.window&&(i.wsize=1<<i.wbits,
 i.wnext=0,i.whave=0,i.window=new p.Buf8(i.wsize)),r>=i.wsize?(p.arraySet(i.window,t,n-i.wsize,i.wsize,0),
 i.wnext=0,i.whave=i.wsize):(a=i.wsize-i.wnext,a>r&&(a=r),p.arraySet(i.window,t,n-r,a,i.wnext),
 r-=a,r?(p.arraySet(i.window,t,n-r,r,0),i.wnext=r,i.whave=i.wsize):(i.wnext+=a,i.wnext===i.wsize&&(i.wnext=0),
-i.whave<i.wsize&&(i.whave+=a))),0}function m(e,t){var n,a,s,o,l,u,c,d,m,f,g,v,fe,ge,ve,pe,_e,we,ke,ye,xe,Ce,Ee,Se,Ae=0,Re=new p.Buf8(4),Te=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15];
+i.whave<i.wsize&&(i.whave+=a))),0}function m(e,t){var n,a,s,o,l,u,c,d,m,f,v,g,fe,ve,ge,pe,_e,we,ke,ye,xe,Ce,Ee,Se,Ae=0,Re=new p.Buf8(4),Te=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15];
 n=e.state,n.mode===K&&(n.mode=G),l=e.next_out_index,s=e.next_out,c=e.avail_out,o=e.next_in_index,
-a=e.next_in,u=e.avail_in,d=n.hold,m=n.bits,f=u,g=c,Ce=T;e:for(;;)switch(n.mode){case I:
+a=e.next_in,u=e.avail_in,d=n.hold,m=n.bits,f=u,v=c,Ce=T;e:for(;;)switch(n.mode){case I:
 if(0===n.wrap){n.mode=G;break}for(;16>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}
 if(2&n.wrap&&35615===d){n.check=0,Re[0]=255&d,Re[1]=d>>>8&255,n.check=w(n.check,Re,2,0),
 d=0,m=0,n.mode=B;break}if(n.flags=0,n.head&&(n.head.done=-1),!(1&n.wrap)||(((255&d)<<8)+(d>>8))%31){
@@ -1324,14 +1347,14 @@ for(;16>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}n.head&&(n.head.xflags=255&d,
 512&n.flags&&(Re[0]=255&d,Re[1]=d>>>8&255,n.check=w(n.check,Re,2,0)),d=0,m=0,n.mode=F;
 case F:if(1024&n.flags){for(;16>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}n.length=d,
 n.head&&(n.head.extra_len=d),512&n.flags&&(Re[0]=255&d,Re[1]=d>>>8&255,n.check=w(n.check,Re,2,0)),
-d=0,m=0}else n.head&&(n.head.extra=null);n.mode=$;case $:if(1024&n.flags){if(v=n.length,
-v>u&&(v=u),v){if(n.head&&n.head.extra)throw xe=n.head.extra_len-n.length,"Review & implement right";
-512&n.flags&&(n.check=w(n.check,a,v,o)),u-=v,o+=v,n.length-=v}if(n.length)break e;
-}n.length=0,n.mode=N;case N:if(2048&n.flags){if(0===u)break e;v=0;do xe=a[o+v++],
-n.head&&n.head.name&&n.length<n.head.name_max&&(n.head.name[n.length++]=xe);while(xe&&u>v);
-if(512&n.flags&&(n.check=w(n.check,a,v,o)),u-=v,o+=v,xe)break e}else n.head&&(n.head.name=null);
-n.length=0,n.mode=q;case q:if(4096&n.flags){if(0===u)break e;v=0;do xe=a[o+v++],n.head&&n.head.comment&&n.length<n.head.comm_max&&(n.head.comment[n.length++]=xe);while(xe&&u>v);
-if(512&n.flags&&(n.check=w(n.check,a,v,o)),u-=v,o+=v,xe)break e}else n.head&&(n.head.comment=null);
+d=0,m=0}else n.head&&(n.head.extra=null);n.mode=$;case $:if(1024&n.flags){if(g=n.length,
+g>u&&(g=u),g){if(n.head&&n.head.extra)throw xe=n.head.extra_len-n.length,"Review & implement right";
+512&n.flags&&(n.check=w(n.check,a,g,o)),u-=g,o+=g,n.length-=g}if(n.length)break e;
+}n.length=0,n.mode=N;case N:if(2048&n.flags){if(0===u)break e;g=0;do xe=a[o+g++],
+n.head&&n.head.name&&n.length<n.head.name_max&&(n.head.name[n.length++]=xe);while(xe&&u>g);
+if(512&n.flags&&(n.check=w(n.check,a,g,o)),u-=g,o+=g,xe)break e}else n.head&&(n.head.name=null);
+n.length=0,n.mode=q;case q:if(4096&n.flags){if(0===u)break e;g=0;do xe=a[o+g++],n.head&&n.head.comment&&n.length<n.head.comm_max&&(n.head.comment[n.length++]=xe);while(xe&&u>g);
+if(512&n.flags&&(n.check=w(n.check,a,g,o)),u-=g,o+=g,xe)break e}else n.head&&(n.head.comment=null);
 n.mode=H;case H:if(512&n.flags){for(;16>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8;
 }if(d!==(65535&n.check)){e.msg="header crc mismatch",n.mode=he;break}d=0,m=0}n.head&&(n.head.hcrc=n.flags>>9&1,
 n.head.done=1),e.adler=n.check=0,n.mode=K;break;case Z:for(;32>m;){if(0===u)break e;
@@ -1343,8 +1366,8 @@ m-=1,3&d){case 0:n.mode=X;break;case 1:if(h(n),n.mode=ne,t===R){d>>>=2,m-=2;brea
 }break;case 2:n.mode=J;break;case 3:e.msg="invalid block type",n.mode=he}d>>>=2,m-=2;
 break;case X:for(d>>>=7&m,m-=7&m;32>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if((65535&d)!==(d>>>16^65535)){
 e.msg="invalid stored block lengths",n.mode=he;break}if(n.length=65535&d,d=0,m=0,
-n.mode=Y,t===R)break e;case Y:n.mode=Q;case Q:if(v=n.length){if(v>u&&(v=u),v>c&&(v=c),
-0===v)break e;p.arraySet(s,a,o,v,l),u-=v,o+=v,c-=v,l+=v,n.length-=v;break}n.mode=K;
+n.mode=Y,t===R)break e;case Y:n.mode=Q;case Q:if(g=n.length){if(g>u&&(g=u),g>c&&(g=c),
+0===g)break e;p.arraySet(s,a,o,g,l),u-=g,o+=g,c-=g,l+=g,n.length-=g;break}n.mode=K;
 break;case J:for(;14>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(n.nlen=(31&d)+257,
 d>>>=5,m-=5,n.ndist=(31&d)+1,d>>>=5,m-=5,n.ncode=(15&d)+4,d>>>=4,m-=4,n.nlen>286||n.ndist>30){
 e.msg="too many length or distance symbols",n.mode=he;break}n.have=0,n.mode=ee;case ee:
@@ -1352,72 +1375,72 @@ for(;n.have<n.ncode;){for(;3>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}n.lens[T
 d>>>=3,m-=3}for(;n.have<19;)n.lens[Te[n.have++]]=0;if(p.arraySet(n.lencode,n.codes,0,n.codes.length,0),
 n.lenbits=7,Ee=new i(x,n.lens,0,19,n.lencode,0,n.lenbits,n.work),Ce=y(Ee),n.lenbits=Ee.bits,
 Ce){e.msg="invalid code lengths set",n.mode=he;break}n.have=0,n.mode=te;case te:for(;n.have<n.nlen+n.ndist;){
-for(;Ae=n.lencode[d&(1<<n.lenbits)-1],ve=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,!(m>=ve);){
-if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(16>_e)d>>>=ve,m-=ve,n.lens[n.have++]=_e;else{
-if(16===_e){for(Se=ve+2;Se>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(d>>>=ve,
-m-=ve,0===n.have){e.msg="invalid bit length repeat",n.mode=he;break}xe=n.lens[n.have-1],
-v=3+(3&d),d>>>=2,m-=2}else if(17===_e){for(Se=ve+3;Se>m;){if(0===u)break e;u--,d+=a[o++]<<m,
-m+=8}d>>>=ve,m-=ve,xe=0,v=3+(7&d),d>>>=3,m-=3}else{for(Se=ve+7;Se>m;){if(0===u)break e;
-u--,d+=a[o++]<<m,m+=8}d>>>=ve,m-=ve,xe=0,v=11+(127&d),d>>>=7,m-=7}if(n.have+v>n.nlen+n.ndist){
-e.msg="invalid bit length repeat",n.mode=he;break}for(;v--;)n.lens[n.have++]=xe}}
+for(;Ae=n.lencode[d&(1<<n.lenbits)-1],ge=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,!(m>=ge);){
+if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(16>_e)d>>>=ge,m-=ge,n.lens[n.have++]=_e;else{
+if(16===_e){for(Se=ge+2;Se>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(d>>>=ge,
+m-=ge,0===n.have){e.msg="invalid bit length repeat",n.mode=he;break}xe=n.lens[n.have-1],
+g=3+(3&d),d>>>=2,m-=2}else if(17===_e){for(Se=ge+3;Se>m;){if(0===u)break e;u--,d+=a[o++]<<m,
+m+=8}d>>>=ge,m-=ge,xe=0,g=3+(7&d),d>>>=3,m-=3}else{for(Se=ge+7;Se>m;){if(0===u)break e;
+u--,d+=a[o++]<<m,m+=8}d>>>=ge,m-=ge,xe=0,g=11+(127&d),d>>>=7,m-=7}if(n.have+g>n.nlen+n.ndist){
+e.msg="invalid bit length repeat",n.mode=he;break}for(;g--;)n.lens[n.have++]=xe}}
 if(n.mode===he)break;if(0===n.lens[256]){e.msg="invalid code -- missing end-of-block",
 n.mode=he;break}if(p.arraySet(n.lencode,n.codes,0,n.codes.length,0),n.lenbits=9,Ee=new i(C,n.lens,0,n.nlen,n.lencode,0,n.lenbits,n.work),
 Ce=y(Ee),n.lenbits=Ee.bits,Ce){e.msg="invalid literal/lengths set",n.mode=he;break;
 }if(n.distbits=6,p.arraySet(n.distcode,n.codes,0,n.codes.length,0),Ee=new i(E,n.lens,n.nlen,n.ndist,n.distcode,0,n.distbits,n.work),
 Ce=y(Ee),n.distbits=Ee.bits,Ce){e.msg="invalid distances set",n.mode=he;break}if(n.mode=ne,
 t===R)break e;case ne:n.mode=re;case re:if(u>=6&&c>=258){e.next_out_index=l,e.avail_out=c,
-e.next_in_index=o,e.avail_in=u,n.hold=d,n.bits=m,k(e,g),l=e.next_out_index,s=e.next_out,
+e.next_in_index=o,e.avail_in=u,n.hold=d,n.bits=m,k(e,v),l=e.next_out_index,s=e.next_out,
 c=e.avail_out,o=e.next_in_index,a=e.next_in,u=e.avail_in,d=n.hold,m=n.bits,n.mode===K&&(n.back=-1);
-break}for(n.back=0;Ae=n.lencode[d&(1<<n.lenbits)-1],ve=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,
-!(m>=ve);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(pe&&0===(240&pe)){for(we=ve,
-ke=pe,ye=_e;Ae=n.lencode[ye+((d&(1<<we+ke)-1)>>we)],ve=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,
-!(m>=we+ve);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}d>>>=we,m-=we,n.back+=we}if(d>>>=ve,
-m-=ve,n.back+=ve,n.length=_e,0===pe){n.mode=le;break}if(32&pe){n.back=-1,n.mode=K;
+break}for(n.back=0;Ae=n.lencode[d&(1<<n.lenbits)-1],ge=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,
+!(m>=ge);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(pe&&0===(240&pe)){for(we=ge,
+ke=pe,ye=_e;Ae=n.lencode[ye+((d&(1<<we+ke)-1)>>we)],ge=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,
+!(m>=we+ge);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}d>>>=we,m-=we,n.back+=we}if(d>>>=ge,
+m-=ge,n.back+=ge,n.length=_e,0===pe){n.mode=le;break}if(32&pe){n.back=-1,n.mode=K;
 break}if(64&pe){e.msg="invalid literal/length code",n.mode=he;break}n.extra=15&pe,
 n.mode=ae;case ae:if(n.extra){for(Se=n.extra;Se>m;){if(0===u)break e;u--,d+=a[o++]<<m,
 m+=8}n.length+=d&(1<<n.extra)-1,d>>>=n.extra,m-=n.extra,n.back+=n.extra}n.was=n.length,
-n.mode=ie;case ie:for(;Ae=n.distcode[d&(1<<n.distbits)-1],ve=Ae>>>24,pe=Ae>>>16&255,
-_e=65535&Ae,!(m>=ve);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(0===(240&pe)){for(we=ve,
-ke=pe,ye=_e;Ae=n.distcode[ye+((d&(1<<we+ke)-1)>>we)],ve=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,
-!(m>=we+ve);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}d>>>=we,m-=we,n.back+=we}if(d>>>=ve,
-m-=ve,n.back+=ve,64&pe){e.msg="invalid distance code",n.mode=he;break}n.offset=_e,
+n.mode=ie;case ie:for(;Ae=n.distcode[d&(1<<n.distbits)-1],ge=Ae>>>24,pe=Ae>>>16&255,
+_e=65535&Ae,!(m>=ge);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(0===(240&pe)){for(we=ge,
+ke=pe,ye=_e;Ae=n.distcode[ye+((d&(1<<we+ke)-1)>>we)],ge=Ae>>>24,pe=Ae>>>16&255,_e=65535&Ae,
+!(m>=we+ge);){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}d>>>=we,m-=we,n.back+=we}if(d>>>=ge,
+m-=ge,n.back+=ge,64&pe){e.msg="invalid distance code",n.mode=he;break}n.offset=_e,
 n.extra=15&pe,n.mode=se;case se:if(n.extra){for(Se=n.extra;Se>m;){if(0===u)break e;
 u--,d+=a[o++]<<m,m+=8}n.offset+=d&(1<<n.extra)-1,d>>>=n.extra,m-=n.extra,n.back+=n.extra;
 }if(n.offset>n.dmax){e.msg="invalid distance too far back",n.mode=he;break}n.mode=oe;
-case oe:if(0===c)break e;if(v=g-c,n.offset>v){if(v=n.offset-v,v>n.whave&&n.sane){
-e.msg="invalid distance too far back",n.mode=he;break}v>n.wnext?(v-=n.wnext,fe=n.wsize-v):fe=n.wnext-v,
-v>n.length&&(v=n.length),ge=n.window}else ge=s,fe=l-n.offset,v=n.length;v>c&&(v=c),
-c-=v,n.length-=v;do s[l++]=ge[fe++];while(--v);0===n.length&&(n.mode=re);break;case le:
+case oe:if(0===c)break e;if(g=v-c,n.offset>g){if(g=n.offset-g,g>n.whave&&n.sane){
+e.msg="invalid distance too far back",n.mode=he;break}g>n.wnext?(g-=n.wnext,fe=n.wsize-g):fe=n.wnext-g,
+g>n.length&&(g=n.length),ve=n.window}else ve=s,fe=l-n.offset,g=n.length;g>c&&(g=c),
+c-=g,n.length-=g;do s[l++]=ve[fe++];while(--g);0===n.length&&(n.mode=re);break;case le:
 if(0===c)break e;s[l++]=n.length,c--,n.mode=re;break;case ue:if(n.wrap){for(;32>m;){
-if(0===u)break e;u--,d|=a[o++]<<m,m+=8}if(g-=c,e.total_out+=g,n.total+=g,g&&(e.adler=n.check=n.flags?w(n.check,s,g,l-g):_(n.check,s,g,l-g)),
-g=c,(n.flags?d:r(d))!==n.check){e.msg="incorrect data check",n.mode=he;break}d=0,
+if(0===u)break e;u--,d|=a[o++]<<m,m+=8}if(v-=c,e.total_out+=v,n.total+=v,v&&(e.adler=n.check=n.flags?w(n.check,s,v,l-v):_(n.check,s,v,l-v)),
+v=c,(n.flags?d:r(d))!==n.check){e.msg="incorrect data check",n.mode=he;break}d=0,
 m=0}n.mode=ce;case ce:if(n.wrap&&n.flags){for(;32>m;){if(0===u)break e;u--,d+=a[o++]<<m,
 m+=8}if(d!==(4294967295&n.total)){e.msg="incorrect length check",n.mode=he;break}
-d=0,m=0}n.mode=de;case de:Ce=L;break e;case he:Ce=j;break e;case be:return W;case me:
-default:return P}return e.next_out_index=l,e.avail_out=c,e.next_in_index=o,e.avail_in=u,
-n.hold=d,n.bits=m,(n.wsize||g!==e.avail_out&&n.mode<he&&(n.mode<ue||t!==S))&&b(e,e.next_out,e.next_out_index,g-e.avail_out)?(n.mode=be,
-W):(f-=e.avail_in,g-=e.avail_out,e.total_in+=f,e.total_out+=g,n.total+=g,n.wrap&&g&&(e.adler=n.check=n.flags?w(n.check,s,g,e.next_out_index-g):_(n.check,s,g,e.next_out_index-g)),
+d=0,m=0}n.mode=de;case de:Ce=L;break e;case he:Ce=P;break e;case be:return W;case me:
+default:return j}return e.next_out_index=l,e.avail_out=c,e.next_in_index=o,e.avail_in=u,
+n.hold=d,n.bits=m,(n.wsize||v!==e.avail_out&&n.mode<he&&(n.mode<ue||t!==S))&&b(e,e.next_out,e.next_out_index,v-e.avail_out)?(n.mode=be,
+W):(f-=e.avail_in,v-=e.avail_out,e.total_in+=f,e.total_out+=v,n.total+=v,n.wrap&&v&&(e.adler=n.check=n.flags?w(n.check,s,v,e.next_out_index-v):_(n.check,s,v,e.next_out_index-v)),
 e.data_type=n.bits+(n.last?64:0)+(n.mode===K?128:0)+(n.mode===ne||n.mode===Y?256:0),
-(0===f&&0===g||t===S)&&Ce===T&&(Ce=D),Ce)}function f(e){var t=e.state;return t.window&&(t.window=null),
-e.state=null,T}var g,v,p=e("./utils"),_=e("./adler32"),w=e("./crc32"),k=e("./inffast"),y=e("./inftrees"),x=0,C=1,E=2,S=4,A=5,R=6,T=0,L=1,M=2,P=-2,j=-3,W=-4,D=-5,O=8,I=1,B=2,z=3,U=4,F=5,$=6,N=7,q=8,H=9,Z=10,V=11,K=12,G=13,X=14,Y=15,Q=16,J=17,ee=18,te=19,ne=20,re=21,ae=22,ie=23,se=24,oe=25,le=26,ue=27,ce=28,de=29,he=30,be=31,me=32,fe=852,ge=592,ve=fe+ge,pe=15,_e=pe,we=!0;
+(0===f&&0===v||t===S)&&Ce===T&&(Ce=D),Ce)}function f(e){var t=e.state;return t.window&&(t.window=null),
+e.state=null,T}var v,g,p=e("./utils"),_=e("./adler32"),w=e("./crc32"),k=e("./inffast"),y=e("./inftrees"),x=0,C=1,E=2,S=4,A=5,R=6,T=0,L=1,M=2,j=-2,P=-3,W=-4,D=-5,O=8,I=1,B=2,z=3,U=4,F=5,$=6,N=7,q=8,H=9,Z=10,V=11,K=12,G=13,X=14,Y=15,Q=16,J=17,ee=18,te=19,ne=20,re=21,ae=22,ie=23,se=24,oe=25,le=26,ue=27,ce=28,de=29,he=30,be=31,me=32,fe=852,ve=592,ge=fe+ve,pe=15,_e=pe,we=!0;
 n.inflateReset=o,n.inflateReset2=l,n.inflateResetKeep=s,n.inflateInit=c,n.inflateInit2=u,
 n.inflatePrime=d,n.inflate=m,n.inflateEnd=f,n.inflateInfo="pako inflate (from Nodeca project)";
 },{"./adler32":4,"./crc32":6,"./inffast":8,"./inftrees":10,"./utils":13}],10:[function(e,t,n){
 var r=e("./utils"),a=15,i=852,s=592,o=0,l=1,u=2,c=[3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,43,51,59,67,83,99,115,131,163,195,227,258,0,0],d=[16,16,16,16,16,16,16,16,17,17,17,17,18,18,18,18,19,19,19,19,20,20,20,20,21,21,21,21,16,72,78],h=[1,2,3,4,5,7,9,13,17,25,33,49,65,97,129,193,257,385,513,769,1025,1537,2049,3073,4097,6145,8193,12289,16385,24577,0,0],b=[16,16,16,16,17,17,18,18,19,19,20,20,21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,29,29,64,64];
-t.exports=function(e){var t,n,m,f,g,v,p,_,w,k=e.type,y=e.lens,x=e.codes,C=e.table,E=e.bits,S=e.work,A=0,R=0,T=0,L=0,M=0,P=0,j=0,W=0,D=0,O=0,I=null,B=0,z=new r.Buf16(a+1),U=new r.Buf16(a+1),F=null,$=0;
+t.exports=function(e){var t,n,m,f,v,g,p,_,w,k=e.type,y=e.lens,x=e.codes,C=e.table,E=e.bits,S=e.work,A=0,R=0,T=0,L=0,M=0,j=0,P=0,W=0,D=0,O=0,I=null,B=0,z=new r.Buf16(a+1),U=new r.Buf16(a+1),F=null,$=0;
 for(A=0;a>=A;A++)z[A]=0;for(R=0;x>R;R++)z[y[e.lens_index+R]]++;for(M=E,L=a;L>=1&&0===z[L];L--);
 if(M>L&&(M=L),0===L)return C[e.table_index++]=20971520,C[e.table_index++]=20971520,
 e.bits=1,0;for(T=1;L>T&&0===z[T];T++);for(T>M&&(M=T),W=1,A=1;a>=A;A++)if(W<<=1,W-=z[A],
 0>W)return-1;if(W>0&&(k===o||1!==L))return-1;for(U[1]=0,A=1;a>A;A++)U[A+1]=U[A]+z[A];
 for(R=0;x>R;R++)0!==y[e.lens_index+R]&&(S[U[y[e.lens_index+R]]++]=R);switch(k){case o:
-I=F=S,v=19;break;case l:I=c,B-=257,F=d,$-=257,v=256;break;default:I=h,F=b,v=-1}if(O=0,
-R=0,A=T,g=e.table_index,P=M,j=0,m=-1,D=1<<M,f=D-1,k===l&&D>i||k===u&&D>s)return 1;
-for(var N=0;;){N++,p=A-j,S[R]<v?(_=0,w=S[R]):S[R]>v?(_=F[$+S[R]],w=I[B+S[R]]):(_=96,
-w=0),t=1<<A-j,n=1<<P,T=n;do n-=t,C[g+(O>>j)+n]=p<<24|_<<16|w|0;while(0!==n);for(t=1<<A-1;O&t;)t>>=1;
+I=F=S,g=19;break;case l:I=c,B-=257,F=d,$-=257,g=256;break;default:I=h,F=b,g=-1}if(O=0,
+R=0,A=T,v=e.table_index,j=M,P=0,m=-1,D=1<<M,f=D-1,k===l&&D>i||k===u&&D>s)return 1;
+for(var N=0;;){N++,p=A-P,S[R]<g?(_=0,w=S[R]):S[R]>g?(_=F[$+S[R]],w=I[B+S[R]]):(_=96,
+w=0),t=1<<A-P,n=1<<j,T=n;do n-=t,C[v+(O>>P)+n]=p<<24|_<<16|w|0;while(0!==n);for(t=1<<A-1;O&t;)t>>=1;
 if(0!==t?(O&=t-1,O+=t):O=0,R++,0===--z[A]){if(A===L)break;A=y[e.lens_index+S[R]]}
-if(A>M&&(O&f)!==m){for(0===j&&(j=M),g+=T,P=A-j,W=1<<P;L>P+j&&(W-=z[P+j],!(0>=W));)P++,
-W<<=1;if(D+=1<<P,k===l&&D>i||k===u&&D>s)return 1;m=O&f,C[m]=M<<24|P<<16|g-e.table_index;
-}}return 0!==O&&(C[g+O]=A-j<<24|64<<16|0),e.table_index+=D,e.bits=M,0}},{"./utils":13
+if(A>M&&(O&f)!==m){for(0===P&&(P=M),v+=T,j=A-P,W=1<<j;L>j+P&&(W-=z[j+P],!(0>=W));)j++,
+W<<=1;if(D+=1<<j,k===l&&D>i||k===u&&D>s)return 1;m=O&f,C[m]=M<<24|j<<16|v-e.table_index;
+}}return 0!==O&&(C[v+O]=A-P<<24|64<<16|0),e.table_index+=D,e.bits=M,0}},{"./utils":13
 }],11:[function(e,t,n){t.exports={2:"need dictionary",1:"stream end",0:"","-1":"file error",
 "-2":"stream error","-3":"data error","-4":"insufficient memory","-5":"buffer error",
 "-6":"incompatible version"}},{}],12:[function(e,t,n){function r(e){for(var t=e.length;--t;)e[t]=0;
@@ -1444,19 +1467,19 @@ he=new be(new Array(0),te,0,q,K)}function b(e){var t;for(t=0;$>t;t++)e.dyn_ltree
 for(t=0;N>t;t++)e.dyn_dtree[2*t]=0;for(t=0;q>t;t++)e.bl_tree[2*t]=0;e.dyn_ltree[2*G]=1,
 e.opt_len=e.static_len=0,e.last_lit=e.matches=0}function m(e){e.bi_valid>8?i(e,e.bi_buf):e.bi_valid>0&&(e.pending_buf[e.pending++]=e.bi_buf),
 e.bi_buf=0,e.bi_valid=0}function f(e,t,n,r){m(e),r&&(i(e,n),i(e,~n)),L.arraySet(e.pending_buf,e.window,t,n,e.pending),
-e.pending+=n}function g(e,t,n,r){var a=2*t,i=2*n;return e[a]<e[i]||e[a]===e[i]&&r[t]<=r[n];
-}function v(e,t,n){for(var r=e.heap[n],a=n<<1;a<=e.heap_len&&(a<e.heap_len&&g(t,e.heap[a+1],e.heap[a],e.depth)&&a++,
-!g(t,r,e.heap[a],e.depth));)e.heap[n]=e.heap[a],n=a,a<<=1;e.heap[n]=r}function p(e,t,n){
+e.pending+=n}function v(e,t,n,r){var a=2*t,i=2*n;return e[a]<e[i]||e[a]===e[i]&&r[t]<=r[n];
+}function g(e,t,n){for(var r=e.heap[n],a=n<<1;a<=e.heap_len&&(a<e.heap_len&&v(t,e.heap[a+1],e.heap[a],e.depth)&&a++,
+!v(t,r,e.heap[a],e.depth));)e.heap[n]=e.heap[a],n=a,a<<=1;e.heap[n]=r}function p(e,t,n){
 var r,i,l,u,c=0;if(0!==e.last_lit)do r=e.pending_buf[e.d_buf+2*c]<<8|e.pending_buf[e.d_buf+2*c+1],
 i=e.pending_buf[e.l_buf+c],c++,0===r?o(e,i,t):(l=oe[i],o(e,l+F+1,t),u=J[l],0!==u&&(i-=le[l],
 s(e,i,u)),r--,l=a(r),o(e,l,n),u=ee[l],0!==u&&(r-=ue[l],s(e,r,u)));while(c<e.last_lit);
 o(e,G,t)}function _(e,t){var n,r,a,i=t.dyn_tree,s=t.stat_desc.static_tree,o=t.stat_desc.has_stree,l=t.stat_desc.elems,u=-1;
 for(e.heap_len=0,e.heap_max=H,n=0;l>n;n++)0!==i[2*n]?(e.heap[++e.heap_len]=u=n,e.depth[n]=0):i[2*n+1]=0;
 for(;e.heap_len<2;)a=e.heap[++e.heap_len]=2>u?++u:0,i[2*a]=1,e.depth[a]=0,e.opt_len--,
-o&&(e.static_len-=s[2*a+1]);for(t.max_code=u,n=e.heap_len>>1;n>=1;n--)v(e,i,n);a=l;
-do n=e.heap[1],e.heap[1]=e.heap[e.heap_len--],v(e,i,1),r=e.heap[1],e.heap[--e.heap_max]=n,
+o&&(e.static_len-=s[2*a+1]);for(t.max_code=u,n=e.heap_len>>1;n>=1;n--)g(e,i,n);a=l;
+do n=e.heap[1],e.heap[1]=e.heap[e.heap_len--],g(e,i,1),r=e.heap[1],e.heap[--e.heap_max]=n,
 e.heap[--e.heap_max]=r,i[2*a]=i[2*n]+i[2*r],e.depth[a]=(e.depth[n]>=e.depth[r]?e.depth[n]:e.depth[r])+1,
-i[2*n+1]=i[2*r+1]=a,e.heap[1]=a++,v(e,i,1);while(e.heap_len>=2);e.heap[--e.heap_max]=e.heap[1],
+i[2*n+1]=i[2*r+1]=a,e.heap[1]=a++,g(e,i,1);while(e.heap_len>=2);e.heap[--e.heap_max]=e.heap[1],
 c(e,t),d(i,u,e.bl_count)}function w(e,t,n){var r,a,i=-1,s=t[1],o=0,l=7,u=4;for(0===s&&(l=138,
 u=3),t[2*(n+1)+1]=65535,r=0;n>=r;r++)a=s,s=t[2*(r+1)+1],++o<l&&a===s||(u>o?e.bl_tree[2*a]+=o:0!==a?(a!==i&&e.bl_tree[2*a]++,
 e.bl_tree[2*X]++):10>=o?e.bl_tree[2*Y]++:e.bl_tree[2*Q]++,o=0,i=a,0===s?(l=138,u=3):a===s?(l=6,
@@ -1468,8 +1491,8 @@ d=4)}}function y(e){var t;for(w(e,e.dyn_ltree,e.l_desc.max_code),w(e,e.dyn_dtree
 _(e,e.bl_desc),t=q-1;t>=3&&0===e.bl_tree[2*ne[t]+1];t--);return e.opt_len+=3*(t+1)+5+5+4,
 t}function x(e,t,n,r){var a;for(s(e,t-257,5),s(e,n-1,5),s(e,r-4,4),a=0;r>a;a++)s(e,e.bl_tree[2*ne[a]+1],3);
 k(e,e.dyn_ltree,t-1),k(e,e.dyn_dtree,n-1)}function C(e){var t,n=4093624447;for(t=0;31>=t;t++,
-n>>>=1)if(1&n&&0!==e.dyn_ltree[2*t])return P;if(0!==e.dyn_ltree[18]||0!==e.dyn_ltree[20]||0!==e.dyn_ltree[26])return j;
-for(t=32;F>t;t++)if(0!==e.dyn_ltree[2*t])return j;return P}function E(e){fe||(h(),
+n>>>=1)if(1&n&&0!==e.dyn_ltree[2*t])return j;if(0!==e.dyn_ltree[18]||0!==e.dyn_ltree[20]||0!==e.dyn_ltree[26])return P;
+for(t=32;F>t;t++)if(0!==e.dyn_ltree[2*t])return P;return j}function E(e){fe||(h(),
 fe=!0),e.l_desc=new me(e.dyn_ltree,ce),e.d_desc=new me(e.dyn_dtree,de),e.bl_desc=new me(e.bl_tree,he),
 e.bi_buf=0,e.bi_valid=0,b(e)}function S(e,t,n,r){s(e,(D<<1)+(r?1:0),3),f(e,t,n,!0);
 }function A(e){s(e,O<<1,3),o(e,G,ae),u(e)}function R(e,t,n,r){var a,i,o=0;e.level>0?(e.strm.data_type===W&&(e.strm.data_type=C(e)),
@@ -1479,7 +1502,7 @@ x(e,e.l_desc.max_code+1,e.d_desc.max_code+1,o+1),p(e,e.dyn_ltree,e.dyn_dtree)),b
 r&&m(e)}function T(e,t,n){return e.pending_buf[e.d_buf+2*e.last_lit]=t>>>8&255,e.pending_buf[e.d_buf+2*e.last_lit+1]=255&t,
 e.pending_buf[e.l_buf+e.last_lit]=255&n,e.last_lit++,0===t?e.dyn_ltree[2*n]++:(e.matches++,
 t--,e.dyn_ltree[2*(oe[n]+F+1)]++,e.dyn_dtree[2*a(t)]++),e.last_lit===e.lit_bufsize-1;
-}var L=e("./utils"),M=4,P=0,j=1,W=2,D=0,O=1,I=2,B=3,z=258,U=29,F=256,$=F+1+U,N=30,q=19,H=2*$+1,Z=15,V=16,K=7,G=256,X=16,Y=17,Q=18,J=[0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0],ee=[0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13],te=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,7],ne=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],re=512,ae=new Array(2*($+2));
+}var L=e("./utils"),M=4,j=0,P=1,W=2,D=0,O=1,I=2,B=3,z=258,U=29,F=256,$=F+1+U,N=30,q=19,H=2*$+1,Z=15,V=16,K=7,G=256,X=16,Y=17,Q=18,J=[0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0],ee=[0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13],te=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,7],ne=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],re=512,ae=new Array(2*($+2));
 r(ae);var ie=new Array(2*N);r(ie);var se=new Array(re);r(se);var oe=new Array(z-B+1);
 r(oe);var le=new Array(U);r(le);var ue=new Array(N);r(ue);var ce,de,he,be=function(e,t,n,r,a){
 this.static_tree=e,this.extra_bits=t,this.extra_base=n,this.elems=r,this.max_length=a,
@@ -1547,7 +1570,7 @@ case 6:a=s.value,s.state=5;break;case 5:n(r===a),s.state=-2;break;default:return
 }},this)}),n.state=2;break;case 2:n.state=-2;break;default:return n.end()}},this);
 },i=function(e){return new Promise(function(t){chrome.fileSystem.getDisplayPath(e,function(e){
 t(e)})})},s=function(e){return e.name.substring(0,e.name.lastIndexOf("."))},o=function(e){
-return e.name&&e.name.includes(".")?e.name.substring(e.name.lastIndexOf(".")+1).toLowerCase():null;
+return e.name&&e.name.includes(".")?e.name.substring(e.name.lastIndexOf(".")+1).toLowerCase():"";
 },l=function(e){return new Promise(function(t){chrome.fileSystem.isWritableEntry(e,function(n){
 n?t(e):chrome.fileSystem.getWritableEntry(e,function(e){t(chrome.runtime.lastError?null:e);
 })})})};return{get readEntry(){return e},get writeEntry(){return t},get chooseEntry(){

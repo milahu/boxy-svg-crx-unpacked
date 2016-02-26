@@ -24,7 +24,7 @@ main {
 }
 :host([default]) main,
 :host([pressed]) main {
-  background: #006be5;
+  background: #1668f7;
 }
 :host(:active) main {
   -webkit-filter: brightness(115%);

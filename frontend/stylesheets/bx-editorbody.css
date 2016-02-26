@@ -42,3 +42,34 @@ main {
   top: 0px;
   right: 0px;
 }
+
+#fill-panel {
+  height: 620px;
+}
+#stroke-panel {
+  height: 800px;
+}
+#compositing-panel {
+  height: 250px;
+}
+#view-panel {
+  height: 497px;
+}
+#arrangement-panel {
+  height: 415px;
+}
+#typography-panel {
+  height: 643px;
+}
+#defs-panel {
+  height: 400px;
+}
+#mask-panel {
+  height: 219px;
+}
+#path-panel {
+  height: 382px;
+}
+#export-panel {
+  height: 338px;
+}
