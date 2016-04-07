@@ -21,7 +21,7 @@ main {
   opacity: 0.6;
 }
 :host([highlighted]) main {
-  background: #1668f7;
+  background: var(--primary-color);
   color: #fff;
 }
 
@@ -54,5 +54,5 @@ main {
   text-overflow: ellipsis;
   font-size: 13px;
   font-family: "Roboto";
-  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  font-feature-settings: var(--heading-font-features);
 }

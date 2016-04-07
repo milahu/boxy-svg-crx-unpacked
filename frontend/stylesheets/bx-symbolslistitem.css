@@ -26,7 +26,7 @@ main {
   background: rgb(93, 93, 93);
 }
 :host([highlighted]:focus) main {
-  background: #1668f7;
+  background: var(--primary-color);
 }
 :host([highlighted][inputmode]) main {
   background: none;
@@ -49,7 +49,7 @@ bx-input {
   height: 36px;
   border-right: 3px solid transparent;
   box-sizing: border-box;
-  font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  font-feature-settings: var(--heading-font-features);
 }
 :host([highlighted]) bx-input,
 :host(:hover) bx-input {

@@ -28,7 +28,7 @@ header {
   min-height: 29px;
   align-items: center;
   font-family: "Roboto";
-  font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  font-feature-settings: var(--heading-font-features);
   box-shadow: 0 1px 0 #000000, 0 2px 0 #636262, 0 -1px 0 #636262, 0 -2px 0 #000000;
   margin-bottom: 3px;
 }

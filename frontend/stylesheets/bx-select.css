@@ -65,9 +65,9 @@
   opacity: 0.85;
   font-family: "Roboto";
   font-size: 13px;
+  font-feature-settings: var(--heading-font-features);
   white-space: nowrap;
   text-overflow: ellipsis;
-  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 :host([mixed]) #label {
   opacity: 0.7;

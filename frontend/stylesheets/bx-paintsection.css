@@ -21,7 +21,7 @@ h2 {
   font-size: 15px;
   font-family: "Roboto";
   font-weight: 500;
-  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  font-feature-settings: var(--heading-font-features);
 }
 h2[disabled] {
   opacity: 0.5;
@@ -36,8 +36,8 @@ h3 {
   font-size: 13px;
   font-family: "Roboto";
   font-weight: 500;
+  font-feature-settings: var(--heading-font-features);
   opacity: 0.8;
-  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 h3[disabled] {
   opacity: 0.5;

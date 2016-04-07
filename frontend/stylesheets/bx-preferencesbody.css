@@ -41,7 +41,7 @@ main[data-extra-whitespace] {
   flex-flow: column;
   height: 100%;
   flex: 1;
-  background: #404040;
+  background: var(--primary-background-color);
   padding: 15px 25px;
 }
 

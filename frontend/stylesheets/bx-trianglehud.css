@@ -12,12 +12,14 @@
 }
 
 .grippie {
-  fill: #73BA09;
   stroke: white;
   stroke-width: 2;
   vector-effect: non-scaling-stroke;
   filter: url(#grippie-drop-shadow);
 }
-.grippie.r2-grippie {
-  fill: red;
+.shift-grippie {
+  fill: #C3C303;
+}
+.corner-grippie {
+  fill: #73BA09;
 }

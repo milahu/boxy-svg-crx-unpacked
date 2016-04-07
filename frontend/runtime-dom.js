@@ -99,60 +99,66 @@ Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-// SVGRect polyfills (make it look like DOMRect: http://dev.w3.org/fxtf/geometry/#DOMRect)
+// SVGRect polyfills (http://dev.w3.org/fxtf/geometry/#DOMRect)
 //
 
-Object.defineProperty(SVGRect.prototype, "top", {
-  enumerable: false,
-  configurable: false,
+(() => {
+  let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
-  get() {
-    return Math.min(this.y, this.y + this.height);
-  },
+  SVGRect = new Proxy(SVGRect, {
+    construct(target, args) {
+      let rect = svg.createSVGRect();
+      let [x, y, width, height] = args;
 
-  set(value) {
-    throw new Error("top property is read-only");
-  }
-});
+      if (x) { rect.x = x; }
+      if (y) { rect.y = y; }
+      if (width) { rect.width = width; }
+      if (height) { rect.height = height; }
 
-Object.defineProperty(SVGRect.prototype, "right", {
-  enumerable: false,
-  configurable: false,
+      return rect;
+    }
+  });
 
-  get() {
-    return Math.max(this.x, this.x + this.width);
-  },
+  SVGRect.fromRect = function(otherRect) {
+    return otherRect ? new SVGRect(otherRect.x, otherRect.y, otherRect.width, otherRect.height) : new SVGRect();
+  };
 
-  set(value) {
-    throw new Error("right property is read-only");
-  }
-});
+  Object.defineProperty(SVGRect.prototype, "top", {
+    enumerable: true,
+    configurable: false,
 
-Object.defineProperty(SVGRect.prototype, "bottom", {
-  enumerable: false,
-  configurable: false,
+    get() {
+      return Math.min(this.y, this.y + this.height);
+    }
+  });
 
-  get() {
-    return Math.max(this.y, this.y + this.height);
-  },
+  Object.defineProperty(SVGRect.prototype, "right", {
+    enumerable: true,
+    configurable: false,
 
-  set(value) {
-    throw new Error("bottom property is read-only");
-  }
-});
+    get() {
+      return Math.max(this.x, this.x + this.width);
+    }
+  })
 
-Object.defineProperty(SVGRect.prototype, "left", {
-  enumerable: false,
-  configurable: false,
+  Object.defineProperty(SVGRect.prototype, "bottom", {
+    enumerable: true,
+    configurable: false,
 
-  get() {
-    return Math.min(this.x, this.x + this.width);
-  },
+    get() {
+      return Math.max(this.y, this.y + this.height);
+    }
+  });
 
-  set(value) {
-    throw new Error("left property is read-only");
-  }
-});
+  Object.defineProperty(SVGRect.prototype, "left", {
+    enumerable: true,
+    configurable: false,
+
+    get() {
+      return Math.min(this.x, this.x + this.width);
+    }
+  });
+})();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -160,24 +166,29 @@ Object.defineProperty(SVGRect.prototype, "left", {
 // SVGPoint polyfills (http://dev.w3.org/fxtf/geometry/#DOMPoint)
 //
 
-SVGPoint.prototype.toString = function() {
-  return "point(" + this.x + ", " + this.y + ")";
-};
+(() => {
+  let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  SVGPoint = new Proxy(SVGPoint, {
+    construct(target, args) {
+      let point = svg.createSVGPoint();
+      let [x, y] = args;
 
-//
-// SVGUseElement polyfills
-//
+      if (x) { point.x = x; }
+      if (y) { point.y = y; }
 
-// @bug
-//   https://code.google.com/p/chromium/issues/detail?id=512081
-SVGUseElement.prototype.getBBox = function() {
-  let bbox = SVGGraphicsElement.prototype.getBBox.call(this);
-  bbox.x += this.x.baseVal.value;
-  bbox.y += this.y.baseVal.value;
-  return bbox;
-};
+      return point;
+    }
+  });
+
+  SVGPoint.fromPoint = function(otherPoint) {
+    return otherPoint ? new SVGPoint(otherPoint.x, otherPoint.y) : new SVGPoint();
+  };
+
+  SVGPoint.prototype.toString = function() {
+    return "point(" + this.x + ", " + this.y + ")";
+  };
+})();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -187,6 +198,34 @@ SVGUseElement.prototype.getBBox = function() {
 
 (() => {
   let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
+  SVGMatrix = new Proxy(SVGMatrix, {
+    construct(target, args) {
+      let matrix = svg.createSVGMatrix();
+
+      if (args[0] !== undefined) {
+        if (Array.isArray(args[0]) && args[0].length === 6) {
+          let [a, b, c, d, e, f] = args[0];
+          matrix.a = a;
+          matrix.b = b;
+          matrix.c = c;
+          matrix.d = d;
+          matrix.e = e;
+          matrix.f = f;
+        }
+        else {
+          throw new TypeError("Invalid argument passed to SVGMatrix constructor.");
+        }
+      }
+
+      return matrix;
+    }
+  });
+
+  SVGMatrix.fromMatrix = (matrix) => {
+    let {a, b, c, d, e, f} = matrix;
+    return new SVGMatrix([a, b, c, d, e, f]);
+  };
 
   SVGMatrix.prototype.transformPoint = function(point) {
     let transformedPoint = svg.createSVGPoint();
@@ -371,6 +410,19 @@ SVGUseElement.prototype.getBBox = function() {
 })();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//
+// SVGUseElement polyfills
+//
+
+// @bug
+//   https://code.google.com/p/chromium/issues/detail?id=512081
+SVGUseElement.prototype.getBBox = function() {
+  let bbox = SVGGraphicsElement.prototype.getBBox.call(this);
+  bbox.x += this.x.baseVal.value;
+  bbox.y += this.y.baseVal.value;
+  return bbox;
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1386,9 +1438,11 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-// Namespace-less "href" property polyfill (SVG 2)
+// SVGElement polyfills
 //
 
+// @info
+//   Namespace-less "href" property polyfill (SVG 2).
 (() => {
   let getAttribute = SVGElement.prototype.getAttribute;
   let setAttribute = SVGElement.prototype.setAttribute;
@@ -1435,84 +1489,99 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
   };
 })();
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//
-// IDBObjectStore polyfills
-//
-
 // @info
-//   IDBObjectStore.prototype.getAll() polyfill.
-// @src
-//   https://github.com/dumbmatter/IndexedDB-getAll-shim)
+//   SVGElement.prototype.dataset polyfill (SVG 2)
+// @doc
+//   https://svgwg.org/svg2-draft/single-page.html#types-InterfaceSVGElement
+//   https://html.spec.whatwg.org/multipage/dom.html#dom-dataset
 (() => {
-  if (
-    typeof IDBObjectStore === "undefined" ||
-    typeof IDBIndex === "undefined" ||
-    (IDBObjectStore.prototype.getAll !== undefined && IDBIndex.prototype.getAll !== undefined)
-  ) {
-    return;
-  }
+  let symbols = {proxy: Symbol()};
 
-  if (IDBObjectStore.prototype.mozGetAll !== undefined && IDBIndex.prototype.mozGetAll !== undefined) {
-    IDBObjectStore.prototype.getAll = IDBObjectStore.prototype.mozGetAll;
-    IDBIndex.prototype.getAll = IDBIndex.prototype.mozGetAll;
-    return;
-  }
+  // @info
+  //   Add support for "dataset" property
+  Object.defineProperty(SVGElement.prototype, "dataset", {
+    enumerable: true,
+    configurable: false,
 
-  // https://github.com/axemclion/IndexedDBShim/blob/gh-pages/src/IDBRequest.js
-  let IDBRequest = function () {
-    this.onsuccess = null;
-    this.readyState = "pending";
-  };
+    get() {
+      if (!this[symbols.proxy]) {
+        let element = this;
 
-  // https://github.com/axemclion/IndexedDBShim/blob/gh-pages/src/Event.js
-  let Event = function (type, debug) {
-    return {
-      "type": type,
-      debug: debug,
-      bubbles: false,
-      cancelable: false,
-      eventPhase: 0,
-      timeStamp: new Date()
-    };
-  };
+        this[symbols.proxy] = new Proxy({}, {
+          get(target, key) {
+            let attributeName = "data-" + this._toDashCase(key);
 
-  let getAll = function (key) {
-    let request, result;
-    key = key !== undefined ? key : null;
-    request = new IDBRequest();
-    result = [];
+            if (element.hasAttribute(attributeName)) {
+              return element.getAttribute(attributeName);
+            }
+            else {
+              return undefined;
+            }
+          },
 
-    // this is either an IDBObjectStore or an IDBIndex, depending on the context.
-    this.openCursor(key).onsuccess = (event) => {
-      let cursor, e;
-      cursor = event.target.result;
+          set(target, key, value) {
+            let attributeName = "data-" + this._toDashCase(key);
+            element.setAttribute(attributeName, value);
+          },
 
-      if (cursor) {
-        result.push(cursor.value);
-        cursor.continue();
+          getOwnPropertyDescriptor(target, key) {
+            let attributeName = "data-" + this._toDashCase(key);
+
+            if (element.hasAttribute(attributeName)) {
+              return {
+                value: element.getAttribute(attributeName),
+                writable: true,
+                configurable: true,
+                enumerable: true
+              };
+            }
+            else {
+              return undefined;
+            }
+          },
+
+          getPrototypeOf(target) {
+            return DOMStringMap.prototype;
+          },
+
+          deleteProperty(target, key) {
+            let attributeName = "data-" + this._toDashCase(key);
+
+            if (element.hasAttribute(attributeName)) {
+              element.removeAttribute(attributeName);
+              return true;
+            }
+            else {
+              return false;
+            }
+          },
+
+          ownKeys() {
+            let keys = [];
+
+            for (let attribute of element.attributes) {
+              if (attribute.name.substring(0, 5) === "data-") {
+                let propertyName = this._toCamelCase(attribute.name.substring(5));
+                keys.push(propertyName);
+              }
+            }
+
+            return keys;
+          },
+
+          _toCamelCase(string) {
+            return string.replace(/(\-[a-z])/g, (arg) => arg.toUpperCase().replace("-", ""));
+          },
+
+          _toDashCase(string) {
+            return string.replace(/([A-Z])/g, ($1) => "-" + $1.toLowerCase());
+          }
+        });
       }
-      else {
-        if (typeof request.onsuccess === "function") {
-          e = new Event("success");
 
-          e.target = {
-            readyState: "done",
-            result: result
-          };
-
-          request.result = result;
-          request.onsuccess(e);
-        }
-      }
-    };
-
-    return request;
-  };
-
-  IDBObjectStore.prototype.getAll = getAll;
-  IDBIndex.prototype.getAll = getAll;
+      return this[symbols.proxy];
+    }
+  });
 })();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1534,12 +1603,14 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
   ];
 
   pseudoArrays.forEach( (pseudoArray) => {
-    Object.defineProperty(pseudoArray.prototype, Symbol.iterator, {
-      configurable: true,
-      enumerable: false,
-      writable: true,
-      value: Array.prototype[Symbol.iterator]
-    });
+    if (!pseudoArray.prototype[Symbol.iterator]) {
+      Object.defineProperty(pseudoArray.prototype, Symbol.iterator, {
+        configurable: true,
+        enumerable: false,
+        writable: true,
+        value: Array.prototype[Symbol.iterator]
+      });
+    }
   });
 })();
 

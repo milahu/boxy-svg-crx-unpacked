@@ -25,7 +25,7 @@ main {
   background: #444444;
 }
 :host([pressed]) main {
-  background: #1668f7;
+  background: var(--primary-color);
 }
 :host([pressed]:active) main {
   background: #2f71ae;

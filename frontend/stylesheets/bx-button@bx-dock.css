@@ -26,14 +26,14 @@ main {
   justify-content: center;
   box-sizing: border-box;
   padding: 5px;
-  background: #404040;
-  border: 1px solid #141619;
+  background: var(--primary-background-color);
+  border: 1px solid var(--border-color);
 }
 :host(:active) main {
   background: #444444;
 }
 :host([pressed]) main {
-  background: #1668f7;
+  background: var(--primary-color);
   border: 1px solid black;
 }
 :host([pressed]:active) main {

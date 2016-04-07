@@ -11,6 +11,8 @@
 }
 
 main {
+  /* @bugfix: Background artboard becomes invisible when zoom is very high */
+  background: white;
   /* @bugfix: Prevent element with "contenteditable" attribute from being scrolled on text input */
   overflow: hidden;
 }

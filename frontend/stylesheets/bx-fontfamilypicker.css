@@ -25,7 +25,7 @@ h2 {
   font-size: 14px;
   font-family: "Roboto";
   font-weight: 500;
-  -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+  font-feature-settings: var(--heading-font-features);
 }
 
 main {
