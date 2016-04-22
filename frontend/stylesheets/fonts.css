@@ -25,6 +25,12 @@
   font-style: normal;
   font-weight: 700;
 }
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/roboto-900.woff") format("woff");
+  font-style: normal;
+  font-weight: 900;
+}
 
 @font-face {
   font-family: "Roboto";
@@ -43,4 +49,10 @@
   src: url("../fonts/roboto-italic-700.woff") format("woff");
   font-style: italic;
   font-weight: 700;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/roboto-italic-900.woff") format("woff");
+  font-style: italic;
+  font-weight: 900;
 }

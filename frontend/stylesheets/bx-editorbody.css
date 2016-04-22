@@ -67,6 +67,9 @@ main {
 #mask-panel {
   height: 219px;
 }
+#geometry-panel {
+  height: 347px;
+}
 #path-panel {
   height: 382px;
 }

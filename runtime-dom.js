@@ -371,58 +371,6 @@ SVGUseElement.prototype.getBBox = function() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-// Namespace-less "href" property polyfill (SVG 2)
-//
-
-(() => {
-  let getAttribute = SVGElement.prototype.getAttribute;
-  let setAttribute = SVGElement.prototype.setAttribute;
-  let removeAttribute = SVGElement.prototype.removeAttribute;
-  let hasAttribute = SVGElement.prototype.hasAttribute;
-  let xlinkNS = "http://www.w3.org/1999/xlink";
-
-  SVGElement.prototype.getAttribute = function(name) {
-    if (name === "href") {
-      return this.getAttributeNS(xlinkNS, "href");
-    }
-    else {
-      return getAttribute.call(this, name);
-    }
-  };
-
-  SVGElement.prototype.setAttribute = function(name, value) {
-    if (name === "href") {
-      if (this.getAttributeNS(xlinkNS, "href") !== value) {
-        this.setAttributeNS(xlinkNS, "href", value);
-      }
-    }
-    else {
-      setAttribute.call(this, name, value);
-    }
-  };
-
-  SVGElement.prototype.removeAttribute = function(name, value) {
-    if (name === "href") {
-      this.removeAttributeNS(xlinkNS, "href");
-    }
-    else {
-      removeAttribute.call(this, name);
-    }
-  };
-
-  SVGElement.prototype.hasAttribute = function(name) {
-    if (name === "href") {
-      return this.hasAttributeNS(xlinkNS, "href");
-    }
-    else {
-      return hasAttribute.call(this, name);
-    }
-  };
-})();
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//
 // Make array-like DOM objects iterable
 //
 
@@ -439,12 +387,14 @@ SVGUseElement.prototype.getBBox = function() {
   ];
 
   pseudoArrays.forEach( (pseudoArray) => {
-    Object.defineProperty(pseudoArray.prototype, Symbol.iterator, {
-      configurable: true,
-      enumerable: false,
-      writable: true,
-      value: Array.prototype[Symbol.iterator]
-    });
+    if (!pseudoArray.prototype[Symbol.iterator]) {
+      Object.defineProperty(pseudoArray.prototype, Symbol.iterator, {
+        configurable: true,
+        enumerable: false,
+        writable: true,
+        value: Array.prototype[Symbol.iterator]
+      });
+    }
   });
 })();
 

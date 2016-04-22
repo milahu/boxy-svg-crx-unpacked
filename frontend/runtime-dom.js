@@ -1442,54 +1442,6 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 //
 
 // @info
-//   Namespace-less "href" property polyfill (SVG 2).
-(() => {
-  let getAttribute = SVGElement.prototype.getAttribute;
-  let setAttribute = SVGElement.prototype.setAttribute;
-  let removeAttribute = SVGElement.prototype.removeAttribute;
-  let hasAttribute = SVGElement.prototype.hasAttribute;
-  let xlinkNS = "http://www.w3.org/1999/xlink";
-
-  SVGElement.prototype.getAttribute = function(name) {
-    if (name === "href") {
-      return this.getAttributeNS(xlinkNS, "href");
-    }
-    else {
-      return getAttribute.call(this, name);
-    }
-  };
-
-  SVGElement.prototype.setAttribute = function(name, value) {
-    if (name === "href") {
-      if (this.getAttributeNS(xlinkNS, "href") !== value) {
-        this.setAttributeNS(xlinkNS, "href", value);
-      }
-    }
-    else {
-      setAttribute.call(this, name, value);
-    }
-  };
-
-  SVGElement.prototype.removeAttribute = function(name, value) {
-    if (name === "href") {
-      this.removeAttributeNS(xlinkNS, "href");
-    }
-    else {
-      removeAttribute.call(this, name);
-    }
-  };
-
-  SVGElement.prototype.hasAttribute = function(name) {
-    if (name === "href") {
-      return this.hasAttributeNS(xlinkNS, "href");
-    }
-    else {
-      return hasAttribute.call(this, name);
-    }
-  };
-})();
-
-// @info
 //   SVGElement.prototype.dataset polyfill (SVG 2)
 // @doc
 //   https://svgwg.org/svg2-draft/single-page.html#types-InterfaceSVGElement
