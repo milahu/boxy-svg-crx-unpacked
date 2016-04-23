@@ -177,9 +177,8 @@ for(;;)switch(t.state){case 0:t.returnValue=new Promise(function(t){e.edited?e.p
 }),t.state=2;break;case 2:t.state=-2;break;default:return t.end()}},this)},a.state=12;
 break;case 12:a.state=e.entry?4:1;break;case 4:r=null,e._setChangeCounter("reset"),
 a.state=5;break;case 1:return void Promise.resolve(n()).then(a.createCallback(3),a.errback);
-case 3:r=a.value,a.state=5;break;case 5:e._cache=null,e._webviewLoadedCallbacks=[],
-e._webviewInitializedCallbacks=[],e["#webview"].reload(),a.state=14;break;case 14:
-return void Promise.resolve(e._promiseWebviewLoaded()).then(a.createCallback(8),a.errback);
+case 3:r=a.value,a.state=5;break;case 5:e._webviewLoadedCallbacks=[],e._webviewInitializedCallbacks=[],
+e["#webview"].reload(),a.state=14;break;case 14:return void Promise.resolve(e._promiseWebviewLoaded()).then(a.createCallback(8),a.errback);
 case 8:return void Promise.resolve(e.init(r,e._entry)).then(a.createCallback(10),a.errback);
 case 10:t(),a.state=-2;break;default:return a.end()}},this)})},reloadArtworkFromDisk:function(){
 var e=this;return new Promise(function(t){var r,a,i,s;return $traceurRuntime.asyncWrap(function(l){
@@ -187,13 +186,12 @@ for(;;)switch(l.state){case 0:l.state=e._entry?13:5;break;case 13:a=o(e._entry).
 l.state=14;break;case 14:l.state="svg"===a||"html"===a?1:11;break;case 1:return void Promise.resolve(u(e._entry,"text")).then(l.createCallback(3),l.errback);
 case 3:i=l.value,l.state=2;break;case 2:i&&(r=i),l.state=5;break;case 11:l.state="svgz"===a?6:5;
 break;case 6:return void Promise.resolve(u(e._entry,"arrayBuffer")).then(l.createCallback(8),l.errback);
-case 8:s=l.value,l.state=7;break;case 7:s&&(r=n(s)),l.state=5;break;case 5:r?(e._cache=null,
-e.postMessage("setArtwork",r),e._setChangeCounter("reset"),t(!0)):t(!1),l.state=-2;
-break;default:return l.end()}},this)})},canReloadArtworkFromDisk:function(){if(this._entry){
-var e=o(this._entry).toLowerCase();return"svg"===e||"svgz"===e||"html"===e}return!1;
-},save:function(){var e=this;return new Promise(function(n){var r,a,i,s,l,u,d,h,b,m;
-return $traceurRuntime.asyncWrap(function(f){for(;;)switch(f.state){case 0:r=e._entry,
-a=r?o(r):null,f.state=60;break;case 60:f.state="svg"===a||"svgz"===a||"html"===a?49:53;
+case 8:s=l.value,l.state=7;break;case 7:s&&(r=n(s)),l.state=5;break;case 5:r?(e.postMessage("setArtwork",r),
+e._setChangeCounter("reset"),t(!0)):t(!1),l.state=-2;break;default:return l.end();
+}},this)})},canReloadArtworkFromDisk:function(){if(this._entry){var e=o(this._entry).toLowerCase();
+return"svg"===e||"svgz"===e||"html"===e}return!1},save:function(){var e=this;return new Promise(function(n){
+var r,a,i,s,l,u,d,h,b,m;return $traceurRuntime.asyncWrap(function(f){for(;;)switch(f.state){
+case 0:r=e._entry,a=r?o(r):null,f.state=60;break;case 60:f.state="svg"===a||"svgz"===a||"html"===a?49:53;
 break;case 49:i="html"===a?"html":"xml",f.state=50;break;case 50:return void Promise.resolve(e.getArtwork(i)).then(f.createCallback(3),f.errback);
 case 3:s=f.value,f.state=2;break;case 2:f.pushTry(42,null),f.state=45;break;case 45:
 f.state="svg"===a?4:13;break;case 4:return void Promise.resolve(c(r,s,"image/svg+xml;charset=utf-8")).then(f.createCallback(5),f.errback);
@@ -242,14 +240,16 @@ e.dispatchEvent(new CustomEvent("entrychange",{bubbles:!0,detail:e})),n(!0),v.st
 break;case 71:n(!1),v.state=-2;break;default:return v.end()}},this)})},getArtwork:function(){
 var e=void 0!==arguments[0]?arguments[0]:"xml",t=this;return new Promise(function(n){
 return $traceurRuntime.asyncWrap(function(r){for(;;)switch(r.state){case 0:return void Promise.resolve(t.promiseReady()).then(r.createCallback(2),r.errback);
-case 2:t._cache&&t._cache.changeCounter===t._changeCounter&&t._cache.serialization===e?n(t._cache.artwork):t.postMessage("getArtwork",e,function(r){
-return $traceurRuntime.asyncWrap(function(a){for(;;)switch(a.state){case 0:t._cache={
-artwork:r,changeCounter:t._changeCounter,serialization:e},n(r),a.state=-2;break;default:
-return a.end()}},this)}),r.state=-2;break;default:return r.end()}},this)})},focus:function(){
-this["#webview"].focus()},postMessage:function(e){var t,n,r,a,i=arguments;return $traceurRuntime.asyncWrap(function(s){
-for(;;)switch(s.state){case 0:t=void 0!==i[1]?i[1]:null,n=void 0!==i[2]?i[2]:null,
-r=this._messageCounter++,a={channel:"request",id:r,name:e,arg:t},s.state=4;break;case 4:
-return void Promise.resolve(this._promiseWebviewLoaded()).then(s.createCallback(2),s.errback);
+case 2:t.postMessage("getArtwork",e,function(e){return $traceurRuntime.asyncWrap(function(t){
+for(;;)switch(t.state){case 0:n(e),t.state=-2;break;default:return t.end()}},this);
+}),r.state=-2;break;default:return r.end()}},this)})},getArtworkFromSelectedElements:function(){
+var e=void 0!==arguments[0]?arguments[0]:"xml",t=this;return new Promise(function(n){
+t.postMessage("getArtworkFromSelectedElements",e,function(e){return $traceurRuntime.asyncWrap(function(t){
+for(;;)switch(t.state){case 0:n(e),t.state=-2;break;default:return t.end()}},this);
+})})},focus:function(){this["#webview"].focus()},postMessage:function(e){var t,n,r,a,i=arguments;
+return $traceurRuntime.asyncWrap(function(s){for(;;)switch(s.state){case 0:t=void 0!==i[1]?i[1]:null,
+n=void 0!==i[2]?i[2]:null,r=this._messageCounter++,a={channel:"request",id:r,name:e,
+arg:t},s.state=4;break;case 4:return void Promise.resolve(this._promiseWebviewLoaded()).then(s.createCallback(2),s.errback);
 case 2:n&&(this._messageResponseCallbacks[a.id]=n),this["#webview"].contentWindow.postMessage(a,"*"),
 s.state=-2;break;default:return s.end()}},this)},addMessageListener:function(e,t){
 this._messageRequestCallbacks[e]||(this._messageRequestCallbacks[e]=[]),this._messageRequestCallbacks[e].push(t);
@@ -411,11 +411,11 @@ r=t.type,l.state=5;break;case 5:return void Promise.resolve(n(t)).then(l.createC
 case 3:o=l.value,l.state=2;break;case 2:o&&(i[r]=o),s+=1,s===a.length&&e(i),l.state=-2;
 break;default:return l.end()}},this)}):e(i)}),document.execCommand("paste")})},setClipboardData:function(e){
 return new Promise(function(t){var n;document.addEventListener("copy",n=function(r){
-if(document.removeEventListener("copy",n),r.preventDefault(),r.clipboardData.items.clear(),
-e["text/plain"]&&r.clipboardData.items.add(e["text/plain"],"text/plain"),e["text/html"]&&r.clipboardData.items.add(e["text/html"],"text/html"),
-e["image/png"]){for(var a=(e["image/png"],atob(e["image/png"].split(",")[1])),i=new ArrayBuffer(a.length),s=new Uint8Array(i),o=0;o<a.length;o+=1)s[o]=a.charCodeAt(o);
-var l=new Blob([i],{type:"image/png"}),u=new File([l],"clipboard.png");r.clipboardData.items.add(u);
-}t()}),document.execCommand("copy")})},execCommand:function(e){for(var t=document.activeElement;t._shadowRoot&&t._shadowRoot.activeElement;)t=t._shadowRoot.activeElement;
+return $traceurRuntime.asyncWrap(function(a){for(;;)switch(a.state){case 0:document.removeEventListener("copy",n),
+r.preventDefault(),r.clipboardData.items.clear(),e["text/plain"]&&r.clipboardData.items.add(e["text/plain"],"text/plain"),
+e["text/html"]&&r.clipboardData.items.add(e["text/html"],"text/html"),t(),a.state=-2;
+break;default:return a.end()}},this)}),document.execCommand("copy")})},execCommand:function(e){
+for(var t=document.activeElement;t._shadowRoot&&t._shadowRoot.activeElement;)t=t._shadowRoot.activeElement;
 for(var n=t;n;n=n.parentNode||n.host)if(n.commands&&n.commands[e]){n.commands[e].exec();
 break}},getRetainedRecentEntries:function(){return this._dbGetRecent()},rasterizeArtwork:function(e){
 var t=void 0!==arguments[1]?arguments[1]:"png",n=(void 0!==arguments[2]?arguments[2]:1,
@@ -549,13 +549,14 @@ s.id=a,s.disabled=!0,e["#editors"].append(s),e._toggleEditor(s.id),o.state=4;bre
 case 4:return void Promise.resolve(s.init()).then(o.createCallback(2),o.errback);case 2:
 i.disabled=!1,e._storeSessionDebounced(),n(s),o.state=-2;break;default:return o.end();
 }},this)})},_openEditorWithArtworkImportedFromSelectedElements:function(){var e=this;
-return new Promise(function(n){e.currentEditor.postMessage("getArtworkFromSelectedElements","html",function(r){
-var a,i,s,o;return $traceurRuntime.asyncWrap(function(l){for(;;)switch(l.state){case 0:
-a=e._createUniqueTabID(),i=a.replace("tab","editor"),s=e["#tabs"].openTab(),s.label="Untitled",
-s.id=a,s.href="#"+i,s.disabled=!0,o=t("bx-editor"),o.id=i,o.disabled=!0,e["#editors"].append(o),
-e._toggleEditor(o.id),l.state=4;break;case 4:return void Promise.resolve(o.init(r)).then(l.createCallback(2),l.errback);
-case 2:s.disabled=!1,e._storeSessionDebounced(),n(o),l.state=-2;break;default:return l.end();
-}},this)})})},_openEditorsWithEntries:function(e){var n=this,r=function(e){return new Promise(function(r){
+return new Promise(function(n){var r,a,i,s,o;return $traceurRuntime.asyncWrap(function(l){
+for(;;)switch(l.state){case 0:return void Promise.resolve(e.currentEditor.getArtworkFromSelectedElements("html")).then(l.createCallback(3),l.errback);
+case 3:r=l.value,l.state=2;break;case 2:a=e._createUniqueTabID(),i=a.replace("tab","editor"),
+s=e["#tabs"].openTab(),s.label="Untitled",s.id=a,s.href="#"+i,s.disabled=!0,o=t("bx-editor"),
+o.id=i,o.disabled=!0,e["#editors"].append(o),e._toggleEditor(o.id),l.state=7;break;
+case 7:return void Promise.resolve(o.init(r)).then(l.createCallback(5),l.errback);
+case 5:s.disabled=!1,e._storeSessionDebounced(),n(o),l.state=-2;break;default:return l.end();
+}},this)})},_openEditorsWithEntries:function(e){var n=this,r=function(e){return new Promise(function(r){
 var a,i,s,o,l,u,c,d,h,b,m,v,p,w,k;return $traceurRuntime.asyncWrap(function(y){for(;;)switch(y.state){
 case 0:a=null,i=!0,s=!1,o=void 0,y.state=29;break;case 29:y.pushTry(15,16),y.state=18;
 break;case 18:l=void 0,u=$traceurRuntime.spread(n["#editors"].children)[Symbol.iterator](),
