@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg x="0px" y="0px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+	.st0{fill:#FF0000;}
+</style>
+  <path d="M -16.603158950805664 -6.373865127563477 L 41.78407859802246 -6.373865127563477 L 41.78407859802246 30.90312385559082 L -16.603158950805664 30.90312385559082 L -16.603158950805664 -6.373865127563477 Z" style="color: rgb(0, 0, 0); fill: rgb(225, 225, 225); fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0.954159px; marker-start: none; marker-mid: none; marker-end: none; visibility: visible; display: inline; overflow: visible;" id="rect3860" transform="matrix(0.4110473394393921, 0, 0, 0.6438317894935608, -23.17529296875, 4.103678226470947)"/>
+  <g id="g-2" transform="matrix(1.1116363773328786, 0, 0, 1.1110957860501713, -40.87098992877144, -61.8846182817465)">
+    <rect x="42.31560134887695" y="-39.58129119873047" width="11.700159072875977" height="2.6987242698669434" transform="matrix(0, 1, -1, 0, 4.385857, 13.381326)" style="color: rgb(0, 0, 0); fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0.954159px; shape-rendering: crispEdges; marker-start: none; marker-mid: none; marker-end: none; visibility: visible; display: inline; overflow: visible;" id="path-1"/>
+    <rect x="36.76650619506836" y="60.1970100402832" width="11.694470405578613" height="2.7000341415405273" id="path-2" style="color: rgb(0, 0, 0); fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0.954159px; marker-start: none; marker-mid: none; marker-end: none; visibility: visible; display: inline; overflow: visible; shape-rendering: crispEdges;"/>
+    <rect x="37.66606903076172" y="61.097023010253906" width="9.895323753356934" height="0.9000127911567688" id="path-3" style="color: rgb(0, 0, 0); fill: rgb(0, 0, 0); fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0; marker-start: none; marker-mid: none; marker-end: none; visibility: visible; shape-rendering: crispEdges; display: inline; overflow: visible;"/>
+    <rect x="42.07040786743164" y="-38.683624267578125" width="9.900137901306152" height="0.8995749354362488" transform="matrix(0, 1, -1, 0, 4.383945, 14.526526)" style="color: rgb(0, 0, 0); fill: rgb(0, 0, 0); fill-opacity: 1; fill-rule: evenodd; stroke: none; stroke-width: 0.899793; marker-start: none; marker-mid: none; marker-end: none; visibility: visible; display: inline; shape-rendering: crispEdges; overflow: visible;" id="path-4"/>
+  </g>
+  <rect x="3.598111675273685e-7" y="-4.2215924622723833e-7" width="5.999999523162842" height="6.000000476837158" style="fill: rgba(239, 50, 50, 0.309804);" transform="matrix(1, 0, 0, 1, -29.9999942779541, 3.552713678800501e-15)"/>
+  <g id="g3932" transform="matrix(1, 0, 0, 1, -63.636449877421065, -53.83189684549967)"/>
+  <g transform="matrix(1.1058065146995986, 0, 0, 1.1187991874264176, -148.42649863190212, -4.3835466866228865)">
+    <path d="M 372 209 L 465.20353859692506 276.71633455125516 L 429.60295472466237 386.28366544874484 L 314.39704527533763 386.28366544874484 L 278.79646140307494 276.71633455125516 L 372 209 Z" style="fill: none;stroke: rgb(255, 255, 255);stroke-width: 47.887;/* shape-rendering: crispEdges; */" transform="matrix(0.05632226914167405, 0, 0, 0.05632226914167405, 127.76473236083984, 1.6149570941925049)"/>
+    <path d="M 372 209 L 465.20353859692506 276.71633455125516 L 429.60295472466237 386.28366544874484 L 314.39704527533763 386.28366544874484 L 278.79646140307494 276.71633455125516 L 372 209 Z" style="fill: none;stroke: rgb(0, 0, 0);stroke-width: 16.099;/* shape-rendering: crispEdges; *//* shape-rendering: geometricPrecision; */" transform="matrix(0.05584412068128587, 0, 0, 0.05584412068128587, 127.94258880615234, 1.7572586536407473)"/>
+  </g>
+</svg>
