@@ -17,19 +17,19 @@ main {
   max-width: calc(100% - 104px);
 }
 
-#tools-dock {
+#primary-dock {
   position: absolute;
   top: 0px;
   left: 0px;
   height: calc(100% - 10px);
   margin: 5px;
 }
-#tools-dock[data-extra-whitespace] {
+#primary-dock[data-extra-whitespace] {
   margin-top: 52px;
   height: calc(100% - 10px - 52px);
 }
 
-#panels-dock {
+#secondary-dock {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -37,10 +37,20 @@ main {
   margin: 5px;
 }
 
-#panels {
+#primary-panels {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#secondary-panels {
   position: absolute;
   top: 0px;
   right: 0px;
+}
+
+#transform-tool-panel {
+  height: 172px;
 }
 
 #fill-panel {

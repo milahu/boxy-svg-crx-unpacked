@@ -138,8 +138,8 @@ return body.setConfig(e.key,e.value).then(t)}),this.addMessageListener("setClipb
 return body.setClipboardData(e)}),this.addMessageListener("setChangeCounter",function(t){
 return e._setChangeCounter(t)}),this.addMessageListener("toggleTextInputMode",function(t){
 return e._toggleTextInputMode(t)}),this.addMessageListener("toolChanged",function(t){
-return e._onCurrentToolChange(t)}),this.addMessageListener("panelChanged",function(t){
-return e._onCurrentPanelChange(t)}),this.addMessageListener("showMessageBox",function(e,t){
+return e._onCurrentToolChange(t)}),this.addMessageListener("secondaryPanelChanged",function(t){
+return e._onCurrentSecondaryPanelChange(t)}),this.addMessageListener("showMessageBox",function(e,t){
 return body.showMessageBox(e).then(t)}),this.addMessageListener("openExternalURL",function(e){
 return chrome.browser.openTab({url:e})}),this.addMessageListener("exportFile",function(t){
 return e._exportFile(t)}),this.addMessageListener("getClipboardData",function(e,t){
@@ -266,7 +266,7 @@ var e=!0,t=!1,n=void 0;try{for(var r=void 0,a=this._webviewInitializedCallbacks[
 var i=r.value;i()}}catch(s){t=!0,n=s}finally{try{e||null==a["return"]||a["return"]();
 }finally{if(t)throw n}}this._webviewInitializedCallbacks=null,this.dispatchEvent(new CustomEvent("ready",{
 bubbles:!0,detail:this}))},_onCurrentToolChange:function(e){this._currentToolID=e;
-},_onCurrentPanelChange:function(e){this._currentPanelID=e},promiseReady:function(){
+},_onCurrentSecondaryPanelChange:function(e){this._currentPanelID=e},promiseReady:function(){
 return this._promiseWebviewInitialized()},_promiseWebviewLoaded:function(){var e=this;
 return new Promise(function(t){e._webviewLoadedCallbacks?e._webviewLoadedCallbacks.push(t):t();
 })},_promiseWebviewInitialized:function(){var e=this;return new Promise(function(t){
