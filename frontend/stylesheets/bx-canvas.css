@@ -8,10 +8,11 @@
   display: block;
   width: 100%;
   height: 100%;
+  background: url("../images/checkboard.png") repeat 0 0;
+  background-size: 35px;
 }
 
 main {
-  /* @bugfix: Background artboard becomes invisible when zoom is very high */
   background: white;
   /* @bugfix: Prevent element with "contenteditable" attribute from being scrolled on text input */
   overflow: hidden;

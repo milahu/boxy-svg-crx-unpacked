@@ -148,7 +148,7 @@ return void Promise.resolve(body.getClipboardData()).then(e.createCallback(3),e.
 case 3:n=e.value,e.state=2;break;case 2:t(n),e.state=-2;break;default:return e.end();
 }},this)}),this.addMessageListener("rasterizeArtwork",function(e,t){var n,r,a,i,s,o;
 return $traceurRuntime.asyncWrap(function(l){for(;;)switch(l.state){case 0:n=e,r=n.artwork,
-a=n.format,i=n.compression,s=n.transparent,l.state=5;break;case 5:return void Promise.resolve(body.rasterizeArtwork(r,a,i,s)).then(l.createCallback(3),l.errback);
+a=n.format,i=n.compression,s=n.backgroundColor,l.state=5;break;case 5:return void Promise.resolve(body.rasterizeArtwork(r,a,i,s)).then(l.createCallback(3),l.errback);
 case 3:o=l.value,l.state=2;break;case 2:t(o),l.state=-2;break;default:return l.end();
 }},this)})},get entry(){return this._entry},get edited(){return 0!==this._changeCounter;
 },get ready(){return null===this._webviewInitializedCallbacks},get textInputMode(){
@@ -355,7 +355,7 @@ this["#"+u.id]=u}catch(m){n=!0,r=m}finally{try{t||null==l["return"]||l["return"]
 return e._onUserIdleStateChange(t)}),this.addMessageListener("getConfig",function(t,n){
 return e.getConfig(t).then(n)}),this.addMessageListener("setConfig",function(t,n){
 return e.setConfig(t.key,t.value).then(n)}),this.addMessageListener("getClipboardData",function(t,n){
-return e.getClipboardtData().then(function(e){return n(e)})}),this.addMessageListener("setClipboardData",function(t,n){
+return e.getClipboardData().then(function(e){return n(e)})}),this.addMessageListener("setClipboardData",function(t,n){
 return e.setClipboardData(t)}),this.addMessageListener("getBackendName",function(e,t){
 return t("chrome")}),this.addMessageListener("getAppName",function(e,t){return t(h);
 }),this.addMessageListener("getAppVersion",function(e,t){return t(b)}),this.addMessageListener("getShortcutsEditorModel",function(t,n){
@@ -419,10 +419,11 @@ for(var t=document.activeElement;t._shadowRoot&&t._shadowRoot.activeElement;)t=t
 for(var n=t;n;n=n.parentNode||n.host)if(n.commands&&n.commands[e]){n.commands[e].exec();
 break}},getRetainedRecentEntries:function(){return this._dbGetRecent()},rasterizeArtwork:function(e){
 var t=void 0!==arguments[1]?arguments[1]:"png",n=(void 0!==arguments[2]?arguments[2]:1,
-void 0!==arguments[3]?arguments[3]:!0),r=this;return new Promise(function(a,i){var o,l,u,c,d;
-return $traceurRuntime.asyncWrap(function(h){for(;;)switch(h.state){case 0:o='\n        let svg = document.querySelector("svg");\n        let width = svg.viewBox.baseVal.width;\n        let height = svg.viewBox.baseVal.height;\n        svg.setAttribute("width", width + "px");\n        svg.setAttribute("height", height + "px");\n        [width, height];\n      ',
+void 0!==arguments[3]?arguments[3]:"rgba(0, 0, 0, 0)"),r=this;return new Promise(function(a,i){
+var o,l,u,c,d;return $traceurRuntime.asyncWrap(function(h){for(;;)switch(h.state){
+case 0:o='\n        let svg = document.querySelector("svg");\n        let width = svg.viewBox.baseVal.width;\n        let height = svg.viewBox.baseVal.height;\n        svg.setAttribute("width", width + "px");\n        svg.setAttribute("height", height + "px");\n        svg.setAttribute("style", "background-color: '+n+'");\n        [width, height];\n      ',
 l="\n        display: block;\n        position: fixed;\n        width: 1px;\n        height: 1px;\n        top: 0px;\n        left: 0px;\n        opacity: 0.01;\n      ",
-u="jpg"===t?"jpeg":t,c=document.createElement("webview"),"png"===u&&n&&c.setAttribute("allowtransparency",""),
+u="jpg"===t?"jpeg":t,c=document.createElement("webview"),c.setAttribute("allowtransparency",""),
 c.setAttribute("partition","persist:boxy"),c.setAttribute("style",l),c.src="data:image/svg+xml;utf8,"+e,
 r._shadowRoot.append(c),c.addEventListener("contentload",d=function(){c.removeEventListener("contentload",d),
 c.executeScript({code:o},function(e){var t,n,r,o,l;return $traceurRuntime.asyncWrap(function(d){

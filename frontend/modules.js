@@ -653,7 +653,7 @@ this["#center-horizontally-button"].disabled=!0,this["#center-vertically-button"
 this["#stretch-horizontally-button"].disabled=!0,this["#stretch-vertically-button"].disabled=!0;
 }},{},n)}(HTMLElement),c=n("bx-arrangementcontrols",u);return{get default(){return c;
 }}}),System.registerModule("elements/bx-backgroundartboard",[],function(){"use strict";
-var e=System.get("utils/element").registerElement,t='\n  <polygon\n    fill="white"\n    points="-1000000,-1000000 2000000,0 2000000,20000000, 0,2000000"/>\n',n=function(e){
+var e=System.get("utils/element").registerElement,t='\n  <polygon\n    fill="rgba(255, 255, 255, 0)"\n    points="-1000000,-1000000 2000000,0 2000000,20000000, 0,2000000"/>\n',n=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
 get contentType(){return"background"},createdCallback:function(){this._shadowRoot=this.createShadowRoot(),
 this._shadowRoot.innerHTML=t}},{},e)}(SVGGElement),i=e("g","bx-backgroundartboard",n);
@@ -825,8 +825,9 @@ return n._onDragOver(e)}),this._shadowRoot.addEventListener("drop",function(e){r
 }),this._undoManager.addEventListener("positionchange",function(e){return n._onUndoManagerPositionChange(e);
 }),this["#main"].addEventListener("scroll",function(e){return n._onScroll(e)}),body.getConfig("bx-preferences:geometryPrecision").then(function(e){
 null!==e&&(n._geometryPrecision=e)}),body.getConfig("bx-preferences:transformPrecision").then(function(e){
-null!==e&&(n._transformPrecision=e)}),body.addEventListener("configchange",this._configChangeListener=function(e){
-var t=e.detail,i=t.key,r=t.value;"bx-preferences:geometryPrecision"===i?n._geometryPrecision=r:"bx-preferences:transformPrecision"===i&&(n._transformPrecision=r);
+null!==e&&(n._transformPrecision=e)}),body.getConfig("bx-preferences:canvasBackgroundColor").then(function(e){
+n["#main"].style.background=e}),body.addEventListener("configchange",this._configChangeListener=function(e){
+var t=e.detail,i=t.key,r=t.value;"bx-preferences:geometryPrecision"===i?n._geometryPrecision=r:"bx-preferences:transformPrecision"===i?n._transformPrecision=r:"bx-preferences:canvasBackgroundColor"===i&&(n["#main"].style.background=r);
 }),this.enableHud("viewbox-hud")},get selectedElements(){return T($traceurRuntime.spread(this._selectedElements));
 },set selectedElements(e){this._selectedElements=e,this.dispatchEvent(new CustomEvent("selectedelementschange"));
 },get selectedTextRange(){return this._selectedTextRange?this._selectedTextRange:null;
@@ -972,9 +973,9 @@ this.selectedTextRange=t}else{var n=[],i=!0,r=!1,a=void 0;try{for(var o=void 0,s
 var l=o.value;f(l)&&n.push(l)}}catch(u){r=!0,a=u}finally{try{i||null==s["return"]||s["return"]();
 }finally{if(r)throw a}}this.selectedElements=$traceurRuntime.spread(n)}},grabColor:function(){
 var e=this;return new Promise(function(t){var n=e["#svg"].cloneNode(!0),i=y('\n        <rect\n          x="'+e.currentArtboard.viewBox.x+'"\n          y="'+e.currentArtboard.viewBox.y+'"\n          width="'+e.currentArtboard.viewBox.width+'"\n          height="'+e.currentArtboard.viewBox.height+'"\n          style="fill: none; stroke: #646464; stroke-width: 1; vector-effect: non-scaling-stroke;">\n        </rect>\n      ');
-n.appendChild(i),n.setAttribute("xmlns",s),n.setAttribute("xmlns:xlink",l);var r=new Blob([n.outerHTML],{
-type:"image/svg+xml;charset=utf-8"}),a=URL.createObjectURL(r),o=new Image;o.src=a,
-o.addEventListener("load",function(){var n=document.createElement("canvas"),i=e["#svg"].getBoundingClientRect();
+n.appendChild(i),n.setAttribute("xmlns",s),n.setAttribute("xmlns:xlink",l),n.style.background=e["#main"].style.background;
+var r=new Blob([n.outerHTML],{type:"image/svg+xml;charset=utf-8"}),a=URL.createObjectURL(r),o=new Image;
+o.src=a,o.addEventListener("load",function(){var n=document.createElement("canvas"),i=e["#svg"].getBoundingClientRect();
 n.width=i.width,n.height=i.height,n.setAttribute("style","\n          position: absolute;\n          top: "+i.top+"px;\n          left: "+i.left+"px;\n          background: white;\n        ");
 var r=n.getContext("2d");r.fillStyle="transparent",r.fillRect(0,0,1e3,1e3),r.drawImage(o,0,0),
 e.after(n);var s,l,u,c;n.addEventListener("mouseenter",s=function(e){c=body.registerCursor("crosshair",0);
@@ -1084,51 +1085,81 @@ mode:"closed"}),this._shadowRoot.innerHTML=o;var t=!0,i=!1,r=void 0;try{for(var 
 var l=a.value;this["#"+l.id]=l}}catch(u){i=!0,r=u}finally{try{t||null==s["return"]||s["return"]();
 }finally{if(i)throw r}}var c=!0,d=!1,h=void 0;try{for(var v=void 0,f=this.attributes[Symbol.iterator]();!(c=(v=f.next()).done);c=!0){
 var m=v.value;this.attributeChangedCallback(m.name)}}catch(b){d=!0,h=b}finally{try{
-c||null==f["return"]||f["return"]()}finally{if(d)throw h}}this.hasAttribute("color")||this.attributeChangedCallback("color"),
+c||null==f["return"]||f["return"]()}finally{if(d)throw h}}this.hasAttribute("value")||this.attributeChangedCallback("value"),
 this["#hue-slider"].addEventListener("markerdragstart",function(){return e._onHueSliderDragStart();
 }),this["#satlight-slider"].addEventListener("markerdragstart",function(){return e._onSatlightSliderDragStart();
 }),this["#alpha-slider"].addEventListener("markerdragstart",function(){return e._onAlphaSliderDragStart();
 }),this["#grab-color-button"].addEventListener("click",function(t){return e._onGrabColorButtonClick(t);
 }),this["#color-input"].addEventListener("change",function(){return e._onColorInputChange(event);
 }),this["#color-input"].validate=function(e){return n(e)}},attributeChangedCallback:function(e){
-"color"===e&&this._onColorAttributeChange()},get color(){return this.hasAttribute("color")?this.getAttribute("color"):"#ffffff";
-},set color(e){this.setAttribute("color",e)},get mixed(){this["#color-input"].mixed;
-},set mixed(e){this["#color-input"].mixed=e},get disabled(){return this.hasAttribute("disabled");
-},set disabled(e){e?this.setAttribute("disabled",""):this.removeAttribute("disabled");
-},_onColorAttributeChange:function(){if(this._isDraggingSlider===!1){var e=i(this.color,"hsla");
+"value"===e&&this._onValueAttributeChange()},get value(){return this.hasAttribute("value")?this.getAttribute("value"):"#ffffff";
+},set value(e){this.setAttribute("value",e)},get mixed(){this["#color-input"].mixed;
+},set mixed(e){this["#color-input"].mixed=e},get hidegrabber(){return this.hasAttribute("disablegrabber");
+},set hidegrabber(e){e?this.setAttribute("hidegrabber",""):this.removeAttribute("hidegrabber");
+},get disabled(){return this.hasAttribute("disabled")},set disabled(e){e?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},_onValueAttributeChange:function(){if(this._isDraggingSlider===!1){var e=i(this.value,"hsla");
 this["#hue-slider"].hue=e.h,this["#satlight-slider"].hue=e.h,this["#satlight-slider"].saturation=e.s,
-this["#satlight-slider"].lightness=e.l,this["#alpha-slider"].color=this.color,this["#alpha-slider"].alpha=e.a,
+this["#satlight-slider"].lightness=e.l,this["#alpha-slider"].color=this.value,this["#alpha-slider"].alpha=e.a,
 this["#color-input"].value=e.toString(a)}},_onHueSliderDragStart:function(){var e=this;
-this._isDraggingSlider=!0;var t,n,r=i(this.color,"hsla");this.dispatchEvent(new CustomEvent("changestart")),
+this._isDraggingSlider=!0;var t,n,r=i(this.value,"hsla");this.dispatchEvent(new CustomEvent("changestart")),
 this["#hue-slider"].addEventListener("markerdrag",t=function(t){r.h=e["#hue-slider"].hue,
-e.color=r.toString("rgba"),e["#satlight-slider"].hue=e["#hue-slider"].hue,e["#alpha-slider"].color=e.color,
+e.value=r.toString("rgba"),e["#satlight-slider"].hue=e["#hue-slider"].hue,e["#alpha-slider"].color=e.value,
 e["#color-input"].value=r.toString(a),e.dispatchEvent(new CustomEvent("change"))}),
 this["#hue-slider"].addEventListener("markerdragend",n=function(){e["#hue-slider"].removeEventListener("markerdrag",t),
 e["#hue-slider"].removeEventListener("markerdragend",n),e._isDraggingSlider=!1,e.dispatchEvent(new CustomEvent("changeend"));
 })},_onSatlightSliderDragStart:function(){var t=this;this._isDraggingSlider=!0;var n,i,r=new e(this["#hue-slider"].hue,50,50,this["#alpha-slider"].alpha,"hsla");
 this.dispatchEvent(new CustomEvent("changestart")),this["#satlight-slider"].addEventListener("markerdrag",n=function(){
-r.s=t["#satlight-slider"].saturation,r.l=t["#satlight-slider"].lightness,t.color=r.toString("rgba"),
-t["#alpha-slider"].color=t.color,t["#color-input"].value=r.toString(a),t.dispatchEvent(new CustomEvent("change"));
+r.s=t["#satlight-slider"].saturation,r.l=t["#satlight-slider"].lightness,t.value=r.toString("rgba"),
+t["#alpha-slider"].color=t.value,t["#color-input"].value=r.toString(a),t.dispatchEvent(new CustomEvent("change"));
 }),this["#satlight-slider"].addEventListener("markerdragend",i=function(){t["#satlight-slider"].removeEventListener("markerdrag",n),
 t["#satlight-slider"].removeEventListener("markerdragend",i),t._isDraggingSlider=!1,
 t.dispatchEvent(new CustomEvent("changeend"))})},_onAlphaSliderDragStart:function(){
-var e=this;this._isDraggingSlider=!0;var t,n,r=i(this.color,"hsla");this.dispatchEvent(new CustomEvent("changestart")),
-this["#alpha-slider"].addEventListener("markerdrag",t=function(t){r.a=t.detail,e.color=r.toString("rgba"),
+var e=this;this._isDraggingSlider=!0;var t,n,r=i(this.value,"hsla");this.dispatchEvent(new CustomEvent("changestart")),
+this["#alpha-slider"].addEventListener("markerdrag",t=function(t){r.a=t.detail,e.value=r.toString("rgba"),
 e["#color-input"].value=r.toString(a),e.dispatchEvent(new CustomEvent("change"))}),
 this["#alpha-slider"].addEventListener("markerdragend",n=function(){e["#alpha-slider"].removeEventListener("markerdrag",t),
 e["#alpha-slider"].removeEventListener("markerdragend",n),e._isDraggingSlider=!1,
 e.dispatchEvent(new CustomEvent("changeend"))})},_onColorInputChange:function(){this.dispatchEvent(new CustomEvent("changestart")),
-this.color=this["#color-input"].value,this.dispatchEvent(new CustomEvent("change")),
+this.value=this["#color-input"].value,this.dispatchEvent(new CustomEvent("change")),
 this.dispatchEvent(new CustomEvent("changeend"))},_onGrabColorButtonClick:function(){
 var e;return $traceurRuntime.asyncWrap(function(t){for(;;)switch(t.state){case 0:
 this["#grab-color-button"].pressed=!0,t.state=5;break;case 5:return void Promise.resolve(body.canvas.grabColor()).then(t.createCallback(3),t.errback);
 case 3:e=t.value,t.state=2;break;case 2:this["#grab-color-button"].pressed=!1,this.dispatchEvent(new CustomEvent("changestart")),
-this.color=e,this.dispatchEvent(new CustomEvent("change")),this.dispatchEvent(new CustomEvent("changeend")),
+this.value=e,this.dispatchEvent(new CustomEvent("change")),this.dispatchEvent(new CustomEvent("changeend")),
 t.state=-2;break;default:return t.end()}},this)}},{},t)}(HTMLElement),l=r("bx-colorpicker",s);
-return{get default(){return l}}}),System.registerModule("elements/bx-compositingcontrols",[],function(){
-"use strict";System.get("elements/bx-button"),System.get("elements/bx-checkbox"),
-System.get("elements/bx-select");var e=System.get("utils/element"),t=(e.createElement,
-e.registerElement),n=System.get("utils/math").round,i=(System.get("utils/paint").getDefFromURL,
+return{get default(){return l}}}),System.registerModule("elements/bx-colorselect",[],function(){
+"use strict";System.get("elements/bx-colorpicker");var e=System.get("utils/element").registerElement,t=(System.get("utils/time").sleep,
+System.get("classes/shortcut")["default"],Number.parseFloat,Object.values,'\n  <style>\n    @import url("stylesheets/scrollbars.css");\n    @import url("stylesheets/bx-colorselect.css");\n  </style>\n\n  <div id="button">\n    <div id="preview">\n      <div id="preview-inner">\n      </div>\n    </div>\n  </div>\n\n  <div id="overlay"></div>\n\n  <div id="popup" style="visibility: hidden"">\n    <bx-colorpicker id="color-picker" color="#ffffff" hidegrabber></bx-colorpicker>\n  </div>\n'),n=function(e){
+function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
+createdCallback:function(){var e=this;this._shadowRoot=this.createShadowRoot({mode:"closed"
+}),this._shadowRoot.innerHTML=t;var n=!0,i=!1,r=void 0;try{for(var a=void 0,o=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(n=(a=o.next()).done);n=!0){
+var s=a.value;this["#"+s.id]=s}}catch(l){i=!0,r=l}finally{try{n||null==o["return"]||o["return"]();
+}finally{if(i)throw r}}var u=!0,c=!1,d=void 0;try{for(var h=void 0,v=this.attributes[Symbol.iterator]();!(u=(h=v.next()).done);u=!0){
+var f=h.value;this.attributeChangedCallback(f.name)}}catch(m){c=!0,d=m}finally{try{
+u||null==v["return"]||v["return"]()}finally{if(c)throw d}}this["#button"].addEventListener("mousedown",function(t){
+return e._onButtonMousedown(t)}),this["#overlay"].addEventListener("mousedown",function(t){
+return e._onOverlayMouseDown(t)}),this["#color-picker"].addEventListener("change",function(t){
+return e._onColorPickerChange(t)})},attributeChangedCallback:function(e){"value"===e?this._onValueAttributeChange():"opened"===e?this._onOpenedAttributeChange():"disabled"===e&&this._onDisabledAttributeChange();
+},get value(){return this.hasAttribute("value")?this.getAttribute("value"):"#ffffff";
+},set value(e){this.setAttribute("value",e)},get opened(){return this.hasAttribute("opened");
+},set opened(e){e?this.setAttribute("opened",""):this.removeAttribute("opened")},
+get disabled(){return this.hasAttribute("disabled")},set disabled(e){e?this.setAttribute("disabled",""):this.removeAttribute("disabled");
+},_onValueAttributeChange:function(){this["#preview-inner"].style.background=this.value,
+this["#color-picker"].value!==this.value&&(this["#color-picker"].value=this.value);
+},_onDisabledAttributeChange:function(){this.tabIndex=this.disabled?-1:0},_onOpenedAttributeChange:function(){
+this.opened?this._onOpened():this._onClosed()},_onOpened:function(){var e=this;window.addEventListener("blur",this._blurListener=function(){
+return e.opened=!1}),window.addEventListener("resize",this._resizeListener=function(){
+return e.opened=!1}),this["#overlay"].style.display="block",this["#popup"].style.visibility="visible",
+this["#popup"].style.pointerEvents="all";var t=this["#button"].getBoundingClientRect();
+this["#popup"].style.top=t.y+t.height+5+"px",this["#popup"].style.left=t.x-1+"px";
+},_onClosed:function(){window.removeEventListener("blur",this._blurListener),window.removeEventListener("resize",this._resizeListener),
+this["#overlay"].style.display="none",this["#popup"].style.visibility="hidden"},_onOverlayMouseDown:function(e){
+this.opened=!1},_onButtonMousedown:function(e){0===e.button&&(this.opened=!0)},_onColorPickerChange:function(){
+this.value=this["#color-picker"].value,this.dispatchEvent(new CustomEvent("change"));
+}},{},e)}(HTMLElement),i=e("bx-colorselect",n);return{get default(){return i}}}),
+System.registerModule("elements/bx-compositingcontrols",[],function(){"use strict";
+System.get("elements/bx-button"),System.get("elements/bx-checkbox"),System.get("elements/bx-select");
+var e=System.get("utils/element"),t=(e.createElement,e.registerElement),n=System.get("utils/math").round,i=(System.get("utils/paint").getDefFromURL,
 System.get("utils/style").queryStylableElements),r=System.get("utils/time").throttle,a=Number.parseFloat,o='\n  <style>\n    @import url("stylesheets/controls.css");\n    @import url("stylesheets/bx-compositingcontrols.css");\n  </style>\n\n  <section id="opacity-section">\n    <h2 id="opacity-section-heading">Opacity</h2>\n\n    <bx-slider\n      id="opacity-slider"\n      title="Opacity"\n      value="1"\n      min="0"\n      max="1"\n      precision="2">\n    </bx-slider>\n  </section>\n\n  <section id="blend-mode-section">\n    <h2 id="blend-mode-section-heading">Blend Mode</h2>\n\n    <bx-select id="blend-mode-select" value="normal">\n      <bx-selectitem value="normal" label="Normal"></bx-selectitem>\n      <hr>\n      <bx-selectitem value="darken" label="Darken"></bx-selectitem>\n      <bx-selectitem value="multiply" label="Multiply"></bx-selectitem>\n      <bx-selectitem value="color-burn" label="Color Burn"></bx-selectitem>\n      <hr>\n      <bx-selectitem value="lighten" label="Lighten"></bx-selectitem>\n      <bx-selectitem value="screen" label="Screen"></bx-selectitem>\n      <bx-selectitem value="color-dodge" label="Color Dodge"></bx-selectitem>\n      <hr>\n      <bx-selectitem value="overlay" label="Overlay"></bx-selectitem>\n      <bx-selectitem value="soft-light" label="Soft Light"></bx-selectitem>\n      <bx-selectitem value="hard-light" label="Hard Light"></bx-selectitem>\n      <hr>\n      <bx-selectitem value="difference" label="Difference"></bx-selectitem>\n      <bx-selectitem value="exclusion" label="Exclusion"></bx-selectitem>\n      <hr>\n      <bx-selectitem value="hue" label="Hue"></bx-selectitem>\n      <bx-selectitem value="saturation" label="Saturation"></bx-selectitem>\n      <bx-selectitem value="color" label="Color"></bx-selectitem>\n      <bx-selectitem value="luminosity" label="Luminosity"></bx-selectitem>\n    </bx-select>\n\n    <bx-checkbox label="Isolate" id="isolate-checkbox"></bx-checkbox>\n  </section>\n',s=function(e){
 function t(){$traceurRuntime.superConstructor(t).apply(this,arguments)}return $traceurRuntime.createClass(t,{
 createdCallback:function(){var e=this;this._update200Th=r(this._update,200,this),
@@ -1485,8 +1516,7 @@ System.get("elements/bx-transformtool"),System.get("elements/bx-edittool"),Syste
 System.get("elements/bx-cubicbeziertool"),System.get("elements/bx-freehandtool"),
 System.get("elements/bx-texttool"),System.get("elements/bx-triangletool"),System.get("elements/bx-rectangletool"),
 System.get("elements/bx-ellipsetool"),System.get("elements/bx-ngontool"),System.get("elements/bx-startool"),
-System.get("elements/bx-ringtool");var t=System.get("utils/artwork-rasterization").rasterizeArtwork,n=System.get("utils/artwork-general").isArtworkString,i=System.get("utils/artwork-export").exportArtwork,r=System.get("utils/artwork-import").importArtwork,a=System.get("utils/bbox").getClientBBox,o=System.get("utils/markup").parseSVG,s=System.get("utils/math").round,l=(System.get("utils/matrix").roundMatrix,
-System.get("utils/paint")),u=l.getDefFromURL,c=l.getPaintServer,d=System.get("utils/pattern").getParentPattern,h=System.get("utils/path-conversion").ellipseToPath,v=System.get("utils/path-general"),f=v.getPathDataBySubpath,m=v.reversePath,b=System.get("utils/node").closest,g=System.get("utils/path-boolops"),p=g.unite,y=g.subtract,_=g.intersect,x=g.exclude,w=System.get("utils/rect").combineRects,S=System.get("utils/string").capitalize,C=System.get("utils/style").queryStylableElements,k=System.get("utils/text").normalizeTextInRangeBeforeEditing,E=(System.get("utils/time").sleep,
+System.get("elements/bx-ringtool");var t=System.get("utils/artwork-rasterization").rasterizeArtwork,n=System.get("utils/artwork-general").isArtworkString,i=System.get("utils/artwork-export").exportArtwork,r=System.get("utils/artwork-import").importArtwork,a=System.get("utils/bbox").getClientBBox,o=System.get("utils/markup").parseSVG,s=System.get("utils/math").round,l=System.get("utils/paint"),u=l.getDefFromURL,c=l.getPaintServer,d=System.get("utils/pattern").getParentPattern,h=System.get("utils/path-conversion").ellipseToPath,v=System.get("utils/path-general"),f=v.getPathDataBySubpath,m=v.reversePath,b=System.get("utils/node").closest,g=System.get("utils/path-boolops"),p=g.unite,y=g.subtract,_=g.intersect,x=g.exclude,w=System.get("utils/rect").combineRects,S=System.get("utils/string").capitalize,C=System.get("utils/style").queryStylableElements,k=System.get("utils/text").normalizeTextInRangeBeforeEditing,E=(System.get("utils/time").sleep,
 System.get("utils/transform-general")),A=E.getComputedTransformOriginClientPoint,P=E.getTransformToElement,T=System.get("utils/transform-reduction").reduceTransform,L=System.get("utils/element"),M=L.createElement,R=L.registerElement,j=L.getElementIndex,O=L.queryClippingElements,V=(L.queryGraphicsElements,
 L.sortByDomPosition),D=L.sortBySiblingElements,G=L.sortByIntersectingElements,I=L.isElementIntersectingElement,N=L.isTransformableElement,B=System.get("classes/shortcut")["default"],U='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"></svg>',z="http://sarasoueidan.com/blog/svg-coordinate-systems/",H='\n  <style>@import url("stylesheets/bx-editorbody.css");</style>\n\n  <main>\n    <bx-canvas id="canvas"></bx-canvas>\n    <bx-breadcrumb id="breadcrumb"></bx-breadcrumb>\n\n    <bx-dock id="primary-dock">\n      <bx-button\n        title="Transform Tool"\n        icon="transform-tool"\n        skin="bx-dock"\n        href="#transform-tool-panel"\n        althref="#transform-tool">\n      </bx-button>\n\n      <bx-button\n        title="Edit Tool"\n        icon="edit-tool"\n        skin="bx-dock"\n        althref="#edit-tool">\n      </bx-button>\n\n      <bx-button\n        title="Quad Bezier Tool"\n        icon="quad-bezier-tool"\n        skin="bx-dock"\n        althref="#quad-bezier-tool">\n      </bx-button>\n\n      <bx-button\n        title="Cubic Bezier Tool"\n        icon="cubic-bezier-tool"\n        skin="bx-dock"\n        althref="#cubic-bezier-tool">\n      </bx-button>\n\n      <bx-button id="freehand"\n        title="Freehand Tool"\n        icon="freehand-tool"\n        skin="bx-dock"\n        althref="#freehand-tool">\n      </bx-button>\n\n      <bx-button\n        title="Text Tool"\n        icon="text-tool"\n        skin="bx-dock"\n        althref="#text-tool">\n      </bx-button>\n\n      <bx-button\n        title="Triangle Tool"\n        icon="triangle-tool"\n        skin="bx-dock"\n        althref="#triangle-tool">\n      </bx-button>\n\n      <bx-button\n        title="Rectangle Tool"\n        icon="rectangle-tool"\n        skin="bx-dock"\n        althref="#rectangle-tool">\n      </bx-button>\n\n      <bx-button\n        title="N-gon Tool"\n        icon="n-gon-tool"\n        skin="bx-dock"\n        althref="#n-gon-tool">\n      </bx-button>\n\n      <bx-button\n        title="Star Tool"\n        icon="star-tool"\n        skin="bx-dock"\n        althref="#star-tool">\n      </bx-button>\n\n      <bx-button\n        title="Ellipse Tool"\n        icon="ellipse-tool"\n        skin="bx-dock"\n        althref="#ellipse-tool">\n      </bx-button>\n\n      <bx-button\n        title="Ring Tool"\n        icon="ring-tool"\n        skin="bx-dock"\n        althref="#ring-tool">\n      </bx-button>\n    </bx-dock>\n\n    <bx-dock id="secondary-dock">\n      <bx-button\n        title="Fill Panel"\n        icon="fill-panel"\n        iconsize="23"\n        skin="bx-dock"\n        href="#fill-panel">\n      </bx-button>\n\n      <bx-button\n        title="Stroke Panel"\n        icon="stroke-panel"\n        skin="bx-dock"\n        href="#stroke-panel">\n      </bx-button>\n\n      <bx-button\n        title="Compositing Panel"\n        icon="compositing-panel"\n        skin="bx-dock"\n        href="#compositing-panel">\n      </bx-button>\n\n      <bx-button\n        title="View Panel"\n        icon="view-panel"\n        skin="bx-dock"\n        href="#view-panel">\n      </bx-button>\n\n      <bx-button\n        title="Arrangement Panel"\n        icon="arrangement-panel"\n        skin="bx-dock"\n        href="#arrangement-panel">\n      </bx-button>\n\n      <bx-button\n        title="Typography Panel"\n        icon="typography-panel"\n        iconsize="22"\n        skin="bx-dock"\n        href="#typography-panel">\n      </bx-button>\n\n      <bx-button\n        title="Defs Panel"\n        icon="defs-panel"\n        skin="bx-dock"\n        href="#defs-panel">\n      </bx-button>\n\n      <bx-button\n        title="Mask Panel"\n        icon="mask-panel"\n        skin="bx-dock"\n        href="#mask-panel">\n      </bx-button>\n\n      <bx-button\n        title="Geometry Panel"\n        icon="geometry-panel"\n        skin="bx-dock"\n        href="#geometry-panel">\n      </bx-button>\n\n      <bx-button\n        title="Path Panel"\n        icon="path-panel"\n        skin="bx-dock"\n        href="#path-panel">\n      </bx-button>\n\n      <bx-button\n        title="Export Panel"\n        icon="export-panel"\n        skin="bx-dock"\n        href="#export-panel">\n      </bx-button>\n    </bx-dock>\n\n    <div id="tools">\n      <bx-transformtool id="transform-tool"></bx-transformtool>\n      <bx-edittool id="edit-tool"></bx-edittool>\n      <bx-quadbeziertool id="quad-bezier-tool"></bx-quadbeziertool>\n      <bx-cubicbeziertool id="cubic-bezier-tool"></bx-cubicbeziertool>\n      <bx-freehandtool id="freehand-tool"></bx-freehandtool>\n      <bx-texttool id="text-tool"></bx-texttool>\n      <bx-triangletool id="triangle-tool"></bx-triangletool>\n      <bx-rectangletool id="rectangle-tool"></bx-rectangletool>\n      <bx-ellipsetool id="ellipse-tool"></bx-ellipsetool>\n      <bx-ngontool id="n-gon-tool"></bx-ringtool>\n      <bx-startool id="star-tool"></bx-startool>\n      <bx-ringtool id="ring-tool"></bx-ringtool>\n    </div>\n\n    <div id="primary-panels">\n      <bx-panel id="transform-tool-panel" label="Tool Options">\n        <bx-transformtoolcontrols></bx-transformtoolcontrols>\n      </bx-panel>\n    </div>\n\n    <div id="secondary-panels">\n      <bx-panel id="fill-panel" label="Fill">\n        <bx-fillcontrols></bx-fillcontrols>\n      </bx-panel>\n\n      <bx-panel id="stroke-panel" label="Stroke">\n        <bx-strokecontrols></bx-strokecontrols>\n      </bx-panel>\n\n      <bx-panel id="compositing-panel" label="Compositing">\n        <bx-compositingcontrols></bx-compositingcontrols>\n      </bx-panel>\n\n      <bx-panel id="typography-panel" label="Typography">\n        <bx-typographycontrols></bx-typographycontrols>\n      </bx-panel>\n\n      <bx-panel id="view-panel" height="497" label="View" help="'+z+'">\n        <bx-viewcontrols></bx-viewcontrols>\n      </bx-panel>\n\n      <bx-panel id="arrangement-panel" label="Arrangement">\n        <bx-arrangementcontrols></bx-arrangementcontrols>\n      </bx-panel>\n\n      <bx-panel id="defs-panel" label="Defs">\n        <bx-defscontrols></bx-defscontrols>\n      </bx-panel>\n\n      <bx-panel id="mask-panel" label="Mask">\n        <bx-maskcontrols></bx-maskcontrols>\n      </bx-panel>\n\n      <bx-panel id="geometry-panel" label="Geometry">\n        <bx-geometrycontrols></bx-geometrycontrols>\n      </bx-panel>\n\n      <bx-panel id="path-panel" label="Path">\n        <bx-pathcontrols></bx-pathcontrols>\n      </bx-panel>\n\n      <bx-panel id="export-panel" label="Export">\n        <bx-exportcontrols></bx-exportcontrols>\n      </bx-panel>\n    </div>\n\n    <bx-contextmenu id="context-menu">\n      <bx-menuitem commandid="cut" label="Cut"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste"></bx-menuitem>\n      <bx-menuitem commandid="duplicate" label="Duplicate"></bx-menuitem>\n      <bx-menuitem commandid="delete" label="Delete"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="raise" label="Raise"></bx-menuitem>\n      <bx-menuitem commandid="lower" label="Lower"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="group" label="Group"></bx-menuitem>\n      <bx-menuitem commandid="ungroup" label="Ungroup"></bx-menuitem>\n    </bx-contextmenu>\n  </main>\n',F=function(e){
 function l(){$traceurRuntime.superConstructor(l).apply(this,arguments)}return $traceurRuntime.createClass(l,{
@@ -1602,10 +1632,10 @@ if(t){var n=this["#secondary-dock"].querySelector('bx-button[href="#'+e+'"]');if
 t.enabled=!1,this.bridge.postMessage("secondaryPanelChanged",null);else{var i=this["#secondary-dock"].querySelector("bx-button[pressed]");
 if(i){i.pressed=!1;var r=i.href.slice(1),a=this["#secondary-panels"].querySelector("#"+r);
 a&&(a.enabled=!1)}n.pressed=!0,t.enabled=!0,this.bridge.postMessage("secondaryPanelChanged",e.toCamelCase());
-}}},rasterizeArtwork:function(e){var n=void 0!==arguments[1]?arguments[1]:"png",r=void 0!==arguments[2]?arguments[2]:1,a=void 0!==arguments[3]?arguments[3]:!0,o=this;
+}}},rasterizeArtwork:function(e){var n=void 0!==arguments[1]?arguments[1]:"png",r=void 0!==arguments[2]?arguments[2]:1,a=void 0!==arguments[3]?arguments[3]:"rgba(0, 0, 0, 0)",o=this;
 return new Promise(function(s){var l,u;return $traceurRuntime.asyncWrap(function(c){
 for(;;)switch(c.state){case 0:c.state=o._distribution.backendSupportsRasterization?6:1;
-break;case 6:l={artwork:i(e,"xml"),format:n,compression:r,transparent:a},o.bridge.postMessage("rasterizeArtwork",l,function(e){
+break;case 6:l={artwork:i(e,"xml"),format:n,compression:r,backgroundColor:a},o.bridge.postMessage("rasterizeArtwork",l,function(e){
 s(e)}),c.state=-2;break;case 1:return void Promise.resolve(t(e,n,r,a)).then(c.createCallback(3),c.errback);
 case 3:u=c.value,c.state=2;break;case 2:s(u),c.state=-2;break;default:return c.end();
 }},this)})},_onKeyDown:function(e){$traceurRuntime.superGet(this,l.prototype,"_onKeyDown").call(this,e);
@@ -2091,7 +2121,7 @@ try{for(var a=void 0,o=e[Symbol.iterator]();!(n=(a=o.next()).done);n=!0){var s=a
 }}catch(l){i=!0,r=l}finally{try{n||null==o["return"]||o["return"]()}finally{if(i)throw r;
 }}return t}},{},e)}(SVGGElement),c=t("g","bx-ellipsehud",u);return{get default(){
 return c}}}),System.registerModule("elements/bx-ellipsetool",[],function(){"use strict";
-var e=System.get("utils/element"),t=e.createElement,n=e.registerElement,i=System.get("utils/event").isMouseMoveIntentional,r=System.get("utils/geometry"),a=r.getRotationAngleFromPoints,o=r.snapRotationAngle,s=System.get("utils/transform-reduction").reduceTransform,l=System.get("classes/vector")["default"],u=Math,c=u.abs,d=u.min,h=function(e){
+var e=System.get("utils/element"),t=e.createElement,n=e.registerElement,i=System.get("utils/event").isMouseMoveIntentional,r=System.get("utils/geometry"),a=r.getRotationAngleFromPoints,o=r.snapRotationAngle,s=System.get("utils/math").round,l=System.get("utils/transform-reduction").reduceTransform,u=System.get("classes/vector")["default"],c=Math,d=c.abs,h=c.min,v=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
 createdCallback:function(){var e=!0,t=!1,n=void 0;try{for(var i=void 0,r=this.attributes[Symbol.iterator]();!(e=(i=r.next()).done);e=!0){
 var a=i.value;this.attributeChangedCallback(a.name)}}catch(o){t=!0,n=o}finally{try{
@@ -2106,23 +2136,23 @@ body.canvas.removeEventListener("mousedown",this._mouseDownListener)},_onMouseDo
 var t,n,r=this;window.addEventListener("mousemove",t=function(a){i(e,a)!==!1&&(window.removeEventListener("mousemove",t),
 window.removeEventListener("mouseup",n),r._onIntentionalDragStart(e))}),window.addEventListener("mouseup",n=function(e){
 window.removeEventListener("mousemove",t),body.canvas.removeEventListener("mouseend",n);
-})},_onIntentionalDragStart:function(e){var n,i,r,u=this,h=body.canvas.currentContainer||body.canvas.currentArtboard,v=body.modKeys.ctrl?"polar":"planar",f=0,m=0,b=0,g=0;
-body.canvas.undoManager.checkpoint("Draw Ellipse");var p=t("svg:ellipse");p.style.fill="#d8d8d8",
-h.append(p),body.canvas.selectedElements=[p],this._mouseDownEllipseCursor=body.registerCursor("images/cursor-ellipse.svg",900,8,8);
-var y=p.getScreenCTM().inverse(),_=p.transform.baseVal.consolidate().matrix.multiply(y);
-p.setAttribute("transform",_.toString()),window.addEventListener("mousemove",n=function(t){
-if("planar"===v){var n=t.clientX-e.clientX||1,i=t.clientY-e.clientY||1,r=c(n),s=c(i);
-if(body.modKeys.shift){var u=d(r,s);r=u,s=u}var h=0>n?e.clientX-r:e.clientX,y=0>i?e.clientY-s:e.clientY;
-f=h+r/2,m=y+s/2,b=r/2,g=s/2}else if("polar"===v){var x=new SVGPoint(e.clientX,e.clientY),w=new SVGPoint(x.x,x.y-100),S=new SVGPoint(t.clientX,t.clientY),C=new l(x,S),k=a(x,w,S);
-f=x.x,m=x.y,b=C.length,g=C.length,body.modKeys.shift&&(k=o(k,45));var E=(new SVGMatrix).rotate(k,x.x,x.y);
-p.setAttribute("transform",_.multiply(E).toString())}p.setAttribute("cx",f),p.setAttribute("cy",m),
-p.setAttribute("rx",b),p.setAttribute("ry",g)}),window.addEventListener("mouseup",i=function(){
+})},_onIntentionalDragStart:function(e){var n,i,r,c=this,v=body.canvas.currentContainer||body.canvas.currentArtboard,f=body.modKeys.ctrl?"polar":"planar",m=0,b=0,g=0,p=0;
+body.canvas.undoManager.checkpoint("Draw Ellipse");var y=t("svg:ellipse");y.style.fill="#d8d8d8",
+v.append(y),body.canvas.selectedElements=[y],this._mouseDownEllipseCursor=body.registerCursor("images/cursor-ellipse.svg",900,8,8);
+var _=y.getScreenCTM().inverse(),x=y.transform.baseVal.consolidate().matrix.multiply(_);
+y.setAttribute("transform",x.toString()),window.addEventListener("mousemove",n=function(t){
+if("planar"===f){var n=t.clientX-e.clientX||1,i=t.clientY-e.clientY||1,r=d(n),s=d(i);
+if(body.modKeys.shift){var l=h(r,s);r=l,s=l}var c=0>n?e.clientX-r:e.clientX,v=0>i?e.clientY-s:e.clientY;
+m=c+r/2,b=v+s/2,g=r/2,p=s/2}else if("polar"===f){var _=new SVGPoint(e.clientX,e.clientY),w=new SVGPoint(_.x,_.y-100),S=new SVGPoint(t.clientX,t.clientY),C=new u(_,S),k=a(_,w,S);
+m=_.x,b=_.y,g=C.length,p=C.length,body.modKeys.shift&&(k=o(k,45));var E=(new SVGMatrix).rotate(k,_.x,_.y);
+y.setAttribute("transform",x.multiply(E).toString())}y.setAttribute("cx",m),y.setAttribute("cy",b),
+y.setAttribute("rx",g),y.setAttribute("ry",p)}),window.addEventListener("mouseup",i=function(){
 window.removeEventListener("mousemove",n),window.removeEventListener("mouseup",i),
-body.removeEventListener("toolchange",r),body.unregisterCursor(u._mouseDownEllipseCursor);
-var e=body.canvas,t=e.geometryPrecision,a=e.transformPrecision;p.setAttribute("cx",round(f,t)),
-p.setAttribute("cy",round(m,t)),p.setAttribute("rx",round(b,t)),p.setAttribute("ry",round(g,t)),
-s(p,{geometryPrecision:t,transformPrecision:a})}),body.addEventListener("toolchange",r=function(){
-return i()})}},{},e)}(HTMLElement),v=n("bx-ellipsetool",h);return{get default(){return v;
+body.removeEventListener("toolchange",r),body.unregisterCursor(c._mouseDownEllipseCursor);
+var e=body.canvas,t=e.geometryPrecision,a=e.transformPrecision;y.setAttribute("cx",s(m,t)),
+y.setAttribute("cy",s(b,t)),y.setAttribute("rx",s(g,t)),y.setAttribute("ry",s(p,t)),
+l(y,{geometryPrecision:t,transformPrecision:a})}),body.addEventListener("toolchange",r=function(){
+return i()})}},{},e)}(HTMLElement),f=n("bx-ellipsetool",v);return{get default(){return f;
 }}}),System.registerModule("elements/bx-exportcontrols",[],function(){"use strict";
 System.get("elements/bx-button"),System.get("elements/bx-checkbox"),System.get("elements/bx-select"),
 System.get("elements/bx-selectitem"),System.get("elements/bx-slider");var e=System.get("utils/element"),t=(e.createElement,
@@ -2146,16 +2176,21 @@ body.canvas.removeEventListener("artboardmutation",this._artboardMutationListene
 },_onSelectedElementsChange:function(){this._update200Th()},_onArtboardMutation:function(e){
 this._update200Th()},_onFormatSelectChange:function(){var e=this["#format-select"].value;
 "png"===e?(this["#compression-div"].hidden=!1,this["#transparent-checkbox"].hidden=!1):"jpg"===e&&(this["#compression-div"].hidden=!1,
-this["#transparent-checkbox"].hidden=!0)},_onExportButtonClick:function(e){var t,n,i,r,a,o,s,l;
+this["#transparent-checkbox"].hidden=!0)},_onExportButtonClick:function(e){var t,n,i,r,a,o,s,l,u,c,d,h,v,f;
 return $traceurRuntime.asyncWrap(function(e){for(;;)switch(e.state){case 0:t=this["#format-select"].value,
-n=this["#area-select"].value,i="viewBox"===n?body.canvas.extractArtworkWithViewBoxElements():body.canvas.extractArtworkWithSelectedElements(),
-e.state=18;break;case 18:e.state="png"===t?4:15;break;case 4:r=this["#compression-slider"].value,
-a=this["#transparent-checkbox"].checked,e.state=5;break;case 5:return void Promise.resolve(body.rasterizeArtwork(i,"png",r,a)).then(e.createCallback(3),e.errback);
-case 3:o=e.value,e.state=2;break;case 2:body.bridge.postMessage("exportFile",{format:"png",
-data:o}),e.state=-2;break;case 15:e.state="jpg"===t?11:-2;break;case 11:s=this["#compression-slider"].value,
-e.state=12;break;case 12:return void Promise.resolve(body.rasterizeArtwork(i,"jpg",s)).then(e.createCallback(10),e.errback);
-case 10:l=e.value,e.state=9;break;case 9:body.bridge.postMessage("exportFile",{format:"jpg",
-data:l}),e.state=-2;break;default:return e.end()}},this)},_update:function(){"selected"===this["#area-select"].value&&0===body.canvas.selectedElements.length?this["#export-button"].disabled=!0:this["#export-button"].disabled=!1;
+n=this["#area-select"].value,e.state=25;break;case 25:d=body.getConfig,h=d.call(body,"bx-preferences:canvasBackgroundColor"),
+e.state=5;break;case 5:return void Promise.resolve(h).then(e.createCallback(3),e.errback);
+case 3:v=e.value,e.state=2;break;case 2:f=v?v:"#ffffff",i=f,e.state=7;break;case 7:
+r="viewBox"===n?body.canvas.extractArtworkWithViewBoxElements():body.canvas.extractArtworkWithSelectedElements(),
+e.state=27;break;case 27:e.state="png"===t?11:22;break;case 11:a=this["#compression-slider"].value,
+o=this["#transparent-checkbox"].checked,s=o?"rgba(0, 0, 0, 0)":i,e.state=12;break;
+case 12:return void Promise.resolve(body.rasterizeArtwork(r,"png",a,s)).then(e.createCallback(10),e.errback);
+case 10:l=e.value,e.state=9;break;case 9:body.bridge.postMessage("exportFile",{format:"png",
+data:l}),e.state=-2;break;case 22:e.state="jpg"===t?18:-2;break;case 18:u=this["#compression-slider"].value,
+e.state=19;break;case 19:return void Promise.resolve(body.rasterizeArtwork(r,"jpg",u,i)).then(e.createCallback(17),e.errback);
+case 17:c=e.value,e.state=16;break;case 16:body.bridge.postMessage("exportFile",{
+format:"jpg",data:c}),e.state=-2;break;default:return e.end()}},this)},_update:function(){
+"selected"===this["#area-select"].value&&0===body.canvas.selectedElements.length?this["#export-button"].disabled=!0:this["#export-button"].disabled=!1;
 }},{},e)}(HTMLElement),a=t("bx-exportcontrols",r);return{get default(){return a}};
 }),System.registerModule("elements/bx-fillcontrols",[],function(){"use strict";System.get("elements/bx-button"),
 System.get("elements/bx-slider"),System.get("elements/bx-paintsection");var e=System.get("utils/element").registerElement,t=System.get("utils/math").round,n=System.get("utils/style").queryStylableElements,i=System.get("utils/text").normalizeTextInRangeBeforeEditing,r=System.get("utils/time").throttle,a=Number.parseFloat,o='\n  <style>\n    @import url("stylesheets/controls.css");\n    @import url("stylesheets/bx-fillcontrols.css");\n  </style>\n\n  <main>\n    <section id="paint-section" is="bx-paintsection" context="fill"></section>\n\n    <section id="opacity-section">\n      <h2 id="opacity-section-heading">Opacity</h2>\n\n      <bx-slider\n        id="opacity-slider"\n        title="Fill Opacity"\n        value="1"\n        min="0"\n        max="1"\n        precision="2">\n      </bx-slider>\n    </section>\n\n    <section id="fill-rule-section">\n      <h2 id="fill-rule-section-heading">Fill Rule</h2>\n\n      <div id="fill-rule-buttons">\n        <bx-button\n          id="non-zero-fill-rule-button"\n          value="nonzero"\n          icon="fill-rule-non-zero"\n          iconsize="28"\n          title="Non-zero"\n          skin="iconic">\n        </bx-button>\n\n        <bx-button\n          id="even-odd-fill-rule-button"\n          value="evenodd"\n          icon="fill-rule-even-odd"\n          iconsize="28"\n          title="Even-odd"\n          skin="iconic">\n        </bx-button>\n      </div>\n    </section>\n  </main>\n',s=function(e){
@@ -3436,14 +3471,14 @@ var m=!0,b=!1,y=void 0;try{for(var _=void 0,x=l[Symbol.iterator]();!(m=(_=x.next
 var w=_.value;w!==u&&"solid"===h&&(w.style[this.context]=s)}}catch(S){b=!0,y=S}finally{
 try{m||null==x["return"]||x["return"]()}finally{if(b)throw y}}this["#color-picker"].addEventListener("change",a=function(){
 var e=!0,n=!1,i=void 0;try{for(var r,a,o,s,u,h,v=function(){var e=f.value,n=c(e,t.context);
-if("solid"===n)e.style[t.context]=t["#color-picker"].color;else if("linearGradient"===n){
+if("solid"===n)e.style[t.context]=t["#color-picker"].value;else if("linearGradient"===n){
 var i=d(e,t.context),l=t._linearGradientHud.selectedStops.filter(function(e){return e.parentElement===i;
 });r=!0,a=!1,o=void 0;try{for(var v=void 0,m=l[Symbol.iterator]();!(r=(v=m.next()).done);r=!0){
-var b=v.value;b.style.stopColor=t["#color-picker"].color}}catch(g){a=!0,o=g}finally{
+var b=v.value;b.style.stopColor=t["#color-picker"].value}}catch(g){a=!0,o=g}finally{
 try{r||null==m["return"]||m["return"]()}finally{if(a)throw o}}}else if("radialGradient"===n){
 var p=d(e,t.context),y=t._radialGradientHud.selectedStops.filter(function(e){return e.parentElement===p;
 });s=!0,u=!1,h=void 0;try{for(var _=void 0,x=y[Symbol.iterator]();!(s=(_=x.next()).done);s=!0){
-var w=_.value;w.style.stopColor=t["#color-picker"].color}}catch(S){u=!0,h=S}finally{
+var w=_.value;w.style.stopColor=t["#color-picker"].value}}catch(S){u=!0,h=S}finally{
 try{s||null==x["return"]||x["return"]()}finally{if(u)throw h}}}},f=void 0,m=l[Symbol.iterator]();!(e=(f=m.next()).done);e=!0)v();
 }catch(b){n=!0,i=b}finally{try{e||null==m["return"]||m["return"]()}finally{if(n)throw i;
 }}}),this["#color-picker"].addEventListener("changeend",o=function(){t["#color-picker"].removeEventListener("change",a),
@@ -3505,11 +3540,11 @@ this["#reflect-spread-method-button"].mixed=r)}else this["#spread-method-subsect
 }},_updateColorSubsection:function(){var e=this._selectedStylableElements,t=e[0]||null;
 if(null===t)this["#color-subsection"].hidden=!0;else{var n=c(t,this.context),i=v(e,this.context);
 if("solid"===n)this["#color-subsection"].hidden=!1,this["#color-picker"].hidden=!1,
-this["#color-picker"].color=getComputedStyle(t)[this.context],this["#color-picker"].mixed=i,
+this["#color-picker"].value=getComputedStyle(t)[this.context],this["#color-picker"].mixed=i,
 this["#color-picker-hint"].innerHTML="";else if("linearGradient"===n||"radialGradient"===n){
 var r=this["_"+n+"Hud"].selectedStops;this["#color-subsection"].hidden=!1,this["#color-picker"].mixed=i,
 0===r.length?(this["#color-picker"].hidden=!0,this["#color-picker-hint"].innerHTML='Select stop with <span id="edit-tool-span">Edit Tool</span>.'):(this["#color-picker"].hidden=!1,
-this["#color-picker"].color=r[0].style.stopColor||"#000",this["#color-picker-hint"].innerHTML="");
+this["#color-picker"].value=r[0].style.stopColor||"#000",this["#color-picker-hint"].innerHTML="");
 }else this["#color-subsection"].hidden=!0}},_updatePatternSubsection:function(){var e=this._selectedStylableElements,t=e[0]||null;
 if(null===t||"pattern"!==c(t,this.context))this["#pattern-subsection"].hidden=!0;else{
 this["#pattern-subsection"].hidden=!1,this["#pattern-select"].mixed=v(e,this.context);
@@ -4170,32 +4205,39 @@ this.dispatchEvent(new CustomEvent("rename",{bubbles:!0,detail:{oldID:e,newID:t}
 },_validateInputValue:function(e){var t=/^#[a-z]+[a-z0-9\-_]*$/i.test(e);return t?e==="#"+this.patternID?!0:null===body.canvas.artboards.querySelector(e):!1;
 }},{},e)}(HTMLElement),o=n("bx-patternslistitem",a);return{get default(){return o;
 }}}),System.registerModule("elements/bx-preferencesbody",[],function(){"use strict";
-var e=System.get("elements/bx-body")["default"];System.get("elements/bx-button"),
-System.get("elements/bx-checkbox"),System.get("elements/bx-shortcutseditor"),System.get("elements/bx-select"),
-System.get("elements/bx-slider");var t=System.get("utils/element").registerElement,n=System.get("utils/math").round,i='\n  <style>@import url("stylesheets/scrollbars.css");</style>\n  <style>@import url("stylesheets/bx-preferencesbody.css");</style>\n\n  <main id="main">\n    <div id="buttons">\n      <bx-button\n        id="general-button"\n        data-view="general"\n        icon="prefs-general"\n        iconsize="25"\n        skin="bx-preferences"\n        label="General">\n      </bx-button>\n\n      <bx-button\n        id="markup-button"\n        data-view="markup"\n        icon="prefs-markup"\n        iconsize="25"\n        skin="bx-preferences"\n        label="Markup">\n      </bx-button>\n\n      <bx-button\n        id="shortcuts-button"\n        data-view="shortcuts"\n        icon="prefs-shortcuts"\n        iconsize="25"\n        skin="bx-preferences"\n        label="Shortcuts">\n      </bx-button>\n    </div>\n\n    <div id="views">\n      <div data-view="general" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-general" width="100" height="100"></use>\n          </svg>\n          <h1>General</h1>\n        </header>\n\n        <section>\n          <bx-checkbox\n            id="experimental-features-checkbox"\n            label="Enable experimental features">\n          </bx-checkbox>\n        </section>\n      </div>\n\n      <div data-view="ui" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-ui" width="100" height="100"></use>\n          </svg>\n          <h1>UI</h1>\n        </header>\n      </div>\n\n      <div data-view="markup" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-markup" width="100" height="100"></use>\n          </svg>\n          <h1>Markup</h1>\n        </header>\n\n        <section id="geometry-precision-section">\n          <label>Geometry precision</label>\n          <bx-slider id="geometry-precision-slider" value="3" min="0" max="6" precision="0" step="1"></bx-slider>\n        </section>\n\n        <section id="transform-precision-section">\n          <label>Transform precision</label>\n          <bx-slider id="transform-precision-slider" value="6" min="5" max="12" precision="0" step="1"></bx-slider>\n        </section>\n\n        <section id="indentation-section">\n          <label>Indentation</label>\n          <bx-slider id="indentation-slider" value="2" min="0" max="10" precision="0" step="1" after=" space(s)"></bx-slider>\n        </section>\n      </div>\n\n      <div data-view="shortcuts" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-shortcuts" width="100" height="100"></use>\n          </svg>\n          <h1>Shortcuts</h1>\n        </header>\n\n        <section>\n          <bx-shortcutseditor></bx-shortcutseditor>\n        </section>\n      </div>\n    </div>\n  </main>\n',r=function(e){
-function t(){$traceurRuntime.superConstructor(t).apply(this,arguments)}return $traceurRuntime.createClass(t,{
-createdCallback:function(){var e=this;$traceurRuntime.superGet(this,t.prototype,"createdCallback").call(this),
-this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=i;
-var n=!0,r=!1,a=void 0;try{for(var o=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(n=(o=s.next()).done);n=!0){
-var l=o.value;this["#"+l.id]=l}}catch(u){r=!0,a=u}finally{try{n||null==s["return"]||s["return"]();
-}finally{if(r)throw a}}this.bridge.postMessage("getBackendName",null,function(t){
+var e=System.get("classes/shortcut")["default"],t=System.get("elements/bx-body")["default"];
+System.get("elements/bx-button"),System.get("elements/bx-checkbox"),System.get("elements/bx-shortcutseditor"),
+System.get("elements/bx-slider"),System.get("elements/bx-colorselect");var n=System.get("utils/element").registerElement,i=System.get("utils/math").round,r='\n  <style>@import url("stylesheets/scrollbars.css");</style>\n  <style>@import url("stylesheets/bx-preferencesbody.css");</style>\n\n  <main id="main">\n    <div id="buttons">\n      <bx-button\n        id="general-button"\n        data-view="general"\n        icon="prefs-general"\n        iconsize="25"\n        skin="bx-preferences"\n        label="General">\n      </bx-button>\n\n      <bx-button\n        id="ui-button"\n        data-view="ui"\n        icon="prefs-ui"\n        iconsize="25"\n        skin="bx-preferences"\n        label="UI">\n      </bx-button>\n\n      <bx-button\n        id="markup-button"\n        data-view="markup"\n        icon="prefs-markup"\n        iconsize="25"\n        skin="bx-preferences"\n        label="Markup">\n      </bx-button>\n\n      <bx-button\n        id="shortcuts-button"\n        data-view="shortcuts"\n        icon="prefs-shortcuts"\n        iconsize="25"\n        skin="bx-preferences"\n        label="Shortcuts">\n      </bx-button>\n    </div>\n\n    <div id="views">\n      <div data-view="general" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-general" width="100" height="100"></use>\n          </svg>\n          <h1>General</h1>\n        </header>\n\n        <section>\n          <bx-checkbox\n            id="experimental-features-checkbox"\n            label="Enable experimental features">\n          </bx-checkbox>\n        </section>\n      </div>\n\n      <div data-view="ui" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-ui" width="100" height="100"></use>\n          </svg>\n          <h1>UI</h1>\n        </header>\n\n        <section>\n          <div class="item">\n            <label>Canvas background color</label>\n            <bx-colorselect id="canvas-background-color-select" value="#ffffff"></bx-colorselect>\n          </div>\n\n          <div class="item">\n            <label>View box outline color</label>\n            <bx-colorselect id="view-box-outline-color-select" value="rgba(0, 0, 0, 0.5)"></bx-colorselect>\n          </div>\n        </section>\n      </div>\n\n      <div data-view="markup" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-markup" width="100" height="100"></use>\n          </svg>\n          <h1>Markup</h1>\n        </header>\n\n        <section id="geometry-precision-section">\n          <label>Geometry precision</label>\n          <bx-slider id="geometry-precision-slider" value="3" min="0" max="6" precision="0" step="1"></bx-slider>\n        </section>\n\n        <section id="transform-precision-section">\n          <label>Transform precision</label>\n          <bx-slider id="transform-precision-slider" value="6" min="5" max="12" precision="0" step="1"></bx-slider>\n        </section>\n\n        <section id="indentation-section">\n          <label>Indentation</label>\n          <bx-slider id="indentation-slider" value="2" min="0" max="10" precision="0" step="1" after=" space(s)"></bx-slider>\n        </section>\n      </div>\n\n      <div data-view="shortcuts" class="view" hidden>\n        <header>\n          <svg class="icon" viewBox="0 0 100 100" preserveAspectRatio="none">\n            <use href="images/icons.svg#prefs-shortcuts" width="100" height="100"></use>\n          </svg>\n          <h1>Shortcuts</h1>\n        </header>\n\n        <section>\n          <bx-shortcutseditor></bx-shortcutseditor>\n        </section>\n      </div>\n    </div>\n  </main>\n',a=function(t){
+function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
+createdCallback:function(){var e=this;$traceurRuntime.superGet(this,n.prototype,"createdCallback").call(this),
+this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=r;
+var t=!0,i=!1,a=void 0;try{for(var o=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(o=s.next()).done);t=!0){
+var l=o.value;this["#"+l.id]=l}}catch(u){i=!0,a=u}finally{try{t||null==s["return"]||s["return"]();
+}finally{if(i)throw a}}this.bridge.postMessage("getBackendName",null,function(t){
 "electron"===t&&e["#main"].setAttribute("data-extra-whitespace","")}),this.getConfig("bx-preferences:currentView").then(function(t){
 e._toggleView(t||"general")}),this.getConfig("bx-preferences:experimentalFeatures").then(function(t){
 t===!0&&e["#experimental-features-checkbox"].setAttribute("checked","")}),this.getConfig("bx-preferences:geometryPrecision").then(function(t){
 null!==t&&(e["#geometry-precision-slider"].value=t)}),this.getConfig("bx-preferences:transformPrecision").then(function(t){
 null!==t&&(e["#transform-precision-slider"].value=t)}),this.getConfig("bx-preferences:indentation").then(function(t){
-null!==t&&(e["#indentation-slider"].value=t)}),this["#buttons"].addEventListener("click",function(t){
-e._onButtonsClick(t)}),this["#experimental-features-checkbox"].addEventListener("change",function(){
+null!==t&&(e["#indentation-slider"].value=t)}),this.getConfig("bx-preferences:canvasBackgroundColor").then(function(t){
+e["#canvas-background-color-select"].value=null===t?"#ffffff":t}),this.getConfig("bx-preferences:viewBoxOutlineColor").then(function(t){
+e["#view-box-outline-color-select"].value=null===t?"rgba(0, 0, 0, 0.5)":t}),this["#canvas-background-color-select"].addEventListener("changeend",function(){
+e.setConfig("bx-preferences:canvasBackgroundColor",e["#canvas-background-color-select"].value);
+}),this["#view-box-outline-color-select"].addEventListener("changeend",function(){
+e.setConfig("bx-preferences:viewBoxOutlineColor",e["#view-box-outline-color-select"].value);
+}),this["#buttons"].addEventListener("click",function(t){e._onButtonsClick(t)}),this["#experimental-features-checkbox"].addEventListener("change",function(){
 e._onExperimentalFeaturesCheckboxChange()}),this["#geometry-precision-slider"].addEventListener("change",function(){
 e._onGeometryPrecisionSliderChange()}),this["#transform-precision-slider"].addEventListener("change",function(){
 e._onTransformPrecisionSliderChange()}),this["#indentation-slider"].addEventListener("change",function(){
-e._onIndentationSliderChange()})},_onButtonsClick:function(e){"bx-button"===e.target.localName&&0===e.button&&this._toggleView(e.target.dataset.view);
+e._onIndentationSliderChange()})},_onKeyDown:function(t){if($traceurRuntime.superGet(this,n.prototype,"_onKeyDown").call(this,t),
+"chrome"===this._backendName){var i=e.fromEvent(t);i.matches("Control","C")?this.execCommand("copy"):i.matches("Control","V")?this.execCommand("paste"):i.matches("Control","X")?this.execCommand("cut"):i.matches("Control","A")?this.execCommand("selectAll"):i.matches("Control","Z")?this.execCommand("undo"):i.matches("Control","Shift","Z")&&this.execCommand("redo");
+}},_onButtonsClick:function(e){"bx-button"===e.target.localName&&0===e.button&&this._toggleView(e.target.dataset.view);
 },_onExperimentalFeaturesCheckboxChange:function(){this.setConfig("bx-preferences:experimentalFeatures",this["#experimental-features-checkbox"].checked);
 },_onGeometryPrecisionSliderChange:function(){var e=this["#geometry-precision-slider"].value;
-e%1!==0&&(e=n(e,0),this["#geometry-precision-slider"].value=e),this.setConfig("bx-preferences:geometryPrecision",e);
+e%1!==0&&(e=i(e,0),this["#geometry-precision-slider"].value=e),this.setConfig("bx-preferences:geometryPrecision",e);
 },_onTransformPrecisionSliderChange:function(){var e=this["#transform-precision-slider"].value;
-e%1!==0&&(e=n(e,0),this["#transform-precision-slider"].value=e),this.setConfig("bx-preferences:transformPrecision",e);
-},_onIndentationSliderChange:function(){var e=this["#indentation-slider"].value;e%1!==0&&(e=n(e,0),
+e%1!==0&&(e=i(e,0),this["#transform-precision-slider"].value=e),this.setConfig("bx-preferences:transformPrecision",e);
+},_onIndentationSliderChange:function(){var e=this["#indentation-slider"].value;e%1!==0&&(e=i(e,0),
 this["#indentation-slider"].value=e),this.setConfig("bx-preferences:indentation",e);
 },_toggleView:function(e){var t=!0,n=!1,i=void 0;try{for(var r=void 0,a=this["#views"].children[Symbol.iterator]();!(t=(r=a.next()).done);t=!0){
 var o=r.value;o.dataset.view===e?o.hidden=!1:o.hidden=!0}}catch(s){n=!0,i=s}finally{
@@ -4203,7 +4245,7 @@ try{t||null==a["return"]||a["return"]()}finally{if(n)throw i}}var l=!0,u=!1,c=vo
 try{for(var d=void 0,h=this["#buttons"].children[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
 var v=d.value;v.dataset.view===e?v.pressed=!0:v.pressed=!1}}catch(f){u=!0,c=f}finally{
 try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}this.setConfig("bx-preferences:currentView",e);
-}},{},e)}(e),a=t("body","bx-preferencesbody",r);return{get default(){return a}}}),
+}},{},t)}(t),o=n("body","bx-preferencesbody",a);return{get default(){return o}}}),
 System.registerModule("elements/bx-quadbeziertool",[],function(){"use strict";var e=System.get("utils/element").registerElement,t=function(e){
 function t(){$traceurRuntime.superConstructor(t).apply(this,arguments)}return $traceurRuntime.createClass(t,{
 createdCallback:function(){var e=!0,t=!1,n=void 0;try{for(var i=void 0,r=this.attributes[Symbol.iterator]();!(e=(i=r.next()).done);e=!0){
@@ -5640,17 +5682,17 @@ c='<text x="'+s+'" y="'+l+'" style="white-space: pre;">'+u+"</text>",d=n(c),t.ap
 body.canvas.selectedElements=[d],body.toggleTool("edit-tool"),h.state=-2;break;default:
 return h.end()}},this)}},{},e)}(HTMLElement),a=t("bx-texttool",r);return{get default(){
 return a}}}),System.registerModule("elements/bx-transformhud",[],function(){"use strict";
-var e=System.get("utils/bbox"),t=e.getUserBBox,n=e.getClientBBox,i=System.get("utils/element").registerElement,r=System.get("utils/event").isMouseMoveIntentional,a=System.get("utils/geometry"),o=a.getRotationAngleFromPoints,s=a.snapRotationAngle,l=System.get("utils/rect"),u=l.transformRect,c=l.combineRects,d=System.get("utils/time"),h=d.sleep,v=d.throttle,f=System.get("utils/transform-reduction").reduceTransform,m=System.get("utils/transform-general"),b=m.getComputedTransformOriginClientPoint,g=m.getTransformToElement,p=m.getElementRotationAngle,y=m.setElementRotationAngle,_=m.skew,x=m.userPointToBBoxPoint,w=System.get("classes/decomposed-transform")["default"],S=System.get("classes/enum")["default"],C=System.get("classes/vector")["default"],k=Math,E=k.abs,A=k.min,P=k.max,T=(k.atan2,
-Number.parseFloat),L=12,M=12,R=12,j=10,O=new S("initialStrokeWidth","initialVectorEffect","initialTransforms","initialUserBBox"),V='\n  <style>@import url("stylesheets/bx-transformhud.css");</style>\n\n  <g id="grippies">\n    <g id="scale-grippies">\n      <rect class="grippie" data-position="top"></rect>\n      <rect class="grippie" data-position="left"></rect>\n      <rect class="grippie" data-position="bottom"></rect>\n      <rect class="grippie" data-position="right"></rect>\n      <rect class="grippie" data-position="top-left"></rect>\n      <rect class="grippie" data-position="top-right"></rect>\n      <rect class="grippie" data-position="bottom-left"></rect>\n      <rect class="grippie" data-position="bottom-right"></rect>\n    </g>\n\n    <g id="rotate-grippies">\n      <rect class="grippie" rx="999" data-position="top-left"></rect>\n      <rect class="grippie" rx="999" data-position="top-right"></rect>\n      <rect class="grippie" rx="999" data-position="bottom-left"></rect>\n      <rect class="grippie" rx="999" data-position="bottom-right"></rect>\n    </g>\n\n    <g id="skew-grippies">\n      <rect class="grippie" data-position="top"></rect>\n      <rect class="grippie" data-position="left"></rect>\n      <rect class="grippie" data-position="bottom"></rect>\n      <rect class="grippie" data-position="right"></rect>\n    </g>\n\n    <svg id="origin-grippie" viewBox="0 0 50 50" visibility="hidden">\n      <use href="images/icons.svg#cross" x="0" y="0" width="50" height="50"></use>\n      <rect x="0" y="0" width="50" height="50" style="opacity: 0;"/>\n    </svg>\n  </g>\n',D=function(e){
+var e=System.get("utils/bbox"),t=e.getUserBBox,n=e.getClientBBox,i=System.get("utils/element").registerElement,r=System.get("utils/event").isMouseMoveIntentional,a=System.get("utils/geometry"),o=a.getRotationAngleFromPoints,s=a.snapRotationAngle,l=System.get("utils/math").round,u=System.get("utils/rect"),c=u.transformRect,d=u.combineRects,h=System.get("utils/time"),v=h.sleep,f=h.throttle,m=System.get("utils/transform-reduction").reduceTransform,b=System.get("utils/transform-general"),g=b.getComputedTransformOriginClientPoint,p=b.getTransformToElement,y=b.getElementRotationAngle,_=b.setElementRotationAngle,x=b.skew,w=b.userPointToBBoxPoint,S=System.get("classes/decomposed-transform")["default"],C=System.get("classes/enum")["default"],k=System.get("classes/vector")["default"],E=Math,A=E.abs,P=E.min,T=E.max,L=(E.atan2,
+Number.parseFloat),M=12,R=12,j=12,O=10,V=new C("initialStrokeWidth","initialVectorEffect","initialTransforms","initialUserBBox"),D='\n  <style>@import url("stylesheets/bx-transformhud.css");</style>\n\n  <g id="grippies">\n    <g id="scale-grippies">\n      <rect class="grippie" data-position="top"></rect>\n      <rect class="grippie" data-position="left"></rect>\n      <rect class="grippie" data-position="bottom"></rect>\n      <rect class="grippie" data-position="right"></rect>\n      <rect class="grippie" data-position="top-left"></rect>\n      <rect class="grippie" data-position="top-right"></rect>\n      <rect class="grippie" data-position="bottom-left"></rect>\n      <rect class="grippie" data-position="bottom-right"></rect>\n    </g>\n\n    <g id="rotate-grippies">\n      <rect class="grippie" rx="999" data-position="top-left"></rect>\n      <rect class="grippie" rx="999" data-position="top-right"></rect>\n      <rect class="grippie" rx="999" data-position="bottom-left"></rect>\n      <rect class="grippie" rx="999" data-position="bottom-right"></rect>\n    </g>\n\n    <g id="skew-grippies">\n      <rect class="grippie" data-position="top"></rect>\n      <rect class="grippie" data-position="left"></rect>\n      <rect class="grippie" data-position="bottom"></rect>\n      <rect class="grippie" data-position="right"></rect>\n    </g>\n\n    <svg id="origin-grippie" viewBox="0 0 50 50" visibility="hidden">\n      <use href="images/icons.svg#cross" x="0" y="0" width="50" height="50"></use>\n      <rect x="0" y="0" width="50" height="50" style="opacity: 0;"/>\n    </svg>\n  </g>\n',G=function(e){
 function i(){$traceurRuntime.superConstructor(i).apply(this,arguments)}return $traceurRuntime.createClass(i,{
 createdCallback:function(){var e=this;this._scaleGrippiesByPosition={},this._skewGrippiesByPosition={},
 this._rotateGrippiesByPosition={},this._isDraggingRotateGrippie=!1,this._preserveStrokeWidth=!0,
-this._preserveRectRadii=!0,this._preservePathRotation=!0,this._updateGrippies25Th=v(this._updateGrippies,25,this),
-this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=V;
+this._preserveRectRadii=!0,this._preservePathRotation=!0,this._updateGrippies25Th=f(this._updateGrippies,25,this),
+this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=D;
 var t=!0,n=!1,i=void 0;try{for(var r=void 0,a=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(r=a.next()).done);t=!0){
 var o=r.value;this["#"+o.id]=o}}catch(s){n=!0,i=s}finally{try{t||null==a["return"]||a["return"]();
 }finally{if(n)throw i}}var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=this["#scale-grippies"].children[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
-var f=d.value;this._scaleGrippiesByPosition[f.getAttribute("data-position")]=f}}catch(m){
+var v=d.value;this._scaleGrippiesByPosition[v.getAttribute("data-position")]=v}}catch(m){
 u=!0,c=m}finally{try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}var b=!0,g=!1,p=void 0;
 try{for(var y=void 0,_=this["#rotate-grippies"].children[Symbol.iterator]();!(b=(y=_.next()).done);b=!0){
 var x=y.value;this._rotateGrippiesByPosition[x.getAttribute("data-position")]=x}}catch(w){
@@ -5663,7 +5705,7 @@ e._onMouseDown(t)}),this._shadowRoot.addEventListener("dblclick",function(t){e._
 e._preserveStrokeWidth=null===t?!0:t}),body.getConfig("bx-transformtoolcontrols:preserveRectRadii").then(function(t){
 e._preserveRectRadii=null===t?!0:t}),body.getConfig("bx-transformtoolcontrols:preservePathRotation").then(function(t){
 e._preservePathRotation=null===t?!0:t});var L=!0,M=!1,R=void 0;try{for(var j=void 0,O=this.attributes[Symbol.iterator]();!(L=(j=O.next()).done);L=!0){
-var D=j.value;this.attributeChangedCallback(D.name)}}catch(G){M=!0,R=G}finally{try{
+var V=j.value;this.attributeChangedCallback(V.name)}}catch(G){M=!0,R=G}finally{try{
 L||null==O["return"]||O["return"]()}finally{if(M)throw R}}},attributeChangedCallback:function(e){
 "enabled"===e?this.enabled?this._onEnabled():this._onDisabled():"mode"===e&&this._onModeAttributeChange();
 },get enabled(){return this.hasAttribute("enabled")},set enabled(e){e?this.setAttribute("enabled",""):this.removeAttribute("enabled");
@@ -5692,92 +5734,92 @@ t===this["#rotate-grippies"]?this._onRotateGrippieDblClick(e):t===this["#skew-gr
 },_onDragStart:function(e,t){var n=e.parentElement;n===this["#scale-grippies"]?this._onScaleGrippieDragStart(t):n===this["#rotate-grippies"]?this._onRotateGrippieDragStart(t):n===this["#skew-grippies"]?this._onSkewGrippieDragStart(t):n===this["#origin-grippie"]&&this._onOriginGrippieDragStart(t);
 },_onScaleGrippieDragStart:function(e){var i=this;if(0===e.button){var r,a,o=$traceurRuntime.spread(body.canvas.selectedElements),s=e.path[0].getAttribute("data-position");
 body.canvas.undoManager.checkpoint("Scale Transform"),body.canvas.outlinesHud.enabled=!1;
-var l=!0,u=!1,d=void 0;try{for(var h=void 0,v=o[Symbol.iterator]();!(l=(h=v.next()).done);l=!0){
-var m=h.value;if(this._preserveStrokeWidth===!0){var b=m.getScreenCTM(),g=w.fromSVGMatrix(b),p=g.scaleX,y=g.scaleY,_="left"===s||"right"===s?p:y,x=getComputedStyle(m);
-m[O.initialStrokeWidth]=m.style.strokeWidth,m[O.initialVectorEffect]=m.style.vectorEffect;
-var S=E(_)*T(x.strokeWidth);m.style.strokeWidth=S,m.style.vectorEffect="non-scaling-stroke";
-}}}catch(C){u=!0,d=C}finally{try{l||null==v["return"]||v["return"]()}finally{if(u)throw d;
-}}if(1===o.length){var k=o[0],A=t(k),P=k.getScreenCTM(),L=P.inverse(),M=SVGMatrix.fromMatrix(k.transform.baseVal.consolidate().matrix),R=new SVGPoint(e.clientX,e.clientY);
-R=R.matrixTransform(L),window.addEventListener("mousemove",r=function(e){var t=new SVGPoint(e.clientX,e.clientY);
-t=t.matrixTransform(L);var n=t.x-R.x,r=t.y-R.y,a=i._scaleParams(n,r,A,s),o=a.centerX,l=a.centerY,u=a.scaleX,c=a.scaleY,d=-o*(u-1),h=-l*(c-1),v=SVGMatrix.fromMatrix(M);
+var l=!0,u=!1,c=void 0;try{for(var h=void 0,v=o[Symbol.iterator]();!(l=(h=v.next()).done);l=!0){
+var f=h.value;if(this._preserveStrokeWidth===!0){var b=f.getScreenCTM(),g=S.fromSVGMatrix(b),p=g.scaleX,y=g.scaleY,_="left"===s||"right"===s?p:y,x=getComputedStyle(f);
+f[V.initialStrokeWidth]=f.style.strokeWidth,f[V.initialVectorEffect]=f.style.vectorEffect;
+var w=A(_)*L(x.strokeWidth);f.style.strokeWidth=w,f.style.vectorEffect="non-scaling-stroke";
+}}}catch(C){u=!0,c=C}finally{try{l||null==v["return"]||v["return"]()}finally{if(u)throw c;
+}}if(1===o.length){var k=o[0],E=t(k),P=k.getScreenCTM(),T=P.inverse(),M=SVGMatrix.fromMatrix(k.transform.baseVal.consolidate().matrix),R=new SVGPoint(e.clientX,e.clientY);
+R=R.matrixTransform(T),window.addEventListener("mousemove",r=function(e){var t=new SVGPoint(e.clientX,e.clientY);
+t=t.matrixTransform(T);var n=t.x-R.x,r=t.y-R.y,a=i._scaleParams(n,r,E,s),o=a.centerX,l=a.centerY,u=a.scaleX,c=a.scaleY,d=-o*(u-1),h=-l*(c-1),v=SVGMatrix.fromMatrix(M);
 v.translateSelf(d,h),v.scaleNonUniformSelf(u,c),k.setAttribute("transform",v.toString());
 })}else if(o.length>1){var j=function(){var e=0,t=[],i=!0,r=!1,a=void 0;try{for(var o=void 0,s=body.canvas.selectedElements[Symbol.iterator]();!(i=(o=s.next()).done);i=!0){
 var l=o.value;t[e++]=n(l)}}catch(u){r=!0,a=u}finally{try{i||null==s["return"]||s["return"]();
-}finally{if(r)throw a}}return t}(),V=c(j),D=!0,G=!1,I=void 0;try{for(var N=void 0,B=o[Symbol.iterator]();!(D=(N=B.next()).done);D=!0){
+}finally{if(r)throw a}}return t}(),O=d(j),D=!0,G=!1,I=void 0;try{for(var N=void 0,B=o[Symbol.iterator]();!(D=(N=B.next()).done);D=!0){
 var U=N.value,z=U.getScreenCTM(),H=z.inverse(),F=SVGMatrix.fromMatrix(U.transform.baseVal.consolidate().matrix);
-U[O.initialTransforms]={clientToUserTransform:z,userToClientTransform:H,userTransform:F
+U[V.initialTransforms]={clientToUserTransform:z,userToClientTransform:H,userTransform:F
 }}}catch(q){G=!0,I=q}finally{try{D||null==B["return"]||B["return"]()}finally{if(G)throw I;
 }}window.addEventListener("mousemove",r=function(t){var n=!0,r=!1,a=void 0;try{for(var l=void 0,u=o[Symbol.iterator]();!(n=(l=u.next()).done);n=!0){
-var c=l.value,d=t.clientX-e.clientX,h=t.clientY-e.clientY,v=c[O.initialTransforms],f=v.clientToUserTransform,m=v.userToClientTransform,b=v.userTransform,g=i._scaleParams(d,h,V,s),p=g.centerX,y=g.centerY,_=g.scaleX,x=g.scaleY,w=-p*(_-1),S=-y*(x-1),C=SVGMatrix.fromMatrix(b);
+var c=l.value,d=t.clientX-e.clientX,h=t.clientY-e.clientY,v=c[V.initialTransforms],f=v.clientToUserTransform,m=v.userToClientTransform,b=v.userTransform,g=i._scaleParams(d,h,O,s),p=g.centerX,y=g.centerY,_=g.scaleX,x=g.scaleY,w=-p*(_-1),S=-y*(x-1),C=SVGMatrix.fromMatrix(b);
 C.multiplySelf(m),C.translateSelf(w,S),C.scaleNonUniformSelf(_,x),C.multiplySelf(f),
 c.setAttribute("transform",C.toString())}}catch(k){r=!0,a=k}finally{try{n||null==u["return"]||u["return"]();
 }finally{if(r)throw a}}})}window.addEventListener("mouseup",a=function(e){window.removeEventListener("mousemove",r),
 window.removeEventListener("mouseup",a);var t=!0,n=!1,s=void 0;try{for(var l=void 0,u=o[Symbol.iterator]();!(t=(l=u.next()).done);t=!0){
-var c=l.value;i._preserveStrokeWidth===!0&&(c.style.strokeWidth=c[O.initialStrokeWidth],
-c.style.vectorEffect=c[O.initialVectorEffect]),f(c,{geometryPrecision:body.canvas.geometryPrecision,
+var c=l.value;i._preserveStrokeWidth===!0&&(c.style.strokeWidth=c[V.initialStrokeWidth],
+c.style.vectorEffect=c[V.initialVectorEffect]),m(c,{geometryPrecision:body.canvas.geometryPrecision,
 transformPrecision:body.canvas.transformPrecision,preserveStrokeWidth:i._preserveStrokeWidth,
 preserveRectRadii:i._preserveRectRadii,preservePathRotation:i._preservePathRotation
 })}}catch(d){n=!0,s=d}finally{try{t||null==u["return"]||u["return"]()}finally{if(n)throw s;
 }}body.canvas.outlinesHud.enabled=!0})}},_onRotateGrippieDragStart:function(e){var t=this;
 if(0===e.button){var n=$traceurRuntime.spread(body.canvas.selectedElements);if(body.canvas.undoManager.checkpoint("Rotate Transform"),
-body.canvas.outlinesHud.enabled=!1,1===n.length){var i,r,a=n[0],l=p(a),u=new SVGPoint(e.clientX,e.clientY),c=b([a]);
+body.canvas.outlinesHud.enabled=!1,1===n.length){var i,r,a=n[0],l=y(a),u=new SVGPoint(e.clientX,e.clientY),c=g([a]);
 this._isDraggingRotateGrippie=!0,window.addEventListener("mousemove",i=function(e){
 var t=new SVGPoint(e.clientX,e.clientY),n=o(c,u,t),i=l+n;body.modKeys.shift&&(i=s(i,15)),
-y(a,i)}),window.addEventListener("mouseup",r=function(e){window.removeEventListener("mousemove",i),
-window.removeEventListener("mouseup",r),f(a,{geometryPrecision:body.canvas.geometryPrecision,
+_(a,i)}),window.addEventListener("mouseup",r=function(e){window.removeEventListener("mousemove",i),
+window.removeEventListener("mouseup",r),m(a,{geometryPrecision:body.canvas.geometryPrecision,
 transformPrecision:body.canvas.transformPrecision,preserveStrokeWidth:t._preserveStrokeWidth,
 preserveRectRadii:t._preserveRectRadii,preservePathRotation:t._preservePathRotation
-}),t._isDraggingRotateGrippie=!1,body.canvas.outlinesHud.enabled=!0})}else{var d,h,v=b(n),m=new SVGPoint(e.clientX,e.clientY),g=!0,_=!1,x=void 0;
-try{for(var w=void 0,S=n[Symbol.iterator]();!(g=(w=S.next()).done);g=!0){var C=w.value,k=SVGMatrix.fromMatrix(C.transform.baseVal.consolidate().matrix),E=C.getScreenCTM(),A=E.inverse();
-C[O.initialTransforms]={clientToUserTransform:E,userToClientTransform:A,userTransform:k
-}}}catch(P){_=!0,x=P}finally{try{g||null==S["return"]||S["return"]()}finally{if(_)throw x;
+}),t._isDraggingRotateGrippie=!1,body.canvas.outlinesHud.enabled=!0})}else{var d,h,v=g(n),f=new SVGPoint(e.clientX,e.clientY),b=!0,p=!1,x=void 0;
+try{for(var w=void 0,S=n[Symbol.iterator]();!(b=(w=S.next()).done);b=!0){var C=w.value,k=SVGMatrix.fromMatrix(C.transform.baseVal.consolidate().matrix),E=C.getScreenCTM(),A=E.inverse();
+C[V.initialTransforms]={clientToUserTransform:E,userToClientTransform:A,userTransform:k
+}}}catch(P){p=!0,x=P}finally{try{b||null==S["return"]||S["return"]()}finally{if(p)throw x;
 }}this._isDraggingRotateGrippie=!0,window.addEventListener("mousemove",d=function(e){
 var t=!0,i=!1,r=void 0;try{for(var a=void 0,l=n[Symbol.iterator]();!(t=(a=l.next()).done);t=!0){
-var u=a.value,c=u[O.initialTransforms],d=c.clientToUserTransform,h=c.userToClientTransform,f=c.userTransform,b=new SVGPoint(e.clientX,e.clientY),g=o(v,m,b);
-body.modKeys.shift&&(g=s(g,15));var p=SVGMatrix.fromMatrix(f);p.multiplySelf(h),p.rotateSelf(g,v.x,v.y),
+var u=a.value,c=u[V.initialTransforms],d=c.clientToUserTransform,h=c.userToClientTransform,m=c.userTransform,b=new SVGPoint(e.clientX,e.clientY),g=o(v,f,b);
+body.modKeys.shift&&(g=s(g,15));var p=SVGMatrix.fromMatrix(m);p.multiplySelf(h),p.rotateSelf(g,v.x,v.y),
 p.multiplySelf(d),u.setAttribute("transform",p.toString())}}catch(y){i=!0,r=y}finally{
 try{t||null==l["return"]||l["return"]()}finally{if(i)throw r}}}),window.addEventListener("mouseup",h=function(e){
 window.removeEventListener("mousemove",d),window.removeEventListener("mouseup",h);
 var i=!0,r=!1,a=void 0;try{for(var o=void 0,s=n[Symbol.iterator]();!(i=(o=s.next()).done);i=!0){
-var l=o.value;f(l,{geometryPrecision:body.canvas.geometryPrecision,transformPrecision:body.canvas.transformPrecision,
+var l=o.value;m(l,{geometryPrecision:body.canvas.geometryPrecision,transformPrecision:body.canvas.transformPrecision,
 preserveStrokeWidth:t._preserveStrokeWidth,preserveRectRadii:t._preserveRectRadii,
 preservePathRotation:t._preservePathRotation})}}catch(u){r=!0,a=u}finally{try{i||null==s["return"]||s["return"]();
 }finally{if(r)throw a}}t._isDraggingRotateGrippie=!1,body.canvas.outlinesHud.enabled=!0;
 })}}},_onSkewGrippieDragStart:function(e){var t=this;if(0===e.button){var n,i,r,a=$traceurRuntime.spread(body.canvas.selectedElements),s=e.path[0].getAttribute("data-position");
 r="top"===s||"bottom"===s?"horizontal":"vertical",body.canvas.undoManager.checkpoint("Skew Transform"),
 body.canvas.outlinesHud.enabled=!1;var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=a[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
-var v=d.value;v[O.initialStrokeWidth]=v.style.strokeWidth,v[O.initialVectorEffect]=v.style.vectorEffect;
-var m=v.getScreenCTM(),g=w.fromSVGMatrix(m),p=g.scaleX,y=g.scaleY,x=(p+y)/2,S=getComputedStyle(v),C=E(x)*T(S.strokeWidth);
+var v=d.value;v[V.initialStrokeWidth]=v.style.strokeWidth,v[V.initialVectorEffect]=v.style.vectorEffect;
+var f=v.getScreenCTM(),b=S.fromSVGMatrix(f),p=b.scaleX,y=b.scaleY,_=(p+y)/2,w=getComputedStyle(v),C=A(_)*L(w.strokeWidth);
 v.style.strokeWidth=C,v.style.vectorEffect="non-scaling-stroke"}}catch(k){u=!0,c=k;
 }finally{try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}if(1===a.length){
-var A=a[0],P=A.getScreenCTM(),L=P.inverse(),M=SVGMatrix.fromMatrix(A.transform.baseVal.consolidate().matrix),R=new SVGPoint(e.clientX,e.clientY);
-R=R.matrixTransform(L);var j=b(a);j=j.matrixTransform(L),window.addEventListener("mousemove",n=function(e){
-var t=body.modKeys,n=(t.ctrl,t.alt,t.shift,new SVGPoint(e.clientX,e.clientY));n=n.matrixTransform(L);
-var i=o(j,R,n),a=SVGMatrix.fromMatrix(M);a="horizontal"===r?_(a,-i,0,j.x,j.y):_(a,0,i,j.x,j.y),
-A.setAttribute("transform",a.toString())})}else if(a.length>1){var V=new SVGPoint(e.clientX,e.clientY),D=b(a),G=!0,I=!1,N=void 0;
+var E=a[0],P=E.getScreenCTM(),T=P.inverse(),M=SVGMatrix.fromMatrix(E.transform.baseVal.consolidate().matrix),R=new SVGPoint(e.clientX,e.clientY);
+R=R.matrixTransform(T);var j=g(a);j=j.matrixTransform(T),window.addEventListener("mousemove",n=function(e){
+var t=body.modKeys,n=(t.ctrl,t.alt,t.shift,new SVGPoint(e.clientX,e.clientY));n=n.matrixTransform(T);
+var i=o(j,R,n),a=SVGMatrix.fromMatrix(M);a="horizontal"===r?x(a,-i,0,j.x,j.y):x(a,0,i,j.x,j.y),
+E.setAttribute("transform",a.toString())})}else if(a.length>1){var O=new SVGPoint(e.clientX,e.clientY),D=g(a),G=!0,I=!1,N=void 0;
 try{for(var B=void 0,U=a[Symbol.iterator]();!(G=(B=U.next()).done);G=!0){var z=B.value,H=z.getScreenCTM(),F=H.inverse(),q=SVGMatrix.fromMatrix(z.transform.baseVal.consolidate().matrix);
-z[O.initialTransforms]={clientToUserTransform:H,userToClientTransform:F,userTransform:q
+z[V.initialTransforms]={clientToUserTransform:H,userToClientTransform:F,userTransform:q
 }}}catch(W){I=!0,N=W}finally{try{G||null==U["return"]||U["return"]()}finally{if(I)throw N;
 }}window.addEventListener("mousemove",n=function(e){var t=!0,n=!1,i=void 0;try{for(var s=void 0,l=a[Symbol.iterator]();!(t=(s=l.next()).done);t=!0){
-var u=s.value,c=u[O.initialTransforms],d=c.clientToUserTransform,h=c.userToClientTransform,v=c.userTransform,f=new SVGPoint(e.clientX,e.clientY),m=o(D,V,f),b=SVGMatrix.fromMatrix(v);
-b.multiplySelf(h),b="horizontal"===r?_(b,-m,0,D.x,D.y):_(b,0,m,D.x,D.y),b.multiplySelf(d),
+var u=s.value,c=u[V.initialTransforms],d=c.clientToUserTransform,h=c.userToClientTransform,v=c.userTransform,f=new SVGPoint(e.clientX,e.clientY),m=o(D,O,f),b=SVGMatrix.fromMatrix(v);
+b.multiplySelf(h),b="horizontal"===r?x(b,-m,0,D.x,D.y):x(b,0,m,D.x,D.y),b.multiplySelf(d),
 u.setAttribute("transform",b.toString())}}catch(g){n=!0,i=g}finally{try{t||null==l["return"]||l["return"]();
 }finally{if(n)throw i}}})}window.addEventListener("mouseup",i=function(e){window.removeEventListener("mousemove",n),
 window.removeEventListener("mouseup",i);var r=!0,o=!1,s=void 0;try{for(var l=void 0,u=a[Symbol.iterator]();!(r=(l=u.next()).done);r=!0){
-var c=l.value;c.style.strokeWidth=c[O.initialStrokeWidth],c.style.vectorEffect=c[O.initialVectorEffect];
+var c=l.value;c.style.strokeWidth=c[V.initialStrokeWidth],c.style.vectorEffect=c[V.initialVectorEffect];
 }}catch(d){o=!0,s=d}finally{try{r||null==u["return"]||u["return"]()}finally{if(o)throw s;
-}}f(v,{geometryPrecision:body.canvas.geometryPrecision,transformPrecision:body.canvas.transformPrecision,
+}}m(v,{geometryPrecision:body.canvas.geometryPrecision,transformPrecision:body.canvas.transformPrecision,
 preserveStrokeWidth:t._preserveStrokeWidth,preserveRectRadii:t._preserveRectRadii,
 preservePathRotation:t._preservePathRotation}),body.canvas.outlinesHud.enabled=!0;
-})}},_onOriginGrippieDragStart:function(e){if(0===e.button){var n,i,r=$traceurRuntime.spread(body.canvas.selectedElements),a=new SVGPoint(e.clientX,e.clientY),o=!0,s=!1,l=void 0;
-try{for(var u=void 0,c=r[Symbol.iterator]();!(o=(u=c.next()).done);o=!0){var d=u.value,h=d.getScreenCTM().inverse(),v=t(d);
-d[O.initialTransforms]={clientToUserTransform:h},d[O.initialUserBBox]=v}}catch(f){
-s=!0,l=f}finally{try{o||null==c["return"]||c["return"]()}finally{if(s)throw l}}body.canvas.undoManager.checkpoint("Transform Origin"),
-body.canvas.outlinesHud.enabled=!1;var m=b(r);window.addEventListener("mousemove",n=function(e){
-var t=new SVGPoint(e.clientX,e.clientY),n=new C(a,t),i=new SVGPoint(m.x+n.x,m.y+n.y),o=!0,s=!1,l=void 0;
-try{for(var u=void 0,c=r[Symbol.iterator]();!(o=(u=c.next()).done);o=!0){var d=u.value,h=d[O.initialTransforms].clientToUserTransform,v=d[O.initialUserBBox],f=i.matrixTransform(h),b=x(f,v),g=round(b.x,body.canvas.geometryPrecision),p=round(b.y,body.canvas.geometryPrecision);
-d.setAttribute("data-bx-origin",g+" "+p)}}catch(y){s=!0,l=y}finally{try{o||null==c["return"]||c["return"]();
-}finally{if(s)throw l}}}),window.addEventListener("mouseup",i=function(e){window.removeEventListener("mousemove",n),
+})}},_onOriginGrippieDragStart:function(e){if(0===e.button){var n,i,r=$traceurRuntime.spread(body.canvas.selectedElements),a=new SVGPoint(e.clientX,e.clientY),o=!0,s=!1,u=void 0;
+try{for(var c=void 0,d=r[Symbol.iterator]();!(o=(c=d.next()).done);o=!0){var h=c.value,v=h.getScreenCTM().inverse(),f=t(h);
+h[V.initialTransforms]={clientToUserTransform:v},h[V.initialUserBBox]=f}}catch(m){
+s=!0,u=m}finally{try{o||null==d["return"]||d["return"]()}finally{if(s)throw u}}body.canvas.undoManager.checkpoint("Transform Origin"),
+body.canvas.outlinesHud.enabled=!1;var b=g(r);window.addEventListener("mousemove",n=function(e){
+var t=new SVGPoint(e.clientX,e.clientY),n=new k(a,t),i=new SVGPoint(b.x+n.x,b.y+n.y),o=!0,s=!1,u=void 0;
+try{for(var c=void 0,d=r[Symbol.iterator]();!(o=(c=d.next()).done);o=!0){var h=c.value,v=h[V.initialTransforms].clientToUserTransform,f=h[V.initialUserBBox],m=i.matrixTransform(v),g=w(m,f),p=l(g.x,body.canvas.geometryPrecision),y=l(g.y,body.canvas.geometryPrecision);
+h.setAttribute("data-bx-origin",p+" "+y)}}catch(_){s=!0,u=_}finally{try{o||null==d["return"]||d["return"]();
+}finally{if(s)throw u}}}),window.addEventListener("mouseup",i=function(e){window.removeEventListener("mousemove",n),
 window.removeEventListener("mouseup",i),body.canvas.outlinesHud.enabled=!0})}},_onRotateGrippieDblClick:function(e){
 var t=!0,n=!1,i=void 0;try{for(var r=void 0,a=body.canvas.selectedElements[Symbol.iterator]();!(t=(r=a.next()).done);t=!0){
 var o=r.value;o.removeAttribute("transform")}}catch(s){n=!0,i=s}finally{try{t||null==a["return"]||a["return"]();
@@ -5790,45 +5832,45 @@ var o=r.value;o.removeAttribute("data-bx-origin")}}catch(s){n=!0,i=s}finally{try
 t||null==a["return"]||a["return"]()}finally{if(n)throw i}}},_updateGrippies:function(){
 "scale"===this.mode?this._updateScaleGrippies():"rotate-and-skew"===this.mode&&(this._updateRotateGrippies(),
 this._updateSkewGrippies(),this._isDraggingRotateGrippie===!1&&this._updateOriginGrippie());
-},_updateRotateGrippies:function(){var e=M/body.canvas.scale,i=(3/body.canvas.scale,
+},_updateRotateGrippies:function(){var e=R/body.canvas.scale,i=(3/body.canvas.scale,
 this._rotateGrippiesByPosition),r=!0,a=!1,o=void 0;try{for(var s=void 0,l=this["#rotate-grippies"].children[Symbol.iterator]();!(r=(s=l.next()).done);r=!0){
-var d=s.value;d.width.baseVal.value=e,d.height.baseVal.value=e}}catch(h){a=!0,o=h;
+var u=s.value;u.width.baseVal.value=e,u.height.baseVal.value=e}}catch(h){a=!0,o=h;
 }finally{try{r||null==l["return"]||l["return"]()}finally{if(a)throw o}}if(1===body.canvas.selectedElements.length){
-var v,f,m=body.canvas.selectedElements[0],b=g(m,this),p=t(m);f=new SVGPoint(p.x,p.y),
+var v,f,m=body.canvas.selectedElements[0],b=p(m,this),g=t(m);f=new SVGPoint(g.x,g.y),
 v=f.matrixTransform(b),i["top-left"].x.baseVal.value=v.x-e/2,i["top-left"].y.baseVal.value=v.y-e/2,
-f=new SVGPoint(p.x+p.width,p.y),v=f.matrixTransform(b),i["top-right"].x.baseVal.value=v.x-e/2,
-i["top-right"].y.baseVal.value=v.y-e/2,f=new SVGPoint(p.x,p.y+p.height),v=f.matrixTransform(b),
+f=new SVGPoint(g.x+g.width,g.y),v=f.matrixTransform(b),i["top-right"].x.baseVal.value=v.x-e/2,
+i["top-right"].y.baseVal.value=v.y-e/2,f=new SVGPoint(g.x,g.y+g.height),v=f.matrixTransform(b),
 i["bottom-left"].x.baseVal.value=v.x-e/2,i["bottom-left"].y.baseVal.value=v.y-e/2,
-f=new SVGPoint(p.x+p.width,p.y+p.height),v=f.matrixTransform(b),i["bottom-right"].x.baseVal.value=v.x-e/2,
+f=new SVGPoint(g.x+g.width,g.y+g.height),v=f.matrixTransform(b),i["bottom-right"].x.baseVal.value=v.x-e/2,
 i["bottom-right"].y.baseVal.value=v.y-e/2}else if(body.canvas.selectedElements.length>1){
-var y=this.getScreenCTM().inverse(),_=c(function(){var e=0,t=[],i=!0,r=!1,a=void 0;
+var y=this.getScreenCTM().inverse(),_=d(function(){var e=0,t=[],i=!0,r=!1,a=void 0;
 try{for(var o=void 0,s=body.canvas.selectedElements[Symbol.iterator]();!(i=(o=s.next()).done);i=!0){
 var l=o.value;t[e++]=n(l)}}catch(u){r=!0,a=u}finally{try{i||null==s["return"]||s["return"]();
-}finally{if(r)throw a}}return t}());_=u(_,y),i["top-left"].x.baseVal.value=_.x-e/2,
+}finally{if(r)throw a}}return t}());_=c(_,y),i["top-left"].x.baseVal.value=_.x-e/2,
 i["top-left"].y.baseVal.value=_.y-e/2,i["top-right"].x.baseVal.value=_.x+_.width-e/2,
 i["top-right"].y.baseVal.value=_.y-e/2,i["bottom-left"].x.baseVal.value=_.x-e/2,i["bottom-left"].y.baseVal.value=_.y+_.height-e/2,
 i["bottom-right"].x.baseVal.value=_.x+_.width-e/2,i["bottom-right"].y.baseVal.value=_.y+_.height-e/2;
-}},_updateSkewGrippies:function(){var e=R/body.canvas.scale,i=(3/body.canvas.scale,
+}},_updateSkewGrippies:function(){var e=j/body.canvas.scale,i=(3/body.canvas.scale,
 this._skewGrippiesByPosition),r=!0,a=!1,o=void 0;try{for(var s=void 0,l=this["#skew-grippies"].children[Symbol.iterator]();!(r=(s=l.next()).done);r=!0){
-var d=s.value;d.width.baseVal.value=e,d.height.baseVal.value=e}}catch(h){a=!0,o=h;
+var u=s.value;u.width.baseVal.value=e,u.height.baseVal.value=e}}catch(h){a=!0,o=h;
 }finally{try{r||null==l["return"]||l["return"]()}finally{if(a)throw o}}if(1===body.canvas.selectedElements.length){
-var v,f=body.canvas.selectedElements[0],m=g(f,this),b=t(f);v=new SVGPoint(b.x+b.width/2,b.y),
+var v,f=body.canvas.selectedElements[0],m=p(f,this),b=t(f);v=new SVGPoint(b.x+b.width/2,b.y),
 v=v.matrixTransform(m),i.top.x.baseVal.value=v.x-e/2,i.top.y.baseVal.value=v.y-e/2,
 v=new SVGPoint(b.x+b.width/2,b.y+b.height),v=v.matrixTransform(m),i.bottom.x.baseVal.value=v.x-e/2,
 i.bottom.y.baseVal.value=v.y-e/2,v=new SVGPoint(b.x,b.y+b.height/2),v=v.matrixTransform(m),
 i.left.x.baseVal.value=v.x-e/2,i.left.y.baseVal.value=v.y-e/2,v=new SVGPoint(b.x+b.width,b.y+b.height/2),
 v=v.matrixTransform(m),i.right.x.baseVal.value=v.x-e/2,i.right.y.baseVal.value=v.y-e/2;
-}else if(body.canvas.selectedElements.length>1){var p=this.getScreenCTM().inverse(),y=c(function(){
+}else if(body.canvas.selectedElements.length>1){var g=this.getScreenCTM().inverse(),y=d(function(){
 var e=0,t=[],i=!0,r=!1,a=void 0;try{for(var o=void 0,s=body.canvas.selectedElements[Symbol.iterator]();!(i=(o=s.next()).done);i=!0){
 var l=o.value;t[e++]=n(l)}}catch(u){r=!0,a=u}finally{try{i||null==s["return"]||s["return"]();
-}finally{if(r)throw a}}return t}());y=u(y,p),i.top.x.baseVal.value=y.x+y.width/2-e/2,
+}finally{if(r)throw a}}return t}());y=c(y,g),i.top.x.baseVal.value=y.x+y.width/2-e/2,
 i.top.y.baseVal.value=y.y-e/2,i.bottom.x.baseVal.value=y.x+y.width/2-e/2,i.bottom.y.baseVal.value=y.y+y.height-e/2,
 i.left.x.baseVal.value=y.x-e/2,i.left.y.baseVal.value=y.y+y.height/2-e/2,i.right.x.baseVal.value=y.x+y.width-e/2,
-i.right.y.baseVal.value=y.y+y.height/2-e/2}},_updateScaleGrippies:function(){var e=L/body.canvas.scale,i=(3/body.canvas.scale,
+i.right.y.baseVal.value=y.y+y.height/2-e/2}},_updateScaleGrippies:function(){var e=M/body.canvas.scale,i=(3/body.canvas.scale,
 this._scaleGrippiesByPosition),r=!0,a=!1,o=void 0;try{for(var s=void 0,l=this["#scale-grippies"].children[Symbol.iterator]();!(r=(s=l.next()).done);r=!0){
-var d=s.value;d.width.baseVal.value=e,d.height.baseVal.value=e}}catch(h){a=!0,o=h;
+var u=s.value;u.width.baseVal.value=e,u.height.baseVal.value=e}}catch(h){a=!0,o=h;
 }finally{try{r||null==l["return"]||l["return"]()}finally{if(a)throw o}}if(1===body.canvas.selectedElements.length){
-var v,f=body.canvas.selectedElements[0],m=g(f,this),b=t(f);v=new SVGPoint(b.x+b.width/2,b.y),
+var v,f=body.canvas.selectedElements[0],m=p(f,this),b=t(f);v=new SVGPoint(b.x+b.width/2,b.y),
 v=v.matrixTransform(m),i.top.x.baseVal.value=v.x-e/2,i.top.y.baseVal.value=v.y-e/2,
 v=new SVGPoint(b.x+b.width/2,b.y+b.height),v=v.matrixTransform(m),i.bottom.x.baseVal.value=v.x-e/2,
 i.bottom.y.baseVal.value=v.y-e/2,v=new SVGPoint(b.x,b.y+b.height/2),v=v.matrixTransform(m),
@@ -5840,21 +5882,21 @@ i["top-right"].x.baseVal.value=v.x-e/2,i["top-right"].y.baseVal.value=v.y-e/2,v=
 v=v.matrixTransform(m),i["bottom-left"].x.baseVal.value=v.x-e/2,i["bottom-left"].y.baseVal.value=v.y-e/2,
 v=new SVGPoint(b.x+b.width,b.y+b.height),v=v.matrixTransform(m),i["bottom-right"].x.baseVal.value=v.x-e/2,
 i["bottom-right"].y.baseVal.value=v.y-e/2}else if(body.canvas.selectedElements.length>1){
-var p=this.getScreenCTM().inverse(),y=c(function(){var e=0,t=[],i=!0,r=!1,a=void 0;
+var g=this.getScreenCTM().inverse(),y=d(function(){var e=0,t=[],i=!0,r=!1,a=void 0;
 try{for(var o=void 0,s=body.canvas.selectedElements[Symbol.iterator]();!(i=(o=s.next()).done);i=!0){
 var l=o.value;t[e++]=n(l)}}catch(u){r=!0,a=u}finally{try{i||null==s["return"]||s["return"]();
-}finally{if(r)throw a}}return t}());y=u(y,p),i.top.x.baseVal.value=y.x+y.width/2-e/2,
+}finally{if(r)throw a}}return t}());y=c(y,g),i.top.x.baseVal.value=y.x+y.width/2-e/2,
 i.top.y.baseVal.value=y.y-e/2,i.bottom.x.baseVal.value=y.x+y.width/2-e/2,i.bottom.y.baseVal.value=y.y+y.height-e/2,
 i.left.x.baseVal.value=y.x-e/2,i.left.y.baseVal.value=y.y+y.height/2-e/2,i.right.x.baseVal.value=y.x+y.width-e/2,
 i.right.y.baseVal.value=y.y+y.height/2-e/2,i["top-left"].x.baseVal.value=y.x-e/2,
 i["top-left"].y.baseVal.value=y.y-e/2,i["top-right"].x.baseVal.value=y.x+y.width-e/2,
 i["top-right"].y.baseVal.value=y.y-e/2,i["bottom-left"].x.baseVal.value=y.x-e/2,i["bottom-left"].y.baseVal.value=y.y+y.height-e/2,
 i["bottom-right"].x.baseVal.value=y.x+y.width-e/2,i["bottom-right"].y.baseVal.value=y.y+y.height-e/2;
-}},_updateOriginGrippie:function(){if(body.canvas.selectedElements.length>=1){var e=j/body.canvas.scale,t=body.canvas.currentArtboard.getScreenCTM().inverse(),n=b(body.canvas.selectedElements);
+}},_updateOriginGrippie:function(){if(body.canvas.selectedElements.length>=1){var e=O/body.canvas.scale,t=body.canvas.currentArtboard.getScreenCTM().inverse(),n=g(body.canvas.selectedElements);
 n=n.matrixTransform(t),this["#origin-grippie"].setAttribute("width",e),this["#origin-grippie"].setAttribute("height",e),
 this["#origin-grippie"].setAttribute("x",n.x-e/2),this["#origin-grippie"].setAttribute("y",n.y-e/2);
 }},blink:function(){return $traceurRuntime.asyncWrap(function(e){for(;;)switch(e.state){
-case 0:this["#grippies"].style.display="none",e.state=4;break;case 4:return void Promise.resolve(h(200)).then(e.createCallback(2),e.errback);
+case 0:this["#grippies"].style.display="none",e.state=4;break;case 4:return void Promise.resolve(v(200)).then(e.createCallback(2),e.errback);
 case 2:body.canvas.selectedElements.length>0&&(this["#grippies"].style.display="block"),
 e.state=-2;break;default:return e.end()}},this)},_scaleParams:function(e,t,n,i){var r,a,o,s,l=body.modKeys,u=l.ctrl,c=(l.alt,
 l.shift);return"top"===i?u||c?u&&!c?(r=n.x+n.width/2,a=n.y+n.height,s=(n.height-t)/n.height,
@@ -5871,27 +5913,27 @@ a=n.y+n.height/2,o=(n.width+e)/n.width,s=o):!u&&c?(r=n.x+n.width/2,a=n.y+n.heigh
 o=(n.width-n.width/2+e)/(n.width-n.width/2),s=1):u&&c&&(r=n.x+n.width/2,a=n.y+n.height/2,
 o=s=(n.width-n.width/2+e)/(n.width-n.width/2)):(r=n.x,a=n.y+n.height/2,o=(n.width+e)/n.width,
 s=1)),"top-left"===i?u||c?u&&!c?(r=n.x+n.width,a=n.y+n.height,o=(n.width-e)/n.width,
-s=(n.height-t)/n.height,o=s=A(o,s)):!u&&c?(r=n.x+n.width/2,a=n.y+n.height/2,o=(n.width-n.width/2-e)/(n.width-n.width/2),
+s=(n.height-t)/n.height,o=s=P(o,s)):!u&&c?(r=n.x+n.width/2,a=n.y+n.height/2,o=(n.width-n.width/2-e)/(n.width-n.width/2),
 s=(n.height-n.height/2-t)/(n.height-n.height/2)):u&&c&&(r=n.x+n.width/2,a=n.y+n.height/2,
 o=(n.width-n.width/2-e)/(n.width-n.width/2),s=(n.height-n.height/2-t)/(n.height-n.height/2),
-o>=0&&s>=0?o=s=A(o,s):0>=o&&0>=s?o=s=P(o,s):E(o)>=E(s)?o=-s:s=-o):(r=n.x+n.width,
+o>=0&&s>=0?o=s=P(o,s):0>=o&&0>=s?o=s=T(o,s):A(o)>=A(s)?o=-s:s=-o):(r=n.x+n.width,
 a=n.y+n.height,o=(n.width-e)/n.width,s=(n.height-t)/n.height):"top-right"===i?u||c?u&&!c?(r=n.x,
-a=n.y+n.height,o=(n.width+e)/n.width,s=(n.height-t)/n.height,o=s=A(o,s)):!u&&c?(r=n.x+n.width/2,
+a=n.y+n.height,o=(n.width+e)/n.width,s=(n.height-t)/n.height,o=s=P(o,s)):!u&&c?(r=n.x+n.width/2,
 a=n.y+n.height/2,o=(n.width-n.width/2+e)/(n.width-n.width/2),s=(n.height-n.height/2-t)/(n.height-n.height/2)):u&&c&&(r=n.x+n.width/2,
 a=n.y+n.height/2,o=(n.width-n.width/2+e)/(n.width-n.width/2),s=(n.height-n.height/2-t)/(n.height-n.height/2),
-o>=0&&s>=0?o=s=A(o,s):0>=o&&0>=s?o=s=P(o,s):E(o)>=E(s)?o=-s:s=-o):(r=n.x,a=n.y+n.height,
+o>=0&&s>=0?o=s=P(o,s):0>=o&&0>=s?o=s=T(o,s):A(o)>=A(s)?o=-s:s=-o):(r=n.x,a=n.y+n.height,
 o=(n.width+e)/n.width,s=(n.height-t)/n.height):"bottom-left"===i?u||c?u&&!c?(r=n.x+n.width,
-a=n.y,o=(n.width-e)/n.width,s=(n.height+t)/n.height,o=s=A(o,s)):!u&&c?(r=n.x+n.width/2,
+a=n.y,o=(n.width-e)/n.width,s=(n.height+t)/n.height,o=s=P(o,s)):!u&&c?(r=n.x+n.width/2,
 a=n.y+n.height/2,o=(n.width-n.width/2-e)/(n.width-n.width/2),s=(n.height-n.height/2+t)/(n.height-n.height/2)):u&&c&&(r=n.x+n.width/2,
 a=n.y+n.height/2,o=(n.width-n.width/2-e)/(n.width-n.width/2),s=(n.height-n.height/2+t)/(n.height-n.height/2),
-o>=0&&s>=0?o=s=A(o,s):0>=o&&0>=s?o=s=P(o,s):E(o)>=E(s)?o=-s:s=-o):(r=n.x+n.width,
+o>=0&&s>=0?o=s=P(o,s):0>=o&&0>=s?o=s=T(o,s):A(o)>=A(s)?o=-s:s=-o):(r=n.x+n.width,
 a=n.y,o=(n.width-e)/n.width,s=(n.height+t)/n.height):"bottom-right"===i&&(u||c?u&&!c?(r=n.x,
-a=n.y,o=(n.width+e)/n.width,s=(n.height+t)/n.height,o=s=A(o,s)):!u&&c?(r=n.x+n.width/2,
+a=n.y,o=(n.width+e)/n.width,s=(n.height+t)/n.height,o=s=P(o,s)):!u&&c?(r=n.x+n.width/2,
 a=n.y+n.height/2,o=(n.width-n.width/2+e)/(n.width-n.width/2),s=(n.height-n.height/2+t)/(n.height-n.height/2)):u&&c&&(r=n.x+n.width/2,
 a=n.y+n.height/2,o=(n.width-n.width/2+e)/(n.width-n.width/2),s=(n.height-n.height/2+t)/(n.height-n.height/2),
-o>=0&&s>=0?o=s=A(o,s):0>=o&&0>=s?o=s=P(o,s):E(o)>=E(s)?o=-s:s=-o):(r=n.x,a=n.y,o=(n.width+e)/n.width,
-s=(n.height+t)/n.height)),{centerX:r,centerY:a,scaleX:o,scaleY:s}}},{},e)}(SVGGElement),G=i("g","bx-transformhud",D);
-return{get default(){return G}}}),System.registerModule("elements/bx-transformtool",[],function(){
+o>=0&&s>=0?o=s=P(o,s):0>=o&&0>=s?o=s=T(o,s):A(o)>=A(s)?o=-s:s=-o):(r=n.x,a=n.y,o=(n.width+e)/n.width,
+s=(n.height+t)/n.height)),{centerX:r,centerY:a,scaleX:o,scaleY:s}}},{},e)}(SVGGElement),I=i("g","bx-transformhud",G);
+return{get default(){return I}}}),System.registerModule("elements/bx-transformtool",[],function(){
 "use strict";var e=System.get("utils/bbox").getClientBBox,t=System.get("utils/element"),n=t.registerElement,i=t.getCommonContainer,r=t.getContainers,a=t.isTransformableElement,o=System.get("utils/event").isMouseMoveIntentional,s=System.get("utils/rect"),l=s.rectContainsRect,u=s.transformRect,c=System.get("utils/constants").GRAPHICS_ELEMENTS,d=System.get("utils/transform-reduction").reduceTransform,h=System.get("classes/enum")["default"],v=System.get("classes/vector")["default"],f=Math.abs,m=new h("initialTransforms"),b=function(t){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
 createdCallback:function(){var e=!0,t=!1,n=void 0;try{for(var i=void 0,r=this.attributes[Symbol.iterator]();!(e=(i=r.next()).done);e=!0){
@@ -6009,16 +6051,16 @@ this["#preserve-stroke-width-checkbox"].checked=e,this["#preserve-rect-radii-che
 this["#preserve-path-rotation-checkbox"].checked=n,i.state=-2;break;default:return i.end();
 }},this)}},{},e)}(HTMLElement),a=t("bx-transformtoolcontrols",r);return{get default(){
 return a}}}),System.registerModule("elements/bx-trianglehud",[],function(){"use strict";
-var e=System.get("utils/element").registerElement,t=System.get("utils/geometry"),n=t.getNearestPointOnLine,i=t.getPointAtFraction,r=System.get("utils/math").normalize,a=System.get("utils/path-shapes"),o=a.getShapeData,s=a.setShapeData,l=System.get("utils/time").throttle,u=System.get("utils/transform-general").getTransformToElement,c=System.get("classes/enum")["default"],d=System.get("classes/vector")["default"],h=Math,v=h.abs,f=(h.sin,
-h.cos,h.PI,new c("path")),m=6,b='\n  <style>@import url("stylesheets/bx-trianglehud.css");</style>\n\n  <defs>\n    <g id="subhud-template" class="subhud">\n      <circle class="grippie shift-grippie"></circle>\n      <circle class="grippie corner-grippie"></circle>\n    </g>\n  </defs>\n\n  <g id="subhuds"></g>\n',g=function(e){
+var e=System.get("utils/element").registerElement,t=System.get("utils/geometry"),n=t.getNearestPointOnLine,i=t.getPointAtFraction,r=System.get("utils/math"),a=r.normalize,o=r.round,s=System.get("utils/path-shapes"),l=s.getShapeData,u=s.setShapeData,c=System.get("utils/time").throttle,d=System.get("utils/transform-general").getTransformToElement,h=System.get("classes/enum")["default"],v=System.get("classes/vector")["default"],f=Math,m=f.abs,b=(f.sin,
+f.cos,f.PI,new h("path")),g=6,p='\n  <style>@import url("stylesheets/bx-trianglehud.css");</style>\n\n  <defs>\n    <g id="subhud-template" class="subhud">\n      <circle class="grippie shift-grippie"></circle>\n      <circle class="grippie corner-grippie"></circle>\n    </g>\n  </defs>\n\n  <g id="subhuds"></g>\n',y=function(e){
 function t(){$traceurRuntime.superConstructor(t).apply(this,arguments)}return $traceurRuntime.createClass(t,{
 createdCallback:function(){this._installed=!1,this._selectedRings=[],this._draggedGrippie=null,
-this._updateGrippiesPosition200Th=l(this._updateGrippiesPosition,200,this),this._shadowRoot=this.createShadowRoot({
-mode:"closed"}),this._shadowRoot.innerHTML=b;var e=!0,t=!1,n=void 0;try{for(var i=void 0,r=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(e=(i=r.next()).done);e=!0){
+this._updateGrippiesPosition200Th=c(this._updateGrippiesPosition,200,this),this._shadowRoot=this.createShadowRoot({
+mode:"closed"}),this._shadowRoot.innerHTML=p;var e=!0,t=!1,n=void 0;try{for(var i=void 0,r=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(e=(i=r.next()).done);e=!0){
 var a=i.value;this["#"+a.id]=a}}catch(o){t=!0,n=o}finally{try{e||null==r["return"]||r["return"]();
-}finally{if(t)throw n}}var s=!0,u=!1,c=void 0;try{for(var d=void 0,h=this.attributes[Symbol.iterator]();!(s=(d=h.next()).done);s=!0){
-var v=d.value;this.attributeChangedCallback(v.name)}}catch(f){u=!0,c=f}finally{try{
-s||null==h["return"]||h["return"]()}finally{if(u)throw c}}},attributeChangedCallback:function(e){
+}finally{if(t)throw n}}var s=!0,l=!1,u=void 0;try{for(var d=void 0,h=this.attributes[Symbol.iterator]();!(s=(d=h.next()).done);s=!0){
+var v=d.value;this.attributeChangedCallback(v.name)}}catch(f){l=!0,u=f}finally{try{
+s||null==h["return"]||h["return"]()}finally{if(l)throw u}}},attributeChangedCallback:function(e){
 "enabled"===e&&(this.enabled?this._onEnabled():this._onDisabled())},get enabled(){
 return this.hasAttribute("enabled")},set enabled(e){e?this.setAttribute("enabled",""):this.removeAttribute("enabled");
 },_install:function(){var e=this;this._installed=!0,body.canvas.addEventListener("zoomchange",this._zoomChangeListener=function(){
@@ -6035,48 +6077,48 @@ body.canvas.removeEventListener("selectedelementschange",this._selectedElementsC
 this._updateSubhuds())},_onArtboardMutation:function(e){e.attributeName;this._draggedGrippie?this._updateGrippiesPosition():this._updateGrippiesPosition200Th();
 },_onZoomChange:function(){this._updateGrippiesSize()},_onShadowRootMouseDown:function(e){
 e.target.matches(".shift-grippie")?this._onShiftGrippieMouseDown(e):e.target.matches(".corner-grippie")&&this._onCornerGrippieMouseDown(e);
-},_onShiftGrippieMouseDown:function(e){var t,i,a=this;if(0===e.button){var l,u,c=e.target,h=c.parentElement,m=h[f.path],b=m.getCTM().inverse(),g=o(m).values,p=(t=g[Symbol.iterator](),
-(i=t.next()).done?void 0:i.value),y=(i=t.next()).done?void 0:i.value,_=(i=t.next()).done?void 0:i.value,x=(i=t.next()).done?void 0:i.value,w=(i=t.next()).done?void 0:i.value,S=(i=t.next()).done?void 0:i.value,C=body.canvas.geometryPrecision,k=new SVGPoint(p,y),E=new SVGPoint(p+_,y),A=new SVGPoint(e.clientX,e.clientY),P=A.matrixTransform(b),T=new SVGPoint(p+_*w,y),L=new d(T,P).getOppositeVector(),M=!1;
-c.parentElement.append(c),this._draggedGrippie=c,window.addEventListener("mousemove",l=function(e){
-var t,i;M===!1&&(M=!0,body.canvas.undoManager.checkpoint("Triangle radius"));var a=new SVGPoint(e.clientX,e.clientY),o=a.matrixTransform(b);
-o=L.transformPoint(o);var l=(t=n(k,E,o,!1)[Symbol.iterator](),(i=t.next()).done?void 0:i.value);
-w=(l.x-k.x)/_,w=r(w,0,1,4),body.modKeys.shift&&(w=[0,.5,1].reduce(function(e,t){return v(t-w)<v(e-w)?t:e;
-}));var u=[p,y,_,x,w,S].map(function(e){return round(e,C)});s(m,{type:"triangle",
-values:u},C)}),window.addEventListener("mouseup",u=function(){window.removeEventListener("mousemove",l),
-window.removeEventListener("mouseup",u),a._draggedGrippie=null})}},_onCornerGrippieMouseDown:function(e){
-var t,i,a=this;if(0===e.button){var l,u,c=e.target,h=c.parentElement,v=h[f.path],m=(SVGMatrix.fromMatrix(v.transform.baseVal.consolidate().matrix),
-v.getCTM().inverse()),b=o(v).values,g=(t=b[Symbol.iterator](),(i=t.next()).done?void 0:i.value),p=(i=t.next()).done?void 0:i.value,y=(i=t.next()).done?void 0:i.value,_=(i=t.next()).done?void 0:i.value,x=(i=t.next()).done?void 0:i.value,w=((i=t.next()).done?void 0:i.value,
-body.canvas.geometryPrecision),S=new SVGPoint(g+y*x,p),C=new SVGPoint(g+y,p+_),k=new SVGPoint(e.clientX,e.clientY),E=k.matrixTransform(m),A=new SVGPoint(E.x,E.y),P=!1;
-c.parentElement.append(c),this._draggedGrippie=c,window.addEventListener("mousemove",l=function(e){
-var t,i;P===!1&&(P=!0,body.canvas.undoManager.checkpoint("Triangle radius"));var a=new SVGPoint(e.clientX,e.clientY);
-A=a.matrixTransform(m);var o=(t=n(C,S,A,!1)[Symbol.iterator](),(i=t.next()).done?void 0:i.value),l=new d(C,o),u=new d(C,S),c=l.length/u.length,h=r(c,0,.5,4),f=[g,p,y,_,x,h].map(function(e){
-return round(e,w)});s(v,{type:"triangle",values:f},w)}),window.addEventListener("mouseup",u=function(){
-window.removeEventListener("mousemove",l),window.removeEventListener("mouseup",u),
-a._draggedGrippie=null})}},_updateSubhuds:function(){this["#subhuds"].innerHTML="";
+},_onShiftGrippieMouseDown:function(e){var t,i,r=this;if(0===e.button){var s,c,d=e.target,h=d.parentElement,f=h[b.path],g=f.getCTM().inverse(),p=l(f).values,y=(t=p[Symbol.iterator](),
+(i=t.next()).done?void 0:i.value),_=(i=t.next()).done?void 0:i.value,x=(i=t.next()).done?void 0:i.value,w=(i=t.next()).done?void 0:i.value,S=(i=t.next()).done?void 0:i.value,C=(i=t.next()).done?void 0:i.value,k=body.canvas.geometryPrecision,E=new SVGPoint(y,_),A=new SVGPoint(y+x,_),P=new SVGPoint(e.clientX,e.clientY),T=P.matrixTransform(g),L=new SVGPoint(y+x*S,_),M=new v(L,T).getOppositeVector(),R=!1;
+d.parentElement.append(d),this._draggedGrippie=d,window.addEventListener("mousemove",s=function(e){
+var t,i;R===!1&&(R=!0,body.canvas.undoManager.checkpoint("Triangle radius"));var r=new SVGPoint(e.clientX,e.clientY),s=r.matrixTransform(g);
+s=M.transformPoint(s);var l=(t=n(E,A,s,!1)[Symbol.iterator](),(i=t.next()).done?void 0:i.value);
+S=(l.x-E.x)/x,S=a(S,0,1,4),body.modKeys.shift&&(S=[0,.5,1].reduce(function(e,t){return m(t-S)<m(e-S)?t:e;
+}));var c=[y,_,x,w,S,C].map(function(e){return o(e,k)});u(f,{type:"triangle",values:c
+},k)}),window.addEventListener("mouseup",c=function(){window.removeEventListener("mousemove",s),
+window.removeEventListener("mouseup",c),r._draggedGrippie=null})}},_onCornerGrippieMouseDown:function(e){
+var t,i,r=this;if(0===e.button){var s,c,d=e.target,h=d.parentElement,f=h[b.path],m=(SVGMatrix.fromMatrix(f.transform.baseVal.consolidate().matrix),
+f.getCTM().inverse()),g=l(f).values,p=(t=g[Symbol.iterator](),(i=t.next()).done?void 0:i.value),y=(i=t.next()).done?void 0:i.value,_=(i=t.next()).done?void 0:i.value,x=(i=t.next()).done?void 0:i.value,w=(i=t.next()).done?void 0:i.value,S=((i=t.next()).done?void 0:i.value,
+body.canvas.geometryPrecision),C=new SVGPoint(p+_*w,y),k=new SVGPoint(p+_,y+x),E=new SVGPoint(e.clientX,e.clientY),A=E.matrixTransform(m),P=new SVGPoint(A.x,A.y),T=!1;
+d.parentElement.append(d),this._draggedGrippie=d,window.addEventListener("mousemove",s=function(e){
+var t,i;T===!1&&(T=!0,body.canvas.undoManager.checkpoint("Triangle radius"));var r=new SVGPoint(e.clientX,e.clientY);
+P=r.matrixTransform(m);var s=(t=n(k,C,P,!1)[Symbol.iterator](),(i=t.next()).done?void 0:i.value),l=new v(k,s),c=new v(k,C),d=l.length/c.length,h=a(d,0,.5,4),b=[p,y,_,x,w,h].map(function(e){
+return o(e,S)});u(f,{type:"triangle",values:b},S)}),window.addEventListener("mouseup",c=function(){
+window.removeEventListener("mousemove",s),window.removeEventListener("mouseup",c),
+r._draggedGrippie=null})}},_updateSubhuds:function(){this["#subhuds"].innerHTML="";
 var e=!0,t=!1,n=void 0;try{for(var i=void 0,r=this._selectedTriangles[Symbol.iterator]();!(e=(i=r.next()).done);e=!0){
-var a=i.value,o=this["#subhud-template"].cloneNode(!0);o.removeAttribute("id"),o[f.path]=a,
+var a=i.value,o=this["#subhud-template"].cloneNode(!0);o.removeAttribute("id"),o[b.path]=a,
 this["#subhuds"].append(o)}}catch(s){t=!0,n=s}finally{try{e||null==r["return"]||r["return"]();
 }finally{if(t)throw n}}this._updateGrippiesPosition(),this._updateGrippiesSize()},
-_updateGrippiesPosition:function(){var e,t,n=!0,r=!1,a=void 0;try{for(var s=void 0,l=this["#subhuds"].children[Symbol.iterator]();!(n=(s=l.next()).done);n=!0){
-var c=s.value,d=c[f.path],h=u(d,this),v=o(d).values,m=(e=v[Symbol.iterator](),(t=e.next()).done?void 0:t.value),b=(t=e.next()).done?void 0:t.value,g=(t=e.next()).done?void 0:t.value,p=(t=e.next()).done?void 0:t.value,y=(t=e.next()).done?void 0:t.value,_=(t=e.next()).done?void 0:t.value,x=!0,w=!1,S=void 0;
-try{for(var C=void 0,k=c.children[Symbol.iterator]();!(x=(C=k.next()).done);x=!0){
-var E=C.value;if(E.matches(".shift-grippie")){var A=new SVGPoint(m+g*y,b).matrixTransform(h);
+_updateGrippiesPosition:function(){var e,t,n=!0,r=!1,a=void 0;try{for(var o=void 0,s=this["#subhuds"].children[Symbol.iterator]();!(n=(o=s.next()).done);n=!0){
+var u=o.value,c=u[b.path],h=d(c,this),v=l(c).values,f=(e=v[Symbol.iterator](),(t=e.next()).done?void 0:t.value),m=(t=e.next()).done?void 0:t.value,g=(t=e.next()).done?void 0:t.value,p=(t=e.next()).done?void 0:t.value,y=(t=e.next()).done?void 0:t.value,_=(t=e.next()).done?void 0:t.value,x=!0,w=!1,S=void 0;
+try{for(var C=void 0,k=u.children[Symbol.iterator]();!(x=(C=k.next()).done);x=!0){
+var E=C.value;if(E.matches(".shift-grippie")){var A=new SVGPoint(f+g*y,m).matrixTransform(h);
 E.setAttribute("cx",A.x),E.setAttribute("cy",A.y)}else if(E.matches(".corner-grippie")){
-var P=new SVGPoint(m+g*y,b).matrixTransform(h),T=new SVGPoint(m+g,b+p).matrixTransform(h),L=i(T,P,_);
+var P=new SVGPoint(f+g*y,m).matrixTransform(h),T=new SVGPoint(f+g,m+p).matrixTransform(h),L=i(T,P,_);
 E.setAttribute("cx",L.x),E.setAttribute("cy",L.y)}}}catch(M){w=!0,S=M}finally{try{
 x||null==k["return"]||k["return"]()}finally{if(w)throw S}}}}catch(R){r=!0,a=R}finally{
-try{n||null==l["return"]||l["return"]()}finally{if(r)throw a}}},_updateGrippiesSize:function(){
+try{n||null==s["return"]||s["return"]()}finally{if(r)throw a}}},_updateGrippiesSize:function(){
 var e=!0,t=!1,n=void 0;try{for(var i=void 0,r=this["#subhuds"].children[Symbol.iterator]();!(e=(i=r.next()).done);e=!0){
 var a=i.value,o=!0,s=!1,l=void 0;try{for(var u=void 0,c=a.children[Symbol.iterator]();!(o=(u=c.next()).done);o=!0){
-var d=u.value;d.setAttribute("r",m/body.canvas.scale)}}catch(h){s=!0,l=h}finally{
+var d=u.value;d.setAttribute("r",g/body.canvas.scale)}}catch(h){s=!0,l=h}finally{
 try{o||null==c["return"]||c["return"]()}finally{if(s)throw l}}}}catch(v){t=!0,n=v;
 }finally{try{e||null==r["return"]||r["return"]()}finally{if(t)throw n}}},_getSelectedTriangles:function(){
 var e=void 0!==arguments[0]?arguments[0]:body.canvas.selectedElements,t=[],n=!0,i=!1,r=void 0;
 try{for(var a=void 0,o=e[Symbol.iterator]();!(n=(a=o.next()).done);n=!0){var s=a.value;
 "path"===s.localName?s.hasAttribute("data-bx-shape")&&s.getAttribute("data-bx-shape").startsWith("triangle")&&t.push(s):"g"!==s.localName&&"a"!==s.localName||(t=$traceurRuntime.spread(t,this._getSelectedTriangles(s.children)));
 }}catch(l){i=!0,r=l}finally{try{n||null==o["return"]||o["return"]()}finally{if(i)throw r;
-}}return t}},{},e)}(SVGGElement),p=e("g","bx-trianglehud",g);return{get default(){
-return p}}}),System.registerModule("elements/bx-triangletool",[],function(){"use strict";
+}}return t}},{},e)}(SVGGElement),_=e("g","bx-trianglehud",y);return{get default(){
+return _}}}),System.registerModule("elements/bx-triangletool",[],function(){"use strict";
 var e=System.get("utils/element"),t=e.createElement,n=e.registerElement,i=System.get("utils/event").isMouseMoveIntentional,r=System.get("utils/geometry"),a=r.getDistanceBetweenPoints,o=r.getRotationAngleFromPoints,s=r.snapRotationAngle,l=System.get("utils/math"),u=l.normalize,c=(l.round,
 System.get("utils/path-shapes")),d=(c.getShapeData,c.setShapeData),h=System.get("utils/transform-reduction").reduceTransform,v=System.get("classes/shortcut")["default"],f=(System.get("classes/vector")["default"],
 Math),m=f.abs,b=f.min,g=(f.sqrt,function(e){function n(){$traceurRuntime.superConstructor(n).apply(this,arguments);
@@ -6375,9 +6417,13 @@ l||null==h["return"]||h["return"]()}finally{if(u)throw c}}},attributeChangedCall
 "enabled"===e&&(this.enabled?this._onEnabled():this._onDisabled())},get enabled(){
 return this.hasAttribute("enabled")},set enabled(e){e?this.setAttribute("enabled",""):this.removeAttribute("enabled");
 },_onEnabled:function(){var e=this;body.canvas.addEventListener("artboardmutation",this._artboardMutationListener=function(t){
-e._onArtboardMutation(t)})},_onDisabled:function(){body.canvas.removeEventListener("artboardmutation",this._artboardMutationListener);
-},_onArtboardMutation:function(e){e.target!==body.canvas&&e.target.parentElement!==body.canvas||this._update();
-},_update:function(){body.canvas.currentArtboard.hasAttribute("viewBox")?(this["#outline"].setAttribute("width",body.canvas.currentArtboard.viewBox.width),
+e._onArtboardMutation(t)}),body.addEventListener("configchange",this._configChangeListener=function(t){
+var n=t.detail,i=n.key,r=n.value;"bx-preferences:viewBoxOutlineColor"===i&&(e["#outline"].style.stroke=r);
+}),body.getConfig("bx-preferences:viewBoxOutlineColor").then(function(t){e["#outline"].style.stroke=t;
+})},_onDisabled:function(){body.canvas.removeEventListener("artboardmutation",this._artboardMutationListener),
+body.removeEventListener("configchange",this._configChangeListener)},_onArtboardMutation:function(e){
+e.target!==body.canvas&&e.target.parentElement!==body.canvas||this._update()},_update:function(){
+body.canvas.currentArtboard.hasAttribute("viewBox")?(this["#outline"].setAttribute("width",body.canvas.currentArtboard.viewBox.width),
 this["#outline"].setAttribute("height",body.canvas.currentArtboard.viewBox.height),
 this["#outline"].setAttribute("x",body.canvas.currentArtboard.viewBox.x),this["#outline"].setAttribute("y",body.canvas.currentArtboard.viewBox.y)):(this["#outline"].setAttribute("width",0),
 this["#outline"].setAttribute("height",0),this["#outline"].setAttribute("x",-99999),
@@ -9942,13 +9988,13 @@ var H=U.value,F=H,q=F.family,W=F.faces;W=e(W),W.sort(),H!==u[0]&&(G+="|"),G+=q.r
 }}}),System.registerModule("utils/artwork-rasterization",[],function(){"use strict";
 var e=System.get("utils/artwork-export").exportArtwork,t=System.get("utils/element"),n=t.createElement,i=(t.connectElement,
 System.get("utils/time").sleep,System.get("classes/google-fonts-manager")["default"],
-function(t){var i=void 0!==arguments[1]?arguments[1]:"png",r=void 0!==arguments[2]?arguments[2]:1,a=void 0!==arguments[3]?arguments[3]:!0;
+function(t){var i=void 0!==arguments[1]?arguments[1]:"png",r=void 0!==arguments[2]?arguments[2]:1,a=void 0!==arguments[3]?arguments[3]:"rgba(0, 0, 0, 0)";
 return new Promise(function(o){var s,l,u,c,d,h;return $traceurRuntime.asyncWrap(function(v){
 for(;;)switch(v.state){case 0:s=e(t,"xml"),l=n("canvas"),u=l.getContext("2d"),c=new Blob([s],{
 type:"image/svg+xml;charset=utf-8"}),d=URL.createObjectURL(c),h=new Image,h.src=d,
 h.addEventListener("load",function(){l.width=h.naturalWidth,l.height=h.naturalHeight,
-"jpg"===i?(u.fillStyle="white",u.fillRect(0,0,h.naturalWidth,h.naturalHeight)):"png"===i&&a===!1&&(u.fillStyle="white",
-u.fillRect(0,0,h.naturalWidth,h.naturalHeight)),u.drawImage(h,0,0);var e=null;"png"===i?e=l.toDataURL("image/png",r):"jpg"===i&&(e=l.toDataURL("image/jpeg",r)),
+"jpg"===i&&(u.fillStyle="white",u.fillRect(0,0,h.naturalWidth,h.naturalHeight)),u.fillStyle=a,
+u.fillRect(0,0,h.naturalWidth,h.naturalHeight),u.drawImage(h,0,0);var e=null;"png"===i?e=l.toDataURL("image/png",r):"jpg"===i&&(e=l.toDataURL("image/jpeg",r)),
 o(e),URL.revokeObjectURL(d)}),v.state=-2;break;default:return v.end()}},this)})}),r=function(t,i,r){
 t=t.cloneNode(!0),t.setAttribute("width","1000000px"),t.setAttribute("height","100px"),
 t.setAttribute("viewBox","0 0 1000000 100");var a=n("svg:g");a.style.opacity="0";var o=!0,s=!1,l=void 0;
@@ -10409,21 +10455,21 @@ var n=t.substring(5,t.length-2),i=e.querySelector(n);if(i)return i}return null};
 get getPaintType(){return a},get getPaintServer(){return o},get isSamePaintType(){
 return s},get isMixedPaint(){return l},get isSamePaint(){return u},get getDefFromURL(){
 return c}}}),System.registerModule("utils/path-boolops",[],function(){"use strict";
-var e=System.get("utils/path-general"),t=e.serializePathData,n=e.deserializePathData,i=e.normalizePathData,r=System.get("libs/paper")["default"],a=function(e,t){
-var n=void 0!==arguments[2]?arguments[2]:3;return u(e,t,"unite",n)},o=function(e,t){
-var n=void 0!==arguments[2]?arguments[2]:3;return u(e,t,"subtract",n)},s=function(e,t){
-var n=void 0!==arguments[2]?arguments[2]:3;return u(e,t,"intersect",n)},l=function(e,t){
-var n=void 0!==arguments[2]?arguments[2]:3;return u(e,t,"exclude",n)},u=function(e,r,a,o){
-var s=c(t(e)),l=c(t(r)),u=s[a](l),d=[];if(u){var h=u.exportSVG().getAttribute("d");
-d=n(h),d=i(d);var v=!0,f=!1,m=void 0;try{for(var b=void 0,g=d[Symbol.iterator]();!(v=(b=g.next()).done);v=!0){
-var p=b.value;p.values=p.values.map(function(e){return round(e,o)})}}catch(y){f=!0,
-m=y}finally{try{v||null==g["return"]||g["return"]()}finally{if(f)throw m}}}return d;
-},c=function(e){var t,n=(e.match(/M/g)||[]).length>1;if(n){t=new r.CompoundPath(e);
-var i=!0,a=!1,o=void 0;try{for(var s=void 0,l=t.children[Symbol.iterator]();!(i=(s=l.next()).done);i=!0){
-var u=s.value;u.closed||u.closePath()}}catch(c){a=!0,o=c}finally{try{i||null==l["return"]||l["return"]();
-}finally{if(a)throw o}}}else t=new r.Path(e),t.closed||t.closePath();return t};return{
-get unite(){return a},get subtract(){return o},get intersect(){return s},get exclude(){
-return l}}}),System.registerModule("utils/path-conversion",[],function(){"use strict";
+var e=System.get("utils/math").round,t=System.get("utils/path-general"),n=t.serializePathData,i=t.deserializePathData,r=t.normalizePathData,a=System.get("libs/paper")["default"],o=function(e,t){
+var n=void 0!==arguments[2]?arguments[2]:3;return c(e,t,"unite",n)},s=function(e,t){
+var n=void 0!==arguments[2]?arguments[2]:3;return c(e,t,"subtract",n)},l=function(e,t){
+var n=void 0!==arguments[2]?arguments[2]:3;return c(e,t,"intersect",n)},u=function(e,t){
+var n=void 0!==arguments[2]?arguments[2]:3;return c(e,t,"exclude",n)},c=function(t,a,o,s){
+var l=d(n(t)),u=d(n(a)),c=l[o](u),h=[];if(c){var v=c.exportSVG().getAttribute("d");
+h=i(v),h=r(h);var f=!0,m=!1,b=void 0;try{for(var g=void 0,p=h[Symbol.iterator]();!(f=(g=p.next()).done);f=!0){
+var y=g.value;y.values=y.values.map(function(t){return e(t,s)})}}catch(_){m=!0,b=_;
+}finally{try{f||null==p["return"]||p["return"]()}finally{if(m)throw b}}}return h},d=function(e){
+var t,n=(e.match(/M/g)||[]).length>1;if(n){t=new a.CompoundPath(e);var i=!0,r=!1,o=void 0;
+try{for(var s=void 0,l=t.children[Symbol.iterator]();!(i=(s=l.next()).done);i=!0){
+var u=s.value;u.closed||u.closePath()}}catch(c){r=!0,o=c}finally{try{i||null==l["return"]||l["return"]();
+}finally{if(r)throw o}}}else t=new a.Path(e),t.closed||t.closePath();return t};return{
+get unite(){return o},get subtract(){return s},get intersect(){return l},get exclude(){
+return u}}}),System.registerModule("utils/path-conversion",[],function(){"use strict";
 var e=(System.get("utils/constants").SVG_NAMESPACE,System.get("utils/element").createElement),t=System.get("utils/math").round,n=System.get("utils/path-shapes"),i=n.getShapeData,r=n.setShapeData,a=n.shapeDataToPathData,o=System.get("utils/string").collapseWhitespace,s=function(n){
 var i,o=void 0!==arguments[1]?arguments[1]:"normal",s=void 0!==arguments[2]?arguments[2]:6,l=n.x.baseVal.value,u=n.y.baseVal.value,c=n.width.baseVal.value,d=n.height.baseVal.value,h=n.rx.baseVal.value,v=n.ry.baseVal.value,f=e("svg:path");
 if(i=h===v?{type:"rect",values:[l,u,c,d,h,h,h,h]}:{type:"rect",values:[l,u,c,d,h,h,h,h,v,v,v,v]

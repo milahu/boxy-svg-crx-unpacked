@@ -14,7 +14,7 @@
 #outline {
   fill: none;
   opacity: 1;
-  stroke: #646464;
+  stroke: rgba(0, 0, 0, 0.5);
   stroke-width: 1;
   pointer-events: none;
   vector-effect: non-scaling-stroke;
