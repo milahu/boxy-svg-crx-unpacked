@@ -300,7 +300,7 @@ bubbles:!0,detail:this}))}},{},e)}(HTMLElement),f=i("bx-editor",m);return{get de
 return f}}}),System.registerModule("elements/bx-masterbody",[],function(){"use strict";
 System.get("elements/bx-editor"),System.get("elements/bx-messagebox"),System.get("elements/bx-menubar"),
 System.get("elements/bx-menu"),System.get("elements/bx-menuitem"),System.get("elements/bx-tabs");
-var e=System.get("utils/element"),t=e.createElement,n=e.registerElement,r=System.get("utils/string").toDashCase,a=System.get("utils/time"),i=a.debounce,s=a.sleep,o=System.get("utils/vendor").getOperatingSystemName,l=System.get("utils/window"),u=l.createAppWindow,c=l.getBackgroundWindow,d=System.get("utils/constants"),h=d.APP_NAME,b=d.APP_VERSION,m=System.get("utils/filesystem"),f=m.getEntryBaseName,v=m.getEntryDisplayPath,g=m.getEntryExtension,p=m.chooseEntry,_=m.compareEntries,w=m.restoreEntry,k=System.get("classes/shortcut")["default"],y=Number.parseInt,x="frontend/about.html",C="frontend/preferences.html",S=10,E=["transform-tool","edit-tool","quad-bezier-tool","cubic-bezier-tool","freehand-tool","text-tool","triangle-tool","rectangle-tool","n-gon-tool","star-tool","ellipse-tool","ring-tool"],A=["fill-panel","stroke-panel","compositing-panel","view-panel","arrangement-panel","typography-panel","defs-panel","mask-panel","geometry-panel","path-panel","export-panel"],R=navigator.userAgent.includes("Chrome/52"),T={
+var e=System.get("utils/element"),t=e.createElement,n=e.registerElement,r=System.get("utils/string").toDashCase,a=System.get("utils/time"),i=a.debounce,s=a.sleep,o=System.get("utils/vendor").getOperatingSystemName,l=System.get("utils/window"),u=l.createAppWindow,c=l.getBackgroundWindow,d=System.get("utils/constants"),h=d.APP_NAME,b=d.APP_VERSION,m=System.get("utils/filesystem"),f=m.getEntryBaseName,v=m.getEntryDisplayPath,g=m.getEntryExtension,p=m.chooseEntry,_=m.compareEntries,w=m.restoreEntry,k=System.get("classes/shortcut")["default"],y=Number.parseInt,x="frontend/about.html",C="frontend/preferences.html",S=10,E=["transform-tool","edit-tool","quad-bezier-tool","cubic-bezier-tool","freehand-tool","text-tool","triangle-tool","rectangle-tool","n-gon-tool","star-tool","ellipse-tool","ring-tool"],A=["fill-panel","stroke-panel","compositing-panel","view-panel","arrangement-panel","typography-panel","defs-panel","mask-panel","geometry-panel","path-panel","export-panel"],R=navigator.userAgent.includes("Chrome/52")||navigator.userAgent.includes("Chrome/53")||navigator.userAgent.includes("Chrome/54"),T={
 "Boxy SVG":{backend:"chrome",backendSupportsRasterization:R,badge:!0,debugMenu:!1,
 reviewsURL:"https://chrome.google.com/webstore/detail/boxy-svg/gaoogdonmngmdlbinmiclicjpbjhgomg/reviews",
 supportURL:"https://chrome.google.com/webstore/detail/boxy-svg/gaoogdonmngmdlbinmiclicjpbjhgomg/support",
@@ -448,7 +448,7 @@ e.dataTransfer.dropEffect="copy"},_onDrop:function(e){e.preventDefault();var t=[
 try{for(var i=void 0,s=e.dataTransfer.items[Symbol.iterator]();!(n=(i=s.next()).done);n=!0){
 var o=i.value,l=o.webkitGetAsEntry(),u=g(l).toLowerCase();["svg","svgz","html"].includes(u)?t.push(l):["png","jpg","jpeg","webp","gif"].includes(u)&&t.push(l);
 }}catch(c){r=!0,a=c}finally{try{n||null==s["return"]||s["return"]()}finally{if(r)throw a;
-}}this._openEditorsWithEntries(t),this._addRecentEntries(t)},_onMenubarDragOver:function(e){
+}}t.length>0&&(this._openEditorsWithEntries(t),this._addRecentEntries(t))},_onMenubarDragOver:function(e){
 this._onDragOver(e)},_onMenubarDrop:function(e){this._onDrop(e)},_onTabSlotChange:function(e){
 this._storeSessionDebounced()},_onTabsDragOver:function(e){this._onDragOver(e)},_onTabsDrop:function(e){
 this._onDrop(e)},_onEditorsDragOver:function(e){null===this.currentEditor&&this._onDragOver(e);
@@ -578,25 +578,26 @@ case 2:m.disabled=!1,i(v),s.state=-2;break;default:return s.end()}},this)})},r({
 createEditor:w}),y.state=-2;break;case 25:y.state=y.finallyFallThrough;break;default:
 return y.end()}},this)})};return new Promise(function(t){var a,i,s,o,l,u,c,d,h,b,m,f,v,g,p,_,w;
 return $traceurRuntime.asyncWrap(function(k){for(;;)switch(k.state){case 0:a=[],i=!0,
-s=!1,o=void 0,k.state=29;break;case 29:k.pushTry(11,12),k.state=14;break;case 14:
+s=!1,o=void 0,k.state=36;break;case 36:k.pushTry(11,12),k.state=14;break;case 14:
 l=void 0,u=e[Symbol.iterator](),k.state=10;break;case 10:k.state=(i=(l=u.next()).done)?8:6;
 break;case 5:i=!0,k.state=10;break;case 6:c=l.value,k.state=7;break;case 7:return void Promise.resolve(r(c)).then(k.createCallback(3),k.errback);
 case 3:d=k.value,k.state=2;break;case 2:a.push(d),k.state=5;break;case 8:k.popTry(),
 k.state=12,k.finallyFallThrough=16;break;case 11:k.popTry(),k.maybeUncatchable(),
 w=k.storedException,k.state=17;break;case 17:s=!0,o=w,k.state=12,k.finallyFallThrough=16;
 break;case 12:k.popTry(),k.state=23;break;case 23:try{i||null==u["return"]||u["return"]();
-}finally{if(s)throw o}k.state=21;break;case 16:h=a[a.length-1],b=a.slice(0,a.length-1),
-m=!0,f=!1,v=void 0;try{for(g=void 0,p=a[Symbol.iterator]();!(m=(g=p.next()).done);m=!0)_=g.value,
+}finally{if(s)throw o}k.state=21;break;case 16:k.state=a.length>0?28:32;break;case 28:
+h=a[a.length-1],b=a.slice(0,a.length-1),m=!0,f=!1,v=void 0;try{for(g=void 0,p=a[Symbol.iterator]();!(m=(g=p.next()).done);m=!0)_=g.value,
 _.createTab()}catch(y){f=!0,v=y}finally{try{m||null==p["return"]||p["return"]()}finally{
-if(f)throw v}}k.state=31;break;case 31:return void Promise.resolve(h.createEditor(!0)).then(k.createCallback(25),k.errback);
+if(f)throw v}}k.state=29;break;case 29:return void Promise.resolve(h.createEditor(!0)).then(k.createCallback(25),k.errback);
 case 25:return void Promise.resolve(Promise.all(b.map(function(e){return e.createEditor(!1);
 }))).then(k.createCallback(27),k.errback);case 27:n._storeSessionDebounced(),t(),
-k.state=-2;break;case 21:k.state=k.finallyFallThrough;break;default:return k.end();
-}},this)})},_openEditorsWithRetainedEntries:function(e){var t=this;return new Promise(function(n){
-var r,a,i,s,o,l,u,c,d;return $traceurRuntime.asyncWrap(function(h){for(;;)switch(h.state){
-case 0:r=[],a=!0,i=!1,s=void 0,h.state=27;break;case 27:h.pushTry(11,12),h.state=14;
-break;case 14:o=void 0,l=e[Symbol.iterator](),h.state=10;break;case 10:h.state=(a=(o=l.next()).done)?8:6;
-break;case 5:a=!0,h.state=10;break;case 6:u=o.value,h.state=7;break;case 7:return void Promise.resolve(w(u)).then(h.createCallback(3),h.errback);
+k.state=-2;break;case 32:t(),k.state=-2;break;case 21:k.state=k.finallyFallThrough;
+break;default:return k.end()}},this)})},_openEditorsWithRetainedEntries:function(e){
+var t=this;return new Promise(function(n){var r,a,i,s,o,l,u,c,d;return $traceurRuntime.asyncWrap(function(h){
+for(;;)switch(h.state){case 0:r=[],a=!0,i=!1,s=void 0,h.state=27;break;case 27:h.pushTry(11,12),
+h.state=14;break;case 14:o=void 0,l=e[Symbol.iterator](),h.state=10;break;case 10:
+h.state=(a=(o=l.next()).done)?8:6;break;case 5:a=!0,h.state=10;break;case 6:u=o.value,
+h.state=7;break;case 7:return void Promise.resolve(w(u)).then(h.createCallback(3),h.errback);
 case 3:c=h.value,h.state=2;break;case 2:c&&r.push(c),h.state=5;break;case 8:h.popTry(),
 h.state=12,h.finallyFallThrough=16;break;case 11:h.popTry(),h.maybeUncatchable(),
 d=h.storedException,h.state=17;break;case 17:i=!0,s=d,h.state=12,h.finallyFallThrough=16;
