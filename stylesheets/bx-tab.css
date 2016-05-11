@@ -38,6 +38,7 @@ main {
   color: #ffffff;
   margin-left: 5px;
   overflow: hidden;
+  width: 0; /* https://lists.w3.org/Archives/Public/www-style/2011Jan/0201.html */
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 13px;

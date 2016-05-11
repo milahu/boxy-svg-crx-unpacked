@@ -1538,6 +1538,84 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
+// KeyboardEvent polyfills
+//
+
+// @info
+//   KeyboardEvent.prototype.key property polyfill
+(() => {
+  if (window.KeyboardEvent.prototype.hasOwnProperty("key") === false) {
+    let invalidIdents = {
+      // On Windows and Linux event.keyIdentifier returns invalid values for some idents
+      // https://bugs.webkit.org/show_bug.cgi?id=19906
+      "U+00C0": "U+0060", // À -> `
+      "U+00BD": "U+002D", // ½ -> -
+      "U+00BB": "U+003D", // » -> =
+      "U+00DB": "U+005B", // Û -> [
+      "U+00DD": "U+005D", // Ý -> ]
+      "U+00DC": "U+005C", // Ü -> \
+      "U+00BA": "U+003B", // º -> ;
+      "U+00DE": "U+0027", // Þ -> '
+      "U+00BC": "U+002C", // ¼ -> ,
+      "U+00BE": "U+002E", // ¾ -> .
+      "U+00BF": "U+002F", // ¿ -> /
+      // Current DOM spec uses different arrow keys IDs
+      "Win": "Meta",
+      "Left": "ArrowLeft",
+      "Right": "ArrowRight",
+      "Up": "ArrowUp",
+      "Down": "ArrowDown"
+    };
+
+    Object.defineProperty(KeyboardEvent.prototype, 'key', {
+      get() {
+        let ident = this.keyIdentifier;
+
+        for (let invalidIdent in invalidIdents) {
+          if (ident === invalidIdent) {
+            let validIdent = invalidIdents[invalidIdent];
+            ident = validIdent;
+          }
+        }
+
+        let key = null;
+
+        if (ident[0] === "U" && ident[1] === "+") {
+          let code = parseInt(ident.substring(2), 16);
+
+          if (code === 27) {
+            key = "Escape";
+          }
+          else if (code === 8) {
+            key = "Backspace";
+          }
+          else {
+            key = String.fromCharCode(code);
+
+            if (key === "\t") {
+              key = "Tab";
+            }
+            else if (key === " ") {
+              key = "Space";
+            }
+            else if (this.shiftKey === false) {
+              key = key.toLowerCase();
+            }
+          }
+        }
+        else {
+          key = ident;
+        }
+
+        return key;
+      }
+    });
+  }
+})();
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//
 // Make array-like DOM objects iterable
 //
 
@@ -1567,4 +1645,4 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-window.addEventListener("load", () => System.get("./elements/" + document.body.getAttribute("is")));
+window.addEventListener("load", () => $traceurRuntime.getModule("./elements/" + document.body.getAttribute("is")));
