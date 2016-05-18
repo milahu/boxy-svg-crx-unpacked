@@ -263,7 +263,8 @@ var t=this;return new Promise(function(n){var r,a,o,s,l,u;return $traceurRuntime
 for(;;)switch(d.state){case 0:return void Promise.resolve(t._getRegistry()).then(d.createCallback(3),d.errback);
 case 3:r=d.value,d.state=2;break;case 2:d.state=r?15:17;break;case 15:a=r.items.find(function(t){
 return t.family===e}),d.state=16;break;case 16:d.state=a?8:12;break;case 8:o=a.urls[400]||a.urls[w(a.urls)[0]],
-s=new FontFace("BX "+e,"url("+o+")",{}),d.state=9;break;case 9:return void Promise.resolve(s.load()).then(d.createCallback(5),d.errback);
+o=o.replace("http://","https://"),s=new FontFace("BX "+e,"url("+o+")",{}),d.state=9;
+break;case 9:return void Promise.resolve(s.load()).then(d.createCallback(5),d.errback);
 case 5:return void Promise.resolve(c(20)).then(d.createCallback(7),d.errback);case 7:
 document.fonts.add(s),null===t._renderingCanvas&&(t._renderingCanvas=i("canvas"),
 t._renderingCanvas.width=300,t._renderingCanvas.height=40),l=t._renderingCanvas.getContext("2d"),
@@ -345,10 +346,10 @@ case 3:r=o.value,o.state=2;break;case 2:o.state=r?13:15;break;case 13:i=r.items.
 return t.family===e}),o.state=14;break;case 14:o.state=i?6:10;break;case 6:a=i.faces.map(function(t){
 return new Promise(function(n){var r,a,o,s;return $traceurRuntime.asyncWrap(function(l){
 for(;;)switch(l.state){case 0:r=t.substring(0,3),a=t.includes("italic")?"italic":"normal",
-o=i.urls[t],s=new FontFace(e,"url("+o+")",{style:a,weight:r}),l.state=4;break;case 4:
-return void Promise.resolve(s.load()).then(l.createCallback(2),l.errback);case 2:
-document.fonts.add(s),n(),l.state=-2;break;default:return l.end()}},this)})}),o.state=7;
-break;case 7:return void Promise.resolve(Promise.all(a)).then(o.createCallback(5),o.errback);
+o=i.urls[t],o=o.replace("http://","https://"),s=new FontFace(e,"url("+o+")",{style:a,
+weight:r}),l.state=4;break;case 4:return void Promise.resolve(s.load()).then(l.createCallback(2),l.errback);
+case 2:document.fonts.add(s),n(),l.state=-2;break;default:return l.end()}},this)});
+}),o.state=7;break;case 7:return void Promise.resolve(Promise.all(a)).then(o.createCallback(5),o.errback);
 case 5:n(!0),o.state=-2;break;case 10:n(!1),o.state=-2;break;case 15:n(!1),o.state=-2;
 break;default:return o.end()}},this)})},replaceTextWithPaths:function(e){var t=void 0!==arguments[1]?arguments[1]:3,r=void 0!==arguments[2]?arguments[2]:6,a=this;
 return new Promise(function(o){var s,l,u,c,h,v,f,m,g,p,x,_,w,M,C,R,k,E,A,P,T,L,$,j,N,O,V,z,D,G,I,B,U,H,F,q,W,Y,X,Z,K,J,Q,ee,te,ne,re,ie,ae,oe,se;
@@ -395,16 +396,16 @@ case 24:o=!0,s=h,v.state=19,v.finallyFallThrough=23;break;case 19:v.popTry(),v.s
 break;case 30:try{a||null==d["return"]||d["return"]()}finally{if(o)throw s}v.state=28;
 break;case 23:n(i),v.state=-2;break;case 35:n(!1),v.state=-2;break;case 28:v.state=v.finallyFallThrough;
 break;default:return v.end()}},this)})},_getGlyphs:function(e,t,n,r,i,a){var s=this;
-return new Promise(function(l){var u,c,d,h,b,g,p,y,x,_,w,S,M,C,R,k;return $traceurRuntime.asyncWrap(function(E){
-for(;;)switch(E.state){case 0:return void Promise.resolve(s._getRegistry()).then(E.createCallback(3),E.errback);
-case 3:u=E.value,E.state=2;break;case 2:E.state=u?14:16;break;case 14:c=u.items.find(function(e){
-return e.family===t}),E.state=15;break;case 15:E.state=c?7:11;break;case 7:d=m(c.faces,r,i),
-E.state=8;break;case 8:return void Promise.resolve(v(c.urls[d])).then(E.createCallback(6),E.errback);
-case 6:h=E.value,E.state=5;break;case 5:if(null===h)l(null);else{b=[],g=("italic"===i||"oblique"===i)&&!d.includes("italic"),
-p=!0,y=!1,x=void 0;try{for(_=void 0,w=e[Symbol.iterator]();!(p=(_=w.next()).done);p=!0)S=_.value,
-M=h.charToGlyph(S),C=f(M,h,n,a,g),R=C.toPathData(),k=o(R),b.push(k)}catch(A){y=!0,
-x=A}finally{try{p||null==w["return"]||w["return"]()}finally{if(y)throw x}}l(b)}E.state=-2;
-break;case 11:l(null),E.state=-2;break;case 16:l(null),E.state=-2;break;default:return E.end();
+return new Promise(function(l){var u,c,d,h,b,g,p,y,x,_,w,S,M,C,R,k,E;return $traceurRuntime.asyncWrap(function(A){
+for(;;)switch(A.state){case 0:return void Promise.resolve(s._getRegistry()).then(A.createCallback(3),A.errback);
+case 3:u=A.value,A.state=2;break;case 2:A.state=u?14:16;break;case 14:c=u.items.find(function(e){
+return e.family===t}),A.state=15;break;case 15:A.state=c?7:11;break;case 7:d=m(c.faces,r,i),
+h=c.urls[d].replace("http://","https://"),A.state=8;break;case 8:return void Promise.resolve(v(h)).then(A.createCallback(6),A.errback);
+case 6:b=A.value,A.state=5;break;case 5:if(null===b)l(null);else{g=[],p=("italic"===i||"oblique"===i)&&!d.includes("italic"),
+y=!0,x=!1,_=void 0;try{for(w=void 0,S=e[Symbol.iterator]();!(y=(w=S.next()).done);y=!0)M=w.value,
+C=b.charToGlyph(M),R=f(C,b,n,a,p),k=R.toPathData(),E=o(k),g.push(E)}catch(P){x=!0,
+_=P}finally{try{y||null==S["return"]||S["return"]()}finally{if(x)throw _}}l(g)}A.state=-2;
+break;case 11:l(null),A.state=-2;break;case 16:l(null),A.state=-2;break;default:return A.end();
 }},this)})},_dbOpen:function(){return new Promise(function(e,t){var n=indexedDB.open("google-fonts-manager",1);
 n.addEventListener("upgradeneeded",function(e){var t=e.target.result;e.oldVersion<1&&(t.createObjectStore("registry",{
 autoIncrement:!0}),t.createObjectStore("thumbnails",{autoIncrement:!0}))}),n.addEventListener("success",function(t){
@@ -815,21 +816,22 @@ $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-cubicsegsdra
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-quadsegsdrawhud","elements/bx-canvas")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-freehandsegsdrawhud","elements/bx-canvas")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-guide","elements/bx-canvas"));
-var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/dom-undo-manager","elements/bx-canvas"))["default"],t=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/google-fonts-manager","elements/bx-canvas"))["default"],n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork-compression","elements/bx-canvas")).uncompressArtwork,r=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork-import","elements/bx-canvas")).importArtwork,i=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork-general","elements/bx-canvas")).prepareArtworkForInsertion,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/bbox","elements/bx-canvas")).getClientBBox,o=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/constants","elements/bx-canvas")),s=o.SVG_NAMESPACE,l=o.XLINK_NAMESPACE,u=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-canvas")),c=u.createElement,d=u.registerElement,h=u.sortByDomPosition,v=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-canvas")),f=v.isTransformableElement,m=v.mirrorAttributes,b=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/font","elements/bx-canvas")).parseGoogleFontsURL,g=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/math","elements/bx-canvas")).normalize,p=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/image","elements/bx-canvas")).extractImageSize,y=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/markup","elements/bx-canvas")).parseSVG,x=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/node","elements/bx-canvas")).closest,_=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/rect","elements/bx-canvas")),w=_.transformRect,S=_.combineRects,M=_.rectIntersectsRect,C=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/transform-general","elements/bx-canvas")).getTransformToElement,R=Math.min,k=Object,E=k.defineProperty,A=k.freeze,P=.39,T=1e4,L=20,$=window.screen.width,j=window.screen.height,N={
+var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/dom-undo-manager","elements/bx-canvas"))["default"],t=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/google-fonts-manager","elements/bx-canvas"))["default"],n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork-compression","elements/bx-canvas")).uncompressArtwork,r=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork-import","elements/bx-canvas")).importArtwork,i=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork-general","elements/bx-canvas")).prepareArtworkForInsertion,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/bbox","elements/bx-canvas")).getClientBBox,o=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/constants","elements/bx-canvas")),s=o.SVG_NAMESPACE,l=o.XLINK_NAMESPACE,u=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-canvas")),c=u.createElement,d=u.registerElement,h=u.sortByDomPosition,v=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-canvas")),f=v.isTransformableElement,m=v.mirrorAttributes,b=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/font","elements/bx-canvas")).parseGoogleFontsURL,g=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/math","elements/bx-canvas")).normalize,p=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/image","elements/bx-canvas")).extractImageSize,y=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/markup","elements/bx-canvas")).parseSVG,x=($traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/matrix","elements/bx-canvas")).roundMatrix,
+$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/node","elements/bx-canvas")).closest),_=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/rect","elements/bx-canvas")),w=_.transformRect,S=_.combineRects,M=_.rectIntersectsRect,C=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/transform-general","elements/bx-canvas")).getTransformToElement,R=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/transform-reduction","elements/bx-canvas")).reduceTransform,k=Math.min,E=Object,A=E.defineProperty,P=E.freeze,T=.39,L=1e4,$=20,j=window.screen.width,N=window.screen.height,O={
 childList:!0,attributes:!0,characterData:!0,subtree:!0,attributeOldValue:!1,characterDataOldValue:!1
-},O=[[-3,-3],[-2,-3],[-1,-3],[0,-3],[1,-3],[2,-3],[3,-3],[-3,-2],[-2,-2],[-1,-2],[0,-2],[1,-2],[2,-2],[3,-2],[-3,-1],[-2,-1],[-1,-1],[0,-1],[1,-1],[2,-1],[3,-1],[-3,0],[-2,0],[-1,0],[0,0],[1,0],[2,0],[3,0],[-3,1],[-2,1],[-1,1],[0,1],[1,1],[2,1],[3,1],[-3,2],[-2,2],[-1,2],[0,2],[1,2],[2,2],[3,2],[-3,3],[-2,3],[-1,3],[0,3],[1,3],[2,3],[3,3]],V='\n  <style>@import url("stylesheets/bx-canvas.css");</style>\n\n  <main id="main">\n    <svg id="svg">\n      <g id="artboards">\n        <g is="bx-backgroundartboard"></g>\n      </g>\n\n      <g id="huds">\n        <g id="viewbox-hud" is="bx-viewboxhud"></g>\n        <g id="outlines-hud" is="bx-outlineshud"></g>\n        <g id="transform-hud" is="bx-transformhud"></g>\n        <g id="triangle-hud" is="bx-trianglehud"></g>\n        <g id="rect-hud" is="bx-recthud"></g>\n        <g id="ellipse-hud" is="bx-ellipsehud"></g>\n        <g id="n-gon-hud" is="bx-ngonhud"></g>\n        <g id="star-hud" is="bx-starhud"></g>\n        <g id="ring-hud" is="bx-ringhud"></g>\n        <g id="paths-edit-hud" is="bx-pathsedithud"></g>\n        <g id="selected-text-range-hud" is="bx-selectedtextrangehud"></g>\n        <g id="linear-gradient-fill-hud" is="bx-lineargradienthud" context="fill"></g>\n        <g id="linear-gradient-stroke-hud" is="bx-lineargradienthud" context="stroke"></g>\n        <g id="radial-gradient-fill-hud" is="bx-radialgradienthud" context="fill"></g>\n        <g id="radial-gradient-stroke-hud" is="bx-radialgradienthud" context="stroke"></g>\n        <g id="pattern-fill-hud" is="bx-patternhud" context="fill"></g>\n        <g id="pattern-stroke-hud" is="bx-patternhud" context="stroke"></g>\n        <g id="rubber-band-hud" is="bx-rubberbandhud" enabled></g>\n        <g id="draw-cubic-segs-hud" is="bx-cubicsegsdrawhud"></g>\n        <g id="draw-quad-segs-hud" is="bx-quadsegsdrawhud"></g>\n        <g id="draw-freehand-segs-hud" is="bx-freehandsegsdrawhud"></g>\n        <g id="viewbox-edit-hud" is="bx-viewboxedithud"></g>\n      </g>\n\n      <filter id="grippie-drop-shadow" width="100" height="100">\n        <feGaussianBlur id="grippie-fe-blur" in="SourceAlpha" result="blur-out" stdDeviation="1"/>\n        <feOffset id="grippie-fe-offset" in="blur-out" result="the-shadow" dx="1" dy="1"/>\n        <feBlend in="SourceGraphic" in2="the-shadow" mode="normal"/>\n      </filter>\n    </svg>\n  </main>\n',z=function(o){
+},V=[[-3,-3],[-2,-3],[-1,-3],[0,-3],[1,-3],[2,-3],[3,-3],[-3,-2],[-2,-2],[-1,-2],[0,-2],[1,-2],[2,-2],[3,-2],[-3,-1],[-2,-1],[-1,-1],[0,-1],[1,-1],[2,-1],[3,-1],[-3,0],[-2,0],[-1,0],[0,0],[1,0],[2,0],[3,0],[-3,1],[-2,1],[-1,1],[0,1],[1,1],[2,1],[3,1],[-3,2],[-2,2],[-1,2],[0,2],[1,2],[2,2],[3,2],[-3,3],[-2,3],[-1,3],[0,3],[1,3],[2,3],[3,3]],z='\n  <style>@import url("stylesheets/bx-canvas.css");</style>\n\n  <main id="main">\n    <svg id="svg">\n      <g id="artboards">\n        <g is="bx-backgroundartboard"></g>\n      </g>\n\n      <g id="huds">\n        <g id="viewbox-hud" is="bx-viewboxhud"></g>\n        <g id="outlines-hud" is="bx-outlineshud"></g>\n        <g id="transform-hud" is="bx-transformhud"></g>\n        <g id="triangle-hud" is="bx-trianglehud"></g>\n        <g id="rect-hud" is="bx-recthud"></g>\n        <g id="ellipse-hud" is="bx-ellipsehud"></g>\n        <g id="n-gon-hud" is="bx-ngonhud"></g>\n        <g id="star-hud" is="bx-starhud"></g>\n        <g id="ring-hud" is="bx-ringhud"></g>\n        <g id="paths-edit-hud" is="bx-pathsedithud"></g>\n        <g id="selected-text-range-hud" is="bx-selectedtextrangehud"></g>\n        <g id="linear-gradient-fill-hud" is="bx-lineargradienthud" context="fill"></g>\n        <g id="linear-gradient-stroke-hud" is="bx-lineargradienthud" context="stroke"></g>\n        <g id="radial-gradient-fill-hud" is="bx-radialgradienthud" context="fill"></g>\n        <g id="radial-gradient-stroke-hud" is="bx-radialgradienthud" context="stroke"></g>\n        <g id="pattern-fill-hud" is="bx-patternhud" context="fill"></g>\n        <g id="pattern-stroke-hud" is="bx-patternhud" context="stroke"></g>\n        <g id="rubber-band-hud" is="bx-rubberbandhud" enabled></g>\n        <g id="draw-cubic-segs-hud" is="bx-cubicsegsdrawhud"></g>\n        <g id="draw-quad-segs-hud" is="bx-quadsegsdrawhud"></g>\n        <g id="draw-freehand-segs-hud" is="bx-freehandsegsdrawhud"></g>\n        <g id="viewbox-edit-hud" is="bx-viewboxedithud"></g>\n      </g>\n\n      <filter id="grippie-drop-shadow" width="100" height="100">\n        <feGaussianBlur id="grippie-fe-blur" in="SourceAlpha" result="blur-out" stdDeviation="1"/>\n        <feOffset id="grippie-fe-offset" in="blur-out" result="the-shadow" dx="1" dy="1"/>\n        <feBlend in="SourceGraphic" in2="the-shadow" mode="normal"/>\n      </filter>\n    </svg>\n  </main>\n',D=function(o){
 function u(){$traceurRuntime.superConstructor(u).apply(this,arguments)}return $traceurRuntime.createClass(u,{
 createdCallback:function(){var n=this;this._selectedElements=[],this._selectedTextRange=null,
 this._currentContainer=null,this._scrollX=0,this._scrollY=0,this._zoom=100,this._geometryPrecision=3,
 this._transformPrecision=6,this._textInputMode=!1,this._shadowRoot=this.createShadowRoot({
-mode:"closed"}),this._shadowRoot.innerHTML=V;var r=!0,i=!1,a=void 0;try{for(var o=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(r=(o=s.next()).done);r=!0){
+mode:"closed"}),this._shadowRoot.innerHTML=z;var r=!0,i=!1,a=void 0;try{for(var o=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(r=(o=s.next()).done);r=!0){
 var l=o.value;this["#"+l.id]=l}}catch(u){i=!0,a=u}finally{try{r||null==s["return"]||s["return"]();
 }finally{if(i)throw a}}var c=!0,d=!1,h=void 0;try{for(var v=this,f=function(){var e=m.value;
-E(v,e.id.toCamelCase(),{get:function(){return e}})},m=void 0,b=this["#huds"].children[Symbol.iterator]();!(c=(m=b.next()).done);c=!0)f();
+A(v,e.id.toCamelCase(),{get:function(){return e}})},m=void 0,b=this["#huds"].children[Symbol.iterator]();!(c=(m=b.next()).done);c=!0)f();
 }catch(g){d=!0,h=g}finally{try{c||null==b["return"]||b["return"]()}finally{if(d)throw h;
-}}this["#svg"].setAttribute("width",$+"px"),this["#svg"].setAttribute("height",j+"px"),
+}}this["#svg"].setAttribute("width",j+"px"),this["#svg"].setAttribute("height",N+"px"),
 this["#svg"].pauseAnimations(),this._undoManager=new e(this["#artboards"]),this._googleFontsManager=new t(this["#artboards"]);
-var p=new MutationObserver(function(e){return n._onArtboardMutation(e)});p.observe(this["#artboards"],N),
+var p=new MutationObserver(function(e){return n._onArtboardMutation(e)});p.observe(this["#artboards"],O),
 this._shadowRoot.addEventListener("click",function(e){return n._onClick(e)}),this._shadowRoot.addEventListener("mousedown",function(e){
 return n._onMouseDown(e)}),this._shadowRoot.addEventListener("wheel",function(e){
 return n._onMouseWheel(e)}),this._shadowRoot.addEventListener("dragover",function(e){
@@ -842,7 +844,7 @@ null!==e&&(n._geometryPrecision=e)}),body.getConfig("bx-preferences:transformPre
 null!==e&&(n._transformPrecision=e)}),body.getConfig("bx-preferences:canvasBackgroundColor").then(function(e){
 n["#main"].style.background=e}),body.addEventListener("configchange",this._configChangeListener=function(e){
 var t=e.detail,r=t.key,i=t.value;"bx-preferences:geometryPrecision"===r?n._geometryPrecision=i:"bx-preferences:transformPrecision"===r?n._transformPrecision=i:"bx-preferences:canvasBackgroundColor"===r&&(n["#main"].style.background=i);
-}),this.enableHud("viewbox-hud")},get selectedElements(){return A($traceurRuntime.spread(this._selectedElements));
+}),this.enableHud("viewbox-hud")},get selectedElements(){return P($traceurRuntime.spread(this._selectedElements));
 },set selectedElements(e){this._selectedElements=e,this.dispatchEvent(new CustomEvent("selectedelementschange"));
 },get selectedTextRange(){return this._selectedTextRange?this._selectedTextRange:null;
 },set selectedTextRange(e){this._selectedTextRange=e?e:null,this.dispatchEvent(new CustomEvent("selectedtextrangechange"));
@@ -924,23 +926,24 @@ V.setAttribute("transform",O),v.append(V)}}catch(z){T=!0,L=z}finally{try{P||null
 }finally{if(T)throw L}}return v},insertArtwork:function(e){var t,n,r=void 0!==arguments[1]?arguments[1]:"canvasCenter",o=this.currentContainer||this.currentArtboard,s=[],l=this.extractArtwork();
 i(e,l);var u=!0,c=!1,d=void 0;try{for(var h=void 0,v=$traceurRuntime.spread(e.children)[Symbol.iterator]();!(u=(h=v.next()).done);u=!0){
 var m=h.value;if("defs"===m.localName){var g=!0,p=!1,y=void 0;try{for(var x=void 0,_=$traceurRuntime.spread(m.children)[Symbol.iterator]();!(g=(x=_.next()).done);g=!0){
-var w=x.value;if("bx-google-fonts"===w.id){var M=w.textContent,R=M.substring(M.lastIndexOf("(")+1,M.lastIndexOf(")")),k=!0,E=!1,A=void 0;
-try{for(var P=void 0,T=b(R)[Symbol.iterator]();!(k=(P=T.next()).done);k=!0){var L=(t=P.value[Symbol.iterator](),
-(n=t.next()).done?void 0:n.value);this._googleFontsManager.importFamily(L)}}catch($){
-E=!0,A=$}finally{try{k||null==T["return"]||T["return"]()}finally{if(E)throw A}}}else{
+var w=x.value;if("bx-google-fonts"===w.id){var M=w.textContent,k=M.substring(M.lastIndexOf("(")+1,M.lastIndexOf(")")),E=!0,A=!1,P=void 0;
+try{for(var T=void 0,L=b(k)[Symbol.iterator]();!(E=(T=L.next()).done);E=!0){var $=(t=T.value[Symbol.iterator](),
+(n=t.next()).done?void 0:n.value);this._googleFontsManager.importFamily($)}}catch(j){
+A=!0,P=j}finally{try{E||null==L["return"]||L["return"]()}finally{if(A)throw P}}}else{
 if("desc"===w.localName)continue;if("title"===w.localName)continue;this.defs.append(w);
-}}}catch(j){p=!0,y=j}finally{try{g||null==_["return"]||_["return"]()}finally{if(p)throw y;
-}}}else if(f(m)){var N=C(o,this.currentArtboard),O=SVGMatrix.fromMatrix(m.transform.baseVal.consolidate().matrix),V=new SVGMatrix;
-V.multiplySelf(N.inverse()),V.multiplySelf(O),V.isIdentity()?m.removeAttribute("transform"):m.setAttribute("transform",V.toString()),
-o.append(m),f(m)&&s.push(m)}else o.append(m)}}catch(z){c=!0,d=z}finally{try{u||null==v["return"]||v["return"]();
-}finally{if(c)throw d}}if("original"!==r){var D;D="canvasCenter"===r?new SVGPoint(this.clientLeft+this.clientWidth/2,this.clientTop+this.clientHeight/2):new SVGPoint(body.mouseClientX,body.mouseClientY);
-var G=function(){var e=0,t=[],n=!0,r=!1,i=void 0;try{for(var o=void 0,l=s[Symbol.iterator]();!(n=(o=l.next()).done);n=!0){
+}}}catch(N){p=!0,y=N}finally{try{g||null==_["return"]||_["return"]()}finally{if(p)throw y;
+}}}else if(f(m)){var O=C(o,this.currentArtboard),V=SVGMatrix.fromMatrix(m.transform.baseVal.consolidate().matrix),z=new SVGMatrix;
+z.multiplySelf(O.inverse()),z.multiplySelf(V),z.isIdentity()?m.removeAttribute("transform"):m.setAttribute("transform",z.toString()),
+o.append(m),f(m)&&s.push(m)}else o.append(m)}}catch(D){c=!0,d=D}finally{try{u||null==v["return"]||v["return"]();
+}finally{if(c)throw d}}if("original"!==r){var G;G="canvasCenter"===r?new SVGPoint(this.clientLeft+this.clientWidth/2,this.clientTop+this.clientHeight/2):new SVGPoint(body.mouseClientX,body.mouseClientY);
+var I=function(){var e=0,t=[],n=!0,r=!1,i=void 0;try{for(var o=void 0,l=s[Symbol.iterator]();!(n=(o=l.next()).done);n=!0){
 var u=o.value;t[e++]=a(u)}}catch(c){r=!0,i=c}finally{try{n||null==l["return"]||l["return"]();
-}finally{if(r)throw i}}return t}();G=G.filter(function(e){return e.width>0||e.height>0;
-});var I=S(G),B=D.x-(I.x+I.width/2),U=D.y-(I.y+I.height/2),H=!0,F=!1,q=void 0;try{
-for(var W=void 0,Y=s[Symbol.iterator]();!(H=(W=Y.next()).done);H=!0){var X=W.value,Z=X.getScreenCTM(),K=Z.inverse(),J=SVGMatrix.fromMatrix(X.transform.baseVal.consolidate().matrix);
-J.multiplySelf(K),J.translateSelf(B,U),J.multiplySelf(Z),X.setAttribute("transform",J.toString());
-}}catch(Q){F=!0,q=Q}finally{try{H||null==Y["return"]||Y["return"]()}finally{if(F)throw q;
+}finally{if(r)throw i}}return t}();I=I.filter(function(e){return e.width>0||e.height>0;
+});var B=S(I),U=G.x-(B.x+B.width/2),H=G.y-(B.y+B.height/2),F=!0,q=!1,W=void 0;try{
+for(var Y=void 0,X=s[Symbol.iterator]();!(F=(Y=X.next()).done);F=!0){var Z=Y.value,K=Z.getScreenCTM(),J=K.inverse(),Q=SVGMatrix.fromMatrix(Z.transform.baseVal.consolidate().matrix);
+Q.multiplySelf(J),Q.translateSelf(U,H),Q.multiplySelf(K),Z.setAttribute("transform",Q.toString()),
+R(Z,{geometryPrecision:this.geometryPrecision,transformPrecision:this.transformPrecision
+})}}catch(ee){q=!0,W=ee}finally{try{F||null==X["return"]||X["return"]()}finally{if(q)throw W;
 }}}this.selectedElements=s},insertBitmap:function(e){var t,n,r,i,a,o,s,l,u,d,h,v,f;
 return $traceurRuntime.asyncWrap(function(m){for(;;)switch(m.state){case 0:d=p(e),
 m.state=5;break;case 5:return void Promise.resolve(d).then(m.createCallback(3),m.errback);
@@ -967,8 +970,8 @@ var U=I.value;i.has(U.id)===!1&&U.remove()}}catch(H){D=!0,G=H}finally{try{z||nul
 var Z=Y.value;a.has(Z.id)===!1&&Z.remove()}}catch(K){q=!0,W=K}finally{try{F||null==X["return"]||X["return"]();
 }finally{if(q)throw W}}this._googleFontsManager.deportUnsusedFamilies()},zoomBy:function(){
 var e=void 0!==arguments[0]?arguments[0]:.3,t=this["#svg"].getScreenCTM(),n=t.inverse(),r=new SVGPoint(this.matches(":hover")?body.mouseClientX:this.clientWidth/2,this.matches(":hover")?body.mouseClientY:this.clientHeight/2),i=r.matrixTransform(n);
-this._zoom=g(this._zoom+this._zoom*e,P,T,3),this._scrollX=i.x-r.x/this.scale,this._scrollY=i.y-r.y/this.scale,
-this["#svg"].viewBox.baseVal.width=$/this.scale,this["#svg"].viewBox.baseVal.height=j/this.scale,
+this._zoom=g(this._zoom+this._zoom*e,T,L,3),this._scrollX=i.x-r.x/this.scale,this._scrollY=i.y-r.y/this.scale,
+this["#svg"].viewBox.baseVal.width=j/this.scale,this["#svg"].viewBox.baseVal.height=N/this.scale,
 this["#svg"].viewBox.baseVal.x=this._scrollX,this["#svg"].viewBox.baseVal.y=this._scrollY,
 this._updateDropShadow(),this.dispatchEvent(new CustomEvent("zoomchange"))},zoomToFitAll:function(){
 var e=this.currentArtboard.getBBox();this._zoomToArea(e.x,e.y,e.width,e.height,30);
@@ -976,9 +979,9 @@ var e=this.currentArtboard.getBBox();this._zoomToArea(e.x,e.y,e.width,e.height,3
 },zoomToCurrentArtboardViewBoxWidth:function(){this._zoomToArea(this.currentArtboard.viewBox.x,this.currentArtboard.viewBox.y+this.currentArtboard.viewBox.height/2,this.currentArtboard.viewBox.width,0,30);
 },zoomToCurrentArtboardViewBoxHeight:function(){this._zoomToArea(this.currentArtboard.viewBox.x+this.currentArtboard.viewBox.width/2,this.currentArtboard.viewBox.y,0,this.currentArtboard.viewBox.height,30);
 },_zoomToArea:function(e,t,n,r){var i=void 0!==arguments[4]?arguments[4]:0,a={width:window.innerWidth,
-height:window.innerHeight},o=100*R(a.width/n,a.height/r);i=100*i/o,o=100*R(a.width/(n+i),a.height/(r+i)),
-o=g(o,P,T,3),this._zoom=o;var s=a.width/this.scale,l=a.height/this.scale,u=e-(s-n)/2,c=t-(l-r)/2;
-this._scrollX=u,this._scrollY=c,this["#svg"].viewBox.baseVal.width=$/this.scale,this["#svg"].viewBox.baseVal.height=j/this.scale,
+height:window.innerHeight},o=100*k(a.width/n,a.height/r);i=100*i/o,o=100*k(a.width/(n+i),a.height/(r+i)),
+o=g(o,T,L,3),this._zoom=o;var s=a.width/this.scale,l=a.height/this.scale,u=e-(s-n)/2,c=t-(l-r)/2;
+this._scrollX=u,this._scrollY=c,this["#svg"].viewBox.baseVal.width=j/this.scale,this["#svg"].viewBox.baseVal.height=N/this.scale,
 this["#svg"].viewBox.baseVal.x=this._scrollX,this["#svg"].viewBox.baseVal.y=this._scrollY,
 this._updateDropShadow(),this.dispatchEvent(new CustomEvent("zoomchange"))},resetZoom:function(){
 var e=(100-this._zoom)/this._zoom;this.zoomBy(e)},selectAll:function(){if(this.textInputMode&&this.selectedTextRange){
@@ -997,7 +1000,7 @@ e.after(n);var s,l,u,c;n.addEventListener("mouseenter",s=function(e){c=body.regi
 n.removeEventListener("click",u),n.removeEventListener("mouseenter",s),n.removeEventListener("mouseleave",l),
 body.unregisterCursor(c),n.remove();var d=o.clientX-r.x,h=o.clientY-r.y,v=e["#svg"].clientWidth,f=e["#svg"].clientHeight,m=i.getImageData(d,h,v,f),b=m.data[0],p=m.data[1],y=m.data[2],x=g(m.data[3]/255,0,1,2),_="rgba("+b+", "+p+", "+y+", "+x+")";
 URL.revokeObjectURL(a),t(_)})})})},getHitArtboardElements:function(e,t){var n,r,i=[],a=!0,o=!1,s=void 0;
-try{for(var l=void 0,u=O[Symbol.iterator]();!(a=(l=u.next()).done);a=!0){var c=l.value,d=(n=c[Symbol.iterator](),
+try{for(var l=void 0,u=V[Symbol.iterator]();!(a=(l=u.next()).done);a=!0){var c=l.value,d=(n=c[Symbol.iterator](),
 (r=n.next()).done?void 0:r.value),v=(r=n.next()).done?void 0:r.value,f=this.shadowRoot.elementFromPoint(e+d,t+v);
 if(f){if("tspan"===f.localName||"textPath"===f.localName)f=x(f,"text");else if("a"===f.localName){
 var m=x(f,"text");m&&(f=m)}!i.includes(f)&&this.currentArtboard.contains(f)&&i.push(f);
@@ -1016,13 +1019,13 @@ this.currentArtboard.viewBox.width>0&&this.currentArtboard.viewBox.height>0?this
 },_onMouseDown:function(e){1===e.button&&this._onMiddleMouseButtonDown(e)},_onMiddleMouseButtonDown:function(e){
 var t,n,r=this,i=e.clientX,a=e.clientY;window.addEventListener("mousemove",t=function(e){
 var t=e.clientX-i,n=e.clientY-a;i=e.clientX,a=e.clientY,r._scrollX=r._scrollX-t/r.scale,
-r._scrollY=r._scrollY-n/r.scale,r["#svg"].viewBox.baseVal.width=$/r.scale,r["#svg"].viewBox.baseVal.height=j/r.scale,
+r._scrollY=r._scrollY-n/r.scale,r["#svg"].viewBox.baseVal.width=j/r.scale,r["#svg"].viewBox.baseVal.height=N/r.scale,
 r["#svg"].viewBox.baseVal.x=r._scrollX,r["#svg"].viewBox.baseVal.y=r._scrollY}),window.addEventListener("mouseup",n=function(){
 window.removeEventListener("mousemove",t),window.removeEventListener("mouseup",n);
-})},_onMouseWheel:function(e){var t=g(e.wheelDeltaX,-L,L,1),n=g(e.wheelDeltaY,-L,L,1);
+})},_onMouseWheel:function(e){var t=g(e.wheelDeltaX,-$,$,1),n=g(e.wheelDeltaY,-$,$,1);
 if(!e.metaKey&&!e.ctrlKey||e.altKey||e.shiftKey)this._scrollX=this._scrollX-t/this.scale,
-this._scrollY=this._scrollY-n/this.scale,this["#svg"].viewBox.baseVal.width=$/this.scale,
-this["#svg"].viewBox.baseVal.height=j/this.scale,this["#svg"].viewBox.baseVal.x=this._scrollX,
+this._scrollY=this._scrollY-n/this.scale,this["#svg"].viewBox.baseVal.width=j/this.scale,
+this["#svg"].viewBox.baseVal.height=N/this.scale,this["#svg"].viewBox.baseVal.x=this._scrollX,
 this["#svg"].viewBox.baseVal.y=this._scrollY;else{var r=body.modKeys.ctrl?100:500,i=n/r;
 this.zoomBy(i)}e.preventDefault()},_onScroll:function(e){this["#main"].scrollTop=0,
 this["#main"].scrollLeft=0,this["#main"].scrollIntoView()},_onClick:function(e){e.target.closest("a")&&e.preventDefault();
@@ -1068,8 +1071,8 @@ if(n.has(m)===!1){n.add(m);var b=t.currentArtboard.querySelector("#"+m);b||t.cur
 b&&i(b)}else n.add(m)}}}catch(g){u=!0,c=g}finally{try{l||null==h["return"]||h["return"]();
 }finally{if(u)throw c}}if(o.href&&"#"===o.href.baseVal[0]){var p=o.href.baseVal.substring(1,o.href.baseVal.length);
 if(n.has(p)===!1){n.add(p);var y=t.currentArtboard.querySelector("#"+p);y||t.currentArtboard===t.masterArtboard||(y=t.masterArtboard.querySelector("#"+p)),
-y&&i(y)}else n.add(p)}}};return i(e),$traceurRuntime.spread(n)}},{},o)}(HTMLElement),D=d("bx-canvas",z);
-return{get MIN_ZOOM(){return P},get MAX_ZOOM(){return T},get default(){return D}};
+y&&i(y)}else n.add(p)}}};return i(e),$traceurRuntime.spread(n)}},{},o)}(HTMLElement),G=d("bx-canvas",D);
+return{get MIN_ZOOM(){return T},get MAX_ZOOM(){return L},get default(){return G}};
 }),$traceurRuntime.registerModule("elements/bx-checkbox",[],function(){"use strict";
 var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-checkbox")),t=e.createElement,n=e.registerElement,r="images/icons.svg#checkbox-on",i="images/icons.svg#checkbox-off",a='\n  <style>@import url("stylesheets/bx-checkbox.css");</style>\n\n  <main>\n    <svg id="icon" preserveAspectRatio="none" viewBox="0 0 100 100">\n      <use id="icon-use" x="0" y="0" width="100%" height="100%"></use>\n    </svg>\n\n    <label id="label"></label>\n  </main>\n',o=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
@@ -1669,7 +1672,8 @@ try{b||null==x["return"]||x["return"]()}finally{if(g)throw p}}var S=!0,M=!1,R=vo
 try{for(var k=void 0,E=e["#context-menu"].children[Symbol.iterator]();!(S=(k=E.next()).done);S=!0){
 var A=k.value;A.commandID&&o.includes(C(A.commandID))&&A.remove()}}catch(P){M=!0,
 R=P}finally{try{S||null==E["return"]||E["return"]()}finally{if(M)throw R}}s&&e["#primary-dock"].setAttribute("data-extra-whitespace",""),
-l&&(e._assignedShortcuts=l),e.canvas.loadArtwork(i(a,e.canvas.geometryPrecision)),
+l&&(e._assignedShortcuts=l),o.includes("chromeDevTools")&&e.addEventListener("contextmenu",function(e){
+return e.preventDefault()}),e.canvas.loadArtwork(i(a,e.canvas.geometryPrecision)),
 n()}),this.toggleTool("transform-tool"),c.state=-2;break;default:return c.end()}},this);
 },get canvas(){return this.querySelector("#canvas")},get currentTool(){var e=null,t=this["#primary-dock"].querySelector("bx-button[pressed]");
 if(t){var n=t.althref.slice(1);e=this["#tools"].querySelector("#"+n)}return e},get currentSecondaryPanel(){
@@ -10282,7 +10286,7 @@ return y},get isHexColorString(){return x},get hsvToHsl(){return _},get hslToHsv
 return w},get hslToRgb(){return S},get rgbToHsl(){return M},get hsvToRgb(){return C;
 },get rgbToHsv(){return R},get formatColorString(){return k},get stringToColor(){
 return E},get colorToString(){return A}}}),$traceurRuntime.registerModule("utils/constants",[],function(){
-"use strict";var e="http://www.w3.org/1999/xhtml",t="http://www.w3.org/2000/svg",n="http://www.w3.org/1999/xlink",r="http://www.w3.org/2000/xmlns/",i="http://www.boxy-svg.com/bx",a="AIzaSyBZd8UahlnRn53EWC7snRmOAuuktqBaP6k",o=["path","circle","ellipse","line","rect","polygon","polyline","image","text","solidColor","linearGradient","radialGradient","pattern","mesh","meshRow","meshPatch","hatch","hatchPath","stop","filter","feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence","title","desc","metadata","svg","defs","g","a","symbol","marker","switch","use","view","tspan","textPath","clipPath","mask","script","style","foreignObject"],s=["font","font-face","font-face-format","font-face-name","font-face-src","font-face-uri","altGlyph","altGlyphDef","altGlyphItem","glyph","glyphRef","missing-glyph","hkern","vkern","set","animate","animateColor","animateMotion","animateTransform","mpath","cursor","tref","color-profile"],l=["solidColor","linearGradient","radialGradient","mesh","pattern","hatch"],u=["a","defs","g","marker","mask","pattern","svg","switch","symbol"],c=["circle","ellipse","image","line","path","polygon","polyline","rect","text","use"],d=["a","g","circle","ellipse","image","line","path","polygon","polyline","rect","text","use","foreignObject"],h=["feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence"],v=["circle","ellipse","line","path","polygon","polyline","rect"],f=["text","textPath","tspan"],m=["alignment-baseline","baseline-shift","clip-path","clip-rule","clip","color-interpolation-filters","color-interpolation","color-profile","color-rendering","color","cursor","direction","display","dominant-baseline","enable-background","fill-opacity","fill-rule","fill","filter","flood-color","flood-opacity","font-family","font-size-adjust","font-size","font-stretch","font-style","font-variant","font-weight","image-rendering","letter-spacing","lighting-color","marker-end","marker-mid","marker-start","mask","opacity","overflow","pointer-events","shape-rendering","stop-color","stop-opacity","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke-width","stroke","text-anchor","text-decoration","text-rendering","unicode-bidi","vector-effect","visibility","word-spacing","writing-mode"],b=["direction","dominant-baseline","font-family","font-size-adjust","font-size","font-stretch","font-style","font-variant","font-weight","letter-spacing","text-anchor","text-decoration","text-rendering","unicode-bidi","word-spacing","writing-mode"],g=["glyph-orientation-horizontal","glyph-orientation-vertical","kerning"],p=["fill","stroke","filter","clip-path","mask","marker-mid","marker-start","marker-end"],y={
+"use strict";var e="http://www.w3.org/1999/xhtml",t="http://www.w3.org/2000/svg",n="http://www.w3.org/1999/xlink",r="http://www.w3.org/2000/xmlns/",i="https://www.boxy-svg.com/bx",a="AIzaSyBZd8UahlnRn53EWC7snRmOAuuktqBaP6k",o=["path","circle","ellipse","line","rect","polygon","polyline","image","text","solidColor","linearGradient","radialGradient","pattern","mesh","meshRow","meshPatch","hatch","hatchPath","stop","filter","feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence","title","desc","metadata","svg","defs","g","a","symbol","marker","switch","use","view","tspan","textPath","clipPath","mask","script","style","foreignObject"],s=["font","font-face","font-face-format","font-face-name","font-face-src","font-face-uri","altGlyph","altGlyphDef","altGlyphItem","glyph","glyphRef","missing-glyph","hkern","vkern","set","animate","animateColor","animateMotion","animateTransform","mpath","cursor","tref","color-profile"],l=["solidColor","linearGradient","radialGradient","mesh","pattern","hatch"],u=["a","defs","g","marker","mask","pattern","svg","switch","symbol"],c=["circle","ellipse","image","line","path","polygon","polyline","rect","text","use"],d=["a","g","circle","ellipse","image","line","path","polygon","polyline","rect","text","use","foreignObject"],h=["feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence"],v=["circle","ellipse","line","path","polygon","polyline","rect"],f=["text","textPath","tspan"],m=["alignment-baseline","baseline-shift","clip-path","clip-rule","clip","color-interpolation-filters","color-interpolation","color-profile","color-rendering","color","cursor","direction","display","dominant-baseline","enable-background","fill-opacity","fill-rule","fill","filter","flood-color","flood-opacity","font-family","font-size-adjust","font-size","font-stretch","font-style","font-variant","font-weight","image-rendering","letter-spacing","lighting-color","marker-end","marker-mid","marker-start","mask","opacity","overflow","pointer-events","shape-rendering","stop-color","stop-opacity","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke-width","stroke","text-anchor","text-decoration","text-rendering","unicode-bidi","vector-effect","visibility","word-spacing","writing-mode"],b=["direction","dominant-baseline","font-family","font-size-adjust","font-size","font-stretch","font-style","font-variant","font-weight","letter-spacing","text-anchor","text-decoration","text-rendering","unicode-bidi","word-spacing","writing-mode"],g=["glyph-orientation-horizontal","glyph-orientation-vertical","kerning"],p=["fill","stroke","filter","clip-path","mask","marker-mid","marker-start","marker-end"],y={
 aliceblue:[240,248,255],antiquewhite:[250,235,215],aqua:[0,255,255],aquamarine:[127,255,212],
 azure:[240,255,255],beige:[245,245,220],bisque:[255,228,196],black:[0,0,0],blanchedalmond:[255,235,205],
 blue:[0,0,255],blueviolet:[138,43,226],brown:[165,42,42],burlywood:[222,184,135],
