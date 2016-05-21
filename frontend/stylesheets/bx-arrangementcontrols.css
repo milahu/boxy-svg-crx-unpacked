@@ -78,9 +78,9 @@
   flex-flow: column;
 }
 
-#align-buttons #center-buttons bx-button:first-child,
-#align-buttons #stretch-buttons bx-button:first-child {
-  margin-bottom: 3px;
+#align-buttons #center-buttons bx-button:not(:last-child),
+#align-buttons #stretch-buttons bx-button:not(:last-child) {
+  margin-bottom: 5px;
 }
 
 /* Rotate, flip, order and group sections */
