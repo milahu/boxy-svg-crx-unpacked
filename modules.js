@@ -308,8 +308,9 @@ return e._openEditorWithArtworkImportedFromSelectedElements()}},open:{exec:funct
 return s(300).then(function(){return e._openEditorsWithUserSelectedEntries()})}},
 clearRecent:{exec:function(){return e._clearRecentEntries()}},save:{enabled:function(){
 return e.currentEditor&&e.currentEditor.edited},exec:function(){return s(300).then(function(){
-return e._saveCurrentEditorArtwork()})}},saveAs:{exec:function(){return s(300).then(function(){
-return e._saveCurrentEditorArtworkAs()})}},reloadFromDisk:{enabled:function(){return e.currentEditor&&e.currentEditor.canReloadArtworkFromDisk();
+return e._saveCurrentEditorArtwork()})}},saveAs:{enabled:function(){return null!==e.currentEditor;
+},exec:function(){return s(300).then(function(){return e._saveCurrentEditorArtworkAs();
+})}},reloadFromDisk:{enabled:function(){return e.currentEditor&&e.currentEditor.canReloadArtworkFromDisk();
 },exec:function(){return e.currentEditor.reloadArtworkFromDisk()}},close:{exec:function(){
 return e._closeEditor(e.currentEditor.id)}},quit:{exec:function(){return e._closeAllAppWindows();
 }},showPreviousTab:{enabled:function(){return e._canToggleEditorForPreviousTab()},

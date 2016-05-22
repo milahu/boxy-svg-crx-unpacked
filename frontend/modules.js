@@ -1554,12 +1554,13 @@ this["#buttons"].scrollTop>=this["#buttons"].scrollHeight-this["#buttons"].offse
 }},{},e)}(HTMLElement),o=e("bx-dock",a);return{get default(){return o}}}),$traceurRuntime.registerModule("elements/bx-domtree",[],function(){
 "use strict";$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-domtreeelementnode","elements/bx-domtree")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-domtreetextnode","elements/bx-domtree"));
-var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-domtree")),t=e.createElement,n=e.registerElement,r=e.isTransformableElement,i='\n  @import url("stylesheets/scrollbars.css");\n\n  :host {\n    display: block;\n    width: 100%;\n    height: 100%;\n  }\n\n  main {\n    overflow-y: scroll;\n    overflow-x: hidden;\n    height: 100%;\n    position: relative;\n  }\n\n  #tree bx-domtreetextnode:not([ready]),\n  #tree bx-domtreeelementnode:not([ready]) {\n    display: none;\n  }\n',a="\n  <style>"+i+'</style>\n\n  <main>\n    <div id="tree"></div>\n  </main>\n',o=function(e){
-function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
+var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-domtree")),t=(e.createElement,
+e.registerElement),n=(e.isTransformableElement,$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/markup","elements/bx-domtree")).parseHTML),r=Symbol(),i=Symbol(),a='\n  @import url("stylesheets/scrollbars.css");\n\n  :host {\n    display: block;\n    width: 100%;\n    height: 100%;\n  }\n\n  main {\n    overflow-y: scroll;\n    overflow-x: hidden;\n    height: 100%;\n    position: relative;\n  }\n\n  .item {\n    display: block;\n    position: relative;\n    margin-left: 18px;\n    line-height: 1.5;\n    font-family: Menlo, monospace;\n    position: relative;\n    vertical-align: middle;\n    word-break: break-all;\n  }\n\n  .item .icon {\n    fill: white;\n    vertical-align: middle;\n    padding: 4px;\n    position: absolute;\n    top: 0px;\n    left: -19px;\n  }\n\n  .markup {\n    position: relative;\n  }\n\n  .markup .attribute {\n    display: inline;\n    transition: background 0.25s;\n    margin-left: 7px;\n  }\n  .markup .attribute[highlighted] {\n    background: rgba(0, 0, 0, 0.5);\n  }\n\n  .markup .name {\n    color: yellow;\n  }\n  .markup .value {\n    opacity: 0.7;\n  }\n  .markup .subtree {\n    display: inline;\n  }\n',o="\n  <style>"+a+'</style>\n\n  <main>\n    <div id="tree"></div>\n  </main>\n',s=n('\n  <div class="item" data-type="element">\n    <svg class="icon" preserveAspectRatio="none" viewBox="0 0 100 100" width="9px" height="10px">\n      <path d="M 0 0 L 100 50 L 0 100 Z" style="fill: white; stroke: none;"></path>\n    </svg>\n\n    <div class="markup">\n      <span class="start-tag">&lt<span class="start-tag-name">svg</span><span class="attributes"></span>&gt</span>\n      <span class="subtree"></span>\n      <span class="end-tag">&lt/<span class="end-tag-name">svg</span>&gt</span>\n    </div>\n  </div>\n'),l=n('<span class="attribute"><span class="name"></span>="<span class="value"></span>"</span>'),u=function(e){
+function t(){$traceurRuntime.superConstructor(t).apply(this,arguments)}return $traceurRuntime.createClass(t,{
 createdCallback:function(){var e=this;this._shadowRoot=this.createShadowRoot({mode:"closed"
-}),this._shadowRoot.innerHTML=a,this._collapseOthers=!0;var t=!0,n=!1,r=void 0;try{
-for(var i=void 0,o=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(i=o.next()).done);t=!0){
-var s=i.value;this["#"+s.id]=s}}catch(l){n=!0,r=l}finally{try{t||null==o["return"]||o["return"]();
+}),this._shadowRoot.innerHTML=o,this._collapseOthers=!0;var t=!0,n=!1,r=void 0;try{
+for(var i=void 0,a=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(i=a.next()).done);t=!0){
+var s=i.value;this["#"+s.id]=s}}catch(l){n=!0,r=l}finally{try{t||null==a["return"]||a["return"]();
 }finally{if(n)throw r}}var u=!0,c=!1,d=void 0;try{for(var h=void 0,v=this.attributes[Symbol.iterator]();!(u=(h=v.next()).done);u=!0){
 var f=h.value;this.attributeChangedCallback(f.name)}}catch(m){c=!0,d=m}finally{try{
 u||null==v["return"]||v["return"]()}finally{if(c)throw d}}this._shadowRoot.addEventListener("mousedown",function(t){
@@ -1572,31 +1573,30 @@ e._onSelectedElementsChange()}),body.canvas.addEventListener("artboardmutation",
 e._onArtboardMutation(t)})},_onDisabled:function(){body.canvas.removeEventListener("selectedelementschange",this._selectedElementsChangeListener),
 body.canvas.removeEventListener("artboardmutation",this._artboardMutationListener);
 },_onArtboardMutation:function(e){for(var t=e.detail,n=document.createTreeWalker(this["#tree"],NodeFilter.SHOW_ELEMENT,null);n.nextNode();){
-var r=n.currentNode;r.ref===t.target&&r.refMutationCallback(t)}},_onSelectedElementsChange:function(){
-var e=this,t=body.canvas.selectedElements[0]||null;if(0===body.canvas.selectedElements.length&&null===body.canvas.currentContainer)this._collapseOthers===!0&&"bx-domtreeelementnode"===this["#tree"].firstElementChild.localName&&this["#tree"].firstElementChild.collapse(),
-this["#tree"].firstElementChild.highlighted=!0;else{if(0===body.canvas.selectedElements.length&&body.canvas.currentContainer);else{
-var n=function(r){if(r.ref===t);else if(r.ref.contains(t)){r.expand();var i=!0,a=!1,o=void 0;
-try{for(var s=void 0,l=r.children[Symbol.iterator]();!(i=(s=l.next()).done);i=!0){
-var u=s.value;n(u)}}catch(c){a=!0,o=c}finally{try{i||null==l["return"]||l["return"]();
-}finally{if(a)throw o}}}else e._collapseOthers===!0&&"bx-domtreeelementnode"===r.localName&&r.collapse();
-},r=!0,i=!1,a=void 0;try{for(var o=void 0,s=this["#tree"].children[Symbol.iterator]();!(r=(o=s.next()).done);r=!0){
-var l=o.value;n(l)}}catch(u){i=!0,a=u}finally{try{r||null==s["return"]||s["return"]();
-}finally{if(i)throw a}}}var c=!0,d=!1,h=void 0;try{for(var v=void 0,f=this["#tree"].querySelectorAll("bx-domtreeelementnode")[Symbol.iterator]();!(c=(v=f.next()).done);c=!0){
-var m=v.value;m.ref===t?(m.highlighted=!0,m.scrollIntoViewIfNeeded()):m.highlighted=!1;
-}}catch(b){d=!0,h=b}finally{try{c||null==f["return"]||f["return"]()}finally{if(d)throw h;
-}}}this._collapseOthers=!0},_onShadowRootMouseDown:function(e){if("bx-domtreeelementnode"===e.target.localName){
-var t=!0,n=!1,i=void 0;try{for(var a=void 0,o=this._shadowRoot.querySelectorAll("bx-domtreeelementnode")[Symbol.iterator]();!(t=(a=o.next()).done);t=!0){
-var s=a.value;s===e.target?(s.highlighted=!0,s.ref.parentElement===body.canvas.artboards?(this._collapseOthers=!1,
-body.canvas.currentContainer=null,body.canvas.selectedElements=[]):r(s.ref)&&(this._collapseOthers=!1,
-body.canvas.selectedElements=[s.ref])):s.highlighted=!1}}catch(l){n=!0,i=l}finally{
-try{t||null==o["return"]||o["return"]()}finally{if(n)throw i}}}},_updateTree:function(){
-this["#tree"].innerHTML="";var e=[],n=body.canvas.selectedElements[0]||body.canvas.currentContainer||null;
-if(null===n)e=[body.canvas.currentArtboard];else for(var r=n;r!==body.canvas.artboards;r=r.parentElement)e=$traceurRuntime.spread([r],e);
-var i=e.shift(),a=t("bx-domtreeelementnode");a.ref=i,this["#tree"].append(a);for(var o=a;e.length>0;){
-var s=e.shift();o.expand();var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=o.children[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
-var v=d.value;v.ref===s&&(o=v)}}catch(f){u=!0,c=f}finally{try{l||null==h["return"]||h["return"]();
-}finally{if(u)throw c}}}}},{},e)}(HTMLElement),s=n("bx-domtree",o);return{get default(){
-return s}}}),$traceurRuntime.registerModule("elements/bx-domtreeelementnode",[],function(){
+var r=n.currentNode;r.ref===t.target}},_onSelectedElementsChange:function(){body.canvas.selectedElements[0]||null;
+},_onShadowRootMouseDown:function(e){if(e.target.matches(".item .icon, .item .icon path")){
+var t=e.target.closest(".item");0===e.button&&(t[i]?this._collapseItem(t):this._expandItem(t));
+}},_updateItemIcon:function(e){},_updateItemTagName:function(e){e.querySelector(".start-tag-name").textContent=e[r].localName,
+e.querySelector(".end-tag-name").textContent=e[r].localName},_updateItemAttributes:function(e){
+var t=document.createDocumentFragment(),n=!0,i=!1,a=void 0;try{for(var o=void 0,s=e[r].attributes[Symbol.iterator]();!(n=(o=s.next()).done);n=!0){
+var u=o.value,c=u.name,d=u.value;if("is"!==c){var h=l.cloneNode(!0);h.children[0].textContent=c,
+h.children[1].textContent=d,t.append(h)}}}catch(v){i=!0,a=v}finally{try{n||null==s["return"]||s["return"]();
+}finally{if(i)throw a}}e.querySelector(".attributes").append(t)},_createItem:function(e){
+var t=null;return e.nodeType===document.ELEMENT_NODE?(t=s.cloneNode(!0),t[r]=e,this._updateItemTagName(t),
+this._updateItemAttributes(t)):e.nodeType===document.TEXT_NODE,t},_expandItem:function(e){
+console.time("A");var t=document.createDocumentFragment(),n=!0,a=!1,o=void 0;try{
+for(var s=void 0,l=e[r].childNodes[Symbol.iterator]();!(n=(s=l.next()).done);n=!0){
+var u=s.value,c=this._createItem(u);c&&t.append(c)}}catch(d){a=!0,o=d}finally{try{
+n||null==l["return"]||l["return"]()}finally{if(a)throw o}}e.querySelector(".subtree").append(t),
+e[i]=!0,console.timeEnd("A")},_collapseItem:function(e){e.querySelector(".subtree").innerHTML="",
+e[i]=!1,this._updateItemIcon(e)},_updateTree:function(){var e=this,t=[];!function(){
+var e=body.canvas.selectedElements[0]||body.canvas.currentContainer||null;if(null===e)t=[body.canvas.currentArtboard];else for(var n=e;n!==body.canvas.artboards;n=n.parentElement)t=$traceurRuntime.spread([n],t);
+}(),function(){var n=t.shift(),i=e._createItem(n),a=i;for(e["#tree"].innerHTML="",
+e["#tree"].append(i);t.length>0;){var o=t.shift();e._expandItem(a);var s=!0,l=!1,u=void 0;
+try{for(var c=void 0,d=a.querySelector(".subtree").children[Symbol.iterator]();!(s=(c=d.next()).done);s=!0){
+var h=c.value;h[r]===o&&(a=h)}}catch(v){l=!0,u=v}finally{try{s||null==d["return"]||d["return"]();
+}finally{if(l)throw u}}}}()}},{},e)}(HTMLElement),c=t("bx-domtree",u);return{get default(){
+return c}}}),$traceurRuntime.registerModule("elements/bx-domtreeelementnode",[],function(){
 "use strict";$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-domtreetextnode","elements/bx-domtreeelementnode"));
 var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-domtreeelementnode")),t=e.createElement,n=e.registerElement,r=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-domtreeelementnode")).sleep,i='\n  @import url("stylesheets/scrollbars.css");\n\n  :host {\n    display: block;\n    margin-left: 18px;\n  }\n\n  main {\n    line-height: 1.5;\n    font-family: Menlo, monospace;\n    position: relative;\n    vertical-align: middle;\n    word-break: break-all;\n  }\n\n  #background {\n    position: absolute;\n    width: 99999px;\n    height: 18px;\n    left: -500px;\n    pointer-events: none;\n  }\n  :host([highlighted]) #background {\n    background: #1668F7;\n  }\n\n  #icon {\n    fill: white;\n    vertical-align: middle;\n    padding: 4px;\n    position: absolute;\n    top: 0px;\n    left: -19px;\n  }\n\n  #markup {\n    position: relative;\n  }\n\n  #markup .attribute {\n    display: inline;\n    transition: background 0.25s;\n    margin-left: 7px;\n  }\n  #markup .attribute[highlighted] {\n    background: rgba(0, 0, 0, 0.5);\n  }\n\n  #markup .attribute-name {\n    color: yellow;\n  }\n  #markup .attribute-value {\n    opacity: 0.7;\n  }\n  #markup #child-nodes {\n    display: inline;\n  }\n',a="\n  <style>"+i+'</style>\n\n  <main id="main">\n    <div id="background"></div>\n\n    <svg id="icon" preserveAspectRatio="none" viewBox="0 0 100 100" width="9px" height="10px">\n      <path d="M 0 0 L 100 50 L 0 100 Z" style="fill: white; stroke: none;"></path>\n    </svg>\n\n    <div id="markup">\n      <span id="start-tag">&lt<span id="start-tag-name">svg</span><span id="attributes"></span>&gt</span>\n      <span id="child-nodes"><content></content></span>\n      <span id="end-tag">&lt/<span id="end-tag-name">svg</span>&gt</span>\n    </div>\n  </main>\n',o=function(e){
 function n(){$traceurRuntime.superConstructor(n).apply(this,arguments)}return $traceurRuntime.createClass(n,{
@@ -1819,13 +1819,16 @@ R=P}finally{try{S||null==E["return"]||E["return"]()}finally{if(M)throw R}}s&&e["
 l&&(e._assignedShortcuts=l),o.includes("chromeDevTools")&&e.addEventListener("contextmenu",function(e){
 return e.preventDefault()}),e.canvas.loadArtwork(i(a,e.canvas.geometryPrecision)),
 n()}),this.toggleTool("transform-tool"),c.state=-2;break;default:return c.end()}},this);
-},get canvas(){return this.querySelector("#canvas")},get currentTool(){var e=null,t=this["#primary-dock"].querySelector("bx-button[pressed]");
-if(t){var n=t.althref.slice(1);e=this["#tools"].querySelector("#"+n)}return e},get currentSecondaryPanel(){
-var e=null,t=this["#secondary-dock"].querySelector("bx-button[pressed]");if(t){var n=t.href.slice(1);
-e=this["#secondary-panels"].querySelector("#"+n)}return e},toggleTool:function(e){
-var t=this["#tools"].querySelector("#"+e);if(t){var n=this["#primary-dock"].querySelector('bx-button[althref="#'+e+'"]');
-if(n.pressed===!1){var r=this["#primary-dock"].querySelector("bx-button[pressed]");
-if(r){r.pressed=!1,this._previousToolID=r.althref.substring(1);var i=r.althref.slice(1),a=this["#tools"].querySelector("#"+i);
+},get canvas(){return this.querySelector("#canvas")},get currentTool(){var e=this["#primary-dock"].querySelector("bx-button[pressed]");
+if(e){var t=e.althref.slice(1),n=this["#tools"].querySelector("#"+t);if(n)return n;
+}return null},get currentPrimaryPanel(){var e=this["#primary-dock"].querySelector("bx-button[pressed]");
+if(e){var t=e.href.slice(1),n=this["#primary-panels"].querySelector("#"+t);if(n&&n.enabled)return n;
+}return null},get currentSecondaryPanel(){var e=this["#secondary-dock"].querySelector("bx-button[pressed]");
+if(e){var t=e.href.slice(1),n=this["#secondary-panels"].querySelector("#"+t);if(n)return n;
+}return null},toggleTool:function(e){var t=this["#tools"].querySelector("#"+e);if(t){
+var n=this["#primary-dock"].querySelector('bx-button[althref="#'+e+'"]');if(n.pressed===!1){
+var r=this["#primary-dock"].querySelector("bx-button[pressed]");if(r){r.pressed=!1,
+this._previousToolID=r.althref.substring(1);var i=r.althref.slice(1),a=this["#tools"].querySelector("#"+i);
 a&&(a.enabled=!1,this.togglePrimaryPanel(null))}n.pressed=!0,t.enabled=!0,this.dispatchEvent(new CustomEvent("toolchange",{
 detail:e})),this.bridge.postMessage("event:toolchange",e.toCamelCase())}}},togglePrimaryPanel:function(e){
 if(null===e){var t=!0,n=!1,r=void 0;try{for(var i=void 0,a=this["#primary-panels"].children[Symbol.iterator]();!(t=(i=a.next()).done);t=!0){
@@ -5475,7 +5478,8 @@ bubbles:!0}))},_onBlur:function(){this.editable=!1}},{},e)}(HTMLElement),o=t("bx
 return{get default(){return o}}}),$traceurRuntime.registerModule("elements/bx-slider",[],function(){
 "use strict";$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-contextmenu","elements/bx-slider")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menuitem","elements/bx-slider"));
-var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/shortcut","elements/bx-slider"))["default"],t=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/undo-manager","elements/bx-slider"))["default"],n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-slider")).registerElement,r=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/math","elements/bx-slider")),i=r.normalize,a=r.round,o=r.countDecimalPlaces,s=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-slider")).debounce,l=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/type","elements/bx-slider")),u=l.isNumeric,c=l.isNumber,d=Math.pow,h=Number,v=h.isFinite,f=h.parseFloat,m=(Object.entries,
+var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/shortcut","elements/bx-slider"))["default"],t=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/undo-manager","elements/bx-slider"))["default"],n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-slider")).registerElement,r=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/math","elements/bx-slider")),i=r.normalize,a=r.round,o=r.countDecimalPlaces,s=(r.signum,
+$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-slider")).debounce),l=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/type","elements/bx-slider")),u=l.isNumeric,c=l.isNumber,d=Math.pow,h=Number,v=h.isFinite,f=h.parseFloat,m=(Object.entries,
 '\n  <style id="skin-style">@import url("stylesheets/bx-slider.css");</style>\n\n  <main>\n    <input id="input" type="text" spellcheck="false" value="0" tabindex="0"></input>\n    <div id="bar"></div>\n\n    <bx-contextmenu id="context-menu">\n      <bx-menuitem commandid="cut" label="Cut"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste"></bx-menuitem>\n    </bx-contextmenu>\n  </main>\n'),b=function(n){
 function r(){$traceurRuntime.superConstructor(r).apply(this,arguments)}return $traceurRuntime.createClass(r,{
 createdCallback:function(){var e=this;this.commands={selectAll:{exec:function(){return e["#input"].select();
@@ -5493,7 +5497,8 @@ u||null==v["return"]||v["return"]()}finally{if(c)throw d}}this.addEventListener(
 return e._onMouseDown(t)}),this.addEventListener("contextmenu",function(t){return e._onContextMenu(t);
 }),this["#input"].addEventListener("focus",function(t){return e._onInputFocus(t)}),
 this["#input"].addEventListener("keydown",function(t){return e._onInputKeyDown(t);
-}),this["#context-menu"].addEventListener("menuitemtrigger",function(t){return e._onContextMenuItemTrigger(t);
+}),this["#input"].addEventListener("wheel",function(t){return e._onInputWheel(t)}),
+this["#context-menu"].addEventListener("menuitemtrigger",function(t){return e._onContextMenuItemTrigger(t);
 }),this["#context-menu"].menuWillShow=function(t){return e._menuWillShow(t)},this["#context-menu"].menuItemWillTrigger=function(t){
 return e._menuItemWillTrigger(t)}},attributeChangedCallback:function(e){"value"===e?this._onValueAttributeChange():"skin"===e?this._onSkinAttributeChange():"disabled"===e?this._onDisabledAttributeChange():"before"===e?this._onBeforeAttributeChange():"after"===e&&this._onAfterAttributeChange();
 },get value(){return this.hasAttribute("value")?f(this.getAttribute("value")):this.min!==-(1/0)?this.min:0;
@@ -5545,6 +5550,9 @@ t.preventDefault(),t.stopPropagation()):n.matches("ArrowDown")?(this._changeInpu
 t.preventDefault(),t.stopPropagation()):n.matches("Shift","ArrowUp")?(this._changeInputValueByStep(10*this.step),
 t.preventDefault(),t.stopPropagation()):n.matches("Shift","ArrowDown")?(this._changeInputValueByStep(10*-this.step),
 t.preventDefault(),t.stopPropagation()):(n.matches("Backspace")||n.matches("ArrowLeft")||n.matches("Shift","ArrowLeft")||n.matches("ArrowRight")||n.matches("Shift","ArrowRight"))&&t.stopPropagation();
+},_onInputWheel:function(e){var t=(this.value,Math.abs(e.deltaX)>Math.abs(e.deltaY)?"x":"y"),n="x"===t?e.deltaX:e.deltaY;
+"x"===t?0>n?this._changeInputValueByStep(-this.step):n>0&&this._changeInputValueByStep(this.step):"y"===t&&(0>n?this._changeInputValueByStep(this.step):n>0&&this._changeInputValueByStep(-this.step)),
+e.preventDefault(),e.stopPropagation()},_onWheelDebounced:function(){console.log("on wheel debounced");
 },_onContextMenu:function(e){e.preventDefault(),this["#input"].focus(),this["#input"].select(),
 this["#context-menu"].open(e.clientX,e.clientY)},_onContextMenuItemTrigger:function(e){
 var t=e.detail,n=this.commands[t.commandID];n&&n.exec()},_menuWillShow:function(e){
@@ -10124,9 +10132,14 @@ u&&c&&t(u,c)&&u.remove()}}}catch(d){n=!0,a=d}finally{try{e||null==s["return"]||s
 try{for(var l=function(){var e=u.value,r=n.find(function(t){return t.id===e.id});r&&t(e,r)&&e.remove();
 },u=void 0,c=e[Symbol.iterator]();!(a=(u=c.next()).done);a=!0)l()}catch(d){o=!0,s=d;
 }finally{try{a||null==c["return"]||c["return"]()}finally{if(o)throw s}}}(),function(){
-var t=$traceurRuntime.spread(r.querySelectorAll("[id]")).map(function(e){return e.id;
-}),a=$traceurRuntime.spread(i.querySelectorAll("[id]")).map(function(e){return e.id;
-});r.id&&t.push(r.id),i.id&&a.push(i.id);var o=t.filter(function(e){return a.includes(e);
+var e=$traceurRuntime.spread(r.querySelectorAll("style")),t=$traceurRuntime.spread(i.querySelectorAll("style")),n=!0,a=!1,o=void 0;
+try{for(var s=void 0,l=e[Symbol.iterator]();!(n=(s=l.next()).done);n=!0){var u=s.value,c=!0,d=!1,h=void 0;
+try{for(var v=void 0,f=t[Symbol.iterator]();!(c=(v=f.next()).done);c=!0){var m=v.value;
+u.textContent===m.textContent&&u.remove()}}catch(b){d=!0,h=b}finally{try{c||null==f["return"]||f["return"]();
+}finally{if(d)throw h}}}}catch(g){a=!0,o=g}finally{try{n||null==l["return"]||l["return"]();
+}finally{if(a)throw o}}}(),function(){var t=$traceurRuntime.spread(r.querySelectorAll("[id]")).map(function(e){
+return e.id}),a=$traceurRuntime.spread(i.querySelectorAll("[id]")).map(function(e){
+return e.id});r.id&&t.push(r.id),i.id&&a.push(i.id);var o=t.filter(function(e){return a.includes(e);
 });o=e(o),o.remove("bx-google-fonts");var s=!0,l=!1,u=void 0;try{for(var c=void 0,d=o[Symbol.iterator]();!(s=(c=d.next()).done);s=!0){
 var h=c.value,v=r.id===h?r:r.querySelector("#"+h),f=void 0;f="linearGradient"===v.localName||"radialGradient"===v.localName?"gradient":"clipPath"===v.localName?"path":v.localName;
 for(var m=void 0,b=1;;){var g=f+"-"+b;if(null===r.querySelector("#"+g)&&null===i.querySelector("#"+g)&&r.id!==g&&i.id!==g){
