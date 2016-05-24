@@ -1382,9 +1382,7 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
             pathData = clonePathData(this[symbols.cachedPathData]);
           }
           else {
-            console.time("parsePathDataString");
             pathData = parsePathDataString(this.getAttribute("d") || "");
-            console.timeEnd("parsePathDataString");
             this[symbols.cachedPathData] = clonePathData(pathData);
           }
 

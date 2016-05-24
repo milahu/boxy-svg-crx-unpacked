@@ -118,13 +118,13 @@ detail:this,bubbles:!0}))},_updateSkin:function(){this.skin?this["#skin-styleshe
 }},{},e)}(HTMLElement),s=r("bx-button",i);return{get default(){return s}}}),$traceurRuntime.registerModule("elements/bx-editor",[],function(){
 "use strict";var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork","elements/bx-editor")),t=e.compressArtwork,r=e.uncompressArtwork,n=e.createArtworkFromBitmapDataURL,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-editor")),i=(a.createElement,
 a.registerElement),s=($traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-editor")).sleep,
-$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/filesystem","elements/bx-editor"))),o=s.getEntryExtension,l=s.chooseEntry,u=s.readEntry,c=s.writeEntry,d=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/vendor","elements/bx-editor")).getChromeVersion,h='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"></svg>',b="\n  width: 100%;\n  height: calc(100% - 30px - 30px);\n  display: block;\n  position: fixed;\n  top: 60px;\n  left; 0;\n",m='\n  <style>@import url("stylesheets/bx-editor.css");</style>\n\n  <webview\n    id="webview"\n    tabindex="-1"\n    partition="persist:boxy"\n    src="frontend/editor.html"\n    style="'+b+'"\n    allowtransparency="on">\n  </webview>\n',f=function(e){
+$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/filesystem","elements/bx-editor"))),o=s.getEntryExtension,l=s.chooseEntry,u=s.readEntry,c=s.writeEntry,d='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"></svg>',h="\n  width: 100%;\n  height: calc(100% - 30px - 30px);\n  display: block;\n  position: fixed;\n  top: 60px;\n  left; 0;\n",b='\n  <style>@import url("stylesheets/bx-editor.css");</style>\n\n  <webview\n    id="webview"\n    tabindex="-1"\n    partition="persist:boxy"\n    src="frontend/editor.html"\n    style="'+h+'"\n    allowtransparency="on">\n  </webview>\n',m=function(e){
 function a(){$traceurRuntime.superConstructor(a).apply(this,arguments)}return $traceurRuntime.createClass(a,{
 createdCallback:function(){var e=this;this._messageCounter=0,this._messageRequestCallbacks={},
 this._messageResponseCallbacks={},this._webviewLoadedCallbacks=[],this._webviewInitializedCallbacks=[],
 this._currentToolID=null,this._currentPrimaryPanelID=null,this._currentSecondaryPanelID=null,
 this._entry=null,this._changeCounter=0,this._textInputModeCounter=0,this._shadowRoot=this.createShadowRoot({
-mode:"closed"}),this._shadowRoot.innerHTML=m;var t=!0,r=!1,n=void 0;try{for(var a=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
+mode:"closed"}),this._shadowRoot.innerHTML=b;var t=!0,r=!1,n=void 0;try{for(var a=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
 var s=a.value;this["#"+s.id]=s}}catch(o){r=!0,n=o}finally{try{t||null==i["return"]||i["return"]();
 }finally{if(r)throw n}}this["#webview"].addEventListener("contentload",function(t){
 return e._onWebviewLoaded(t)}),window.addEventListener("message",function(t){return e._onMessage(t);
@@ -140,10 +140,10 @@ return t(e)})}),this.addMessageListener("setClipboardData",function(e,t){return 
 return e._toggleTextInputMode(t)}),this.addMessageListener("showMessageBox",function(e,t){
 return body.showMessageBox(e).then(t)}),this.addMessageListener("openExternalURL",function(e){
 return chrome.browser.openTab({url:e})}),this.addMessageListener("exportFile",function(t){
-return e._exportFile(t)}),this.addMessageListener("canRasterizeArtwork",function(e,t){
-return t(d()>53)}),this.addMessageListener("rasterizeArtwork",function(e,t){var r,n,a,i,s,o;
-return $traceurRuntime.asyncWrap(function(l){for(;;)switch(l.state){case 0:r=e,n=r.artwork,
-a=r.format,i=r.compression,s=r.backgroundColor,l.state=5;break;case 5:return void Promise.resolve(body.rasterizeArtwork(n,a,i,s)).then(l.createCallback(3),l.errback);
+return e._exportFile(t)}),this.addMessageListener("rasterizeArtwork",function(e,t){
+var r,n,a,i,s,o;return $traceurRuntime.asyncWrap(function(l){for(;;)switch(l.state){
+case 0:r=e,n=r.artwork,a=r.format,i=r.compression,s=r.backgroundColor,l.state=5;break;
+case 5:return void Promise.resolve(body.rasterizeArtwork(n,a,i,s)).then(l.createCallback(3),l.errback);
 case 3:o=l.value,l.state=2;break;case 2:t(o),l.state=-2;break;default:return l.end();
 }},this)})},get entry(){return this._entry},get edited(){return 0!==this._changeCounter;
 },get ready(){return null===this._webviewInitializedCallbacks},get textInputMode(){
@@ -152,20 +152,20 @@ return this._textInputModeCounter>0},get currentToolID(){return this._currentToo
 return this._currentSecondaryPanelID},get disabled(){return this.hasAttribute("disabled");
 },set disabled(e){e===!0?this.setAttribute("disabled",""):this.removeAttribute("disabled");
 },init:function(){var e=void 0!==arguments[0]?arguments[0]:null,t=void 0!==arguments[1]?arguments[1]:null,a=this;
-return new Promise(function(i){var s,l,c,d,b,m;return $traceurRuntime.asyncWrap(function(f){
-for(;;)switch(f.state){case 0:f.state=null===e&&null===t?34:33;break;case 34:s=h,
+return new Promise(function(i){var s,l,c,h,b,m;return $traceurRuntime.asyncWrap(function(f){
+for(;;)switch(f.state){case 0:f.state=null===e&&null===t?34:33;break;case 34:s=d,
 f.state=35;break;case 33:f.state=e&&null===t?31:30;break;case 31:s=e,a._setChangeCounter("increment"),
 f.state=35;break;case 30:f.state=e&&t?28:27;break;case 28:s=e,a._setChangeCounter("increment"),
 f.state=35;break;case 27:f.state=null===e&&t?25:35;break;case 25:l=o(t).toLowerCase(),
 f.state=26;break;case 26:f.state="svg"===l||"html"===l?1:23;break;case 1:return void Promise.resolve(u(t,"text")).then(f.createCallback(3),f.errback);
-case 3:c=f.value,f.state=2;break;case 2:c?s=c:(s=h,a._setChangeCounter("increment")),
+case 3:c=f.value,f.state=2;break;case 2:c?s=c:(s=d,a._setChangeCounter("increment")),
 f.state=35;break;case 23:f.state="svgz"===l?6:22;break;case 6:return void Promise.resolve(u(t,"arrayBuffer")).then(f.createCallback(8),f.errback);
-case 8:d=f.value,f.state=7;break;case 7:d?s=r(d):(s=h,a._setChangeCounter("increment")),
+case 8:h=f.value,f.state=7;break;case 7:h?s=r(h):(s=d,a._setChangeCounter("increment")),
 f.state=35;break;case 22:f.state=["png","jpg","jpeg","webp","gif"].includes(l)?11:35;
 break;case 11:return void Promise.resolve(u(t,"dataURL")).then(f.createCallback(13),f.errback);
 case 13:b=f.value,f.state=12;break;case 12:f.state=b?14:17;break;case 14:return void Promise.resolve(n(b)).then(f.createCallback(16),f.errback);
-case 16:s=f.value,f.state=15;break;case 17:s=h,f.state=15;break;case 15:a._setChangeCounter("increment"),
-f.state=35;break;case 35:a._entry=t,m={artwork:s,hamburgerAppMenu:!1,restrictedFeatures:body.restrictedFeatures
+case 16:s=f.value,f.state=15;break;case 17:s=d,f.state=15;break;case 15:a._setChangeCounter("increment"),
+f.state=35;break;case 35:a._entry=t,m={artwork:s,restrictedFeatures:body.restrictedFeatures
 },a.postMessage("init",m,function(){a._onWebviewInitialized(),i()}),f.state=-2;break;
 default:return f.end()}},this)})},reload:function(){var e=this;return new Promise(function(t){
 var r,n;return $traceurRuntime.asyncWrap(function(a){for(;;)switch(a.state){case 0:
@@ -291,17 +291,17 @@ f.state=37;break;case 37:f.state=-2;break;default:return f.end()}},this)},_toggl
 e===!0?this._textInputModeCounter+=1:e===!1&&(this._textInputModeCounter-=1),this._textInputModeCounter<0&&(this._textInputModeCounter=0);
 },_setChangeCounter:function(e){var t=this._changeCounter;"increment"===e?this._changeCounter+=1:"decrement"===e?this._changeCounter-=1:"reset"===e&&(this._changeCounter=0),
 this.dispatchEvent(new CustomEvent("artworkchange",{bubbles:!0,detail:this})),0!==t!=(0!==this._changeCounter)&&this.dispatchEvent(new CustomEvent("editedchange",{
-bubbles:!0,detail:this}))}},{},e)}(HTMLElement),v=i("bx-editor",f);return{get default(){
-return v}}}),$traceurRuntime.registerModule("elements/bx-masterbody",[],function(){
+bubbles:!0,detail:this}))}},{},e)}(HTMLElement),f=i("bx-editor",m);return{get default(){
+return f}}}),$traceurRuntime.registerModule("elements/bx-masterbody",[],function(){
 "use strict";$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-editor","elements/bx-masterbody")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-messagebox","elements/bx-masterbody")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menubar","elements/bx-masterbody")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menu","elements/bx-masterbody")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menuitem","elements/bx-masterbody")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-tabs","elements/bx-masterbody"));
-var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-masterbody")),t=e.createElement,r=e.registerElement,n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/string","elements/bx-masterbody")).toDashCase,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-masterbody")),i=a.debounce,s=a.sleep,o=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/vendor","elements/bx-masterbody")).getOperatingSystemName,l=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/window","elements/bx-masterbody")),u=l.createAppWindow,c=l.getBackgroundWindow,d=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/filesystem","elements/bx-masterbody")),h=d.getEntryBaseName,b=d.getEntryDisplayPath,m=d.getEntryExtension,f=d.chooseEntry,v=d.compareEntries,g=d.restoreEntry,p=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/shortcut","elements/bx-masterbody"))["default"],_=Number.parseInt,w=10,k='\n  <style>@import url("stylesheets/bx-masterbody.css");</style>\n\n  <bx-menubar id="menubar">\n    <bx-menu label="File">\n      <bx-menuitem commandid="new" label="New" shortcut="Control+N"></bx-menuitem>\n      <bx-menuitem commandid="newFromSelected" label="New from Selected" shortcut="Control+Shift+N"></bx-menuitem>\n      <bx-menuitem commandid="open" label="Open…" shortcut="Control+O"></bx-menuitem>\n      <bx-menuitem id="open-recent-menu-item" label="Open Recent">\n        <bx-menu id="open-recent-menu"></bx-menu>\n      </bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="save" label="Save" shortcut="Control+S"></bx-menuitem>\n      <bx-menuitem commandid="saveAs" label="Save As…" shortcut="Control+Shift+S"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="reloadFromDisk" label="Reload from Disk"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="close" label="Close" shortcut="Control+W"></bx-menuitem>\n      <bx-menuitem commandid="quit" label="Quit Boxy SVG" shortcut="Control+Q"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Edit">\n      <bx-menuitem commandid="undo" label="Undo" shortcut="Control+Z"></bx-menuitem>\n      <bx-menuitem commandid="redo" label="Redo" shortcut="Control+Shift+Z"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="cut" label="Cut" shortcut="Control+X"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy" shortcut="Control+C"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste" shortcut="Control+V"></bx-menuitem>\n      <bx-menuitem commandid="duplicate" label="Duplicate" shortcut="Control+D"></bx-menuitem>\n      <bx-menuitem commandid="delete" label="Delete"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="grabPaintColor" label="Grab Paint Color" shortcut="Q"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="selectAll" label="Select All" shortcut="Control+A"></bx-menuitem>\n      <bx-menuitem commandid="deselectAll" label="Deselect All" shortcut="Control+Shift+A"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="preferences" label="Preferences…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="View">\n      <bx-menuitem commandid="zoomIn" label="Zoom In" shortcut="="></bx-menuitem>\n      <bx-menuitem commandid="zoomOut"label="Zoom Out" shortcut="-"></bx-menuitem>\n      <bx-menuitem commandid="resetZoom" label="Reset Zoom" shortcut="1"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToViewBox" label="Zoom to View Box" shortcut="2"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxWidth" label="Zoom to View Box Width" shortcut="3"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxHeight" label="Zoom to View Box Height" shortcut="4"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToFitAll"label="Zoom to Fit All" shortcut="5"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="inspector" label="Inspector" shortcut="I"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Element">\n      <bx-menuitem commandid="group" label="Group" shortcut="Control+G"></bx-menuitem>\n      <bx-menuitem commandid="ungroup" label="Ungroup" shortcut="Control+Shift+G"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="raise" label="Raise" shortcut="]"></bx-menuitem>\n      <bx-menuitem commandid="lower" label="Lower" shortcut="["></bx-menuitem>\n      <bx-menuitem commandid="raiseToFront" label="Raise to Front" shortcut="Control+]"></bx-menuitem>\n      <bx-menuitem commandid="lowerToBack" label="Lower to Back" shortcut="Control+["></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="clip" label="Clip"></bx-menuitem>\n      <bx-menuitem commandid="unclip"label="Unclip"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="mask" label="Mask"></bx-menuitem>\n      <bx-menuitem commandid="unmask" label="Unmask"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="rotateClockwise" label="Rotate +90°" shortcut="Control+Shift+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="rotateCounterclockwise" label="Rotate -90°" shortcut="Control+Shift+ArrowLeft"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="flipX" label="Flip X" shortcut="Control+Shift+ArrowUp"></bx-menuitem>\n      <bx-menuitem commandid="flipY" label="Flip Y" shortcut="Control+Shift+ArrowDown"></bx-menuitem>\n      <hr/>\n      <bx-menuitem label="Path">\n        <bx-menu>\n          <bx-menuitem commandid="convertToPath" label="Convert to Path"></bx-menuitem>\n          <bx-menuitem commandid="reversePath" label="Reverse Path"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="unite" label="Unite"></bx-menuitem>\n          <bx-menuitem commandid="subtract" label="Subtract"></bx-menuitem>\n          <bx-menuitem commandid="intersect" label="Intersect"></bx-menuitem>\n          <bx-menuitem commandid="exclude" label="Exclude"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="combine" label="Combine"></bx-menuitem>\n          <bx-menuitem commandid="breakApart" label="Break Apart"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n      <bx-menuitem label="Move">\n        <bx-menu>\n          <bx-menuitem commandid="moveOneUnitLeft" label="Move 1 Unit Left"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitRight" label="Move 1 Unit Right"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitUp" label="Move 1 Unit Up"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitDown" label="Move 1 Unit Down"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="moveTenUnitsLeft" label="Move 10 Units Left"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsRight" label="Move 10 Units Right"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsUp" label="Move 10 Units Up"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsDown" label="Move 10 Units Down"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Tools" id="tools-menu">\n      <bx-menuitem commandid="previousTool" label="Previous Tool" shortcut="Space"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="transformTool" label="Transform Tool" shortcut="Alt+T"></bx-menuitem>\n      <bx-menuitem commandid="editTool" label="Edit Tool" shortcut="Alt+E"></bx-menuitem>\n      <bx-menuitem commandid="quadBezierTool" label="Quad Bezier Tool" shortcut="Alt+Q"></bx-menuitem>\n      <bx-menuitem commandid="cubicBezierTool" label="Cubic Bezier Tool" shortcut="Alt+C"></bx-menuitem>\n      <bx-menuitem commandid="freehandTool" label="Freehand Tool" shortcut="Alt+F"></bx-menuitem>\n      <bx-menuitem commandid="textTool" label="Text Tool" shortcut="Alt+Shift+T"></bx-menuitem>\n      <bx-menuitem commandid="triangleTool" label="Triangle Tool" shortcut="Alt+Y"></bx-menuitem>\n      <bx-menuitem commandid="rectangleTool" label="Rectangle Tool" shortcut="Alt+R"></bx-menuitem>\n      <bx-menuitem commandid="nGonTool" label="N-gon Tool" shortcut="Alt+N"></bx-menuitem>\n      <bx-menuitem commandid="starTool" label="Star Tool" shortcut="Alt+S"></bx-menuitem>\n      <bx-menuitem commandid="ellipseTool" label="Ellipse Tool" shortcut="Alt+Shift+E"></bx-menuitem>\n      <bx-menuitem commandid="ringTool" label="Ring Tool" shortcut="Alt+Shift+R"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Panels" id="panels-menu">\n      <bx-menuitem commandid="fillPanel" label="Fill Panel" shortcut="F"></bx-menuitem>\n      <bx-menuitem commandid="strokePanel" label="Stroke Panel" shortcut="S"></bx-menuitem>\n      <bx-menuitem commandid="compositingPanel" label="Compositing Panel" shortcut="C"></bx-menuitem>\n      <bx-menuitem commandid="viewPanel" label="View Panel" shortcut="V"></bx-menuitem>\n      <bx-menuitem commandid="arrangementPanel" label="Arrangement Panel" shortcut="A"></bx-menuitem>\n      <bx-menuitem commandid="typographyPanel" label="Typography Panel"  shortcut="T"></bx-menuitem>\n      <bx-menuitem commandid="defsPanel" label="Defs Panel" shortcut="D"></bx-menuitem>\n      <bx-menuitem commandid="maskPanel" label="Mask Panel" shortcut="M"></bx-menuitem>\n      <bx-menuitem commandid="geometryPanel" label="Geometry Panel" shortcut="G"></bx-menuitem>\n      <bx-menuitem commandid="pathPanel" label="Path Panel" shortcut="X"></bx-menuitem>\n      <bx-menuitem commandid="exportPanel" label="Export Panel" shortcut="E"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Window" id="window-menu">\n      <bx-menuitem commandid="showPreviousTab" label="Show Previous Tab" shortcut="Control+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="showNextTab" label="Show Next Tab" shortcut="Control+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="moveTabLeft" label="Move Tab Left" shortcut="Control+Alt+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="moveTabRight" label="Move Tab Right" shortcut="Control+Alt+ArrowRight"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="minimizeWindow" label="Minimize"></bx-menuitem>\n      <bx-menuitem commandid="maximizeWindow" label="Maximize"></bx-menuitem>\n      <bx-menuitem commandid="fullscreen" label="Fullscreen"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Help">\n      <bx-menuitem commandid="about" label="About"></bx-menuitem>\n      <bx-menuitem commandid="rate" label="Rate on Chrome Web Store…"></bx-menuitem>\n      <bx-menuitem commandid="support" label="Get Support…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Debug" id="debug-menu">\n      <bx-menuitem commandid="reloadApp" label="Reload App" shortcut="Control+Shift+R"></bx-menuitem>\n      <bx-menuitem commandid="reloadCurrentEditor" label="Reload Editor" shortcut="Control+R"></bx-menuitem>\n    </bx-menu>\n  </bx-menubar>\n\n  <bx-tabs id="tabs"></bx-tabs>\n  <div id="editors"></div>\n  <dialog id="message-box" is="bx-messagebox"></dialog>\n',y=function(e){
+var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-masterbody")),t=e.createElement,r=e.registerElement,n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/string","elements/bx-masterbody")).toDashCase,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-masterbody")),i=a.debounce,s=a.sleep,o=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/vendor","elements/bx-masterbody")),l=o.getOperatingSystemName,u=o.getChromeVersion,c=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/window","elements/bx-masterbody")),d=c.createAppWindow,h=c.getBackgroundWindow,b=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/filesystem","elements/bx-masterbody")),m=b.getEntryBaseName,f=b.getEntryDisplayPath,v=b.getEntryExtension,g=b.chooseEntry,p=b.compareEntries,_=b.restoreEntry,w=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/shortcut","elements/bx-masterbody"))["default"],k=Number.parseInt,y=10,x='\n  <style>@import url("stylesheets/bx-masterbody.css");</style>\n\n  <bx-menubar id="menubar">\n    <bx-menu label="File">\n      <bx-menuitem commandid="new" label="New" shortcut="Control+N"></bx-menuitem>\n      <bx-menuitem commandid="newFromSelected" label="New from Selected" shortcut="Control+Shift+N"></bx-menuitem>\n      <bx-menuitem commandid="open" label="Open…" shortcut="Control+O"></bx-menuitem>\n      <bx-menuitem id="open-recent-menu-item" label="Open Recent">\n        <bx-menu id="open-recent-menu"></bx-menu>\n      </bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="save" label="Save" shortcut="Control+S"></bx-menuitem>\n      <bx-menuitem commandid="saveAs" label="Save As…" shortcut="Control+Shift+S"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="reloadFromDisk" label="Reload from Disk"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="close" label="Close" shortcut="Control+W"></bx-menuitem>\n      <bx-menuitem commandid="quit" label="Quit Boxy SVG" shortcut="Control+Q"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Edit">\n      <bx-menuitem commandid="undo" label="Undo" shortcut="Control+Z"></bx-menuitem>\n      <bx-menuitem commandid="redo" label="Redo" shortcut="Control+Shift+Z"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="cut" label="Cut" shortcut="Control+X"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy" shortcut="Control+C"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste" shortcut="Control+V"></bx-menuitem>\n      <bx-menuitem commandid="duplicate" label="Duplicate" shortcut="Control+D"></bx-menuitem>\n      <bx-menuitem commandid="delete" label="Delete"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="grabPaintColor" label="Grab Paint Color" shortcut="Q"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="selectAll" label="Select All" shortcut="Control+A"></bx-menuitem>\n      <bx-menuitem commandid="deselectAll" label="Deselect All" shortcut="Control+Shift+A"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="preferences" label="Preferences…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="View">\n      <bx-menuitem commandid="zoomIn" label="Zoom In" shortcut="="></bx-menuitem>\n      <bx-menuitem commandid="zoomOut"label="Zoom Out" shortcut="-"></bx-menuitem>\n      <bx-menuitem commandid="resetZoom" label="Reset Zoom" shortcut="1"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToViewBox" label="Zoom to View Box" shortcut="2"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxWidth" label="Zoom to View Box Width" shortcut="3"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxHeight" label="Zoom to View Box Height" shortcut="4"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToFitAll"label="Zoom to Fit All" shortcut="5"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="inspector" label="Inspector" shortcut="I"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Element">\n      <bx-menuitem commandid="group" label="Group" shortcut="Control+G"></bx-menuitem>\n      <bx-menuitem commandid="ungroup" label="Ungroup" shortcut="Control+Shift+G"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="raise" label="Raise" shortcut="]"></bx-menuitem>\n      <bx-menuitem commandid="lower" label="Lower" shortcut="["></bx-menuitem>\n      <bx-menuitem commandid="raiseToFront" label="Raise to Front" shortcut="Control+]"></bx-menuitem>\n      <bx-menuitem commandid="lowerToBack" label="Lower to Back" shortcut="Control+["></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="clip" label="Clip"></bx-menuitem>\n      <bx-menuitem commandid="unclip"label="Unclip"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="mask" label="Mask"></bx-menuitem>\n      <bx-menuitem commandid="unmask" label="Unmask"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="rotateClockwise" label="Rotate +90°" shortcut="Control+Shift+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="rotateCounterclockwise" label="Rotate -90°" shortcut="Control+Shift+ArrowLeft"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="flipX" label="Flip X" shortcut="Control+Shift+ArrowUp"></bx-menuitem>\n      <bx-menuitem commandid="flipY" label="Flip Y" shortcut="Control+Shift+ArrowDown"></bx-menuitem>\n      <hr/>\n      <bx-menuitem label="Path">\n        <bx-menu>\n          <bx-menuitem commandid="convertToPath" label="Convert to Path"></bx-menuitem>\n          <bx-menuitem commandid="reversePath" label="Reverse Path"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="unite" label="Unite"></bx-menuitem>\n          <bx-menuitem commandid="subtract" label="Subtract"></bx-menuitem>\n          <bx-menuitem commandid="intersect" label="Intersect"></bx-menuitem>\n          <bx-menuitem commandid="exclude" label="Exclude"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="combine" label="Combine"></bx-menuitem>\n          <bx-menuitem commandid="breakApart" label="Break Apart"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n      <bx-menuitem label="Move">\n        <bx-menu>\n          <bx-menuitem commandid="moveOneUnitLeft" label="Move 1 Unit Left"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitRight" label="Move 1 Unit Right"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitUp" label="Move 1 Unit Up"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitDown" label="Move 1 Unit Down"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="moveTenUnitsLeft" label="Move 10 Units Left"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsRight" label="Move 10 Units Right"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsUp" label="Move 10 Units Up"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsDown" label="Move 10 Units Down"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Tools" id="tools-menu">\n      <bx-menuitem commandid="previousTool" label="Previous Tool" shortcut="Space"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="transformTool" label="Transform Tool" shortcut="Alt+T"></bx-menuitem>\n      <bx-menuitem commandid="editTool" label="Edit Tool" shortcut="Alt+E"></bx-menuitem>\n      <bx-menuitem commandid="quadBezierTool" label="Quad Bezier Tool" shortcut="Alt+Q"></bx-menuitem>\n      <bx-menuitem commandid="cubicBezierTool" label="Cubic Bezier Tool" shortcut="Alt+C"></bx-menuitem>\n      <bx-menuitem commandid="freehandTool" label="Freehand Tool" shortcut="Alt+F"></bx-menuitem>\n      <bx-menuitem commandid="textTool" label="Text Tool" shortcut="Alt+Shift+T"></bx-menuitem>\n      <bx-menuitem commandid="triangleTool" label="Triangle Tool" shortcut="Alt+Y"></bx-menuitem>\n      <bx-menuitem commandid="rectangleTool" label="Rectangle Tool" shortcut="Alt+R"></bx-menuitem>\n      <bx-menuitem commandid="nGonTool" label="N-gon Tool" shortcut="Alt+N"></bx-menuitem>\n      <bx-menuitem commandid="starTool" label="Star Tool" shortcut="Alt+S"></bx-menuitem>\n      <bx-menuitem commandid="ellipseTool" label="Ellipse Tool" shortcut="Alt+Shift+E"></bx-menuitem>\n      <bx-menuitem commandid="ringTool" label="Ring Tool" shortcut="Alt+Shift+R"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Panels" id="panels-menu">\n      <bx-menuitem commandid="fillPanel" label="Fill Panel" shortcut="F"></bx-menuitem>\n      <bx-menuitem commandid="strokePanel" label="Stroke Panel" shortcut="S"></bx-menuitem>\n      <bx-menuitem commandid="compositingPanel" label="Compositing Panel" shortcut="C"></bx-menuitem>\n      <bx-menuitem commandid="viewPanel" label="View Panel" shortcut="V"></bx-menuitem>\n      <bx-menuitem commandid="arrangementPanel" label="Arrangement Panel" shortcut="A"></bx-menuitem>\n      <bx-menuitem commandid="typographyPanel" label="Typography Panel"  shortcut="T"></bx-menuitem>\n      <bx-menuitem commandid="defsPanel" label="Defs Panel" shortcut="D"></bx-menuitem>\n      <bx-menuitem commandid="maskPanel" label="Mask Panel" shortcut="M"></bx-menuitem>\n      <bx-menuitem commandid="geometryPanel" label="Geometry Panel" shortcut="G"></bx-menuitem>\n      <bx-menuitem commandid="pathPanel" label="Path Panel" shortcut="X"></bx-menuitem>\n      <bx-menuitem commandid="exportPanel" label="Export Panel" shortcut="E"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Window" id="window-menu">\n      <bx-menuitem commandid="showPreviousTab" label="Show Previous Tab" shortcut="Control+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="showNextTab" label="Show Next Tab" shortcut="Control+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="moveTabLeft" label="Move Tab Left" shortcut="Control+Alt+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="moveTabRight" label="Move Tab Right" shortcut="Control+Alt+ArrowRight"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="minimizeWindow" label="Minimize"></bx-menuitem>\n      <bx-menuitem commandid="maximizeWindow" label="Maximize"></bx-menuitem>\n      <bx-menuitem commandid="fullscreen" label="Fullscreen"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Help">\n      <bx-menuitem commandid="about" label="About"></bx-menuitem>\n      <bx-menuitem commandid="rate" label="Rate on Chrome Web Store…"></bx-menuitem>\n      <bx-menuitem commandid="support" label="Get Support…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Debug" id="debug-menu">\n      <bx-menuitem commandid="reloadApp" label="Reload App" shortcut="Control+Shift+R"></bx-menuitem>\n      <bx-menuitem commandid="reloadCurrentEditor" label="Reload Editor" shortcut="Control+R"></bx-menuitem>\n    </bx-menu>\n  </bx-menubar>\n\n  <bx-tabs id="tabs"></bx-tabs>\n  <div id="editors"></div>\n  <dialog id="message-box" is="bx-messagebox"></dialog>\n',C=function(e){
 function r(){$traceurRuntime.superConstructor(r).apply(this,arguments)}return $traceurRuntime.createClass(r,{
-createdCallback:function(){var e,t,r,n,a,l,u;return $traceurRuntime.asyncWrap(function(d){
+createdCallback:function(){var e,t,r,n,a,o,c;return $traceurRuntime.asyncWrap(function(d){
 for(;;)switch(d.state){case 0:e=this,this._commands={"new":{exec:function(){return e._openEditorWidthDefaultArtwork();
 }},newFromSelected:{enabled:function(){return null!==e.currentEditor},exec:function(){
 return e._openEditorWithArtworkImportedFromSelectedElements()}},open:{exec:function(){
@@ -330,13 +330,13 @@ exec:function(){return s(50).then(function(){return chrome.runtime.reload()})}},
 exec:function(){return e.currentEditor.reload()}}},this._shouldStoreSessionOnUserIdle=!1,
 this._toggleEditorQueue=[],this._messageCounter=0,this._messageRequestCallbacks={},
 this._messageResponseCallbacks={},this._aboutAppWindow=null,this._preferencesAppWindow=null,
-d.state=8;break;case 8:return void Promise.resolve(c()).then(d.createCallback(3),d.errback);
+d.state=8;break;case 8:return void Promise.resolve(h()).then(d.createCallback(3),d.errback);
 case 3:this._backgroundWindow=d.value,d.state=2;break;case 2:this._storeSessionDebounced=i(this._storeSession,2e3,this),
-this._manifest=chrome.runtime.getManifest(),"Boxy SVG"===this._manifest.name?this._restrictedFeatures=["inspector","chromeDevTools"]:"Boxy SVG Pro"===this._manifest.name?this._restrictedFeatures=["inspector","chromeDevTools"]:"Boxy SVG Dev"===this._manifest.name&&(this._restrictedFeatures=[]),
-"windows"===o()&&this.setAttribute("bordered",""),this._shadowRoot=this.createShadowRoot({
-mode:"closed"}),this._shadowRoot.innerHTML=k,t=!0,r=!1,n=void 0;try{for(a=void 0,
-l=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=l.next()).done);t=!0)u=a.value,
-this["#"+u.id]=u}catch(h){r=!0,n=h}finally{try{t||null==l["return"]||l["return"]();
+this._manifest=chrome.runtime.getManifest(),"Boxy SVG"===this._manifest.name?this._restrictedFeatures=["inspector","chrome-dev-tools","hamburger-app-menu"]:"Boxy SVG Pro"===this._manifest.name?this._restrictedFeatures=["inspector","chrome-dev-tools","hamburger-app-menu"]:"Boxy SVG Dev"===this._manifest.name&&(this._restrictedFeatures=["hamburger-app-menu"]),
+u()<53&&this._restrictedFeatures.push("rasterizer"),"windows"===l()&&this.setAttribute("bordered",""),
+this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=x,
+t=!0,r=!1,n=void 0;try{for(a=void 0,o=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=o.next()).done);t=!0)c=a.value,
+this["#"+c.id]=c}catch(b){r=!0,n=b}finally{try{t||null==o["return"]||o["return"]();
 }finally{if(r)throw n}}chrome.idle.setDetectionInterval(15),chrome.idle.onStateChanged.addListener(function(t){
 return e._onUserIdleStateChange(t)}),this.addMessageListener("getConfig",function(t,r){
 return e.getConfig(t).then(r)}),this.addMessageListener("setConfig",function(t,r){
@@ -409,7 +409,7 @@ break}},getRetainedRecentEntries:function(){return this._dbGetRecent()},rasteriz
 var t=void 0!==arguments[1]?arguments[1]:"png",r=(void 0!==arguments[2]?arguments[2]:1,
 void 0!==arguments[3]?arguments[3]:"#ffffff"),n=this;return new Promise(function(a,i){
 var o,l,u,c,d;return $traceurRuntime.asyncWrap(function(h){for(;;)switch(h.state){
-case 0:o='\n        let svg = document.querySelector("svg");\n        let width = svg.viewBox.baseVal.width;\n        let height = svg.viewBox.baseVal.height;\n        svg.setAttribute("width", width + "px");\n        svg.setAttribute("height", height + "px");\n        svg.setAttribute("style", "background-color: '+r+'");\n        [width, height];\n      ',
+case 0:o='\n        let svg = document.querySelector("svg");\n        let width = svg.width.baseVal.value;\n        let height = svg.height.baseVal.value;\n        svg.setAttribute("style", "background-color: '+r+'");\n        [width, height];\n      ',
 l="\n        display: block;\n        position: fixed;\n        width: 1px;\n        height: 1px;\n        top: 0px;\n        left: 0px;\n        opacity: 0.01;\n      ",
 u="jpg"===t?"jpeg":t,c=document.createElement("webview"),c.setAttribute("allowtransparency",""),
 c.setAttribute("partition","persist:boxy"),c.setAttribute("style",l),c.src="data:image/svg+xml;utf8,"+e,
@@ -432,11 +432,11 @@ var u=o.value;u.postMessage&&u.postMessage("event:configchange",{key:r,value:n})
 }catch(c){i=!0,s=c}finally{try{a||null==l["return"]||l["return"]()}finally{if(i)throw s;
 }}"bx-shortcutseditor:userShortcuts"===r&&this._updateMainMenuWithUserShortcuts();
 },_onUserIdleStateChange:function(e){"idle"===e&&this._shouldStoreSessionOnUserIdle&&(this._shouldStoreSessionOnUserIdle=!1,
-this._storeSession())},_onKeyDown:function(e){var t=p.fromEvent(e);this.currentEditor&&this.currentEditor.textInputMode?(t.ctrl||t.alt||t.meta)&&this["#menubar"].triggerItemForShortcut(t):this["#menubar"].triggerItemForShortcut(t);
+this._storeSession())},_onKeyDown:function(e){var t=w.fromEvent(e);this.currentEditor&&this.currentEditor.textInputMode?(t.ctrl||t.alt||t.meta)&&this["#menubar"].triggerItemForShortcut(t):this["#menubar"].triggerItemForShortcut(t);
 },_onDragOver:function(e){e.preventDefault(),e.dataTransfer.effectAllowed="copy",
 e.dataTransfer.dropEffect="copy"},_onDrop:function(e){e.preventDefault();var t=[],r=!0,n=!1,a=void 0;
 try{for(var i=void 0,s=e.dataTransfer.items[Symbol.iterator]();!(r=(i=s.next()).done);r=!0){
-var o=i.value,l=o.webkitGetAsEntry(),u=m(l).toLowerCase();["svg","svgz","html"].includes(u)?t.push(l):["png","jpg","jpeg","webp","gif"].includes(u)&&t.push(l);
+var o=i.value,l=o.webkitGetAsEntry(),u=v(l).toLowerCase();["svg","svgz","html"].includes(u)?t.push(l):["png","jpg","jpeg","webp","gif"].includes(u)&&t.push(l);
 }}catch(c){n=!0,a=c}finally{try{r||null==s["return"]||s["return"]()}finally{if(n)throw a;
 }}t.length>0&&(this._openEditorsWithEntries(t),this._addRecentEntries(t))},_onMenubarDragOver:function(e){
 this._onDragOver(e)},_onMenubarDrop:function(e){this._onDrop(e)},_onTabSlotChange:function(e){
@@ -454,11 +454,11 @@ var i=n.value;this._validateMenu(i)}}catch(s){t=!0,r=s}finally{try{e||null==a["r
 }finally{if(t)throw r}}},_onMenubarBlur:function(){this.currentEditor&&this.currentEditor.focus();
 },_onMenuItemTrigger:function(e){var t,r,n;return $traceurRuntime.asyncWrap(function(a){
 for(;;)switch(a.state){case 0:t=e.detail,a.state=12;break;case 12:a.state=t.id.startsWith("open-recent-")?4:8;
-break;case 4:r=t.id.substring(12),a.state=5;break;case 5:return void Promise.resolve(g(r)).then(a.createCallback(3),a.errback);
+break;case 4:r=t.id.substring(12),a.state=5;break;case 5:return void Promise.resolve(_(r)).then(a.createCallback(3),a.errback);
 case 3:n=a.value,a.state=2;break;case 2:n&&(this._openEditorsWithEntries([n]),this._addRecentEntries([n])),
 a.state=-2;break;case 8:this.commands[t.commandID]?this.commands[t.commandID].exec():this.currentEditor&&this.currentEditor.postMessage("execCommand",t.commandID),
 a.state=-2;break;default:return a.end()}},this)},_validateMenu:function(e){var t=this;
-return new Promise(function(r){var n,a,i,o,l,u,c,d,h,b,m,f,v,p,_,w,k,y,x,C,E,S,R,A,M,T,L,P,j,W,z,D,$,I,O,B;
+return new Promise(function(r){var n,a,i,o,l,u,c,d,h,b,m,f,v,g,p,w,k,y,x,C,E,S,R,A,M,T,L,P,j,W,z,D,$,I,O,B;
 return $traceurRuntime.asyncWrap(function(F){for(;;)switch(F.state){case 0:n=!0,a=!1,
 i=void 0;try{for(o=void 0,l=e.children[Symbol.iterator]();!(n=(o=l.next()).done);n=!0)u=o.value,
 t._validateMenuItem(u)}catch(N){a=!0,i=N}finally{try{n||null==l["return"]||l["return"]();
@@ -467,8 +467,8 @@ break;case 1:return void Promise.resolve(t.getRetainedRecentEntries()).then(F.cr
 case 3:c=F.value,F.state=2;break;case 2:d="",F.state=33;break;case 33:F.state=c.length>0?27:19;
 break;case 27:h=!0,b=!1,m=void 0,F.state=28;break;case 28:F.pushTry(14,15),F.state=17;
 break;case 17:f=void 0,v=c[Symbol.iterator](),F.state=13;break;case 13:F.state=(h=(f=v.next()).done)?11:9;
-break;case 8:h=!0,F.state=13;break;case 9:p=f.value,F.state=10;break;case 10:return void Promise.resolve(g(p)).then(F.createCallback(6),F.errback);
-case 6:_=F.value,F.state=5;break;case 5:_&&(d+='<bx-menuitem id="open-recent-'+p+'" label="'+_.name+'"></bx-menuitem>'),
+break;case 8:h=!0,F.state=13;break;case 9:g=f.value,F.state=10;break;case 10:return void Promise.resolve(_(g)).then(F.createCallback(6),F.errback);
+case 6:p=F.value,F.state=5;break;case 5:p&&(d+='<bx-menuitem id="open-recent-'+g+'" label="'+p.name+'"></bx-menuitem>'),
 F.state=8;break;case 11:F.popTry(),F.state=15,F.finallyFallThrough=19;break;case 14:
 F.popTry(),F.maybeUncatchable(),B=F.storedException,F.state=20;break;case 20:b=!0,
 m=B,F.state=15,F.finallyFallThrough=19;break;case 15:F.popTry(),F.state=26;break;case 26:
@@ -496,7 +496,7 @@ for(;;)switch(m.state){case 0:c=e.getConfig,d=c.call(e,"bx-shortcutseditor:userS
 m.state=5;break;case 5:return void Promise.resolve(d).then(m.createCallback(3),m.errback);
 case 3:h=m.value,m.state=2;break;case 2:b=h?h:{},r=b,m.state=7;break;case 7:n=e["#menubar"].querySelectorAll("bx-menuitem[commandid]"),
 a=!0,i=!1,s=void 0;try{for(o=void 0,l=n[Symbol.iterator]();!(a=(o=l.next()).done);a=!0)u=o.value,
-r[u.commandID]?u.userShortcut=p.fromString(r[u.commandID]):u.userShortcut=null}catch(f){
+r[u.commandID]?u.userShortcut=w.fromString(r[u.commandID]):u.userShortcut=null}catch(f){
 i=!0,s=f}finally{try{a||null==l["return"]||l["return"]()}finally{if(i)throw s}}t(),
 m.state=-2;break;default:return m.end()}},this)})},_removeRestrictedMainMenuItems:function(){
 var e=this["#menubar"].querySelectorAll("bx-menuitem[commandid]"),t=!0,r=!1,a=void 0;
@@ -514,7 +514,7 @@ var r,n,a;return $traceurRuntime.asyncWrap(function(i){for(;;)switch(i.state){ca
 i.state=e._preferencesAppWindow?8:4;break;case 8:e._preferencesAppWindow.focus(),
 t(),i.state=-2;break;case 4:a={id:"preferencesAppWindow",resizable:!1,hidden:!0,frame:{
 type:"chrome",color:"#333"},outerBounds:{width:700,minWidth:700,maxWidth:700,height:450,
-minHeight:450,maxHeight:450}},i.state=5;break;case 5:return void Promise.resolve(u("frontend/preferences.html",a)).then(i.createCallback(3),i.errback);
+minHeight:450,maxHeight:450}},i.state=5;break;case 5:return void Promise.resolve(d("frontend/preferences.html",a)).then(i.createCallback(3),i.errback);
 case 3:e._preferencesAppWindow=i.value,i.state=2;break;case 2:e._preferencesAppWindow.contentWindow.addEventListener("load",r=function(){
 return $traceurRuntime.asyncWrap(function(n){for(;;)switch(n.state){case 0:e._preferencesAppWindow.contentWindow.removeEventListener("load",r),
 e.postMessage("preferences","init"),n.state=4;break;case 4:return void Promise.resolve(s(150)).then(n.createCallback(2),n.errback);
@@ -526,7 +526,7 @@ return $traceurRuntime.asyncWrap(function(i){for(;;)switch(i.state){case 0:i.sta
 break;case 8:e._aboutAppWindow.focus(),t(),i.state=-2;break;case 4:a={id:"aboutAppWindow",
 resizable:!1,hidden:!0,frame:{type:"chrome",color:"#333"},outerBounds:{width:340,
 minWidth:340,maxWidth:340,height:400,minHeight:400,maxHeight:400}},i.state=5;break;
-case 5:return void Promise.resolve(u("frontend/about.html",a)).then(i.createCallback(3),i.errback);
+case 5:return void Promise.resolve(d("frontend/about.html",a)).then(i.createCallback(3),i.errback);
 case 3:e._aboutAppWindow=i.value,i.state=2;break;case 2:e._aboutAppWindow.contentWindow.addEventListener("load",r=function(){
 return $traceurRuntime.asyncWrap(function(n){for(;;)switch(n.state){case 0:e._aboutAppWindow.contentWindow.removeEventListener("load",r),
 e.postMessage("about","init"),n.state=4;break;case 4:return void Promise.resolve(s(150)).then(n.createCallback(2),n.errback);
@@ -540,7 +540,7 @@ var e=chrome.app.window.current();e.isFullscreen()?e.restore():e.fullscreen()},s
 var t=this;return new Promise(function(r){var n;t["#message-box"].open&&t["#message-box"].close(null),
 t["#menubar"].disabled=!0,t["#message-box"].showModal(e),t["#message-box"].addEventListener("close",n=function(){
 t["#menubar"].disabled=!1,t["#message-box"].removeEventListener("close",n),t._focusCurrentEditor(),
-r(_(t["#message-box"].returnValue))})})},_openEditorWidthDefaultArtwork:function(){
+r(k(t["#message-box"].returnValue))})})},_openEditorWidthDefaultArtwork:function(){
 var e=this;return new Promise(function(r){var n,a,i,s;return $traceurRuntime.asyncWrap(function(o){
 for(;;)switch(o.state){case 0:n=e._createUniqueTabID(),a=n.replace("tab","editor"),
 i=e["#tabs"].openTab(),i.label="Untitled",i.id=n,i.href="#"+a,i.disabled=!0,s=t("bx-editor"),
@@ -556,24 +556,24 @@ o.id=i,o.disabled=!0,e["#editors"].append(o),e._toggleEditor(o.id),l.state=7;bre
 case 7:return void Promise.resolve(o.init(n)).then(l.createCallback(5),l.errback);
 case 5:s.disabled=!1,e._storeSessionDebounced(),r(o),l.state=-2;break;default:return l.end();
 }},this)})},_openEditorsWithEntries:function(e){var r=this,n=function(e){return new Promise(function(n){
-var a,i,s,o,l,u,c,d,b,f,g,p,_,w,k;return $traceurRuntime.asyncWrap(function(y){for(;;)switch(y.state){
+var a,i,s,o,l,u,c,d,h,b,f,g,_,w,k;return $traceurRuntime.asyncWrap(function(y){for(;;)switch(y.state){
 case 0:a=null,i=!0,s=!1,o=void 0,y.state=29;break;case 29:y.pushTry(15,16),y.state=18;
 break;case 18:l=void 0,u=$traceurRuntime.spread(r["#editors"].children)[Symbol.iterator](),
 y.state=14;break;case 14:y.state=(i=(l=u.next()).done)?12:10;break;case 5:i=!0,y.state=14;
 break;case 10:c=l.value,y.state=11;break;case 11:y.state=c.entry?1:5;break;case 1:
-return void Promise.resolve(v(e,c.entry)).then(y.createCallback(3),y.errback);case 3:
+return void Promise.resolve(p(e,c.entry)).then(y.createCallback(3),y.errback);case 3:
 d=y.value,y.state=2;break;case 2:y.state=d?6:5;break;case 6:a=c,y.state=12;break;case 12:
 y.popTry(),y.state=16,y.finallyFallThrough=20;break;case 15:y.popTry(),y.maybeUncatchable(),
 k=y.storedException,y.state=21;break;case 21:s=!0,o=k,y.state=16,y.finallyFallThrough=20;
 break;case 16:y.popTry(),y.state=27;break;case 27:try{i||null==u["return"]||u["return"]();
-}finally{if(s)throw o}y.state=25;break;case 20:b=h(e),f=m(e).toLowerCase(),g=null,
-p=null,_=function(){a?g=r["#tabs"].querySelector('[href="#'+a.id+'"]'):(g=r["#tabs"].openTab(),
-g.id=r._createUniqueTabID(),g.href="#"+g.id.replace("tab","editor"),g.label=b+"."+("svgz"===f||"html"===f?f:"svg"),
-g.disabled=!0)},w=function(n){return new Promise(function(i){return $traceurRuntime.asyncWrap(function(s){
-for(;;)switch(s.state){case 0:s.state=a?7:3;break;case 7:p=a,n&&r._toggleEditor(p.id),
-i(p),s.state=-2;break;case 3:p=t("bx-editor"),p.id=g.id.replace("tab","editor"),p.disabled=!0,
-r["#editors"].append(p),n&&r._toggleEditor(p.id),s.state=4;break;case 4:return void Promise.resolve(p.init(null,e)).then(s.createCallback(2),s.errback);
-case 2:g.disabled=!1,i(p),s.state=-2;break;default:return s.end()}},this)})},n({createTab:_,
+}finally{if(s)throw o}y.state=25;break;case 20:h=m(e),b=v(e).toLowerCase(),f=null,
+g=null,_=function(){a?f=r["#tabs"].querySelector('[href="#'+a.id+'"]'):(f=r["#tabs"].openTab(),
+f.id=r._createUniqueTabID(),f.href="#"+f.id.replace("tab","editor"),f.label=h+"."+("svgz"===b||"html"===b?b:"svg"),
+f.disabled=!0)},w=function(n){return new Promise(function(i){return $traceurRuntime.asyncWrap(function(s){
+for(;;)switch(s.state){case 0:s.state=a?7:3;break;case 7:g=a,n&&r._toggleEditor(g.id),
+i(g),s.state=-2;break;case 3:g=t("bx-editor"),g.id=f.id.replace("tab","editor"),g.disabled=!0,
+r["#editors"].append(g),n&&r._toggleEditor(g.id),s.state=4;break;case 4:return void Promise.resolve(g.init(null,e)).then(s.createCallback(2),s.errback);
+case 2:f.disabled=!1,i(g),s.state=-2;break;default:return s.end()}},this)})},n({createTab:_,
 createEditor:w}),y.state=-2;break;case 25:y.state=y.finallyFallThrough;break;default:
 return y.end()}},this)})};return new Promise(function(t){var a,i,s,o,l,u,c,d,h,b,m,f,v,g,p,_,w;
 return $traceurRuntime.asyncWrap(function(k){for(;;)switch(k.state){case 0:a=[],i=!0,
@@ -596,7 +596,7 @@ var t=this;return new Promise(function(r){var n,a,i,s,o,l,u,c,d;return $traceurR
 for(;;)switch(h.state){case 0:n=[],a=!0,i=!1,s=void 0,h.state=27;break;case 27:h.pushTry(11,12),
 h.state=14;break;case 14:o=void 0,l=e[Symbol.iterator](),h.state=10;break;case 10:
 h.state=(a=(o=l.next()).done)?8:6;break;case 5:a=!0,h.state=10;break;case 6:u=o.value,
-h.state=7;break;case 7:return void Promise.resolve(g(u)).then(h.createCallback(3),h.errback);
+h.state=7;break;case 7:return void Promise.resolve(_(u)).then(h.createCallback(3),h.errback);
 case 3:c=h.value,h.state=2;break;case 2:c&&n.push(c),h.state=5;break;case 8:h.popTry(),
 h.state=12,h.finallyFallThrough=16;break;case 11:h.popTry(),h.maybeUncatchable(),
 d=h.storedException,h.state=17;break;case 17:i=!0,s=d,h.state=12,h.finallyFallThrough=16;
@@ -606,7 +606,7 @@ case 29:return void Promise.resolve(t._openEditorsWithEntries(n)).then(h.createC
 case 25:r(),h.state=-2;break;case 21:h.state=h.finallyFallThrough;break;default:return h.end();
 }},this)})},_openEditorsWithUserSelectedEntries:function(){var e=this;return new Promise(function(t){
 var r,n;return $traceurRuntime.asyncWrap(function(a){for(;;)switch(a.state){case 0:
-a.pushTry(9,null),a.state=12;break;case 12:return void Promise.resolve(f({type:"openFile",
+a.pushTry(9,null),a.state=12;break;case 12:return void Promise.resolve(g({type:"openFile",
 acceptsMultiple:!0,accepts:[{extensions:["svg","svgz","html","png","jpg","jpeg","webp","gif"]
 }]})).then(a.createCallback(3),a.errback);case 3:r=a.value,a.state=2;break;case 2:
 a.popTry(),a.state=14;break;case 9:a.popTry(),a.maybeUncatchable(),n=a.storedException,
@@ -663,30 +663,30 @@ this._storeSessionDebounced()},_focusCurrentEditor:function(){this.currentEditor
 },_createUniqueTabID:function(){for(var e=0;;){var t="tab-"+e;if(!this["#tabs"].querySelector("#"+t))return t;
 e+=1}},_createUniqueEditorID:function(){for(var e=void 0!==arguments[0]?arguments[0]:[],t=0;;){
 var r="editor-"+t;if(!this["#editors"].querySelector("#"+r)&&!e.includes(r))return r;
-t+=1}},_addRecentEntries:function(e){var t=this;return new Promise(function(r){var n,a,i,s,o,l,u,c,d,h,f,v,p,_,k,y,x,C,E,S,R,A,M,T,L,P;
+t+=1}},_addRecentEntries:function(e){var t=this;return new Promise(function(r){var n,a,i,s,o,l,u,c,d,h,b,m,g,p,w,k,x,C,E,S,R,A,M,T,L,P;
 return $traceurRuntime.asyncWrap(function(j){for(;;)switch(j.state){case 0:j.state=0===e.length?71:63;
 break;case 71:r(),j.state=-2;break;case 63:n=[],a=Symbol(),i=!0,s=!1,o=void 0,j.state=64;
 break;case 64:j.pushTry(22,23),j.state=25;break;case 25:l=void 0,E=t._dbGetRecent,
 S=E.call(t),j.state=5;break;case 5:return void Promise.resolve(S).then(j.createCallback(3),j.errback);
 case 3:R=j.value,j.state=2;break;case 2:A=Symbol.iterator,M=R[A],T=M.call(R),u=T,
 j.state=7;break;case 7:j.state=21;break;case 21:j.state=(i=(l=u.next()).done)?19:17;
-break;case 15:i=!0,j.state=21;break;case 17:c=l.value,j.state=18;break;case 18:return void Promise.resolve(g(c)).then(j.createCallback(10),j.errback);
-case 10:d=j.value,j.state=9;break;case 9:j.state=d?11:15;break;case 11:return void Promise.resolve(b(d)).then(j.createCallback(13),j.errback);
+break;case 15:i=!0,j.state=21;break;case 17:c=l.value,j.state=18;break;case 18:return void Promise.resolve(_(c)).then(j.createCallback(10),j.errback);
+case 10:d=j.value,j.state=9;break;case 9:j.state=d?11:15;break;case 11:return void Promise.resolve(f(d)).then(j.createCallback(13),j.errback);
 case 13:h=j.value,j.state=12;break;case 12:d[a]=h,n.push(d),j.state=15;break;case 19:
 j.popTry(),j.state=23,j.finallyFallThrough=27;break;case 22:j.popTry(),j.maybeUncatchable(),
 L=j.storedException,j.state=28;break;case 28:s=!0,o=L,j.state=23,j.finallyFallThrough=27;
 break;case 23:j.popTry(),j.state=34;break;case 34:try{i||null==u["return"]||u["return"]();
-}finally{if(s)throw o}j.state=32;break;case 27:f=!0,v=!1,p=void 0,j.state=66;break;
-case 66:j.pushTry(48,49),j.state=51;break;case 51:_=void 0,k=e[Symbol.iterator](),
-j.state=47;break;case 47:j.state=(f=(_=k.next()).done)?45:43;break;case 39:f=!0,j.state=47;
-break;case 43:y=_.value,j.state=44;break;case 44:x=m(y).toLowerCase(),j.state=42;break;
-case 42:j.state="svg"===x||"svgz"===x||"html"===x?35:39;break;case 35:return void Promise.resolve(b(y)).then(j.createCallback(37),j.errback);
-case 37:y[a]=j.value,j.state=36;break;case 36:n=n.filter(function(e){return e[a]!==y[a];
-}),n.push(y),j.state=39;break;case 45:j.popTry(),j.state=49,j.finallyFallThrough=53;
+}finally{if(s)throw o}j.state=32;break;case 27:b=!0,m=!1,g=void 0,j.state=66;break;
+case 66:j.pushTry(48,49),j.state=51;break;case 51:p=void 0,w=e[Symbol.iterator](),
+j.state=47;break;case 47:j.state=(b=(p=w.next()).done)?45:43;break;case 39:b=!0,j.state=47;
+break;case 43:k=p.value,j.state=44;break;case 44:x=v(k).toLowerCase(),j.state=42;break;
+case 42:j.state="svg"===x||"svgz"===x||"html"===x?35:39;break;case 35:return void Promise.resolve(f(k)).then(j.createCallback(37),j.errback);
+case 37:k[a]=j.value,j.state=36;break;case 36:n=n.filter(function(e){return e[a]!==k[a];
+}),n.push(k),j.state=39;break;case 45:j.popTry(),j.state=49,j.finallyFallThrough=53;
 break;case 48:j.popTry(),j.maybeUncatchable(),P=j.storedException,j.state=54;break;
-case 54:v=!0,p=P,j.state=49,j.finallyFallThrough=53;break;case 49:j.popTry(),j.state=60;
-break;case 60:try{f||null==k["return"]||k["return"]()}finally{if(v)throw p}j.state=58;
-break;case 53:for(;n.length>w;)n.shift();C=n.map(function(e){return chrome.fileSystem.retainEntry(e);
+case 54:m=!0,g=P,j.state=49,j.finallyFallThrough=53;break;case 49:j.popTry(),j.state=60;
+break;case 60:try{b||null==w["return"]||w["return"]()}finally{if(m)throw g}j.state=58;
+break;case 53:for(;n.length>y;)n.shift();C=n.map(function(e){return chrome.fileSystem.retainEntry(e);
 }),j.state=68;break;case 68:return void Promise.resolve(t._dbSetRecent(C)).then(j.createCallback(62),j.errback);
 case 62:r(),j.state=-2;break;case 32:j.state=j.finallyFallThrough;break;case 58:j.state=j.finallyFallThrough;
 break;default:return j.end()}},this)})},_clearRecentEntries:function(){var e=this;
@@ -710,14 +710,14 @@ break;case 37:try{a||null==l["return"]||l["return"]()}finally{if(i)throw s}S.sta
 break;case 30:return void Promise.resolve(e._dbSetSession(r)).then(S.createCallback(39),S.errback);
 case 39:e._storingSession=!1,t(),S.state=-2;break;case 35:S.state=S.finallyFallThrough;
 break;default:return S.end()}},this)})},_restoreSession:function(){var e=this;return new Promise(function(r,n){
-var a,i,s,o,l,u,c,d,b,f,p,_,w,k,y,x,C,E,S,R,A,M,T,L,P,j,W,z,D,$,I,O,B,F,N,U,q,H,V,Z,G,K,X,Y,Q,J,ee,te,re,ne,ae,ie,se,oe,le,ue,ce,de,he,be;
+var a,i,s,o,l,u,c,d,h,b,f,g,w,k,y,x,C,E,S,R,A,M,T,L,P,j,W,z,D,$,I,O,B,F,N,U,q,H,V,Z,G,K,X,Y,Q,J,ee,te,re,ne,ae,ie,se,oe,le,ue,ce,de,he,be;
 return $traceurRuntime.asyncWrap(function(n){for(;;)switch(n.state){case 0:e._restoringSession=!0,
 n.state=119;break;case 119:return void Promise.resolve(e._dbGetSession()).then(n.createCallback(3),n.errback);
 case 3:a=n.value,n.state=2;break;case 2:i=!0,s=!1,o=void 0,n.state=121;break;case 121:
 n.pushTry(23,24),n.state=26;break;case 26:l=void 0,u=a[Symbol.iterator](),n.state=22;
 break;case 22:n.state=(i=(l=u.next()).done)?20:18;break;case 17:i=!0,n.state=22;break;
 case 18:c=l.value,n.state=19;break;case 19:Y=c.retainedEntry,n.state=15;break;case 15:
-n.state=Y?7:11;break;case 7:Q=c.retainedEntry,J=g(Q),n.state=8;break;case 8:return void Promise.resolve(J).then(n.createCallback(6),n.errback);
+n.state=Y?7:11;break;case 7:Q=c.retainedEntry,J=_(Q),n.state=8;break;case 8:return void Promise.resolve(J).then(n.createCallback(6),n.errback);
 case 6:ee=n.value,n.state=5;break;case 5:te=ee,n.state=10;break;case 11:te=null,n.state=10;
 break;case 10:c.entry=te,n.state=17;break;case 20:n.popTry(),n.state=24,n.finallyFallThrough=28;
 break;case 23:n.popTry(),n.maybeUncatchable(),re=n.storedException,n.state=29;break;
@@ -726,13 +726,13 @@ break;case 35:try{i||null==u["return"]||u["return"]()}finally{if(s)throw o}n.sta
 break;case 28:a=a.filter(function(e){return e.entry||e.unsavedArtwork||null===e.retainedEntry;
 }),n.state=123;break;case 123:return void Promise.resolve(e._getLaunchEntries()).then(n.createCallback(38),n.errback);
 case 38:d=n.value,n.state=37;break;case 37:n.state=d.length>0?96:88;break;case 96:
-b=!0,f=!1,p=void 0,n.state=97;break;case 97:n.pushTry(83,84),n.state=86;break;case 86:
-_=void 0,w=d[Symbol.iterator](),n.state=82;break;case 82:n.state=(b=(_=w.next()).done)?80:78;
-break;case 77:b=!0,n.state=82;break;case 78:k=_.value,n.state=79;break;case 79:y=void 0,
+h=!0,b=!1,f=void 0,n.state=97;break;case 97:n.pushTry(83,84),n.state=86;break;case 86:
+g=void 0,w=d[Symbol.iterator](),n.state=82;break;case 82:n.state=(h=(g=w.next()).done)?80:78;
+break;case 77:h=!0,n.state=82;break;case 78:k=g.value,n.state=79;break;case 79:y=void 0,
 x=!0,C=!1,E=void 0,n.state=75;break;case 75:n.pushTry(61,62),n.state=64;break;case 64:
 S=void 0,R=a[Symbol.iterator](),n.state=60;break;case 60:n.state=(x=(S=R.next()).done)?58:56;
 break;case 52:x=!0,n.state=60;break;case 56:A=S.value,n.state=57;break;case 57:ne=A.entry,
-n.state=50;break;case 50:n.state=ne?42:46;break;case 42:ae=A.entry,ie=v(k,ae),n.state=43;
+n.state=50;break;case 50:n.state=ne?42:46;break;case 42:ae=A.entry,ie=p(k,ae),n.state=43;
 break;case 43:return void Promise.resolve(ie).then(n.createCallback(41),n.errback);
 case 41:se=n.value,n.state=40;break;case 40:oe=se,n.state=45;break;case 46:oe=ne,
 n.state=45;break;case 45:n.state=oe?53:52;break;case 53:y=A,n.state=58;break;case 58:
@@ -746,11 +746,11 @@ z=!0,D=!1,$=void 0;try{for(I=void 0,O=a[Symbol.iterator]();!(z=(I=O.next()).done
 B.primary=!1}catch(fe){D=!0,$=fe}finally{try{z||null==O["return"]||O["return"]()}finally{
 if(D)throw $}}a.push({entry:k,unsavedArtwork:null,primary:!0})}n.state=77;break;case 80:
 n.popTry(),n.state=84,n.finallyFallThrough=88;break;case 83:n.popTry(),n.maybeUncatchable(),
-ue=n.storedException,n.state=89;break;case 89:f=!0,p=ue,n.state=84,n.finallyFallThrough=88;
-break;case 84:n.popTry(),n.state=95;break;case 95:try{b||null==w["return"]||w["return"]();
-}finally{if(f)throw p}n.state=93;break;case 88:n.state=a.length>0?103:102;break;case 103:
+ue=n.storedException,n.state=89;break;case 89:b=!0,f=ue,n.state=84,n.finallyFallThrough=88;
+break;case 84:n.popTry(),n.state=95;break;case 95:try{h||null==w["return"]||w["return"]();
+}finally{if(b)throw f}n.state=93;break;case 88:n.state=a.length>0?103:102;break;case 103:
 F=[],a.forEach(function(r){var n=null,a=null,i="Untitled",s=r.primary;if(r.entry){
-var o=h(r.entry),l=m(r.entry).toLowerCase();i=o+"."+("svgz"===l?"svgz":"svg")}var u=function(){
+var o=m(r.entry),l=v(r.entry).toLowerCase();i=o+"."+("svgz"===l?"svgz":"svg")}var u=function(){
 n=e["#tabs"].openTab(),n.id=e._createUniqueTabID(),n.href="#"+n.id.replace("tab","editor"),
 n.label=i,n.disabled=!0,r.unsavedArtwork&&(n.edited=!0)},c=function(i){return new Promise(function(s){
 return $traceurRuntime.asyncWrap(function(o){for(;;)switch(o.state){case 0:a=t("bx-editor"),
@@ -778,7 +778,7 @@ var e=this;return new Promise(function(t){var r=[];e.postMessage("background","g
 var n,a,i,s,o,l,u,c;return $traceurRuntime.asyncWrap(function(d){for(;;)switch(d.state){
 case 0:n=!0,a=!1,i=void 0,d.state=25;break;case 25:d.pushTry(11,12),d.state=14;break;
 case 14:s=void 0,o=e[Symbol.iterator](),d.state=10;break;case 10:d.state=(n=(s=o.next()).done)?8:6;
-break;case 5:n=!0,d.state=10;break;case 6:l=s.value,d.state=7;break;case 7:return void Promise.resolve(g(l)).then(d.createCallback(3),d.errback);
+break;case 5:n=!0,d.state=10;break;case 6:l=s.value,d.state=7;break;case 7:return void Promise.resolve(_(l)).then(d.createCallback(3),d.errback);
 case 3:u=d.value,d.state=2;break;case 2:u&&r.push(u),d.state=5;break;case 8:d.popTry(),
 d.state=12,d.finallyFallThrough=16;break;case 11:d.popTry(),d.maybeUncatchable(),
 c=d.storedException,d.state=17;break;case 17:a=!0,i=c,d.state=12,d.finallyFallThrough=16;
@@ -815,8 +815,8 @@ i.onsuccess=function(e){return n(e.target.result)},i.onerror=function(e){return 
 }})}),Promise.all(a).then(r,n),i.state=-2;break;default:return i.end()}},this)})},
 _dbClearSession:function(){var e=this;return new Promise(function(t,r){var n=e._db.transaction(["session"],"readwrite").objectStore("session").clear();
 n.onsuccess=function(e){return t(e.target.result)},n.onerror=function(e){return r(e.target.result);
-}})}},{},e)}(HTMLBodyElement),x=r("body","bx-masterbody",y);return{get default(){
-return x}}}),$traceurRuntime.registerModule("elements/bx-menu",[],function(){"use strict";
+}})}},{},e)}(HTMLBodyElement),E=r("body","bx-masterbody",C);return{get default(){
+return E}}}),$traceurRuntime.registerModule("elements/bx-menu",[],function(){"use strict";
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menuitem","elements/bx-menu"));
 var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-menu")).registerElement,t=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-menu")).sleep,r=75,n=300,a='\n  <style>\n    @import url("stylesheets/scrollbars.css");\n    @import url("stylesheets/bx-menu.css");\n  </style>\n\n  <main id="main">\n    <content id="content"></content>\n  </main>\n',i=function(e){
 function i(){$traceurRuntime.superConstructor(i).apply(this,arguments)}return $traceurRuntime.createClass(i,{

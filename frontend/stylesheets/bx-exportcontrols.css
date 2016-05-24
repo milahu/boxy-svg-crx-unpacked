@@ -8,8 +8,37 @@
   display: block;
 }
 
-section > div {
+#size-div .hbox {
+  display: flex;
+  align-items: center;
+}
+
+bx-slider {
+  width: 100%;
+}
+
+#format-div {
   margin-bottom: 10px;
+}
+
+#area-div {
+  margin-bottom: 10px;
+}
+
+#size-div {
+  margin-bottom: 10px;
+}
+
+#compression-div {
+  margin-bottom: 10px;
+}
+
+#preserve-aspect-ratio-button {
+    width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    fill: white;
+    margin-bottom: 3px;
 }
 
 #format-select {
@@ -17,14 +46,6 @@ section > div {
 }
 
 #area-select {
-  width: 100%;
-}
-
-#quality-slider {
-  width: 100%;
-}
-
-#compression-slider {
   width: 100%;
 }
 
