@@ -5,15 +5,16 @@
  */
 
 :host {
-  display: block;
+  display: none;
+  visibility: hidden;
   position: fixed;
   width: 235px;
   height: 450px;
   min-height: 27px;
   min-width: 225px;
 }
-:host(:not([enabled])) {
-  display: none;
+:host([enabled]) {
+  display: block;
 }
 
 #container {

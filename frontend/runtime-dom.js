@@ -779,14 +779,9 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 
     var setAttribute = SVGPathElement.prototype.setAttribute;
     var removeAttribute = SVGPathElement.prototype.removeAttribute;
-    var symbols;
 
-    if (window.Symbol) {
-      symbols = {cachedPathData: Symbol(), cachedNormalizedPathData: Symbol()};
-    }
-    else {
-      symbols = {cachedPathData: "__cachedPathData", cachedNormalizedPathData: "__cachedNormalizedPathData"};
-    }
+    var $cachedPathData = window.Symbol ? Symbol() : "__cachedPathData";
+    var $cachedNormalizedPathData = window.Symbol ? Symbol() : "__cachedNormalizedPathData";
 
     // @info
     //   Get an array of corresponding cubic bezier curve parameters for given arc curve paramters.
@@ -1354,8 +1349,8 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 
     SVGPathElement.prototype.setAttribute = function(name, value) {
       if (name === "d") {
-        this[symbols.cachedPathData] = null;
-        this[symbols.cachedNormalizedPathData] = null;
+        this[$cachedPathData] = null;
+        this[$cachedNormalizedPathData] = null;
       }
 
       setAttribute.call(this, name, value);
@@ -1363,8 +1358,8 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 
     SVGPathElement.prototype.removeAttribute = function(name, value) {
       if (name === "d") {
-        this[symbols.cachedPathData] = null;
-        this[symbols.cachedNormalizedPathData] = null;
+        this[$cachedPathData] = null;
+        this[$cachedNormalizedPathData] = null;
       }
 
       removeAttribute.call(this, name);
@@ -1372,32 +1367,32 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 
     SVGPathElement.prototype.getPathData = function(options) {
       if (options && options.normalize) {
-        if (this[symbols.cachedNormalizedPathData]) {
-          return clonePathData(this[symbols.cachedNormalizedPathData]);
+        if (this[$cachedNormalizedPathData]) {
+          return clonePathData(this[$cachedNormalizedPathData]);
         }
         else {
           var pathData;
 
-          if (this[symbols.cachedPathData]) {
-            pathData = clonePathData(this[symbols.cachedPathData]);
+          if (this[$cachedPathData]) {
+            pathData = clonePathData(this[$cachedPathData]);
           }
           else {
             pathData = parsePathDataString(this.getAttribute("d") || "");
-            this[symbols.cachedPathData] = clonePathData(pathData);
+            this[$cachedPathData] = clonePathData(pathData);
           }
 
           var normalizedPathData = reducePathData(absolutizePathData(pathData));
-          this[symbols.cachedNormalizedPathData] = clonePathData(normalizedPathData);
+          this[$cachedNormalizedPathData] = clonePathData(normalizedPathData);
           return normalizedPathData;
         }
       }
       else {
-        if (this[symbols.cachedPathData]) {
-          return clonePathData(this[symbols.cachedPathData]);
+        if (this[$cachedPathData]) {
+          return clonePathData(this[$cachedPathData]);
         }
         else {
           var pathData = parsePathDataString(this.getAttribute("d") || "");
-          this[symbols.cachedPathData] = clonePathData(pathData);
+          this[$cachedPathData] = clonePathData(pathData);
           return pathData;
         }
       }
@@ -1448,7 +1443,7 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 //   https://svgwg.org/svg2-draft/single-page.html#types-InterfaceSVGElement
 //   https://html.spec.whatwg.org/multipage/dom.html#dom-dataset
 (() => {
-  let symbols = {proxy: Symbol()};
+  let $proxy = Symbol();
 
   // @info
   //   Add support for "dataset" property
@@ -1457,10 +1452,10 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
     configurable: false,
 
     get() {
-      if (!this[symbols.proxy]) {
+      if (!this[$proxy]) {
         let element = this;
 
-        this[symbols.proxy] = new Proxy({}, {
+        this[$proxy] = new Proxy({}, {
           get(target, key) {
             let attributeName = "data-" + this._toDashCase(key);
 
@@ -1532,7 +1527,7 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
         });
       }
 
-      return this[symbols.proxy];
+      return this[$proxy];
     }
   });
 })();

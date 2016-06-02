@@ -7,13 +7,15 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 38px);
+  height: 100%;
   overflow: hidden;
 }
 
 main {
   margin: 14px;
   height: 100%;
+  display: flex;
+  flex-flow: column;
 }
 
 #buttons {
@@ -29,7 +31,8 @@ main {
 }
 
 #lists {
-  height: calc(100% - 60px);
+  height: 0;
+  flex: 1;
 }
 
 #lists .list {

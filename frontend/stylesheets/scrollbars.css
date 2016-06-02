@@ -24,6 +24,6 @@
 }
 
 ::-webkit-scrollbar-corner {
-  background: transparent
+  background: transparent;
   height: 0px;
 }

@@ -1113,10 +1113,10 @@ var c=!0,d=!1,h=void 0;try{for(var b=void 0,m=this.children[Symbol.iterator]();!
 var f=b.value;f===e?f.style.order=0:f.style.order=s(f.style.order)+1}}catch(v){d=!0,
 h=v}finally{try{c||null==m["return"]||m["return"]()}finally{if(d)throw h}}}else{var g=this._getTabForSlot(t+1);
 g.style.order=s(g.style.order)-1,e.style.order=s(e.style.order)+1}},getTabsByScreenPosition:function(){
-var e={slot:Symbol()},t=!0,r=!1,n=void 0;try{for(var a=void 0,i=this.children[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
-var s=a.value;s[e.slot]=this._getSlotForTab(s)}}catch(o){r=!0,n=o}finally{try{t||null==i["return"]||i["return"]();
+var e=Symbol(),t=!0,r=!1,n=void 0;try{for(var a=void 0,i=this.children[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
+var s=a.value;s[e]=this._getSlotForTab(s)}}catch(o){r=!0,n=o}finally{try{t||null==i["return"]||i["return"]();
 }finally{if(r)throw n}}return $traceurRuntime.spread(this.children).sort(function(t,r){
-return t[e.slot]>r[e.slot]})},_onMouseDown:function(e){0===e.button&&("bx-tab"===e.target.localName?this._onTabMouseDown(e):"main"===e.target.localName&&this._onEmptySpaceDragStart(e));
+return t[e]>r[e]})},_onMouseDown:function(e){0===e.button&&("bx-tab"===e.target.localName?this._onTabMouseDown(e):"main"===e.target.localName&&this._onEmptySpaceDragStart(e));
 },_onEmptySpaceDragStart:function(e){var t,r,n=chrome.app.window.current().getBounds();
 window.addEventListener("mousemove",t=function(t){var r=t.screenX-e.screenX,a=t.screenY-e.screenY;
 chrome.app.window.current().setBounds({left:n.left+r,top:n.top+a,width:n.width,height:n.height
@@ -1126,28 +1126,27 @@ window.removeEventListener("mouseup",r)})},_onTabDown:function(e){this._waitingF
 a(s.clientX-e.clientX)>1&&(document.removeEventListener("mousemove",t),document.removeEventListener("mouseup",r),
 n._onTabDragStart(s,i))}),document.addEventListener("mouseup",r=function(e){document.removeEventListener("mousemove",t),
 document.removeEventListener("mouseup",r)})},_onTabDragStart:function(e,t){var r=this,a=t.getBoundingClientRect().width,i=this.getBoundingClientRect().width;
-t.style.zIndex=999,this["#new-tab-button"].style.opacity="0";var s={slot:Symbol(),
-initialSlot:Symbol(),flexOffset:Symbol()},o=!0,l=!1,u=void 0;try{for(var c=void 0,d=this.children[Symbol.iterator]();!(o=(c=d.next()).done);o=!0){
-var h=c.value,b=this._getSlotForTab(h);h[s.slot]=b,h[s.initialSlot]=b,h[s.flexOffset]=h.getBoundingClientRect().left-1,
-h!==t&&(h.style.transition="transform 0.15s ease-out")}}catch(m){l=!0,u=m}finally{
-try{o||null==d["return"]||d["return"]()}finally{if(l)throw u}}var f=function(e,n){
-if(n>e+1)for(var i=e;n>i;i+=1)f(i,i+1);else if(e-1>n)for(var o=e;o>n;o-=1)f(o,o-1);else{
-var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=r.children[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
-var b=d.value;if(b!==t){b[s.slot]===n&&(b[s.slot]=e);for(var m=-b[s.flexOffset],v=0;v<b[s.slot];v+=1)m+=a;
-0===m?b.style.transform=null:b.style.transform="translate("+m+"px)"}}}catch(g){u=!0,
-c=g}finally{try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}}},v=function(n){
-var o=n.clientX-e.clientX;o+t[s.flexOffset]<=0?o=-t[s.flexOffset]:o+t[s.flexOffset]+a>i&&(o=i-t[s.flexOffset]-a),
-t.style.transform="translate("+o+"px)";var l=r._getSlotForTab(t);if(l!==t[s.slot]){
-var u=t[s.slot];t[s.slot]=l,f(u,t[s.slot])}},g=function(e){var i,o,l,u,c,d,h,b;return $traceurRuntime.asyncWrap(function(e){
-for(;;)switch(e.state){case 0:for(document.removeEventListener("mousemove",v),document.removeEventListener("mouseup",g),
-i=-t[s.flexOffset],o=0;o<t[s.slot];o+=1)i+=a;t.style.transition="transform 0.15s ease-out",
-t.style.transform="translate("+i+"px)",t[s.initialSlot]!==t[s.slot]&&r.dispatchEvent(new CustomEvent("tabslotchange",{
-detail:{tab:t,slot:t[s.slot]}})),e.state=4;break;case 4:return void Promise.resolve(n(150)).then(e.createCallback(2),e.errback);
-case 2:t.style.zIndex=null,r["#new-tab-button"].style.opacity=null,l=!0,u=!1,c=void 0;
-try{for(d=void 0,h=r.children[Symbol.iterator]();!(l=(d=h.next()).done);l=!0)b=d.value,
-b.style.transition=null,b.style.transform=null,b.style.order=b[s.slot]}catch(m){u=!0,
-c=m}finally{try{l||null==h["return"]||h["return"]()}finally{if(u)throw c}}e.state=-2;
-break;default:return e.end()}},this)};document.addEventListener("mouseup",g),document.addEventListener("mousemove",v);
+t.style.zIndex=999,this["#new-tab-button"].style.opacity="0";var s=Symbol(),o=Symbol(),l=Symbol(),u=!0,c=!1,d=void 0;
+try{for(var h=void 0,b=this.children[Symbol.iterator]();!(u=(h=b.next()).done);u=!0){
+var m=h.value,f=this._getSlotForTab(m);m[s]=f,m[o]=f,m[l]=m.getBoundingClientRect().left-1,
+m!==t&&(m.style.transition="transform 0.15s ease-out")}}catch(v){c=!0,d=v}finally{
+try{u||null==b["return"]||b["return"]()}finally{if(c)throw d}}var g=function(e,n){
+if(n>e+1)for(var i=e;n>i;i+=1)g(i,i+1);else if(e-1>n)for(var o=e;o>n;o-=1)g(o,o-1);else{
+var u=!0,c=!1,d=void 0;try{for(var h=void 0,b=r.children[Symbol.iterator]();!(u=(h=b.next()).done);u=!0){
+var m=h.value;if(m!==t){m[s]===n&&(m[s]=e);for(var f=-m[l],v=0;v<m[s];v+=1)f+=a;0===f?m.style.transform=null:m.style.transform="translate("+f+"px)";
+}}}catch(p){c=!0,d=p}finally{try{u||null==b["return"]||b["return"]()}finally{if(c)throw d;
+}}}},p=function(n){var o=n.clientX-e.clientX;o+t[l]<=0?o=-t[l]:o+t[l]+a>i&&(o=i-t[l]-a),
+t.style.transform="translate("+o+"px)";var u=r._getSlotForTab(t);if(u!==t[s]){var c=t[s];
+t[s]=u,g(c,t[s])}},_=function(e){var i,u,c,d,h,b,m,f;return $traceurRuntime.asyncWrap(function(e){
+for(;;)switch(e.state){case 0:for(document.removeEventListener("mousemove",p),document.removeEventListener("mouseup",_),
+i=-t[l],u=0;u<t[s];u+=1)i+=a;t.style.transition="transform 0.15s ease-out",t.style.transform="translate("+i+"px)",
+t[o]!==t[s]&&r.dispatchEvent(new CustomEvent("tabslotchange",{detail:{tab:t,slot:t[s]
+}})),e.state=4;break;case 4:return void Promise.resolve(n(150)).then(e.createCallback(2),e.errback);
+case 2:t.style.zIndex=null,r["#new-tab-button"].style.opacity=null,c=!0,d=!1,h=void 0;
+try{for(b=void 0,m=r.children[Symbol.iterator]();!(c=(b=m.next()).done);c=!0)f=b.value,
+f.style.transition=null,f.style.transform=null,f.style.order=f[s]}catch(v){d=!0,h=v;
+}finally{try{c||null==m["return"]||m["return"]()}finally{if(d)throw h}}e.state=-2;
+break;default:return e.end()}},this)};document.addEventListener("mouseup",_),document.addEventListener("mousemove",p);
 },_onNewTabButtonClick:function(e){0===e.button&&this.dispatchEvent(new CustomEvent("tabopenintent"));
 },_getSlotForTab:function(e){var t=e.getBoundingClientRect();if(t.left<t.width/2)return 0;
 for(var r=t.width/2,n=1;o>n;n+=1){if(t.left>=r&&t.left<r+t.width)return n>this.childElementCount-1?this.childElementCount-1:n;
