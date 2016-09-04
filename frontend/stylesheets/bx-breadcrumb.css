@@ -7,6 +7,7 @@
 :host {
   display: block;
   height: 25px;
+  contain: style paint layout;
 }
 
 main {

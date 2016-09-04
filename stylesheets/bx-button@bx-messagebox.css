@@ -8,6 +8,7 @@
   width: auto;
   height: 36px;
   display: block;
+  contain: layout style paint;
 }
 
 main {

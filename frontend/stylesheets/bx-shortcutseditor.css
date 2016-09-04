@@ -9,6 +9,7 @@
   height: 100%;
   display: block;
   outline: none;
+  contain: size layout style;
 }
 
 main {

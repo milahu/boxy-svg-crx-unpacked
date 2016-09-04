@@ -8,6 +8,7 @@
   display: block;
   width: 100px;
   height: 100px;
+  contain: size layout style paint;
 }
 
 main {

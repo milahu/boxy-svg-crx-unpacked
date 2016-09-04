@@ -7,6 +7,7 @@
 :host {
   display: block;
   width: 42px;
+  contain: size layout style paint;
 }
 
 ::-webkit-scrollbar {

@@ -8,6 +8,7 @@
   width: 100px;
   height: 35px;
   display: block;
+  contain: size layout style;
 }
 
 main {

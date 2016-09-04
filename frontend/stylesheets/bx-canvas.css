@@ -10,35 +10,16 @@
   height: 100%;
   background: url("../images/checkboard.png") repeat 0 0;
   background-size: 35px;
+  contain: size layout style paint;
 }
 
 main {
   background: white;
-  /* @bugfix: Prevent element with "contenteditable" attribute from being scrolled on text input */
-  overflow: hidden;
+  touch-action: none;
 }
 
 #artboards > g[is="bx-svgartboard"]:not(:last-child),
 #artboards > g[is="bx-symbolartboard"]:not(:last-child),
 #artboards > g[is="bx-patternartboard"]:not(:last-child) {
   display: none;
-}
-
-#artboards text {
-  /* @bugfix: Hide broken native caret */
-  color: transparent;
-  /* Make text non-editable and non-selectable */
-  -webkit-user-modify: read-only;
-  -webkit-user-select: none;
-}
-main[contenteditable] #artboards text {
-  cursor: text;
-  /* Make text editable and selectable */
-  -webkit-user-modify: read-write-plaintext-only;
-  -webkit-user-select: text;
-}
-
-#artboards ::selection {
-  /* @bugfix: Hide broken native selection rect */
-  background: rgba(0, 0, 0, 0);
 }

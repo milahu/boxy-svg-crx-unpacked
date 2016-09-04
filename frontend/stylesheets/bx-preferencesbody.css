@@ -12,6 +12,7 @@
 
 :host {
   outline: none;
+  contain: size layout style paint;
 }
 
 label {
@@ -100,7 +101,20 @@ main[data-extra-whitespace] {
   height: calc(100% - 55px);
 }
 
-.view[data-view="ui"] bx-colorselect {
-  width: 180px;
-  margin-bottom: 12px;
+/**
+ * UI view
+ */
+
+#ui-colors-section .item {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+#ui-colors-section .item bx-colorselect {
+  width: 50px;
+}
+
+#ui-colors-section .item label {
+  margin: 0 0 0 8px;
 }

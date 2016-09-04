@@ -6,6 +6,7 @@
 
 :host {
   display: block;
+  contain: layout style;
 }
 
 #size-div .hbox {

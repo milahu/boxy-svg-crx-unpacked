@@ -7,6 +7,7 @@
 :host {
   display: block;
   height: 32px;
+  contain: layout style;
 }
 :host([hidden]) {
   display: none;

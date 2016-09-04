@@ -6,6 +6,7 @@
 
 :host {
   display: block;
+  contain: style layout;
 }
 
 .sections-row {

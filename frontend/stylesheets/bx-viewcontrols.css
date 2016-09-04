@@ -6,6 +6,7 @@
 
 :host {
   display: block;
+  contain: size layout style;
 }
 
 /**
@@ -43,6 +44,10 @@
 #view-box-section h3#view-box-width-heading,
 #view-box-section h3#view-box-height-heading {
   font-size: 16px;
+}
+
+#view-box-section #view-box-sliders > div {
+  width: 25%;
 }
 
 /**

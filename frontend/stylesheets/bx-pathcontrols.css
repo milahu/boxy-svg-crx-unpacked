@@ -6,11 +6,16 @@
 
 :host {
   display: block;
+  contain: size layout style;
 }
 
 .hbox {
   display: flex;
   align-items: center;
+}
+
+.hbox > bx-button {
+  width: 50%;
 }
 
 #convert-to-path-button {

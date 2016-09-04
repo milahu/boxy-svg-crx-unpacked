@@ -9,6 +9,7 @@
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+  contain: size layout style;
 }
 
 main {

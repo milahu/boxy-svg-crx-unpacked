@@ -4,6 +4,10 @@
  *   © 2012-2016 Jarosław Foksa
  */
 
+:host {
+  contain: size layout style paint;
+}
+
 #outline {
   fill: none;
   stroke: red;

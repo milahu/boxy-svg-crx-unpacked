@@ -6,6 +6,7 @@
 
 :host {
   cursor: default;
+  contain: size layout style;
 }
 
 #overlay {

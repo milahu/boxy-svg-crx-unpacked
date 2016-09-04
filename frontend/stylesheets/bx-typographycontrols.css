@@ -6,7 +6,8 @@
 
 :host {
   display: block;
-  height: calc(100% - 29px);
+  height: 100%;
+  contain: size layout style;
 }
 
 .hbox {
@@ -20,6 +21,21 @@
 
 #master-view[hidden] {
   display: none;
+}
+
+/*
+ * Preview section
+ */
+
+#preview-section {
+  padding: 9px 10px;
+  background: white;
+  color: black;
+  font-size: 48px;
+  margin: 9px 0 1px;
+}
+
+#preview-section #preview {
 }
 
 /*

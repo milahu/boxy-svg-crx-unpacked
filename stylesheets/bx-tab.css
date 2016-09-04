@@ -9,6 +9,7 @@
   height: 100%;
   max-width: 200px;
   flex: 1 0 0;
+  contain: size layout style paint;
 }
 
 main {

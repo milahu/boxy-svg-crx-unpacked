@@ -10,6 +10,7 @@
   display: block;
   outline: none;
   touch-action: pan-y;
+  contain: size layout style;
 }
 :host([disabled]) {
   pointer-events: none;

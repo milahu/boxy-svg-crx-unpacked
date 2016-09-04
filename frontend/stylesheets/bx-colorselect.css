@@ -9,6 +9,7 @@
   height: 36px;
   display: block;
   margin: 5px 0;
+  contain: size layout style;
 }
 :host([disabled]) {
   pointer-events: none;

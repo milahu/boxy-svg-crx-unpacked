@@ -10,6 +10,7 @@
   margin: 5px 0;
   display: block;
   outline: none;
+  contain: size layout style;
 }
 :host([disabled]) {
   pointer-events: none;

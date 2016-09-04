@@ -13,6 +13,7 @@
   min-height: 100px;
   bottom: 6px;
   left: 52px;
+  contain: size layout style;
 }
 :host([enabled]) {
   display: block;
@@ -38,7 +39,7 @@ main {
   cursor: ns-resize;
 }
 
-#dom-tree {
+#dom-editor {
   padding: 12px;
   box-sizing: border-box;
 }

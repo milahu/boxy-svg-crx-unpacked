@@ -9,6 +9,7 @@
   background: #3b3b3b;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
   max-width: 500px;
+  contain: layout style paint;
 }
 :host(:focus) {
   outline: none;

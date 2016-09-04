@@ -8,6 +8,7 @@
   width: 100px;
   height: 35px;
   display: block;
+  contain: style layout;
 }
 :host([disabled]) {
   opacity: 0.5;

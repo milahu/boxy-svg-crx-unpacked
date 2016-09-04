@@ -37,7 +37,7 @@ Object.defineProperty(ClientRect.prototype, "y", {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-// Node polyfills (http://dom.spec.whatwg.org)
+// Node polyfills (http://dom.spec.whatwg.org, https://github.com/whatwg/dom/issues/161)
 //
 
 if (!Node.prototype.append) {
@@ -68,7 +68,13 @@ if (!Node.prototype.replace) {
   Node.prototype.replace = function(element) {
     this.parentNode.replaceChild(element, this);
   };
-};
+}
+
+if (!Node.prototype.closest) {
+  Node.prototype.closest = function(selector) {
+    return this.parentNode ? this.parentNode.closest(selector) : null;
+  };
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,7 +108,7 @@ Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
 // SVGRect polyfills (http://dev.w3.org/fxtf/geometry/#DOMRect)
 //
 
-(() => {
+{
   let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
   SVGRect = new Proxy(SVGRect, {
@@ -158,7 +164,7 @@ Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
       return Math.min(this.x, this.x + this.width);
     }
   });
-})();
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -166,7 +172,7 @@ Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
 // SVGPoint polyfills (http://dev.w3.org/fxtf/geometry/#DOMPoint)
 //
 
-(() => {
+{
   let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
   SVGPoint = new Proxy(SVGPoint, {
@@ -188,7 +194,7 @@ Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
   SVGPoint.prototype.toString = function() {
     return "point(" + this.x + ", " + this.y + ")";
   };
-})();
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -196,7 +202,7 @@ Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
 // SVGMatrix polyfills (http://dev.w3.org/fxtf/geometry/#DOMMatrix)
 //
 
-(() => {
+{
   let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
   SVGMatrix = new Proxy(SVGMatrix, {
@@ -407,7 +413,13 @@ Object.defineProperty(HTMLHeadingElement.prototype, "disabled", {
 
     return this;
   };
-})();
+
+  Object.defineProperty(SVGMatrix.prototype, "is2D", {
+    enumerable: true,
+    configurable: false,
+    get() { return true; }
+  });
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -845,8 +857,8 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
         cx = k * r1 * y / r2 + (x1 + x2) / 2;
         cy = k * -r2 * x / r1 + (y1 + y2) / 2;
 
-        f1 = Math.asin(((y1 - cy) / r2).toFixed(9));
-        f2 = Math.asin(((y2 - cy) / r2).toFixed(9));
+        f1 = Math.asin(parseFloat(((y1 - cy) / r2).toFixed(9)));
+        f2 = Math.asin(parseFloat(((y2 - cy) / r2).toFixed(9)));
 
         if (x1 < cx) {
           f1 = Math.PI - f1;
@@ -1428,6 +1440,132 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
         this.setAttribute("d", d);
       }
     };
+
+    SVGRectElement.prototype.getPathData = function(options) {
+      var x = this.x.baseVal.value;
+      var y = this.y.baseVal.value;
+      var width = this.width.baseVal.value;
+      var height = this.height.baseVal.value;
+      var rx = this.hasAttribute("rx") ? this.rx.baseVal.value : this.ry.baseVal.value;
+      var ry = this.hasAttribute("ry") ? this.ry.baseVal.value : this.rx.baseVal.value;
+
+      if (rx > width / 2) {
+        rx = width / 2;
+      }
+
+      if (ry > height / 2) {
+        ry = height / 2;
+      }
+
+      var pathData = [
+        {type: "M", values: [x+rx, y]},
+        {type: "H", values: [x+width-rx]},
+        {type: "A", values: [rx, ry, 0, 0, 1, x+width, y+ry]},
+        {type: "V", values: [y+height-ry]},
+        {type: "A", values: [rx, ry, 0, 0, 1, x+width-rx, y+height]},
+        {type: "H", values: [x+rx]},
+        {type: "A", values: [rx, ry, 0, 0, 1, x, y+height-ry]},
+        {type: "V", values: [y+ry]},
+        {type: "A", values: [rx, ry, 0, 0, 1, x+rx, y]},
+        {type: "Z", values: []}
+      ];
+
+      // Get rid of redundant "A" segs when either rx or ry is 0
+      pathData = pathData.filter(function(s) {
+        return s.type === "A" && (s.values[0] === 0 || s.values[1] === 0) ? false : true;
+      });
+
+      if (options && options.normalize === true) {
+        pathData = reducePathData(pathData);
+      }
+
+      return pathData;
+    };
+
+    SVGCircleElement.prototype.getPathData = function(options) {
+      var cx = this.cx.baseVal.value;
+      var cy = this.cy.baseVal.value;
+      var r = this.r.baseVal.value;
+
+      var pathData = [
+        { type: "M",  values: [cx + r, cy] },
+        { type: "A",  values: [r, r, 0, 0, 1, cx, cy+r] },
+        { type: "A",  values: [r, r, 0, 0, 1, cx-r, cy] },
+        { type: "A",  values: [r, r, 0, 0, 1, cx, cy-r] },
+        { type: "A",  values: [r, r, 0, 0, 1, cx+r, cy] },
+        { type: "Z",  values: [] }
+      ];
+
+      if (options && options.normalize === true) {
+        pathData = reducePathData(pathData);
+      }
+
+      return pathData;
+    };
+
+    SVGEllipseElement.prototype.getPathData = function(options) {
+      var cx = this.cx.baseVal.value;
+      var cy = this.cy.baseVal.value;
+      var rx = this.rx.baseVal.value;
+      var ry = this.ry.baseVal.value;
+
+      var pathData = [
+        { type: "M",  values: [cx + rx, cy] },
+        { type: "A",  values: [rx, ry, 0, 0, 1, cx, cy+ry] },
+        { type: "A",  values: [rx, ry, 0, 0, 1, cx-rx, cy] },
+        { type: "A",  values: [rx, ry, 0, 0, 1, cx, cy-ry] },
+        { type: "A",  values: [rx, ry, 0, 0, 1, cx+rx, cy] },
+        { type: "Z",  values: [] }
+      ];
+
+      if (options && options.normalize === true) {
+        pathData = reducePathData(pathData);
+      }
+
+      return pathData;
+    };
+
+    SVGLineElement.prototype.getPathData = function() {
+      return [
+        { type: "M", values: [this.x1.baseVal.value, this.y1.baseVal.value] },
+        { type: "L", values: [this.x2.baseVal.value, this.y2.baseVal.value] }
+      ];
+    };
+
+    SVGPolylineElement.prototype.getPathData = function() {
+      var pathData = [];
+
+      for (var i = 0; i < this.points.numberOfItems; i += 1) {
+        var point = this.points.getItem(i);
+
+        pathData.push({
+          type: (i === 0 ? "M" : "L"),
+          values: [point.x, point.y]
+        });
+      }
+
+      return pathData;
+    };
+
+    SVGPolygonElement.prototype.getPathData = function() {
+      var pathData = [];
+
+      for (var i = 0; i < this.points.numberOfItems; i += 1) {
+        var point = this.points.getItem(i);
+
+        pathData.push({
+          type: (i === 0 ? "M" : "L"),
+          values: [point.x, point.y]
+        });
+      }
+
+      pathData.push({
+        type: "Z",
+        values: []
+      });
+
+      return pathData;
+    };
   })();
 }
 
@@ -1442,7 +1580,7 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 // @doc
 //   https://svgwg.org/svg2-draft/single-page.html#types-InterfaceSVGElement
 //   https://html.spec.whatwg.org/multipage/dom.html#dom-dataset
-(() => {
+{
   let $proxy = Symbol();
 
   // @info
@@ -1530,85 +1668,38 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
       return this[$proxy];
     }
   });
-})();
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-// KeyboardEvent polyfills
+// Pointer events polyfill
 //
 
-// @info
-//   KeyboardEvent.prototype.key property polyfill
-(() => {
-  if (window.KeyboardEvent.prototype.hasOwnProperty("key") === false) {
-    let invalidIdents = {
-      // On Windows and Linux event.keyIdentifier returns invalid values for some idents
-      // https://bugs.webkit.org/show_bug.cgi?id=19906
-      "U+00C0": "U+0060", // À -> `
-      "U+00BD": "U+002D", // ½ -> -
-      "U+00BB": "U+003D", // » -> =
-      "U+00DB": "U+005B", // Û -> [
-      "U+00DD": "U+005D", // Ý -> ]
-      "U+00DC": "U+005C", // Ü -> \
-      "U+00BA": "U+003B", // º -> ;
-      "U+00DE": "U+0027", // Þ -> '
-      "U+00BC": "U+002C", // ¼ -> ,
-      "U+00BE": "U+002E", // ¾ -> .
-      "U+00BF": "U+002F", // ¿ -> /
-      // Current DOM spec uses different arrow keys IDs
-      "Win": "Meta",
-      "Left": "ArrowLeft",
-      "Right": "ArrowRight",
-      "Up": "ArrowUp",
-      "Down": "ArrowDown"
+{
+  if (!window.PointerEvent) {
+    var $addEventListener = EventTarget.prototype.addEventListener;
+    var $removeEventListener = EventTarget.prototype.removeEventListener;
+
+    let map = {
+      "pointerdown": "mousedown",
+      "pointermove": "mousemove",
+      "pointerup": "mouseup",
+      "pointerenter": "mouseenter",
+      "pointerleave": "mouseleave",
+      "pointerover": "mouseover",
+      "pointerout": "mouseout"
     };
 
-    Object.defineProperty(KeyboardEvent.prototype, 'key', {
-      get() {
-        let ident = this.keyIdentifier;
+    EventTarget.prototype.addEventListener = function(eventName, listener, capture) {
+      $addEventListener.call(this, map[eventName] ? map[eventName] : eventName, listener, capture);
+    };
 
-        for (let invalidIdent in invalidIdents) {
-          if (ident === invalidIdent) {
-            let validIdent = invalidIdents[invalidIdent];
-            ident = validIdent;
-          }
-        }
-
-        let key = null;
-
-        if (ident[0] === "U" && ident[1] === "+") {
-          let code = parseInt(ident.substring(2), 16);
-
-          if (code === 27) {
-            key = "Escape";
-          }
-          else if (code === 8) {
-            key = "Backspace";
-          }
-          else {
-            key = String.fromCharCode(code);
-
-            if (key === "\t") {
-              key = "Tab";
-            }
-            else if (key === " ") {
-              key = "Space";
-            }
-            else if (this.shiftKey === false) {
-              key = key.toLowerCase();
-            }
-          }
-        }
-        else {
-          key = ident;
-        }
-
-        return key;
-      }
-    });
+    EventTarget.prototype.removeEventListener = function(eventName, listener, capture) {
+      $removeEventListener.call(this, map[eventName] ? map[eventName] : eventName, listener, capture);
+    };
   }
-})();
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1616,7 +1707,7 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 // Make array-like DOM objects iterable
 //
 
-(() => {
+{
   let pseudoArrays = [
     CSSRuleList,
     CSSStyleDeclaration,
@@ -1638,7 +1729,7 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
       });
     }
   });
-})();
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

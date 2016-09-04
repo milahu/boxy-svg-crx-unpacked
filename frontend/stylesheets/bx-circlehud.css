@@ -6,6 +6,7 @@
 
 :host {
   display: none;
+  contain: size layout style paint;
 }
 :host([enabled]) {
   display: initial;

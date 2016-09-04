@@ -6,6 +6,10 @@
 
 :host {
   display: none;
+  contain: size layout style paint;
+}
+:host(:focus) {
+  outline: none;
 }
 :host([enabled]) {
   display: initial;
@@ -17,17 +21,17 @@
   pointer-events: none;
   stroke: gray;
 }
-:host-context([contenteditable]:focus) #caret-line {
+:host(:focus) #caret-line {
   stroke: blue;
 }
 
 #selection-rects {
-  opacity: 0.4;
+  opacity: 0.3;
 }
 #selection-rects rect {
-  fill: rgb(158, 158, 158);
+  fill: rgb(179, 179, 179);
   pointer-events: none;
 }
-:host-context([contenteditable]:focus) #selection-rects rect {
+:host(:focus) #selection-rects rect {
   fill: rgb(0, 157, 255);
 }
