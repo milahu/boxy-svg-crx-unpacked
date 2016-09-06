@@ -339,7 +339,7 @@ this._toggleEditorQueue=[],this._messageCounter=0,this._messageRequestCallbacks=
 this._messageResponseCallbacks={},this._aboutAppWindow=null,this._preferencesAppWindow=null,
 d.state=8;break;case 8:return void Promise.resolve(h()).then(d.createCallback(3),d.errback);
 case 3:this._backgroundWindow=d.value,d.state=2;break;case 2:this._storeSessionDebounced=i(this._storeSession,2e3,this),
-this._manifest=chrome.runtime.getManifest(),"Boxy SVG"===this._manifest.name?this._restrictedFeatures=["inspector","chrome-dev-tools","hamburger-app-menu"]:"Boxy SVG Pro"===this._manifest.name?this._restrictedFeatures=["inspector","chrome-dev-tools","hamburger-app-menu"]:"Boxy SVG Dev"===this._manifest.name&&(this._restrictedFeatures=["hamburger-app-menu"]),
+this._manifest=chrome.runtime.getManifest(),"Boxy SVG"===this._manifest.name?this._restrictedFeatures=["chrome-dev-tools","hamburger-app-menu"]:"Boxy SVG Pro"===this._manifest.name?this._restrictedFeatures=["chrome-dev-tools","hamburger-app-menu"]:"Boxy SVG Dev"===this._manifest.name&&(this._restrictedFeatures=["hamburger-app-menu"]),
 u()<53&&this._restrictedFeatures.push("rasterizer"),"windows"===l()&&this.setAttribute("bordered",""),
 this._shadowRoot=this.createShadowRoot({mode:"closed"}),this._shadowRoot.innerHTML=x,
 t=!0,r=!1,n=void 0;try{for(a=void 0,o=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=o.next()).done);t=!0)c=a.value,

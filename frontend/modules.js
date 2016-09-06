@@ -258,11 +258,11 @@ case 3:L=de.value,de.state=2;break;case 2:N=[],de.state=14;break;case 14:de.stat
 break;case 8:for($=0;$<L.length;$+=1)O=L[$],O.length>0&&(V=S.getStartPositionOfChar($),
 j=S.getRotationOfChar($),z=new SVGMatrix,z.translateSelf(V.x,V.y),z.rotateSelf(j),
 I=t("svg:path"),I.setPathData(O),I.setAttribute("transform",z.toString()),d(I,{geometryPrecision:r,
-transformPrecision:a}),N.push(I));if(N.length>0){D=N,u=D[Symbol.iterator](),G=(c=u.next()).done?void 0:c.value,
-B=$traceurRuntime.iteratorToArray(u),U=G.getAttribute("d"),H=!0,F=!1,q=void 0;try{
-for(W=void 0,Y=B[Symbol.iterator]();!(H=(W=Y.next()).done);H=!0)X=W.value,U+=X.getAttribute("d");
-}catch(he){F=!0,q=he}finally{try{H||null==Y["return"]||Y["return"]()}finally{if(F)throw q;
-}}Z=t("svg:path"),Z.setAttribute("d",U),Z.setAttribute("transform",v.toString()),
+transformPrecision:a,preserveRotation:!1}),N.push(I));if(N.length>0){D=N,u=D[Symbol.iterator](),
+G=(c=u.next()).done?void 0:c.value,B=$traceurRuntime.iteratorToArray(u),U=G.getAttribute("d"),
+H=!0,F=!1,q=void 0;try{for(W=void 0,Y=B[Symbol.iterator]();!(H=(W=Y.next()).done);H=!0)X=W.value,
+U+=X.getAttribute("d")}catch(he){F=!0,q=he}finally{try{H||null==Y["return"]||Y["return"]();
+}finally{if(F)throw q}}Z=t("svg:path"),Z.setAttribute("d",U),Z.setAttribute("transform",v.toString()),
 K=!0,J=!1,Q=void 0;try{for(ee=void 0,te=n.style[Symbol.iterator]();!(K=(ee=te.next()).done);K=!0)ne=ee.value,
 h.includes(ne)===!1&&Z.style.setProperty(ne,n.style.getPropertyValue(ne))}catch(ve){
 J=!0,Q=ve}finally{try{K||null==te["return"]||te["return"]()}finally{if(J)throw Q}
@@ -12379,8 +12379,9 @@ t.setAttribute("points",E.join(" ")),t.removeAttribute("transform"),t.hasAttribu
 var I=e(t),D=t.getScreenCTM().inverse(),G=M.matrixTransform(D),B=x(G,I),U=n(B.x,s),H=n(B.y,s);
 t.setAttribute("data-bx-origin",U+" "+H)}te(t,i)}else a.isIdentity()?t.removeAttribute("transform"):t.setAttribute("transform",r(a,l));
 },q=function(t,i){var a=t.transform.baseVal.consolidate().matrix,o=i,s=o.geometryPrecision,l=o.transformPrecision,u=o.preserveRotation;
-if(a.is2D)if(u){var c=b(t);ee(t),g(t,b(t.parentElement));var d=t.transform.baseVal.consolidate().matrix,h=t.getPathData(),v=y(h,d,s);
-t.setPathData(v),t.removeAttribute("transform"),g(t,c,l),te(t,i)}else{var f=p(t),m=t.getPathData(),_=y(m,a,s);
+if(a.is2D)if(u){var c=b(t);ee(t),console.log(t,t.parentElement),g(t,b(t.parentElement));
+var d=t.transform.baseVal.consolidate().matrix,h=t.getPathData(),v=y(h,d,s);t.setPathData(v),
+t.removeAttribute("transform"),g(t,c,l),te(t,i)}else{var f=p(t),m=t.getPathData(),_=y(m,a,s);
 if(ee(t),t.setPathData(_),t.removeAttribute("transform"),t.hasAttribute("data-bx-origin")){
 var w=e(t),S=t.getScreenCTM().inverse(),k=f.matrixTransform(S),C=x(k,w),R=n(C.x,s),M=n(C.y,s);
 t.setAttribute("data-bx-origin",R+" "+M)}te(t,i)}else a.isIdentity()?t.removeAttribute("transform"):t.setAttribute("transform",r(a,l));
