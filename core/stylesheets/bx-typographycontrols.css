@@ -1,0 +1,120 @@
+
+/*
+ * @copyright
+ *   © 2012-2016 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  height: 100%;
+  contain: size layout style;
+}
+
+.hbox {
+  display: flex;
+  align-items: center;
+}
+
+/*
+ * Preview section
+ */
+
+#preview-section {
+  padding: 9px 10px;
+  background: white;
+  margin: 0;
+}
+#preview-section[disabled] {
+  opacity: 0.5;
+}
+
+#preview {
+  font-size: 40px;
+  line-height: 1;
+  color: black;
+  text-align: center;
+}
+
+/*
+ * Font section
+ */
+
+#font-family-picker {
+  margin: 6px 0 3px 0;
+}
+
+#font-weight-select {
+  flex: 1;
+  width: 100%;
+}
+
+#font-style-button {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  margin: 0 7px;
+}
+
+#font-variant-button {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+}
+
+#font-size-slider {
+  width: 100%;
+  margin-top: 5px;
+}
+
+/*
+ * Text section
+ */
+
+#text-transform-buttons {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+#text-transform-buttons bx-button {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+#text-on-path-button {
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+}
+
+#text-decoration-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+#text-decoration-buttons bx-button {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+/*
+ * Spacing section
+ */
+
+#letter-spacing-div,
+#word-spacing-div {
+  width: 100%;
+  text-align: left;
+}
+#word-spacing-div {
+  margin-left: 4px;
+}
+
+#letter-spacing-slider,
+#word-spacing-slider {
+  width: 100%;
+}

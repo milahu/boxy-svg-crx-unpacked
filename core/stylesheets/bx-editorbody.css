@@ -28,10 +28,6 @@ main {
   height: calc(100% - 10px);
   margin: 5px;
 }
-#primary-dock[data-extra-whitespace] {
-  margin-top: 52px;
-  height: calc(100% - 10px - 52px);
-}
 
 #secondary-dock {
   position: absolute;

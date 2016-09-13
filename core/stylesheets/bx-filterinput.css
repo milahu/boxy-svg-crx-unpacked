@@ -50,8 +50,8 @@ input:focus {
   color: white;
   background: rgb(68, 68, 68);
   border: 1px solid rgb(23, 23, 21);
+  outline: 3px solid #5e99ff;
   box-shadow: none;
-  outline: 3px solid #238be7;
   outline-offset: 0px;
 }
 input:focus::-webkit-input-placeholder {
