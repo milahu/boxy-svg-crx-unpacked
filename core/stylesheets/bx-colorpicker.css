@@ -52,12 +52,12 @@ bx-input {
   flex: 1;
 }
 
-bx-button {
+#grab-color-button {
   width: 25px;
   height: 25px;
   margin-left: 8px;
+  --icon-size: 25px;
 }
-
 :host([hidegrabber]) #grab-color-button {
   display: none;
 }

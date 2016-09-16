@@ -47,12 +47,14 @@ header h2 {
 header #delete-symbol-button {
   width: 20px;
   height: 20px;
+  --icon-size: 15px;
 }
 
 header #create-symbol-button {
   width: 20px;
   height: 20px;
   margin-left: 6px;
+  --icon-size: 15px;
 }
 
 /*

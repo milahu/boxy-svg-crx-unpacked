@@ -36,6 +36,7 @@
   width: 30px;
   height: 30px;
   margin-right: 10px;
+  --button-size: 30px;
 }
 
 /* Line join section */
@@ -49,4 +50,5 @@
   width: 30px;
   height: 30px;
   margin-right: 10px;
+  --button-size: 30px;
 }

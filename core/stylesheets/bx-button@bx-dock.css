@@ -9,6 +9,7 @@
   height: 42px;
   display: block;
   contain: size layout style paint;
+  --icon-size: 20px;
 }
 :host([disabled]) {
   pointer-events: none;
@@ -29,6 +30,7 @@ main {
   padding: 5px;
   background: var(--primary-background-color);
   border: 1px solid var(--border-color);
+  position: relative;
 }
 :host(:active) main {
   background: #444444;
@@ -42,13 +44,32 @@ main {
 }
 
 #icon {
-  width: 24px;
-  height: 24px;
+  width: var(--icon-size);
+  min-width: var(--icon-size);
+  height: var(--icon-size);
   fill: white;
   stroke: white;
 }
 :host([disabled]) #icon {
   opacity: 0.5;
+}
+
+#arrow-icon {
+  width: 8px;
+  height: 8px;
+  display: none;
+  position: absolute;
+  fill: white;
+}
+:host([arrow="se"]) #arrow-icon {
+  display: block;
+  bottom: 2px;
+  right: 2px;
+}
+:host([arrow="sw"]) #arrow-icon {
+  display: block;
+  bottom: 2px;
+  left: 2px;
 }
 
 label {

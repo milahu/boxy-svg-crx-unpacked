@@ -16,6 +16,7 @@
 
 .hbox > bx-button {
   width: 50%;
+  --icon-size: 25px;
 }
 
 #convert-to-path-button {

@@ -88,34 +88,33 @@ case 7:n.state=1===r?13:12;break;case 13:r=2,n.state=14;break;case 14:return voi
 case 12:return void Promise.resolve(e.setConfig("!bx-background:version",r)).then(n.createCallback(17),n.errback);
 case 17:t(),n.state=-2;break;default:return n.end()}},this)})}},{},e)}(HTMLBodyElement),a=e("body","bx-backgroundbody",n);
 return{get default(){return a}}}),$traceurRuntime.registerModule("elements/bx-button",[],function(){
-"use strict";var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-button")),t=e.createElement,r=e.registerElement,n=Number.parseInt,a='\n  <style id="skin-stylesheet"></style>\n\n  <main>\n    <svg id="icon" preserveAspectRatio="none" viewBox="0 0 100 100" style="width: 20px; height: 20px;">\n      <use id="icon-use" x="0" y="0" width="100%" height="100%"></use>\n    </svg>\n\n    <label id="label"></label>\n  </main>\n',i=function(e){
+"use strict";var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-button")),t=e.createElement,r=e.registerElement,n=(Number.parseInt,
+'\n  <style id="skin-stylesheet"></style>\n\n  <main>\n    <svg id="icon" preserveAspectRatio="none" viewBox="0 0 100 100">\n      <use id="icon-use" x="0" y="0" width="100%" height="100%"></use>\n    </svg>\n\n    <label id="label"></label>\n  </main>\n'),a=function(e){
 function r(){$traceurRuntime.superConstructor(r).apply(this,arguments)}return $traceurRuntime.createClass(r,{
 createdCallback:function(){this._shadowRoot=this.createShadowRoot({mode:"closed"}),
-this._shadowRoot.innerHTML=a;var e=!0,t=!1,r=void 0;try{for(var n=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(e=(n=i.next()).done);e=!0){
-var s=n.value;this["#"+s.id]=s}}catch(o){t=!0,r=o}finally{try{e||null==i["return"]||i["return"]();
+this._shadowRoot.innerHTML=n;var e=!0,t=!1,r=void 0;try{for(var a=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(e=(a=i.next()).done);e=!0){
+var s=a.value;this["#"+s.id]=s}}catch(o){t=!0,r=o}finally{try{e||null==i["return"]||i["return"]();
 }finally{if(t)throw r}}var l=!0,u=!1,c=void 0;try{for(var d=void 0,h=this.attributes[Symbol.iterator]();!(l=(d=h.next()).done);l=!0){
 var b=d.value;this.attributeChangedCallback(b.name)}}catch(m){u=!0,c=m}finally{try{
 l||null==h["return"]||h["return"]()}finally{if(u)throw c}}this._updateSkin()},attributeChangedCallback:function(e){
-"label"===e?this._onLabelAttributeChange():"icon"===e?this._onIconAttributeChange():"iconsize"===e?this._onIconSizeAttributeChange():"skin"===e?this._onSkinAttributeChange():"hidden"===e&&this._onHiddenAttributeChange();
+"label"===e?this._onLabelAttributeChange():"icon"===e?this._onIconAttributeChange():"skin"===e?this._onSkinAttributeChange():"hidden"===e&&this._onHiddenAttributeChange();
 },get label(){return this.hasAttribute("label")?this.getAttribute("label"):""},set label(e){
 this.setAttribute("label",e)},get value(){return this.getAttribute("value")},set value(e){
 null===e?this.removeAttribute("value"):this.setAttribute("value",e)},get icon(){return this.getAttribute("icon");
 },set icon(e){null===e?this.removeAttribute("icon"):this.setAttribute("icon",e)},
-get iconSize(){return this.hasAttribute("iconsize")?n(this.getAttribute("iconsize")):20;
-},set iconSize(e){this.setAttribute("iconsize",e)},get skin(){return this.getAttribute("skin");
-},set skin(e){e?this.setAttribute("skin",e):this.removeAttribute("skin")},get href(){
-return this.hasAttribute("href")?this.getAttribute("href"):""},set href(e){this.setAttribute("href",e);
-},get pressed(){return this.hasAttribute("pressed")},set pressed(e){e===!0?this.setAttribute("pressed",""):this.removeAttribute("pressed");
-},get mixed(){return this.hasAttribute("mixed")},set mixed(e){e===!0?this.setAttribute("mixed",""):this.removeAttribute("mixed");
+get skin(){return this.getAttribute("skin")},set skin(e){e?this.setAttribute("skin",e):this.removeAttribute("skin");
+},get href(){return this.hasAttribute("href")?this.getAttribute("href"):""},set href(e){
+this.setAttribute("href",e)},get pressed(){return this.hasAttribute("pressed")},set pressed(e){
+e===!0?this.setAttribute("pressed",""):this.removeAttribute("pressed")},get mixed(){
+return this.hasAttribute("mixed")},set mixed(e){e===!0?this.setAttribute("mixed",""):this.removeAttribute("mixed");
 },get disabled(){return this.hasAttribute("disabled")},set disabled(e){e===!0?this.setAttribute("disabled",""):this.removeAttribute("disabled");
 },_onLabelAttributeChange:function(){this["#label"].textContent=this.label},_onIconAttributeChange:function(){
 this["#icon-use"].remove(),this["#icon-use"]=t("svg:use"),this["#icon"].append(this["#icon-use"]),
 this.icon&&this["#icon-use"].setAttribute("href","images/icons.svg#"+this.icon)},
-_onIconSizeAttributeChange:function(){this["#icon"].style.width=this.iconSize+"px",
-this["#icon"].style.height=this.iconSize+"px"},_onSkinAttributeChange:function(){
-this._updateSkin()},_onHiddenAttributeChange:function(){this.dispatchEvent(new CustomEvent("hiddenchange",{
-detail:this,bubbles:!0}))},_updateSkin:function(){this.skin?this["#skin-stylesheet"].innerText='@import url("stylesheets/bx-button@'+this.skin+'.css");':this["#skin-stylesheet"].innerText='@import url("stylesheets/bx-button.css");';
-}},{},e)}(HTMLElement),s=r("bx-button",i);return{get default(){return s}}}),$traceurRuntime.registerModule("elements/bx-editor",[],function(){
+_onSkinAttributeChange:function(){this._updateSkin()},_onHiddenAttributeChange:function(){
+this.dispatchEvent(new CustomEvent("hiddenchange",{detail:this,bubbles:!0}))},_updateSkin:function(){
+this.skin?this["#skin-stylesheet"].innerText='@import url("stylesheets/bx-button@'+this.skin+'.css");':this["#skin-stylesheet"].innerText='@import url("stylesheets/bx-button.css");';
+}},{},e)}(HTMLElement),i=r("bx-button",a);return{get default(){return i}}}),$traceurRuntime.registerModule("elements/bx-editor",[],function(){
 "use strict";var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/artwork","elements/bx-editor")),t=e.compressArtwork,r=e.uncompressArtwork,n=e.createArtworkFromBitmapDataURL,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-editor")),i=(a.createElement,
 a.registerElement),s=($traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-editor")).sleep,
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/filesystem","elements/bx-editor"))),o=s.getEntryExtension,l=s.chooseEntry,u=s.readEntry,c=s.writeEntry,d='<?xml version="1.0" encoding="utf-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"></svg>',h="\n  width: 100%;\n  height: calc(100% - 30px - 30px);\n  display: block;\n  position: fixed;\n  top: 60px;\n  left; 0;\n",b='\n  <style>@import url("stylesheets/bx-editor.css");</style>\n\n  <webview\n    id="webview"\n    tabindex="-1"\n    partition="persist:boxy"\n    src="core/editor.html"\n    style="'+h+'"\n    allowtransparency>\n  </webview>\n',m=function(e){
@@ -306,7 +305,7 @@ $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menubar","el
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menu","elements/bx-masterbody")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-menuitem","elements/bx-masterbody")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-tabs","elements/bx-masterbody"));
-var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-masterbody")),t=e.createElement,r=e.registerElement,n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/string","elements/bx-masterbody")).toDashCase,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-masterbody")),i=a.debounce,s=a.sleep,o=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/vendor","elements/bx-masterbody")),l=o.getOperatingSystemName,u=o.getChromeVersion,c=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/window","elements/bx-masterbody")),d=c.createAppWindow,h=c.getBackgroundWindow,b=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/filesystem","elements/bx-masterbody")),m=b.getEntryBaseName,f=b.getEntryDisplayPath,v=b.getEntryExtension,g=b.chooseEntry,p=b.compareEntries,_=b.restoreEntry,w=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/shortcut","elements/bx-masterbody"))["default"],k=Number.parseInt,y=10,x='\n  <style>@import url("stylesheets/bx-masterbody.css");</style>\n\n  <bx-menubar id="menubar">\n    <bx-menu label="File">\n      <bx-menuitem commandid="new" label="New" shortcut="Control+N"></bx-menuitem>\n      <bx-menuitem commandid="newFromSelected" label="New from Selected" shortcut="Control+Shift+N"></bx-menuitem>\n      <bx-menuitem commandid="open" label="Open…" shortcut="Control+O"></bx-menuitem>\n      <bx-menuitem id="open-recent-menu-item" label="Open Recent">\n        <bx-menu id="open-recent-menu"></bx-menu>\n      </bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="save" label="Save" shortcut="Control+S"></bx-menuitem>\n      <bx-menuitem commandid="saveAs" label="Save As…" shortcut="Control+Shift+S"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="reloadFromDisk" label="Reload from Disk"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="close" label="Close" shortcut="Control+W"></bx-menuitem>\n      <bx-menuitem commandid="quit" label="Quit Boxy SVG" shortcut="Control+Q"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Edit">\n      <bx-menuitem commandid="undo" label="Undo" shortcut="Control+Z"></bx-menuitem>\n      <bx-menuitem commandid="redo" label="Redo" shortcut="Control+Shift+Z"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="cut" label="Cut" shortcut="Control+X"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy" shortcut="Control+C"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste" shortcut="Control+V"></bx-menuitem>\n      <bx-menuitem commandid="duplicate" label="Duplicate" shortcut="Control+D"></bx-menuitem>\n      <bx-menuitem commandid="delete" label="Delete"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="grabPaintColor" label="Grab Paint Color" shortcut="Q"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="selectAll" label="Select All" shortcut="Control+A"></bx-menuitem>\n      <bx-menuitem commandid="deselectAll" label="Deselect All" shortcut="Control+Shift+A"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="preferences" label="Preferences…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="View">\n      <bx-menuitem commandid="zoomIn" label="Zoom In" shortcut="="></bx-menuitem>\n      <bx-menuitem commandid="zoomOut"label="Zoom Out" shortcut="-"></bx-menuitem>\n      <bx-menuitem commandid="resetZoom" label="Reset Zoom" shortcut="1"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToViewBox" label="Zoom to View Box" shortcut="2"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxWidth" label="Zoom to View Box Width" shortcut="3"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxHeight" label="Zoom to View Box Height" shortcut="4"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToFitAll"label="Zoom to Fit All" shortcut="5"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="inspector" label="Inspector" shortcut="I"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Element">\n      <bx-menuitem commandid="group" label="Group" shortcut="Control+G"></bx-menuitem>\n      <bx-menuitem commandid="ungroup" label="Ungroup" shortcut="Control+Shift+G"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="raise" label="Raise" shortcut="]"></bx-menuitem>\n      <bx-menuitem commandid="lower" label="Lower" shortcut="["></bx-menuitem>\n      <bx-menuitem commandid="raiseToFront" label="Raise to Front" shortcut="Control+]"></bx-menuitem>\n      <bx-menuitem commandid="lowerToBack" label="Lower to Back" shortcut="Control+["></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="clip" label="Clip"></bx-menuitem>\n      <bx-menuitem commandid="unclip"label="Unclip"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="mask" label="Mask"></bx-menuitem>\n      <bx-menuitem commandid="unmask" label="Unmask"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="rotateClockwise" label="Rotate +90°" shortcut="Control+Shift+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="rotateCounterclockwise" label="Rotate -90°" shortcut="Control+Shift+ArrowLeft"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="flipX" label="Flip X" shortcut="Control+Shift+ArrowUp"></bx-menuitem>\n      <bx-menuitem commandid="flipY" label="Flip Y" shortcut="Control+Shift+ArrowDown"></bx-menuitem>\n      <hr/>\n      <bx-menuitem label="Path">\n        <bx-menu>\n          <bx-menuitem commandid="convertToPath" label="Convert to Path"></bx-menuitem>\n          <bx-menuitem commandid="reversePath" label="Reverse Path"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="unite" label="Unite"></bx-menuitem>\n          <bx-menuitem commandid="subtract" label="Subtract"></bx-menuitem>\n          <bx-menuitem commandid="intersect" label="Intersect"></bx-menuitem>\n          <bx-menuitem commandid="exclude" label="Exclude"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="combine" label="Combine"></bx-menuitem>\n          <bx-menuitem commandid="breakApart" label="Break Apart"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n      <bx-menuitem label="Move">\n        <bx-menu>\n          <bx-menuitem commandid="moveOneUnitLeft" label="Move 1 Unit Left"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitRight" label="Move 1 Unit Right"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitUp" label="Move 1 Unit Up"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitDown" label="Move 1 Unit Down"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="moveTenUnitsLeft" label="Move 10 Units Left"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsRight" label="Move 10 Units Right"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsUp" label="Move 10 Units Up"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsDown" label="Move 10 Units Down"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Tools" id="tools-menu">\n      <bx-menuitem commandid="previousTool" label="Previous Tool" shortcut="Space"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="transformTool" label="Transform Tool" shortcut="Alt+T"></bx-menuitem>\n      <bx-menuitem commandid="editTool" label="Edit Tool" shortcut="Alt+E"></bx-menuitem>\n      <bx-menuitem commandid="quadBezierTool" label="Quad Bezier Tool" shortcut="Alt+Q"></bx-menuitem>\n      <bx-menuitem commandid="cubicBezierTool" label="Cubic Bezier Tool" shortcut="Alt+C"></bx-menuitem>\n      <bx-menuitem commandid="freehandTool" label="Freehand Tool" shortcut="Alt+F"></bx-menuitem>\n      <bx-menuitem commandid="textTool" label="Text Tool" shortcut="Alt+Shift+T"></bx-menuitem>\n      <bx-menuitem commandid="triangleTool" label="Triangle Tool" shortcut="Alt+Y"></bx-menuitem>\n      <bx-menuitem commandid="rectangleTool" label="Rectangle Tool" shortcut="Alt+R"></bx-menuitem>\n      <bx-menuitem commandid="nGonTool" label="N-gon Tool" shortcut="Alt+N"></bx-menuitem>\n      <bx-menuitem commandid="starTool" label="Star Tool" shortcut="Alt+S"></bx-menuitem>\n      <bx-menuitem commandid="ellipseTool" label="Ellipse Tool" shortcut="Alt+Shift+E"></bx-menuitem>\n      <bx-menuitem commandid="ringTool" label="Ring Tool" shortcut="Alt+Shift+R"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Panels" id="panels-menu">\n      <bx-menuitem commandid="fillPanel" label="Fill Panel" shortcut="F"></bx-menuitem>\n      <bx-menuitem commandid="strokePanel" label="Stroke Panel" shortcut="S"></bx-menuitem>\n      <bx-menuitem commandid="compositingPanel" label="Compositing Panel" shortcut="C"></bx-menuitem>\n      <bx-menuitem commandid="viewPanel" label="View Panel" shortcut="V"></bx-menuitem>\n      <bx-menuitem commandid="arrangementPanel" label="Arrangement Panel" shortcut="A"></bx-menuitem>\n      <bx-menuitem commandid="typographyPanel" label="Typography Panel"  shortcut="T"></bx-menuitem>\n      <bx-menuitem commandid="defsPanel" label="Defs Panel" shortcut="D"></bx-menuitem>\n      <bx-menuitem commandid="maskPanel" label="Mask Panel" shortcut="M"></bx-menuitem>\n      <bx-menuitem commandid="geometryPanel" label="Geometry Panel" shortcut="G"></bx-menuitem>\n      <bx-menuitem commandid="pathPanel" label="Path Panel" shortcut="X"></bx-menuitem>\n      <bx-menuitem commandid="exportPanel" label="Export Panel" shortcut="E"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Window" id="window-menu">\n      <bx-menuitem commandid="showPreviousTab" label="Show Previous Tab" shortcut="Control+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="showNextTab" label="Show Next Tab" shortcut="Control+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="moveTabLeft" label="Move Tab Left" shortcut="Control+Alt+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="moveTabRight" label="Move Tab Right" shortcut="Control+Alt+ArrowRight"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="minimizeWindow" label="Minimize"></bx-menuitem>\n      <bx-menuitem commandid="maximizeWindow" label="Maximize"></bx-menuitem>\n      <bx-menuitem commandid="fullscreen" label="Fullscreen"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Help">\n      <bx-menuitem commandid="about" label="About"></bx-menuitem>\n      <bx-menuitem commandid="rate" label="Rate on Chrome Web Store…"></bx-menuitem>\n      <bx-menuitem commandid="support" label="Get Support…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Debug" id="debug-menu">\n      <bx-menuitem commandid="reloadApp" label="Reload App" shortcut="Control+Shift+R"></bx-menuitem>\n      <bx-menuitem commandid="reloadCurrentEditor" label="Reload Editor" shortcut="Control+R"></bx-menuitem>\n    </bx-menu>\n  </bx-menubar>\n\n  <bx-tabs id="tabs"></bx-tabs>\n  <div id="editors"></div>\n  <dialog id="message-box" is="bx-messagebox"></dialog>\n',C=function(e){
+var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-masterbody")),t=e.createElement,r=e.registerElement,n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/string","elements/bx-masterbody")).toDashCase,a=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-masterbody")),i=a.debounce,s=a.sleep,o=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/vendor","elements/bx-masterbody")),l=o.getOperatingSystemName,u=o.getChromeVersion,c=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/window","elements/bx-masterbody")),d=c.createAppWindow,h=c.getBackgroundWindow,b=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/filesystem","elements/bx-masterbody")),m=b.getEntryBaseName,f=b.getEntryDisplayPath,v=b.getEntryExtension,g=b.chooseEntry,p=b.compareEntries,_=b.restoreEntry,w=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../classes/shortcut","elements/bx-masterbody"))["default"],k=Number.parseInt,y=10,x='\n  <style>@import url("stylesheets/bx-masterbody.css");</style>\n\n  <bx-menubar id="menubar">\n    <bx-menu label="File">\n      <bx-menuitem commandid="new" label="New" shortcut="Control+N"></bx-menuitem>\n      <bx-menuitem commandid="newFromSelected" label="New from Selected" shortcut="Control+Shift+N"></bx-menuitem>\n      <bx-menuitem commandid="open" label="Open…" shortcut="Control+O"></bx-menuitem>\n      <bx-menuitem id="open-recent-menu-item" label="Open Recent">\n        <bx-menu id="open-recent-menu"></bx-menu>\n      </bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="save" label="Save" shortcut="Control+S"></bx-menuitem>\n      <bx-menuitem commandid="saveAs" label="Save As…" shortcut="Control+Shift+S"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="reloadFromDisk" label="Reload from Disk"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="close" label="Close" shortcut="Control+W"></bx-menuitem>\n      <bx-menuitem commandid="quit" label="Quit Boxy SVG" shortcut="Control+Q"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Edit">\n      <bx-menuitem commandid="undo" label="Undo" shortcut="Control+Z"></bx-menuitem>\n      <bx-menuitem commandid="redo" label="Redo" shortcut="Control+Shift+Z"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="cut" label="Cut" shortcut="Control+X"></bx-menuitem>\n      <bx-menuitem commandid="copy" label="Copy" shortcut="Control+C"></bx-menuitem>\n      <bx-menuitem commandid="paste" label="Paste" shortcut="Control+V"></bx-menuitem>\n      <bx-menuitem commandid="duplicate" label="Duplicate" shortcut="Control+D"></bx-menuitem>\n      <bx-menuitem commandid="delete" label="Delete"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="grabPaintColor" label="Grab Paint Color" shortcut="Q"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="selectAll" label="Select All" shortcut="Control+A"></bx-menuitem>\n      <bx-menuitem commandid="deselectAll" label="Deselect All" shortcut="Control+Shift+A"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="preferences" label="Preferences…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="View">\n      <bx-menuitem commandid="zoomIn" label="Zoom In" shortcut="="></bx-menuitem>\n      <bx-menuitem commandid="zoomOut"label="Zoom Out" shortcut="-"></bx-menuitem>\n      <bx-menuitem commandid="resetZoom" label="Reset Zoom" shortcut="1"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToViewBox" label="Zoom to View Box" shortcut="2"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxWidth" label="Zoom to View Box Width" shortcut="3"></bx-menuitem>\n      <bx-menuitem commandid="zoomToViewBoxHeight" label="Zoom to View Box Height" shortcut="4"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="zoomToFitAll"label="Zoom to Fit All" shortcut="5"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="inspector" label="Inspector" shortcut="I"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Element">\n      <bx-menuitem commandid="group" label="Group" shortcut="Control+G"></bx-menuitem>\n      <bx-menuitem commandid="ungroup" label="Ungroup" shortcut="Control+Shift+G"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="raise" label="Raise" shortcut="]"></bx-menuitem>\n      <bx-menuitem commandid="lower" label="Lower" shortcut="["></bx-menuitem>\n      <bx-menuitem commandid="raiseToFront" label="Raise to Front" shortcut="Control+]"></bx-menuitem>\n      <bx-menuitem commandid="lowerToBack" label="Lower to Back" shortcut="Control+["></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="clip" label="Clip"></bx-menuitem>\n      <bx-menuitem commandid="unclip"label="Unclip"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="mask" label="Mask"></bx-menuitem>\n      <bx-menuitem commandid="unmask" label="Unmask"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="rotateClockwise" label="Rotate +90°" shortcut="Control+Shift+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="rotateCounterclockwise" label="Rotate -90°" shortcut="Control+Shift+ArrowLeft"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="flipX" label="Flip X" shortcut="Control+Shift+ArrowUp"></bx-menuitem>\n      <bx-menuitem commandid="flipY" label="Flip Y" shortcut="Control+Shift+ArrowDown"></bx-menuitem>\n      <hr/>\n      <bx-menuitem label="Path">\n        <bx-menu>\n          <bx-menuitem commandid="convertToPath" label="Convert to Path"></bx-menuitem>\n          <bx-menuitem commandid="reversePath" label="Reverse Path"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="unite" label="Unite"></bx-menuitem>\n          <bx-menuitem commandid="subtract" label="Subtract"></bx-menuitem>\n          <bx-menuitem commandid="intersect" label="Intersect"></bx-menuitem>\n          <bx-menuitem commandid="exclude" label="Exclude"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="combine" label="Combine"></bx-menuitem>\n          <bx-menuitem commandid="breakApart" label="Break Apart"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n      <bx-menuitem label="Move">\n        <bx-menu>\n          <bx-menuitem commandid="moveOneUnitLeft" label="Move 1 Unit Left"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitRight" label="Move 1 Unit Right"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitUp" label="Move 1 Unit Up"></bx-menuitem>\n          <bx-menuitem commandid="moveOneUnitDown" label="Move 1 Unit Down"></bx-menuitem>\n          <hr/>\n          <bx-menuitem commandid="moveTenUnitsLeft" label="Move 10 Units Left"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsRight" label="Move 10 Units Right"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsUp" label="Move 10 Units Up"></bx-menuitem>\n          <bx-menuitem commandid="moveTenUnitsDown" label="Move 10 Units Down"></bx-menuitem>\n        </bx-menu>\n      </bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Tools" id="tools-menu">\n      <bx-menuitem commandid="previousTool" label="Previous Tool" shortcut="Space"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="transformTool" label="Transform Tool" shortcut="Alt+T"></bx-menuitem>\n      <bx-menuitem commandid="editTool" label="Edit Tool" shortcut="Alt+E"></bx-menuitem>\n      <bx-menuitem commandid="shapeTool" label="Shape Tool" shortcut="Alt+S"></bx-menuitem>\n      <bx-menuitem commandid="textTool" label="Text Tool" shortcut="Alt+Shift+T"></bx-menuitem>\n      <bx-menuitem commandid="curveTool" label="Curve Tool" shortcut="Alt+C"></bx-menuitem>\n      <bx-menuitem commandid="freehandTool" label="Freehand Tool" shortcut="Alt+F"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Panels" id="panels-menu">\n      <bx-menuitem commandid="fillPanel" label="Fill Panel" shortcut="F"></bx-menuitem>\n      <bx-menuitem commandid="strokePanel" label="Stroke Panel" shortcut="S"></bx-menuitem>\n      <bx-menuitem commandid="compositingPanel" label="Compositing Panel" shortcut="C"></bx-menuitem>\n      <bx-menuitem commandid="viewPanel" label="View Panel" shortcut="V"></bx-menuitem>\n      <bx-menuitem commandid="arrangementPanel" label="Arrangement Panel" shortcut="A"></bx-menuitem>\n      <bx-menuitem commandid="typographyPanel" label="Typography Panel"  shortcut="T"></bx-menuitem>\n      <bx-menuitem commandid="defsPanel" label="Defs Panel" shortcut="D"></bx-menuitem>\n      <bx-menuitem commandid="maskPanel" label="Mask Panel" shortcut="M"></bx-menuitem>\n      <bx-menuitem commandid="geometryPanel" label="Geometry Panel" shortcut="G"></bx-menuitem>\n      <bx-menuitem commandid="pathPanel" label="Path Panel" shortcut="X"></bx-menuitem>\n      <bx-menuitem commandid="exportPanel" label="Export Panel" shortcut="E"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Window" id="window-menu">\n      <bx-menuitem commandid="showPreviousTab" label="Show Previous Tab" shortcut="Control+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="showNextTab" label="Show Next Tab" shortcut="Control+ArrowRight"></bx-menuitem>\n      <bx-menuitem commandid="moveTabLeft" label="Move Tab Left" shortcut="Control+Alt+ArrowLeft"></bx-menuitem>\n      <bx-menuitem commandid="moveTabRight" label="Move Tab Right" shortcut="Control+Alt+ArrowRight"></bx-menuitem>\n      <hr/>\n      <bx-menuitem commandid="minimizeWindow" label="Minimize"></bx-menuitem>\n      <bx-menuitem commandid="maximizeWindow" label="Maximize"></bx-menuitem>\n      <bx-menuitem commandid="fullscreen" label="Fullscreen"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Help">\n      <bx-menuitem commandid="about" label="About"></bx-menuitem>\n      <bx-menuitem commandid="rate" label="Rate on Chrome Web Store…"></bx-menuitem>\n      <bx-menuitem commandid="support" label="Get Support…"></bx-menuitem>\n    </bx-menu>\n\n    <bx-menu label="Debug" id="debug-menu">\n      <bx-menuitem commandid="reloadApp" label="Reload App" shortcut="Control+Shift+R"></bx-menuitem>\n      <bx-menuitem commandid="reloadCurrentEditor" label="Reload Editor" shortcut="Control+R"></bx-menuitem>\n    </bx-menu>\n  </bx-menubar>\n\n  <bx-tabs id="tabs"></bx-tabs>\n  <div id="editors"></div>\n  <dialog id="message-box" is="bx-messagebox"></dialog>\n',C=function(e){
 function r(){$traceurRuntime.superConstructor(r).apply(this,arguments)}return $traceurRuntime.createClass(r,{
 createdCallback:function(){var e,t,r,n,a,o,c,d;return $traceurRuntime.asyncWrap(function(b){
 for(;;)switch(b.state){case 0:e=this,this._commands={"new":{exec:function(){return e._openEditorWidthDefaultArtwork();
@@ -464,7 +463,7 @@ break;case 4:r=t.id.substring(12),a.state=5;break;case 5:return void Promise.res
 case 3:n=a.value,a.state=2;break;case 2:n&&(this._openEditorsWithEntries([n]),this._addRecentEntries([n])),
 a.state=-2;break;case 8:this.commands[t.commandID]?this.commands[t.commandID].exec():this.currentEditor&&this.currentEditor.postMessage("execCommand",t.commandID),
 a.state=-2;break;default:return a.end()}},this)},_validateMenu:function(e){var t=this;
-return new Promise(function(r){var n,a,i,o,l,u,c,d,h,b,m,f,v,g,p,w,k,y,x,C,E,S,R,A,T,M,P,L,j,W,z,D,I,$,O,B;
+return new Promise(function(r){var n,a,i,o,l,u,c,d,h,b,m,f,v,g,p,w,k,y,x,C,E,S,R,A,T,M,P,L,W,j,D,z,$,I,O,B;
 return $traceurRuntime.asyncWrap(function(F){for(;;)switch(F.state){case 0:n=!0,a=!1,
 i=void 0;try{for(o=void 0,l=e.children[Symbol.iterator]();!(n=(o=l.next()).done);n=!0)u=o.value,
 t._validateMenuItem(u)}catch(N){a=!0,i=N}finally{try{n||null==l["return"]||l["return"]();
@@ -486,12 +485,12 @@ k=!0,y=!1,x=void 0;try{for(C=void 0,E=e.children[Symbol.iterator]();!(k=(C=E.nex
 S.commandID&&(S.state=S.commandID===w?"toggled":null)}catch(U){y=!0,x=U}finally{try{
 k||null==E["return"]||E["return"]()}finally{if(y)throw x}}}else if("panels-menu"===e.id){
 R=t.currentEditor?t.currentEditor.currentSecondaryPanelID:null,A=!0,T=!1,M=void 0;
-try{for(P=void 0,L=e.children[Symbol.iterator]();!(A=(P=L.next()).done);A=!0)j=P.value,
-j.commandID&&(j.state=j.commandID===R?"toggled":null)}catch(q){T=!0,M=q}finally{try{
+try{for(P=void 0,L=e.children[Symbol.iterator]();!(A=(P=L.next()).done);A=!0)W=P.value,
+W.commandID&&(W.state=W.commandID===R?"toggled":null)}catch(q){T=!0,M=q}finally{try{
 A||null==L["return"]||L["return"]()}finally{if(T)throw M}}}else if("window-menu"===e.id){
-W=!0,z=!1,D=void 0;try{for(I=void 0,$=e.children[Symbol.iterator]();!(W=(I=$.next()).done);W=!0)O=I.value,
+j=!0,D=!1,z=void 0;try{for($=void 0,I=e.children[Symbol.iterator]();!(j=($=I.next()).done);j=!0)O=$.value,
 "maximizeWindow"===O.commandID?chrome.app.window.current().isMaximized()?O.label="Restore":O.label="Maximize":"fullscreen"===O.commandID&&(chrome.app.window.current().isFullscreen()?O.label="Leave Fullscreen":O.label="Enter Fullscreen");
-}catch(H){z=!0,D=H}finally{try{W||null==$["return"]||$["return"]()}finally{if(z)throw D;
+}catch(H){D=!0,z=H}finally{try{j||null==I["return"]||I["return"]()}finally{if(D)throw z;
 }}}F.state=31;break;case 31:r(),F.state=-2;break;case 24:F.state=F.finallyFallThrough;
 break;default:return F.end()}},this)})},_validateMenuItem:function(e){var t=this;return new Promise(function(r){
 if(e.commandID){var n=e.commandID,a=t.commands[n];a?(e.disabled=a.enabled?!a.enabled():!1,
@@ -675,32 +674,32 @@ this._storeSessionDebounced()},_focusCurrentEditor:function(){this.currentEditor
 e+=1}},_createUniqueEditorID:function(){for(var e=void 0!==arguments[0]?arguments[0]:[],t=0;;){
 var r="editor-"+t;if(!this["#editors"].querySelector("#"+r)&&!e.includes(r))return r;
 t+=1}},_addRecentEntries:function(e){var t=this;return new Promise(function(r){var n,a,i,s,o,l,u,c,d,h,b,m,g,p,w,k,x,C,E,S,R,A,T,M,P,L;
-return $traceurRuntime.asyncWrap(function(j){for(;;)switch(j.state){case 0:j.state=0===e.length?71:63;
-break;case 71:r(),j.state=-2;break;case 63:n=[],a=Symbol(),i=!0,s=!1,o=void 0,j.state=64;
-break;case 64:j.pushTry(22,23),j.state=25;break;case 25:l=void 0,E=t._dbGetRecent,
-S=E.call(t),j.state=5;break;case 5:return void Promise.resolve(S).then(j.createCallback(3),j.errback);
-case 3:R=j.value,j.state=2;break;case 2:A=Symbol.iterator,T=R[A],M=T.call(R),u=M,
-j.state=7;break;case 7:j.state=21;break;case 21:j.state=(i=(l=u.next()).done)?19:17;
-break;case 15:i=!0,j.state=21;break;case 17:c=l.value,j.state=18;break;case 18:return void Promise.resolve(_(c)).then(j.createCallback(10),j.errback);
-case 10:d=j.value,j.state=9;break;case 9:j.state=d?11:15;break;case 11:return void Promise.resolve(f(d)).then(j.createCallback(13),j.errback);
-case 13:h=j.value,j.state=12;break;case 12:d[a]=h,n.push(d),j.state=15;break;case 19:
-j.popTry(),j.state=23,j.finallyFallThrough=27;break;case 22:j.popTry(),j.maybeUncatchable(),
-P=j.storedException,j.state=28;break;case 28:s=!0,o=P,j.state=23,j.finallyFallThrough=27;
-break;case 23:j.popTry(),j.state=34;break;case 34:try{i||null==u["return"]||u["return"]();
-}finally{if(s)throw o}j.state=32;break;case 27:b=!0,m=!1,g=void 0,j.state=66;break;
-case 66:j.pushTry(48,49),j.state=51;break;case 51:p=void 0,w=e[Symbol.iterator](),
-j.state=47;break;case 47:j.state=(b=(p=w.next()).done)?45:43;break;case 39:b=!0,j.state=47;
-break;case 43:k=p.value,j.state=44;break;case 44:x=v(k).toLowerCase(),j.state=42;break;
-case 42:j.state="svg"===x||"svgz"===x||"html"===x?35:39;break;case 35:return void Promise.resolve(f(k)).then(j.createCallback(37),j.errback);
-case 37:k[a]=j.value,j.state=36;break;case 36:n=n.filter(function(e){return e[a]!==k[a];
-}),n.push(k),j.state=39;break;case 45:j.popTry(),j.state=49,j.finallyFallThrough=53;
-break;case 48:j.popTry(),j.maybeUncatchable(),L=j.storedException,j.state=54;break;
-case 54:m=!0,g=L,j.state=49,j.finallyFallThrough=53;break;case 49:j.popTry(),j.state=60;
-break;case 60:try{b||null==w["return"]||w["return"]()}finally{if(m)throw g}j.state=58;
+return $traceurRuntime.asyncWrap(function(W){for(;;)switch(W.state){case 0:W.state=0===e.length?71:63;
+break;case 71:r(),W.state=-2;break;case 63:n=[],a=Symbol(),i=!0,s=!1,o=void 0,W.state=64;
+break;case 64:W.pushTry(22,23),W.state=25;break;case 25:l=void 0,E=t._dbGetRecent,
+S=E.call(t),W.state=5;break;case 5:return void Promise.resolve(S).then(W.createCallback(3),W.errback);
+case 3:R=W.value,W.state=2;break;case 2:A=Symbol.iterator,T=R[A],M=T.call(R),u=M,
+W.state=7;break;case 7:W.state=21;break;case 21:W.state=(i=(l=u.next()).done)?19:17;
+break;case 15:i=!0,W.state=21;break;case 17:c=l.value,W.state=18;break;case 18:return void Promise.resolve(_(c)).then(W.createCallback(10),W.errback);
+case 10:d=W.value,W.state=9;break;case 9:W.state=d?11:15;break;case 11:return void Promise.resolve(f(d)).then(W.createCallback(13),W.errback);
+case 13:h=W.value,W.state=12;break;case 12:d[a]=h,n.push(d),W.state=15;break;case 19:
+W.popTry(),W.state=23,W.finallyFallThrough=27;break;case 22:W.popTry(),W.maybeUncatchable(),
+P=W.storedException,W.state=28;break;case 28:s=!0,o=P,W.state=23,W.finallyFallThrough=27;
+break;case 23:W.popTry(),W.state=34;break;case 34:try{i||null==u["return"]||u["return"]();
+}finally{if(s)throw o}W.state=32;break;case 27:b=!0,m=!1,g=void 0,W.state=66;break;
+case 66:W.pushTry(48,49),W.state=51;break;case 51:p=void 0,w=e[Symbol.iterator](),
+W.state=47;break;case 47:W.state=(b=(p=w.next()).done)?45:43;break;case 39:b=!0,W.state=47;
+break;case 43:k=p.value,W.state=44;break;case 44:x=v(k).toLowerCase(),W.state=42;break;
+case 42:W.state="svg"===x||"svgz"===x||"html"===x?35:39;break;case 35:return void Promise.resolve(f(k)).then(W.createCallback(37),W.errback);
+case 37:k[a]=W.value,W.state=36;break;case 36:n=n.filter(function(e){return e[a]!==k[a];
+}),n.push(k),W.state=39;break;case 45:W.popTry(),W.state=49,W.finallyFallThrough=53;
+break;case 48:W.popTry(),W.maybeUncatchable(),L=W.storedException,W.state=54;break;
+case 54:m=!0,g=L,W.state=49,W.finallyFallThrough=53;break;case 49:W.popTry(),W.state=60;
+break;case 60:try{b||null==w["return"]||w["return"]()}finally{if(m)throw g}W.state=58;
 break;case 53:for(;n.length>y;)n.shift();C=n.map(function(e){return chrome.fileSystem.retainEntry(e);
-}),j.state=68;break;case 68:return void Promise.resolve(t._dbSetRecent(C)).then(j.createCallback(62),j.errback);
-case 62:r(),j.state=-2;break;case 32:j.state=j.finallyFallThrough;break;case 58:j.state=j.finallyFallThrough;
-break;default:return j.end()}},this)})},_clearRecentEntries:function(){var e=this;
+}),W.state=68;break;case 68:return void Promise.resolve(t._dbSetRecent(C)).then(W.createCallback(62),W.errback);
+case 62:r(),W.state=-2;break;case 32:W.state=W.finallyFallThrough;break;case 58:W.state=W.finallyFallThrough;
+break;default:return W.end()}},this)})},_clearRecentEntries:function(){var e=this;
 return new Promise(function(t){e._dbSetRecent([])})},_storeSessionOnUserIdle:function(){
 this._shouldStoreSessionOnUserIdle=!0},_storeSession:function(){var e=this;return new Promise(function(t){
 var r,n,a,i,s,o,l,u,c,d,h,b,m,f,v,g,p,_,w,k,y,x,C,E;return $traceurRuntime.asyncWrap(function(S){
@@ -721,7 +720,7 @@ break;case 37:try{a||null==l["return"]||l["return"]()}finally{if(i)throw s}S.sta
 break;case 30:return void Promise.resolve(e._dbSetSession(r)).then(S.createCallback(39),S.errback);
 case 39:e._storingSession=!1,t(),S.state=-2;break;case 35:S.state=S.finallyFallThrough;
 break;default:return S.end()}},this)})},_restoreSession:function(){var e=this;return new Promise(function(r,n){
-var a,i,s,o,l,u,c,d,h,b,f,g,w,k,y,x,C,E,S,R,A,T,M,P,L,j,W,z,D,I,$,O,B,F,N,U,q,H,Z,V,G,K,X,Y,Q,J,ee,te,re,ne,ae,ie,se,oe,le,ue,ce,de,he,be;
+var a,i,s,o,l,u,c,d,h,b,f,g,w,k,y,x,C,E,S,R,A,T,M,P,L,W,j,D,z,$,I,O,B,F,N,U,q,H,Z,V,G,K,X,Y,Q,J,ee,te,re,ne,ae,ie,se,oe,le,ue,ce,de,he,be;
 return $traceurRuntime.asyncWrap(function(n){for(;;)switch(n.state){case 0:e._restoringSession=!0,
 n.state=119;break;case 119:return void Promise.resolve(e._dbGetSession()).then(n.createCallback(3),n.errback);
 case 3:a=n.value,n.state=2;break;case 2:i=!0,s=!1,o=void 0,n.state=121;break;case 121:
@@ -751,11 +750,11 @@ n.popTry(),n.state=62,n.finallyFallThrough=66;break;case 61:n.popTry(),n.maybeUn
 le=n.storedException,n.state=67;break;case 67:C=!0,E=le,n.state=62,n.finallyFallThrough=66;
 break;case 62:n.popTry(),n.state=73;break;case 73:try{x||null==R["return"]||R["return"]();
 }finally{if(C)throw E}n.state=71;break;case 66:if(y){T=!0,M=!1,P=void 0;try{for(L=void 0,
-j=a[Symbol.iterator]();!(T=(L=j.next()).done);T=!0)W=L.value,W.primary=W===y}catch(me){
-M=!0,P=me}finally{try{T||null==j["return"]||j["return"]()}finally{if(M)throw P}}}else{
-z=!0,D=!1,I=void 0;try{for($=void 0,O=a[Symbol.iterator]();!(z=($=O.next()).done);z=!0)B=$.value,
-B.primary=!1}catch(fe){D=!0,I=fe}finally{try{z||null==O["return"]||O["return"]()}finally{
-if(D)throw I}}a.push({entry:k,unsavedArtwork:null,primary:!0})}n.state=77;break;case 80:
+W=a[Symbol.iterator]();!(T=(L=W.next()).done);T=!0)j=L.value,j.primary=j===y}catch(me){
+M=!0,P=me}finally{try{T||null==W["return"]||W["return"]()}finally{if(M)throw P}}}else{
+D=!0,z=!1,$=void 0;try{for(I=void 0,O=a[Symbol.iterator]();!(D=(I=O.next()).done);D=!0)B=I.value,
+B.primary=!1}catch(fe){z=!0,$=fe}finally{try{D||null==O["return"]||O["return"]()}finally{
+if(z)throw $}}a.push({entry:k,unsavedArtwork:null,primary:!0})}n.state=77;break;case 80:
 n.popTry(),n.state=84,n.finallyFallThrough=88;break;case 83:n.popTry(),n.maybeUncatchable(),
 ue=n.storedException,n.state=89;break;case 89:b=!0,f=ue,n.state=84,n.finallyFallThrough=88;
 break;case 84:n.popTry(),n.state=95;break;case 95:try{h||null==w["return"]||w["return"]();
@@ -1045,7 +1044,7 @@ delete t.style.pointerEvents,this.close(r),a.state=-2;break;default:return a.end
 this.close(t)}else 27===e.keyCode&&(e.preventDefault(),this.close("cancel"))}},{},e);
 }(HTMLDialogElement),o=r("dialog","bx-messagebox",s);return{get default(){return o;
 }}}),$traceurRuntime.registerModule("elements/bx-tab",[],function(){"use strict";$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-button","elements/bx-tab"));
-var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-tab")).registerElement,t='\n  <style>@import url("stylesheets/bx-tab.css");</style>\n\n  <main>\n    <div id="label"></div>\n    <bx-button id="close-button" icon="close" iconsize="10" skin="bx-tabs"></bx-button>\n  </main>\n',r=function(e){
+var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-tab")).registerElement,t='\n  <style>@import url("stylesheets/bx-tab.css");</style>\n\n  <main>\n    <div id="label"></div>\n    <bx-button id="close-button" icon="close" skin="bx-tabs"></bx-button>\n  </main>\n',r=function(e){
 function r(){$traceurRuntime.superConstructor(r).apply(this,arguments)}return $traceurRuntime.createClass(r,{
 createdCallback:function(){var e=this;this._shadowRoot=this.createShadowRoot({mode:"closed"
 }),this._shadowRoot.innerHTML=t;var r=!0,n=!1,a=void 0;try{for(var i=void 0,s=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(r=(i=s.next()).done);r=!0){
@@ -1073,7 +1072,7 @@ bubbles:!0,detail:this}))},_onLabelChange:function(){this["#label"].textContent=
 "use strict";$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-button","elements/bx-tabs")),
 $traceurRuntime.getModule($traceurRuntime.normalizeModuleName("./bx-tab","elements/bx-tabs"));
 var e=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/element","elements/bx-tabs")),t=e.createElement,r=e.registerElement,n=$traceurRuntime.getModule($traceurRuntime.normalizeModuleName("../utils/time","elements/bx-tabs")).sleep,a=Math.abs,i=Number,s=i.parseInt,o=(i.parseFloat,
-50),l='\n  <style>@import url("stylesheets/bx-tabs.css");</style>\n\n  <main>\n    <content></content>\n    <bx-button id="new-tab-button" skin="bx-tabs" iconsize="15" icon="plus"></bx-button>\n  </main>\n',u=function(e){
+50),l='\n  <style>@import url("stylesheets/bx-tabs.css");</style>\n\n  <main>\n    <content></content>\n    <bx-button id="new-tab-button" skin="bx-tabs" icon="plus"></bx-button>\n  </main>\n',u=function(e){
 function r(){$traceurRuntime.superConstructor(r).apply(this,arguments)}return $traceurRuntime.createClass(r,{
 createdCallback:function(){var e=this;this._shadowRoot=this.createShadowRoot({mode:"closed"
 }),this._shadowRoot.innerHTML=l;var t=!0,r=!1,n=void 0;try{for(var a=void 0,i=this._shadowRoot.querySelectorAll("[id]")[Symbol.iterator]();!(t=(a=i.next()).done);t=!0){
@@ -1236,7 +1235,7 @@ e.prev[i&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=i,i++,e.insert--,!(e.lookahea
 if(e.lookahead<=1){if(h(e),0===e.lookahead&&t===L)return ge;if(0===e.lookahead)break;
 }e.strstart+=e.lookahead,e.lookahead=0;var n=e.block_start+r;if((0===e.strstart||e.strstart>=n)&&(e.lookahead=e.strstart-n,
 e.strstart=n,o(e,!1),0===e.strm.avail_out))return ge;if(e.strstart-e.block_start>=e.w_size-le&&(o(e,!1),
-0===e.strm.avail_out))return ge}return e.insert=0,t===z?(o(e,!0),0===e.strm.avail_out?_e:we):e.strstart>e.block_start&&(o(e,!1),
+0===e.strm.avail_out))return ge}return e.insert=0,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.strstart>e.block_start&&(o(e,!1),
 0===e.strm.avail_out)?ge:ge}function m(e,t){for(var r,n;;){if(e.lookahead<le){if(h(e),
 e.lookahead<le&&t===L)return ge;if(0===e.lookahead)break}if(r=0,e.lookahead>=se&&(e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+se-1])&e.hash_mask,
 r=e.prev[e.strstart&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=e.strstart),0!==r&&e.strstart-r<=e.w_size-le&&(e.match_length=d(e,r)),
@@ -1247,7 +1246,7 @@ r=e.prev[e.strstart&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=e.strstart;while(0
 e.strstart++}else e.strstart+=e.match_length,e.match_length=0,e.ins_h=e.window[e.strstart],
 e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+1])&e.hash_mask;else n=A._tr_tally(e,0,e.window[e.strstart]),
 e.lookahead--,e.strstart++;if(n&&(o(e,!1),0===e.strm.avail_out))return ge}return e.insert=e.strstart<se-1?e.strstart:se-1,
-t===z?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ge:pe;
+t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ge:pe;
 }function f(e,t){for(var r,n,a;;){if(e.lookahead<le){if(h(e),e.lookahead<le&&t===L)return ge;
 if(0===e.lookahead)break}if(r=0,e.lookahead>=se&&(e.ins_h=(e.ins_h<<e.hash_shift^e.window[e.strstart+se-1])&e.hash_mask,
 r=e.prev[e.strstart&e.w_mask]=e.head[e.ins_h],e.head[e.ins_h]=e.strstart),e.prev_length=e.match_length,
@@ -1260,7 +1259,7 @@ if(e.match_available=0,e.match_length=se-1,e.strstart++,n&&(o(e,!1),0===e.strm.a
 }else if(e.match_available){if(n=A._tr_tally(e,0,e.window[e.strstart-1]),n&&o(e,!1),
 e.strstart++,e.lookahead--,0===e.strm.avail_out)return ge}else e.match_available=1,
 e.strstart++,e.lookahead--}return e.match_available&&(n=A._tr_tally(e,0,e.window[e.strstart-1]),
-e.match_available=0),e.insert=e.strstart<se-1?e.strstart:se-1,t===z?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),
+e.match_available=0),e.insert=e.strstart<se-1?e.strstart:se-1,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),
 0===e.strm.avail_out)?ge:pe}function v(e,t){for(var r,n,a,i,s=e.window;;){if(e.lookahead<=oe){
 if(h(e),e.lookahead<=oe&&t===L)return ge;if(0===e.lookahead)break}if(e.match_length=0,
 e.lookahead>=se&&e.strstart>0&&(a=e.strstart-1,n=s[a],n===s[++a]&&n===s[++a]&&n===s[++a])){
@@ -1269,10 +1268,10 @@ e.match_length=oe-(i-a),e.match_length>e.lookahead&&(e.match_length=e.lookahead)
 if(e.match_length>=se?(r=A._tr_tally(e,1,e.match_length-se),e.lookahead-=e.match_length,
 e.strstart+=e.match_length,e.match_length=0):(r=A._tr_tally(e,0,e.window[e.strstart]),
 e.lookahead--,e.strstart++),r&&(o(e,!1),0===e.strm.avail_out))return ge}return e.insert=0,
-t===z?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ge:pe;
+t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),0===e.strm.avail_out)?ge:pe;
 }function g(e,t){for(var r;;){if(0===e.lookahead&&(h(e),0===e.lookahead)){if(t===L)return ge;
 break}if(e.match_length=0,r=A._tr_tally(e,0,e.window[e.strstart]),e.lookahead--,e.strstart++,
-r&&(o(e,!1),0===e.strm.avail_out))return ge}return e.insert=0,t===z?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),
+r&&(o(e,!1),0===e.strm.avail_out))return ge}return e.insert=0,t===D?(o(e,!0),0===e.strm.avail_out?_e:we):e.last_lit&&(o(e,!1),
 0===e.strm.avail_out)?ge:pe}function p(e){e.window_size=2*e.w_size,i(e.head),e.max_lazy_match=S[e.level].max_lazy,
 e.good_match=S[e.level].good_length,e.nice_match=S[e.level].nice_length,e.max_chain_length=S[e.level].max_chain,
 e.strstart=0,e.block_start=0,e.lookahead=0,e.insert=0,e.match_length=e.prev_length=se-1,
@@ -1291,7 +1290,7 @@ i(this.depth),this.l_buf=0,this.lit_bufsize=0,this.last_lit=0,this.d_buf=0,this.
 this.static_len=0,this.matches=0,this.insert=0,this.bi_buf=0,this.bi_valid=0,this.high_water=0;
 }function w(e){var t;return e&&e.state?(e.total_in=e.total_out=0,e.data_type=G,t=e.state,
 t.pending=0,t.pending_out=0,t.wrap<0&&(t.wrap=-t.wrap),t.status=t.wrap?ce:fe,e.adler=2===t.wrap?0:1,
-t.last_flush=L,A._tr_init(t),I):n(e,O)}function k(e){var t=w(e);return t===I&&p(e.state),
+t.last_flush=L,A._tr_init(t),$):n(e,O)}function k(e){var t=w(e);return t===$&&p(e.state),
 t}function y(e,t,r,a,i,s){if(!e)return n(e,O);var o=1;if(t===N&&(t=6),0>a?(o=0,a=-a):a>15&&(o=2,
 a-=16),1>i||i>X||r!==K||8>a||a>15||0>t||t>9||0>s||s>Z)return n(e,O);8===a&&(a=9);var l=new _;
 return e.state=l,l.strm=e,l.wrap=o,l.gzhead=null,l.w_bits=a,l.w_size=1<<l.w_bits,
@@ -1300,23 +1299,23 @@ l.hash_shift=~~((l.hash_bits+se-1)/se),l.window=new R.Buf8(2*l.w_size),l.head=ne
 l.prev=new R.Buf16(l.w_size),l.high_water=0,l.lit_bufsize=1<<i+6,l.pending_buf_size=4*l.lit_bufsize,
 l.pending_buf=new R.Buf8(l.pending_buf_size),l.d_buf=l.lit_bufsize>>1,l.l_buf=3*l.lit_bufsize,
 l.level=t,l.strategy=s,l.method=r,k(e)}function x(e,t){return y(e,t,K,Y,Q,V)}function C(e,t){
-var r,o;if(!e||!e.state||t>D||0>t)return n(e,O);if(o=e.state,!e.next_out||!e.next_in&&0!==e.avail_in||o.status===ve&&t!==z)return n(e,0===e.avail_out?F:O);
+var r,o;if(!e||!e.state||t>z||0>t)return n(e,O);if(o=e.state,!e.next_out||!e.next_in&&0!==e.avail_in||o.status===ve&&t!==D)return n(e,0===e.avail_out?F:O);
 if(o.strm=e,r=o.last_flush,o.last_flush=t,o.status===ce)if(2===o.wrap){if(e.adler=0,
 l(o,31),l(o,139),l(o,8),o.gzhead)throw new Error("Custom GZIP headers not supported");
 l(o,0),l(o,0),l(o,0),l(o,0),l(o,0),l(o,9===o.level?2:o.strategy>=q||o.level<2?4:0),
 l(o,ke),o.status=fe}else{var c=K+(o.w_bits-8<<4)<<8,d=-1;d=o.strategy>=q||o.level<2?0:o.level<6?1:6===o.level?2:3,
 c|=d<<6,0!==o.strstart&&(c|=ue),c+=31-c%31,o.status=fe,u(o,c),0!==o.strstart&&(u(o,e.adler>>>16),
 u(o,65535&e.adler)),e.adler=1}if(0!==o.pending){if(s(e),0===e.avail_out)return o.last_flush=-1,
-I}else if(0===e.avail_in&&a(t)<=a(r)&&t!==z)return n(e,F);if(o.status===ve&&0!==e.avail_in)return n(e,F);
+$}else if(0===e.avail_in&&a(t)<=a(r)&&t!==D)return n(e,F);if(o.status===ve&&0!==e.avail_in)return n(e,F);
 if(0!==e.avail_in||0!==o.lookahead||t!==L&&o.status!==ve){var h=o.strategy===q?g(o,t):o.strategy===H?v(o,t):S[o.level].func(o,t);
 if(h!==_e&&h!==we||(o.status=ve),h===ge||h===_e)return 0===e.avail_out&&(o.last_flush=-1),
-I;if(h===pe&&(t===j?A._tr_align(o):t!==D&&(A._tr_stored_block(o,0,0,!1),t===W&&(i(o.head),
+$;if(h===pe&&(t===W?A._tr_align(o):t!==z&&(A._tr_stored_block(o,0,0,!1),t===j&&(i(o.head),
 0===o.lookahead&&(o.strstart=0,o.block_start=0,o.insert=0))),s(e),0===e.avail_out))return o.last_flush=-1,
-I}return t!==z?I:o.wrap<=0?$:(2===o.wrap?(l(o,255&e.adler),l(o,e.adler>>8&255),l(o,e.adler>>16&255),
+$}return t!==D?$:o.wrap<=0?I:(2===o.wrap?(l(o,255&e.adler),l(o,e.adler>>8&255),l(o,e.adler>>16&255),
 l(o,e.adler>>24&255),l(o,255&e.total_in),l(o,e.total_in>>8&255),l(o,e.total_in>>16&255),
 l(o,e.total_in>>24&255)):(u(o,e.adler>>>16),u(o,65535&e.adler)),s(e),o.wrap>0&&(o.wrap=-o.wrap),
-0!==o.pending?I:$)}function E(e){var t=e.state.status;return t!==ce&&t!==de&&t!==he&&t!==be&&t!==me&&t!==fe&&t!==ve?n(e,O):(e.state=null,
-t===fe?n(e,B):I)}var S,R=e("./utils"),A=e("./trees"),T=e("./adler32"),M=e("./crc32"),P=e("./messages"),L=0,j=1,W=3,z=4,D=5,I=0,$=1,O=-2,B=-3,F=-5,N=-1,U=1,q=2,H=3,Z=4,V=0,G=2,K=8,X=9,Y=15,Q=8,J=29,ee=256,te=ee+1+J,re=30,ne=19,ae=2*te+1,ie=15,se=3,oe=258,le=oe+se+1,ue=32,ce=42,de=69,he=73,be=91,me=103,fe=113,ve=666,ge=1,pe=2,_e=3,we=4,ke=3,ye=function(e,t,r,n,a){
+0!==o.pending?$:I)}function E(e){var t=e.state.status;return t!==ce&&t!==de&&t!==he&&t!==be&&t!==me&&t!==fe&&t!==ve?n(e,O):(e.state=null,
+t===fe?n(e,B):$)}var S,R=e("./utils"),A=e("./trees"),T=e("./adler32"),M=e("./crc32"),P=e("./messages"),L=0,W=1,j=3,D=4,z=5,$=0,I=1,O=-2,B=-3,F=-5,N=-1,U=1,q=2,H=3,Z=4,V=0,G=2,K=8,X=9,Y=15,Q=8,J=29,ee=256,te=ee+1+J,re=30,ne=19,ae=2*te+1,ie=15,se=3,oe=258,le=oe+se+1,ue=32,ce=42,de=69,he=73,be=91,me=103,fe=113,ve=666,ge=1,pe=2,_e=3,we=4,ke=3,ye=function(e,t,r,n,a){
 this.good_length=e,this.max_lazy=t,this.nice_length=r,this.max_chain=n,this.func=a;
 };S=[new ye(0,0,0,0,b),new ye(4,4,8,4,m),new ye(4,5,16,8,m),new ye(4,6,32,32,m),new ye(4,4,16,16,f),new ye(8,16,32,32,f),new ye(8,16,128,128,f),new ye(8,32,128,256,f),new ye(32,128,258,1024,f),new ye(32,258,258,4096,f)],
 r.deflateInit=x,r.deflateInit2=y,r.deflateReset=k,r.deflate=C,r.deflateEnd=E,r.deflateInfo="pako deflate (from Nodeca project)";
@@ -1351,7 +1350,7 @@ this.have=0,this.next=null,this.next_index=0,this.lens=new p.Buf16(320),this.wor
 this.codes=new p.Buf32(ge),this.sane=0,this.back=0,this.was=0}function i(e,t,r,n,a,i,s,o){
 this.type=e,this.lens=t,this.lens_index=r,this.codes=n,this.table=a,this.table_index=i,
 this.bits=s,this.work=o}function s(e){var t;return e&&e.state?(t=e.state,e.total_in=e.total_out=t.total=0,
-t.wrap&&(e.adler=1&t.wrap),t.mode=I,t.last=0,t.havedict=0,t.dmax=32768,t.head=null,
+t.wrap&&(e.adler=1&t.wrap),t.mode=$,t.last=0,t.havedict=0,t.dmax=32768,t.head=null,
 t.hold=0,t.bits=0,t.lencode=new p.Buf32(ge),t.distcode=new p.Buf32(ge),t.sane=1,t.back=-1,
 T):L}function o(e){var t;return e&&e.state?(t=e.state,t.wsize=0,t.whave=0,t.wnext=0,
 s(e)):L}function l(e,t){var r,n;return e&&e.state?(n=e.state,0>t?(r=0,t=-t):(r=(t>>4)+1,
@@ -1369,15 +1368,15 @@ i.wnext=0,i.whave=i.wsize):(a=i.wsize-i.wnext,a>n&&(a=n),p.arraySet(i.window,t,r
 n-=a,n?(p.arraySet(i.window,t,r-n,n,0),i.wnext=n,i.whave=i.wsize):(i.wnext+=a,i.wnext===i.wsize&&(i.wnext=0),
 i.whave<i.wsize&&(i.whave+=a))),0}function m(e,t){var r,a,s,o,l,u,c,d,m,f,v,g,fe,ve,ge,pe,_e,we,ke,ye,xe,Ce,Ee,Se,Re=0,Ae=new p.Buf8(4),Te=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15];
 r=e.state,r.mode===G&&(r.mode=K),l=e.next_out_index,s=e.next_out,c=e.avail_out,o=e.next_in_index,
-a=e.next_in,u=e.avail_in,d=r.hold,m=r.bits,f=u,v=c,Ce=T;e:for(;;)switch(r.mode){case I:
+a=e.next_in,u=e.avail_in,d=r.hold,m=r.bits,f=u,v=c,Ce=T;e:for(;;)switch(r.mode){case $:
 if(0===r.wrap){r.mode=K;break}for(;16>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}
 if(2&r.wrap&&35615===d){r.check=0,Ae[0]=255&d,Ae[1]=d>>>8&255,r.check=w(r.check,Ae,2,0),
-d=0,m=0,r.mode=$;break}if(r.flags=0,r.head&&(r.head.done=-1),!(1&r.wrap)||(((255&d)<<8)+(d>>8))%31){
-e.msg="incorrect header check",r.mode=he;break}if((15&d)!==D){e.msg="unknown compression method",
+d=0,m=0,r.mode=I;break}if(r.flags=0,r.head&&(r.head.done=-1),!(1&r.wrap)||(((255&d)<<8)+(d>>8))%31){
+e.msg="incorrect header check",r.mode=he;break}if((15&d)!==z){e.msg="unknown compression method",
 r.mode=he;break}if(d>>>=4,m-=4,xe=(15&d)+8,0===r.wbits)r.wbits=xe;else if(xe>r.wbits){
 e.msg="invalid window size",r.mode=he;break}r.dmax=1<<xe,e.adler=r.check=1,r.mode=512&d?Z:G,
-d=0,m=0;break;case $:for(;16>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(r.flags=d,
-(255&r.flags)!==D){e.msg="unknown compression method",r.mode=he;break}if(57344&r.flags){
+d=0,m=0;break;case I:for(;16>m;){if(0===u)break e;u--,d+=a[o++]<<m,m+=8}if(r.flags=d,
+(255&r.flags)!==z){e.msg="unknown compression method",r.mode=he;break}if(57344&r.flags){
 e.msg="unknown header flags set",r.mode=he;break}r.head&&(r.head.text=d>>8&1),512&r.flags&&(Ae[0]=255&d,
 Ae[1]=d>>>8&255,r.check=w(r.check,Ae,2,0)),d=0,m=0,r.mode=O;case O:for(;32>m;){if(0===u)break e;
 u--,d+=a[o++]<<m,m+=8}r.head&&(r.head.time=d),512&r.flags&&(Ae[0]=255&d,Ae[1]=d>>>8&255,
@@ -1455,31 +1454,31 @@ if(0===u)break e;u--,d|=a[o++]<<m,m+=8}if(v-=c,e.total_out+=v,r.total+=v,v&&(e.a
 v=c,(r.flags?d:n(d))!==r.check){e.msg="incorrect data check",r.mode=he;break}d=0,
 m=0}r.mode=ce;case ce:if(r.wrap&&r.flags){for(;32>m;){if(0===u)break e;u--,d+=a[o++]<<m,
 m+=8}if(d!==(4294967295&r.total)){e.msg="incorrect length check",r.mode=he;break}
-d=0,m=0}r.mode=de;case de:Ce=M;break e;case he:Ce=j;break e;case be:return W;case me:
+d=0,m=0}r.mode=de;case de:Ce=M;break e;case he:Ce=W;break e;case be:return j;case me:
 default:return L}return e.next_out_index=l,e.avail_out=c,e.next_in_index=o,e.avail_in=u,
 r.hold=d,r.bits=m,(r.wsize||v!==e.avail_out&&r.mode<he&&(r.mode<ue||t!==S))&&b(e,e.next_out,e.next_out_index,v-e.avail_out)?(r.mode=be,
-W):(f-=e.avail_in,v-=e.avail_out,e.total_in+=f,e.total_out+=v,r.total+=v,r.wrap&&v&&(e.adler=r.check=r.flags?w(r.check,s,v,e.next_out_index-v):_(r.check,s,v,e.next_out_index-v)),
+j):(f-=e.avail_in,v-=e.avail_out,e.total_in+=f,e.total_out+=v,r.total+=v,r.wrap&&v&&(e.adler=r.check=r.flags?w(r.check,s,v,e.next_out_index-v):_(r.check,s,v,e.next_out_index-v)),
 e.data_type=r.bits+(r.last?64:0)+(r.mode===G?128:0)+(r.mode===re||r.mode===Y?256:0),
-(0===f&&0===v||t===S)&&Ce===T&&(Ce=z),Ce)}function f(e){var t=e.state;return t.window&&(t.window=null),
-e.state=null,T}var v,g,p=e("./utils"),_=e("./adler32"),w=e("./crc32"),k=e("./inffast"),y=e("./inftrees"),x=0,C=1,E=2,S=4,R=5,A=6,T=0,M=1,P=2,L=-2,j=-3,W=-4,z=-5,D=8,I=1,$=2,O=3,B=4,F=5,N=6,U=7,q=8,H=9,Z=10,V=11,G=12,K=13,X=14,Y=15,Q=16,J=17,ee=18,te=19,re=20,ne=21,ae=22,ie=23,se=24,oe=25,le=26,ue=27,ce=28,de=29,he=30,be=31,me=32,fe=852,ve=592,ge=fe+ve,pe=15,_e=pe,we=!0;
+(0===f&&0===v||t===S)&&Ce===T&&(Ce=D),Ce)}function f(e){var t=e.state;return t.window&&(t.window=null),
+e.state=null,T}var v,g,p=e("./utils"),_=e("./adler32"),w=e("./crc32"),k=e("./inffast"),y=e("./inftrees"),x=0,C=1,E=2,S=4,R=5,A=6,T=0,M=1,P=2,L=-2,W=-3,j=-4,D=-5,z=8,$=1,I=2,O=3,B=4,F=5,N=6,U=7,q=8,H=9,Z=10,V=11,G=12,K=13,X=14,Y=15,Q=16,J=17,ee=18,te=19,re=20,ne=21,ae=22,ie=23,se=24,oe=25,le=26,ue=27,ce=28,de=29,he=30,be=31,me=32,fe=852,ve=592,ge=fe+ve,pe=15,_e=pe,we=!0;
 r.inflateReset=o,r.inflateReset2=l,r.inflateResetKeep=s,r.inflateInit=c,r.inflateInit2=u,
 r.inflatePrime=d,r.inflate=m,r.inflateEnd=f,r.inflateInfo="pako inflate (from Nodeca project)";
 },{"./adler32":4,"./crc32":6,"./inffast":8,"./inftrees":10,"./utils":13}],10:[function(e,t,r){
 var n=e("./utils"),a=15,i=852,s=592,o=0,l=1,u=2,c=[3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,43,51,59,67,83,99,115,131,163,195,227,258,0,0],d=[16,16,16,16,16,16,16,16,17,17,17,17,18,18,18,18,19,19,19,19,20,20,20,20,21,21,21,21,16,72,78],h=[1,2,3,4,5,7,9,13,17,25,33,49,65,97,129,193,257,385,513,769,1025,1537,2049,3073,4097,6145,8193,12289,16385,24577,0,0],b=[16,16,16,16,17,17,18,18,19,19,20,20,21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,29,29,64,64];
-t.exports=function(e){var t,r,m,f,v,g,p,_,w,k=e.type,y=e.lens,x=e.codes,C=e.table,E=e.bits,S=e.work,R=0,A=0,T=0,M=0,P=0,L=0,j=0,W=0,z=0,D=0,I=null,$=0,O=new n.Buf16(a+1),B=new n.Buf16(a+1),F=null,N=0;
+t.exports=function(e){var t,r,m,f,v,g,p,_,w,k=e.type,y=e.lens,x=e.codes,C=e.table,E=e.bits,S=e.work,R=0,A=0,T=0,M=0,P=0,L=0,W=0,j=0,D=0,z=0,$=null,I=0,O=new n.Buf16(a+1),B=new n.Buf16(a+1),F=null,N=0;
 for(R=0;a>=R;R++)O[R]=0;for(A=0;x>A;A++)O[y[e.lens_index+A]]++;for(P=E,M=a;M>=1&&0===O[M];M--);
 if(P>M&&(P=M),0===M)return C[e.table_index++]=20971520,C[e.table_index++]=20971520,
-e.bits=1,0;for(T=1;M>T&&0===O[T];T++);for(T>P&&(P=T),W=1,R=1;a>=R;R++)if(W<<=1,W-=O[R],
-0>W)return-1;if(W>0&&(k===o||1!==M))return-1;for(B[1]=0,R=1;a>R;R++)B[R+1]=B[R]+O[R];
+e.bits=1,0;for(T=1;M>T&&0===O[T];T++);for(T>P&&(P=T),j=1,R=1;a>=R;R++)if(j<<=1,j-=O[R],
+0>j)return-1;if(j>0&&(k===o||1!==M))return-1;for(B[1]=0,R=1;a>R;R++)B[R+1]=B[R]+O[R];
 for(A=0;x>A;A++)0!==y[e.lens_index+A]&&(S[B[y[e.lens_index+A]]++]=A);switch(k){case o:
-I=F=S,g=19;break;case l:I=c,$-=257,F=d,N-=257,g=256;break;default:I=h,F=b,g=-1}if(D=0,
-A=0,R=T,v=e.table_index,L=P,j=0,m=-1,z=1<<P,f=z-1,k===l&&z>i||k===u&&z>s)return 1;
-for(var U=0;;){U++,p=R-j,S[A]<g?(_=0,w=S[A]):S[A]>g?(_=F[N+S[A]],w=I[$+S[A]]):(_=96,
-w=0),t=1<<R-j,r=1<<L,T=r;do r-=t,C[v+(D>>j)+r]=p<<24|_<<16|w|0;while(0!==r);for(t=1<<R-1;D&t;)t>>=1;
-if(0!==t?(D&=t-1,D+=t):D=0,A++,0===--O[R]){if(R===M)break;R=y[e.lens_index+S[A]]}
-if(R>P&&(D&f)!==m){for(0===j&&(j=P),v+=T,L=R-j,W=1<<L;M>L+j&&(W-=O[L+j],!(0>=W));)L++,
-W<<=1;if(z+=1<<L,k===l&&z>i||k===u&&z>s)return 1;m=D&f,C[m]=P<<24|L<<16|v-e.table_index;
-}}return 0!==D&&(C[v+D]=R-j<<24|64<<16|0),e.table_index+=z,e.bits=P,0}},{"./utils":13
+$=F=S,g=19;break;case l:$=c,I-=257,F=d,N-=257,g=256;break;default:$=h,F=b,g=-1}if(z=0,
+A=0,R=T,v=e.table_index,L=P,W=0,m=-1,D=1<<P,f=D-1,k===l&&D>i||k===u&&D>s)return 1;
+for(var U=0;;){U++,p=R-W,S[A]<g?(_=0,w=S[A]):S[A]>g?(_=F[N+S[A]],w=$[I+S[A]]):(_=96,
+w=0),t=1<<R-W,r=1<<L,T=r;do r-=t,C[v+(z>>W)+r]=p<<24|_<<16|w|0;while(0!==r);for(t=1<<R-1;z&t;)t>>=1;
+if(0!==t?(z&=t-1,z+=t):z=0,A++,0===--O[R]){if(R===M)break;R=y[e.lens_index+S[A]]}
+if(R>P&&(z&f)!==m){for(0===W&&(W=P),v+=T,L=R-W,j=1<<L;M>L+W&&(j-=O[L+W],!(0>=j));)L++,
+j<<=1;if(D+=1<<L,k===l&&D>i||k===u&&D>s)return 1;m=z&f,C[m]=P<<24|L<<16|v-e.table_index;
+}}return 0!==z&&(C[v+z]=R-W<<24|64<<16|0),e.table_index+=D,e.bits=P,0}},{"./utils":13
 }],11:[function(e,t,r){t.exports={2:"need dictionary",1:"stream end",0:"","-1":"file error",
 "-2":"stream error","-3":"data error","-4":"insufficient memory","-5":"buffer error",
 "-6":"incompatible version"}},{}],12:[function(e,t,r){function n(e){for(var t=e.length;--t;)e[t]=0;
@@ -1530,19 +1529,19 @@ d=4)}}function y(e){var t;for(w(e,e.dyn_ltree,e.l_desc.max_code),w(e,e.dyn_dtree
 _(e,e.bl_desc),t=q-1;t>=3&&0===e.bl_tree[2*re[t]+1];t--);return e.opt_len+=3*(t+1)+5+5+4,
 t}function x(e,t,r,n){var a;for(s(e,t-257,5),s(e,r-1,5),s(e,n-4,4),a=0;n>a;a++)s(e,e.bl_tree[2*re[a]+1],3);
 k(e,e.dyn_ltree,t-1),k(e,e.dyn_dtree,r-1)}function C(e){var t,r=4093624447;for(t=0;31>=t;t++,
-r>>>=1)if(1&r&&0!==e.dyn_ltree[2*t])return L;if(0!==e.dyn_ltree[18]||0!==e.dyn_ltree[20]||0!==e.dyn_ltree[26])return j;
-for(t=32;F>t;t++)if(0!==e.dyn_ltree[2*t])return j;return L}function E(e){fe||(h(),
+r>>>=1)if(1&r&&0!==e.dyn_ltree[2*t])return L;if(0!==e.dyn_ltree[18]||0!==e.dyn_ltree[20]||0!==e.dyn_ltree[26])return W;
+for(t=32;F>t;t++)if(0!==e.dyn_ltree[2*t])return W;return L}function E(e){fe||(h(),
 fe=!0),e.l_desc=new me(e.dyn_ltree,ce),e.d_desc=new me(e.dyn_dtree,de),e.bl_desc=new me(e.bl_tree,he),
-e.bi_buf=0,e.bi_valid=0,b(e)}function S(e,t,r,n){s(e,(z<<1)+(n?1:0),3),f(e,t,r,!0);
-}function R(e){s(e,D<<1,3),o(e,K,ae),u(e)}function A(e,t,r,n){var a,i,o=0;e.level>0?(e.strm.data_type===W&&(e.strm.data_type=C(e)),
+e.bi_buf=0,e.bi_valid=0,b(e)}function S(e,t,r,n){s(e,(D<<1)+(n?1:0),3),f(e,t,r,!0);
+}function R(e){s(e,z<<1,3),o(e,K,ae),u(e)}function A(e,t,r,n){var a,i,o=0;e.level>0?(e.strm.data_type===j&&(e.strm.data_type=C(e)),
 _(e,e.l_desc),_(e,e.d_desc),o=y(e),a=e.opt_len+3+7>>>3,i=e.static_len+3+7>>>3,a>=i&&(a=i)):a=i=r+5,
-a>=r+4&&-1!==t?S(e,t,r,n):e.strategy===P||i===a?(s(e,(D<<1)+(n?1:0),3),p(e,ae,ie)):(s(e,(I<<1)+(n?1:0),3),
+a>=r+4&&-1!==t?S(e,t,r,n):e.strategy===P||i===a?(s(e,(z<<1)+(n?1:0),3),p(e,ae,ie)):(s(e,($<<1)+(n?1:0),3),
 x(e,e.l_desc.max_code+1,e.d_desc.max_code+1,o+1),p(e,e.dyn_ltree,e.dyn_dtree)),b(e),
 n&&m(e)}function T(e,t,r){return e.pending_buf[e.d_buf+2*e.last_lit]=t>>>8&255,e.pending_buf[e.d_buf+2*e.last_lit+1]=255&t,
 e.pending_buf[e.l_buf+e.last_lit]=255&r,e.last_lit++,0===t?e.dyn_ltree[2*r]++:(e.matches++,
 t--,e.dyn_ltree[2*(oe[r]+F+1)]++,e.dyn_dtree[2*a(t)]++),e.last_lit===e.lit_bufsize-1;
-}var M=e("./utils"),P=4,L=0,j=1,W=2,z=0,D=1,I=2,$=3,O=258,B=29,F=256,N=F+1+B,U=30,q=19,H=2*N+1,Z=15,V=16,G=7,K=256,X=16,Y=17,Q=18,J=[0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0],ee=[0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13],te=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,7],re=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],ne=512,ae=new Array(2*(N+2));
-n(ae);var ie=new Array(2*U);n(ie);var se=new Array(ne);n(se);var oe=new Array(O-$+1);
+}var M=e("./utils"),P=4,L=0,W=1,j=2,D=0,z=1,$=2,I=3,O=258,B=29,F=256,N=F+1+B,U=30,q=19,H=2*N+1,Z=15,V=16,G=7,K=256,X=16,Y=17,Q=18,J=[0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,0],ee=[0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13],te=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,7],re=[16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15],ne=512,ae=new Array(2*(N+2));
+n(ae);var ie=new Array(2*U);n(ie);var se=new Array(ne);n(se);var oe=new Array(O-I+1);
 n(oe);var le=new Array(B);n(le);var ue=new Array(U);n(ue);var ce,de,he,be=function(e,t,r,n,a){
 this.static_tree=e,this.extra_bits=t,this.extra_base=r,this.elems=n,this.max_length=a,
 this.has_stree=e&&e.length},me=function(e,t){this.dyn_tree=e,this.max_code=0,this.stat_desc=t;

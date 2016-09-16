@@ -28,6 +28,7 @@ main {
   margin: 4px 6px 0 3px;
   transition: opacity 0.15s ease-in-out;
   order: 9999;
+  --icon-size: 15px;
   -webkit-app-region: no-drag;
 }
 

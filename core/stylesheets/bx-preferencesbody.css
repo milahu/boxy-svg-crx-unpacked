@@ -49,6 +49,7 @@ main[data-extra-whitespace] {
 
 #buttons > bx-button {
   width: 100%;
+  --icon-size: 25px;
 }
 
 #views {

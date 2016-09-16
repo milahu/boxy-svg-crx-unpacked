@@ -9,6 +9,7 @@
   height: 40px;
   display: block;
   contain: size layout style paint;
+  --icon-size: 20px;
 }
 :host([disabled]) {
   opacity: 0.5;
@@ -36,8 +37,9 @@ main {
 
 #icon {
   flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
+  width: var(--icon-size);
+  min-width: var(--icon-size);
+  height: var(--icon-size);
   opacity: 0.8;
   fill: white;
   stroke: white;

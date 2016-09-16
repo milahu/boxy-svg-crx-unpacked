@@ -1,0 +1,26 @@
+
+/*
+ * @copyright
+ *   © 2012-2016 Jarosław Foksa
+ */
+
+:host {
+  display: block;
+  contain: size layout style;
+}
+
+#curve-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#curve-buttons bx-button {
+  width: 29px;
+  height: 29px;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  --icon-size: 26px;
+}
+#curve-buttons bx-button:last-child {
+  margin-right: 0;
+}

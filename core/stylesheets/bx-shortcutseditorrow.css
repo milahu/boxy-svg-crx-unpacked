@@ -79,6 +79,7 @@ main {
 bx-button {
   width: 25px;
   height: 25px;
+  --icon-size: 12px;
 }
 bx-button:first-child {
   margin-right: 4px;

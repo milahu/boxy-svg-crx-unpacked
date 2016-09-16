@@ -53,6 +53,25 @@ main {
   height: 200px;
 }
 
+#shape-tool-panel {
+  width: 240px;
+  min-width: 240px;
+  height: 219px;
+  min-height: 219px;
+}
+
+#curve-tool-panel {
+  width: 200px;
+  min-width: 200px;
+  height: 124px;
+  min-height: 124px;
+}
+
+#freehand-tool-panel {
+  height: 124px;
+  min-height: 124px;
+}
+
 #fill-panel {
   height: 620px;
 }

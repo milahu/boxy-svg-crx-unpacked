@@ -47,6 +47,7 @@
 #align-buttons bx-button {
   width: 35px;
   height: 35px;
+  --icon-size: 32px;
 }
 
 #align-buttons #align-inside-buttons {
@@ -84,14 +85,14 @@
   margin-bottom: 5px;
 }
 
-/* Rotate, flip, order and group sections */
+/* Transform section */
 
-#flip-section {
-  flex: 1;
-  padding-left: 20px;
+#transform-section bx-button {
+  --icon-size: 30px;
 }
 
-#group-section {
-  flex: 1;
-  padding-left: 20px;
+/* Order section */
+
+#order-section bx-button {
+  --icon-size: 30px;
 }

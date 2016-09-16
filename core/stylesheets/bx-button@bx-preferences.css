@@ -11,6 +11,7 @@
   height: 40px;
   display: block;
   contain: size layout style paint;
+  --icon-size: 25px;
 }
 
 main {
@@ -34,8 +35,9 @@ main {
 
 #icon {
   opacity: 0.8;
-  width: 25px;
-  height: 25px;
+  width: var(--icon-size);
+  min-width: var(--icon-size);
+  height: var(--icon-size);
   margin: 0 0 0 11px;
   fill: white;
 }

@@ -71,6 +71,7 @@ h3[disabled] {
   width: 30px;
   height: 30px;
   margin: 5px;
+  --icon-size: 30px;
 }
 #paint-type-buttons bx-button[hidden] {
   display: none;
@@ -93,6 +94,7 @@ h3[disabled] {
   width: 30px;
   height: 30px;
   margin-right: 10px;
+  --icon-size: 30px;
 }
 
 /**
@@ -149,6 +151,7 @@ h3[disabled] {
 #pattern-subsection #edit-pattern-button {
   width: 28px;
   margin: 0 0 0 8px;
+  --icon-size: 22px;
 }
 
 #pattern-subsection #pattern-select-hint {

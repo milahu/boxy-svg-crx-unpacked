@@ -47,12 +47,14 @@ header h2 {
 header #delete-pattern-button {
   width: 20px;
   height: 20px;
+  --icon-size: 15px;
 }
 
 header #create-pattern-button {
   width: 20px;
   height: 20px;
   margin-left: 6px;
+  --icon-size: 15px;
 }
 
 /*

@@ -19,6 +19,7 @@
 #clip-buttons bx-button,
 #mask-buttons bx-button {
   width: 100%;
+  --icon-size: 25px;
 }
 
 /* "Opacity mask" section */
