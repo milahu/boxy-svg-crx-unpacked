@@ -1,20 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html id="app-html">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Boxy SVG</title>
-    <link rel="stylesheet" href="node_modules/xel/stylesheets/vanilla.theme.css">
-    <link rel="stylesheet" href="stylesheets/vanilla.theme.css">
-    <script src="chrome-preload.js"></script>
-    <script src="node_modules/paper/dist/paper-core.min.js"></script>
-    <script src="node_modules/pako/dist/pako.min.js"></script>
-    <script src="node_modules/gif.js/dist/gif.js"></script>
-    <script src="node_modules/opentype.js/dist/opentype.min.js"></script>
-    <script src="node_modules/parse-css/parse-css.js"></script>
-    <script src="node_modules/xel/xel.min.js"></script>
-    <!-- @vulcanize --><script src="chrome-app.js"></script><!-- @vulcanizeEnd -->
+
+    <!-- Viewport settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Xel settings -->
+    <meta name="xel-theme">
+    <meta name="xel-accent-color">
+    <meta name="xel-size">
+    <meta name="xel-iconset" content="images/iconsets/default.svg">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/node_modules/xel-fonts/fonts.css">
+
+    <!-- Dependencies -->
+    <script src="/runtime/chrome-preload.js"></script>
+    <script src="/node_modules/clipboard-polyfill/dist/clipboard-polyfill.js"></script>
+    <script src="/node_modules/geometry-polyfill/geometry-polyfill.js"></script>
+    <script src="/node_modules/path-data-polyfill/path-data-polyfill.js"></script>
+    <script src="/node_modules/dagre/dist/dagre.min.js"></script>
+    <script src="/node_modules/dexie/dist/dexie.min.js"></script>
+    <script src="/node_modules/dompurify/dist/purify.min.js"></script>
+    <script src="/node_modules/gif.js/dist/gif.js"></script>
+    <script src="/node_modules/imagetracerjs/imagetracer_v1.2.5.js"></script>
+    <script src="/node_modules/opentype.js/dist/opentype.min.js"></script>
+    <script src="/node_modules/pako/dist/pako.min.js"></script>
+    <script src="/node_modules/paper/dist/paper-core.min.js"></script>
+    <script src="/node_modules/paperjs-offset/dist/paperjs-offset.min.js"></script>
+    <script src="/node_modules/parse-css/parse-css.js"></script>
+    <script src="/node_modules/pdfjs-dist/build/pdf.min.js"></script>
+    <script src="/node_modules/upng-js/UPNG.js"></script>
+
+    <!-- App -->
+    <script src="/chrome-app.js"></script>
   </head>
+
   <body id="body">
     <bx-chromeapp id="app"></bx-chromeapp>
   </body>

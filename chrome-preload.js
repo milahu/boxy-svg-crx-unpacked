@@ -1,1 +1,0 @@
-(function() {"use strict";window.theme="vanilla";})()
