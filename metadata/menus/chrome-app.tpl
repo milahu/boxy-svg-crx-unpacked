@@ -280,6 +280,20 @@
 
     <hr/>
 
+    <x-menuitem value="decreaseOpacity">
+      <x-label>Decrease Opacity</x-label>
+      <x-shortcut class="default-shortcut" value="9"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
+    <x-menuitem value="increaseOpacity">
+      <x-label>Increase Opacity</x-label>
+      <x-shortcut class="default-shortcut" value="0"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
+    <hr/>
+
     <x-menuitem value="raise">
       <x-label>Raise</x-label>
       <x-shortcut class="default-shortcut" value="]"></x-shortcut>
@@ -355,6 +369,34 @@
     <x-menuitem value="grabPaintColor">
       <x-label>Grab Paint Color</x-label>
       <x-shortcut class="default-shortcut" value="Q"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
+    <hr/>
+
+    <x-menuitem value="decreaseFillOpacity">
+      <x-label>Decrease Fill Opacity</x-label>
+      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
+    <x-menuitem value="increaseFillOpacity">
+      <x-label>Increase Fill Opacity</x-label>
+      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
+    <hr/>
+
+    <x-menuitem value="decreaseStrokeOpacity">
+      <x-label>Decrease Stroke Opacity</x-label>
+      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
+    <x-menuitem value="increaseStrokeOpacity">
+      <x-label>Increase Stroke Opacity</x-label>
+      <x-shortcut class="default-shortcut"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 

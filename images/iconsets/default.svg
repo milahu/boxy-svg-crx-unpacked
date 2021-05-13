@@ -1506,6 +1506,10 @@
       <rect x="5.294" y="21.831" width="118.328" height="23" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 27.956587, -19.180578)" style="fill: inherit;"/>
       <rect x="5.294" y="21.831" width="118.328" height="23" transform="matrix(-0.707107, 0.707107, -0.707107, -0.707107, 119.114006, 27.956621)" style="fill: inherit;"/>
     </symbol>
+    <symbol id="feature-supported-asterisk" viewBox="0 0 100 100" bx:pinned="true">
+      <path d="M 99.63 16.94 L 41.68 95.07 L 0 57 L 13.32 33.4 L 38.23 54.34 L 79.28 0 L 99.63 16.94 Z" style="fill: inherit;"/>
+      <path d="M 127.47 42.25 L 133.51 31.74 L 139.55 42.25 L 148.79 36.93 L 142.74 26.42 L 154.82 26.42 L 154.82 15.76 L 142.74 15.76 L 148.79 5.32 L 139.55 0 L 133.51 10.44 L 127.47 0 L 118.23 5.32 L 124.28 15.76 L 112.2 15.76 L 112.2 26.42 L 124.28 26.42 L 118.23 36.93 L 127.47 42.25 Z" style="fill: inherit;"/>
+    </symbol>
     <symbol id="html-strong" viewBox="0 0 100 100">
       <rect x="13" width="74" height="28" y="14" style="fill: inherit;"/>
       <rect x="12.643" width="59" height="27" y="19.499" transform="matrix(0, 1, -1, 0, 82.999001, 16.356823)" style="fill: inherit;"/>
