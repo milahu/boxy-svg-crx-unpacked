@@ -475,7 +475,8 @@ bx-tutorialpreviewblock[blink] {
 bx-blogfilterblock,
 bx-ideasfilterblock,
 bx-bugsfilterblock,
-bx-questionsfilterblock {
+bx-questionsfilterblock,
+bx-searchblock {
   background: var(--dark-background-color);
   border-color: var(--border-color);
 }

@@ -15,7 +15,6 @@
   <li><a rel="noopener" target="_blank" href="https://github.com/tabatkins/parse-css">Parse CSS</a></li>
   <li><a rel="noopener" target="_blank" href="https://prosemirror.net">ProseMirror </a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/kazuhikoarase/qrcode-generator">QR Code Generator</a></li>
-  <li><a rel="noopener" target="_blank" href="http://qrohlf.com/trianglify/">Trianglify</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/mishoo/UglifyJS">UglifyJS</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/photopea/UPNG.js">UPNG.js</a></li>
   <li><a rel="noopener" target="_blank" href="https://xel-toolkit.org/">Xel</a></li>
@@ -47,6 +46,9 @@
 
   <dt><a rel="noopener" target="_blank" href="http://xn--dahlstrm-t4a.net/">Erik Dahlström</a></dt>
   <dd><a rel="noopener" target="_blank" href="http://xn--dahlstrm-t4a.net/svg/path/donut-shop.html">Ring shape</a></dd>
+
+  <dt><a rel="noopener" target="_blank" href="https://zeveisenberg.com/">Zev Eisenberg</a></dt>
+  <dd><a rel="noopener" target="_blank" href="https://github.com/ZevEisenberg/ZESpiral">Spiral shape</a></dd>
 
   <dt><a rel="noopener" target="_blank" href="https://github.com/fogleman">Michael Fogleman</a> and <a rel="noopener" target="_blank" href="https://github.com/luz-alphacode">Ondřej Žára</a></dt>
   <dd><a rel="noopener" target="_blank" href="https://github.com/ondras/primitive.js">Primitivie tracer</a></dd>

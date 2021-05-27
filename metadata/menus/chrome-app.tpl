@@ -682,6 +682,12 @@
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
+    <x-menuitem value="spiralTool" togglable>
+      <x-label>Spiral Tool</x-label>
+      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
     <x-menuitem value="lineTool" togglable>
       <x-label>Line Tool</x-label>
       <x-shortcut class="default-shortcut"></x-shortcut>
