@@ -2,7 +2,7 @@
 // @copyright
 //   © 2012-2020 Jarosław Foksa
 
-importScripts("/node_modules/imagetracerjs/imagetracer_v1.2.5.js");
+importScripts("/node_modules/imagetracerjs/imagetracer_v1.2.6.js");
 
 let defaultOptions = {
   // Bitmap will be downscaled if its with or height is bigger than working size

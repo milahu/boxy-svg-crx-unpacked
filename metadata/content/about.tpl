@@ -22,12 +22,16 @@
 
 <h3>Cloud services</h3>
 <ul id="services">
-  <li><a rel="noopener" target="_blank" href="https://www.algolia.com">Algolia</a></li>
+  <li><a rel="noopener" target="_blank" href="https://algolia.com">Algolia</a></li>
   <li><a rel="noopener" target="_blank" href="https://colorhunt.co/">Color Hunt</a></li>
   <li><a rel="noopener" target="_blank" href="https://fonts.google.com/">Google Fonts</a></li>
   <li><a rel="noopener" target="_blank" href="https://paddle.com/">Paddle</a></li>
+  <li><a rel="noopener" target="_blank" href="https://pexels.com/">Pexels</a></li>
   <li><a rel="noopener" target="_blank" href="https://pixabay.com/">Pixabay</a></li>
   <li><a rel="noopener" target="_blank" href="https://sendgrid.com">SendGrid</a></li>
+  <li><a rel="noopener" target="_blank" href="https://uigradients.com">uiGradients</a></li>
+  <li><a rel="noopener" target="_blank" href="https://unsplash.com">Unsplash</a></li>
+  <li><a rel="noopener" target="_blank" href="https://commons.wikimedia.org">Wikimedia</a></li>
 </ul>
 
 <h3>Code snippets</h3>
@@ -111,11 +115,4 @@
 <h3>Tutorials</h3>
 <ul id="tutorials">
   <li><a rel="noopener" target="_blank" href="http://www.tjfree.com/">Ryndon Ricks</a></li>
-</ul>
-
-<h3>Artworks</h3>
-<ul id="artworks">
-  <li><a rel="noopener" target="_blank" href="https://openclipart.org/user-detail/cyberscooty">cyberscooty</a></li>
-  <li><a rel="noopener" target="_blank" href="https://openclipart.org/user-detail/crisg">crisg</a></li>
-  <li><a rel="noopener" target="_blank" href="https://openclipart.org/user-detail/barrettward">barrettward</a></li>
 </ul>

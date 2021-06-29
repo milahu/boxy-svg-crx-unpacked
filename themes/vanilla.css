@@ -546,34 +546,39 @@ bx-symbolsbrowser::part(thumbnail) {
 
 /**
  * Colors library browser
+ * Gradients library browser
  * Fonts library browser
- * Photos library browser
+ * Bitmaps library browser
  * Vectors library browser
  */
 
 bx-colorslibrarybrowser::part(header),
+bx-gradientslibrarybrowser::part(header),
 bx-fontslibrarybrowser::part(header),
-bx-photoslibrarybrowser::part(header),
+bx-bitmapslibrarybrowser::part(header),
 bx-vectorslibrarybrowser::part(header) {
   border-color: var(--border-color);
 }
 
 bx-colorslibrarybrowser::part(main),
+bx-gradientslibrarybrowser::part(main),
 bx-fontslibrarybrowser::part(main),
-bx-photoslibrarybrowser::part(main),
+bx-bitmapslibrarybrowser::part(main),
 bx-vectorslibrarybrowser::part(main) {
   background: var(--light-background-color);
 }
 
 bx-colorslibrarybrowser::part(footer),
+bx-gradientslibrarybrowser::part(footer),
 bx-fontslibrarybrowser::part(footer),
-bx-photoslibrarybrowser::part(footer),
+bx-bitmapslibrarybrowser::part(footer),
 bx-vectorslibrarybrowser::part(footer) {
   border-color: var(--border-color);
 }
 
 bx-colorslibrarybrowser::part(item),
-bx-photoslibrarybrowser::part(item),
+bx-gradientslibrarybrowser::part(item),
+bx-bitmapslibrarybrowser::part(item),
 bx-vectorslibrarybrowser::part(item) {
   border-color: var(--border-color);
 }
