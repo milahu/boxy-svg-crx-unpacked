@@ -582,7 +582,6 @@ bx-bitmapslibrarybrowser::part(item),
 bx-vectorslibrarybrowser::part(item) {
   border-color: var(--border-color);
 }
-bx-gradientslibrarybrowser::part(item),
 bx-bitmapslibrarybrowser::part(item),
 bx-vectorslibrarybrowser::part(item) {
   background: var(--checkboard-background) #929292;
