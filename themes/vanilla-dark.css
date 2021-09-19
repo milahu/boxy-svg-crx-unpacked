@@ -1217,11 +1217,7 @@ bx-filterselect::part(footer) {
  * Font family picker
  */
 
-bx-fontfamilypicker::part(heading) {
-  background: var(--dark-background-color);
-  border-color: var(--border-color);
-}
-
+bx-fontfamilypicker::part(header),
 bx-fontfamilypicker::part(footer) {
   background: var(--dark-background-color);
   border-color: var(--border-color);

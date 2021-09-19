@@ -18,6 +18,8 @@ html#app-html > body {
   display: flex;
   cursor: default;
   user-select: none;
+  /* Bugfix: "Library Panel -> Fonts -> Subset" widget scrolls the body off-screen when clicked  */
+  position: fixed;
 }
 
 /*****************************************************************************************************************/

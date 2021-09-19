@@ -582,12 +582,6 @@ bx-bitmapslibrarybrowser::part(item),
 bx-vectorslibrarybrowser::part(item) {
   border-color: var(--border-color);
 }
-bx-fontslibrarybrowser::part(item) {
-  filter: invert(100%);
-}
-bx-fontslibrarybrowser::part(selected-item) {
-  filter: none;
-}
 
 /**
  * Cloud browser
@@ -1242,11 +1236,7 @@ bx-filterselect::part(footer) {
  * Font family picker
  */
 
-bx-fontfamilypicker::part(heading) {
-  background: var(--dark-background-color);
-  border-color: var(--border-color);
-}
-
+bx-fontfamilypicker::part(header),
 bx-fontfamilypicker::part(footer) {
   background: var(--dark-background-color);
   border-color: var(--border-color);
