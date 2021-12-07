@@ -546,163 +546,73 @@
 
     <x-menuitem value="transformTool" togglable>
       <x-label>Transform Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="default-shortcut" value="Shift+T"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
     <x-menuitem value="editTool" togglable>
       <x-label>Edit Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="default-shortcut" value="Shift+E"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
     <x-menuitem value="panTool" togglable>
       <x-label>Pan Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="default-shortcut" value="Shift+P"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
-    <x-menuitem value="quadBezierTool" togglable>
-      <x-label>Quad Bezier Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="arcTool" togglable>
-      <x-label>Arc Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="cubicBezierTool" togglable>
-      <x-label>Cubic Bezier Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+    <x-menuitem value="splineTool" togglable>
+      <x-label>Spline Tool</x-label>
+      <x-shortcut class="default-shortcut" value="Shift+S"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
     <x-menuitem value="freehandTool" togglable>
       <x-label>Freehand Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="default-shortcut" value="Shift+F"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
     <x-menuitem value="blobTool" togglable>
       <x-label>Blob Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="textTool" togglable>
-      <x-label>Text Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="textPathTool" togglable>
-      <x-label>Text Path Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="viewTool" togglable>
-      <x-label>View Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="default-shortcut" value="Shift+B"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
     <x-menuitem value="rectTool" togglable>
       <x-label>Rect Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="circleTool" togglable>
-      <x-label>Circle Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="default-shortcut" value="Shift+R"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
     <x-menuitem value="ellipseTool" togglable>
       <x-label>Ellipse Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="default-shortcut" value="Shift+C"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
-    <x-menuitem value="ringTool" togglable>
-      <x-label>Ring Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+    <x-menuitem value="otherShapeTool" togglable>
+      <x-label>Other Shape Tool</x-label>
+      <x-shortcut class="default-shortcut" value="Shift+O"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
-    <x-menuitem value="pieTool" togglable>
-      <x-label>Pie Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+    <x-menuitem value="textTool" togglable>
+      <x-label>Text Tool</x-label>
+      <x-shortcut class="default-shortcut" value="Shift+Z"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
-    <x-menuitem value="crescentTool" togglable>
-      <x-label>Crescent Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+    <x-menuitem value="textPathTool" togglable>
+      <x-label>Text Path Tool</x-label>
+      <x-shortcut class="default-shortcut" value="Shift+X"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
 
-    <x-menuitem value="triangleTool" togglable>
-      <x-label>Triangle Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="nGonTool" togglable>
-      <x-label>N-gon Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="starTool" togglable>
-      <x-label>Star Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="cogTool" togglable>
-      <x-label>Cog Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="arrowTool" togglable>
-      <x-label>Arrow Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="crossTool" togglable>
-      <x-label>Cross Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="spiralTool" togglable>
-      <x-label>Spiral Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="lineTool" togglable>
-      <x-label>Line Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="polylineTool" togglable>
-      <x-label>Polyline Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
-      <x-shortcut class="user-shortcut"></x-shortcut>
-    </x-menuitem>
-
-    <x-menuitem value="polygonTool" togglable>
-      <x-label>Polygon Tool</x-label>
-      <x-shortcut class="default-shortcut"></x-shortcut>
+    <x-menuitem value="viewTool" togglable>
+      <x-label>View Tool</x-label>
+      <x-shortcut class="default-shortcut" value="Shift+V"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
   </x-menu>

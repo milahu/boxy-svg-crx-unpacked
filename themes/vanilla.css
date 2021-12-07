@@ -880,7 +880,7 @@ bx-deleteaccountsettings::part(delete-button):active {
  * Tool settings
  */
 
-*[extends="bx-toolsettings"]::part(geometry-preview) {
+*[extends="bx-toolsettings"]::part(preview) {
   color: currentColor;
   background: white;
   border-color: var(--border-color);
