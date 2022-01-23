@@ -20,6 +20,9 @@ html#app-html > body {
   /* Bugfix: "Library Panel -> Fonts -> Subset" widget scrolls the body off-screen when clicked  */
   position: fixed;
 }
+html#app-html > body[hidden] {
+  visibility: hidden;
+}
 
 /*****************************************************************************************************************/
 
