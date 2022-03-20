@@ -116,7 +116,6 @@ bx-linuxapp::part(menubar) {
  */
 
 bx-webapp::part(header) {
-  background: var(--background-color);
   border-color: var(--border-color);
 }
 

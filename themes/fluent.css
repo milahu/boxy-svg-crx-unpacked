@@ -12,11 +12,14 @@
  *****************************************************************************************************************/
 
 body {
-  --titlebar-color: white;
+  --titlebar-color: var(--background-color);
   --green-status-color: #168939;
   --red-status-color: #e71123;
   --rubber-band-background-color: hsla(var(--accent-color-h), var(--accent-color-s), var(--accent-color-l), 0.4);
   --rubber-band-border-color: hsl(var(--accent-color-h), var(--accent-color-s), calc(var(--accent-color-l) + 8%));
+}
+body[data-app="portal"] {
+  background: var(--background-color);
 }
 body[data-system="windows"] {
   font-weight: 500;
@@ -99,8 +102,12 @@ figure[data-type="code"] .cm-operator {
  */
 
 bx-webapp::part(header) {
-  background: white;
   border-color: var(--border-color);
+}
+@media all and (display-mode: browser), (display-mode: fullscreen) {
+  bx-webapp::part(header) {
+    background: white;
+  }
 }
 
 /**

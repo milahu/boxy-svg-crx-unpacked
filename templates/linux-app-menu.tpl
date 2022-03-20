@@ -763,7 +763,7 @@
     <hr/>
 
     <x-menuitem value="homepage">
-      <x-label>Homepage <x-icon name="open"></x-icon></x-label>
+      <x-label>Official Site <x-icon name="open"></x-icon></x-label>
       <x-shortcut class="default-shortcut"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>
@@ -794,6 +794,12 @@
 
     <x-menuitem value="questions">
       <x-label>Questions <x-icon name="open"></x-icon></x-label>
+      <x-shortcut class="default-shortcut"></x-shortcut>
+      <x-shortcut class="user-shortcut"></x-shortcut>
+    </x-menuitem>
+
+    <x-menuitem value="changelog">
+      <x-label>Changelog <x-icon name="open"></x-icon></x-label>
       <x-shortcut class="default-shortcut"></x-shortcut>
       <x-shortcut class="user-shortcut"></x-shortcut>
     </x-menuitem>

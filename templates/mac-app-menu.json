@@ -205,12 +205,13 @@
     "label": "Help",
     "role": "help",
     "submenu": [
-      { "id": "site",      "label": "Official Site"         },
+      { "id": "homepage",  "label": "Official Site"         },
       { "id": "blog",      "label": "Blog"                  },
       { "id": "tutorials", "label": "Tutorials"             },
       { "id": "ideas",     "label": "Ideas"                 },
       { "id": "bugs",      "label": "Bugs"                  },
       { "id": "questions", "label": "Questions"             },
+      { "id": "changelog", "label": "Changelog"             },
       { "type": "separator"                                 },
       { "id": "rate",      "label": "Rate on Mac App Store" }
     ]

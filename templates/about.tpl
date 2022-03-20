@@ -5,6 +5,7 @@
   <li><a rel="noopener" target="_blank" href="http://dexie.org/">Dexie.js</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/cure53/DOMPurify">DOMPurify</a></li>
   <li><a rel="noopener" target="_blank" href="https://electron.atom.io/">Electron</a></li>
+  <li><a rel="noopener" target="_blank" href="https://github.com/foliojs/fontkit">Fontkit</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/jnordberg/gif.js">Gif.js</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/jankovicsandras/imagetracerjs">Imagetracer.js</a></li>
   <li><a rel="noopener" target="_blank" href="http://lindell.me/JsBarcode/">JsBarcode</a></li>
@@ -14,8 +15,8 @@
   <li><a rel="noopener" target="_blank" href="https://github.com/tabatkins/parse-css">Parse CSS</a></li>
   <li><a rel="noopener" target="_blank" href="https://mozilla.github.io/pdf.js/">PDF.js</a></li>
   <li><a rel="noopener" target="_blank" href="https://prosemirror.net">ProseMirror </a></li>
+  <li><a rel="noopener" target="_blank" href="https://github.com/leeoniya/RgbQuant.js/">RgbQuant.js</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/kazuhikoarase/qrcode-generator">QR Code Generator</a></li>
-  <li><a rel="noopener" target="_blank" href="https://github.com/foliojs/fontkit">Fontkit</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/mishoo/UglifyJS">UglifyJS</a></li>
   <li><a rel="noopener" target="_blank" href="https://github.com/photopea/UPNG.js">UPNG.js</a></li>
   <li><a rel="noopener" target="_blank" href="https://xel-toolkit.org/">Xel</a></li>
@@ -49,6 +50,9 @@
   <dt><a rel="noopener" target="_blank" href="https://github.com/murkle">Michael Borcherds</a></dt>
   <dd><a rel="noopener" target="_blank" href="https://github.com/murkle/rewrite-png-pHYs-chunk">PNG pHYs chunk rewriter</a></dd>
 
+  <dt><a rel="noopener" target="_blank" href="https://github.com/mbostock">Mike Bostock</a></dt>
+  <dd><a rel="noopener" target="_blank" href="https://github.com/d3/d3-shape/blob/main/src/curve/basis.js">Basis and Catmull-Rom splines</a></dd>
+
   <dt><a rel="noopener" target="_blank" href="http://xn--dahlstrm-t4a.net/">Erik Dahlström</a></dt>
   <dd><a rel="noopener" target="_blank" href="http://xn--dahlstrm-t4a.net/svg/path/donut-shop.html">Ring shape</a></dd>
 
@@ -75,6 +79,9 @@
 
   <dt><a rel="noopener" target="_blank" href="https://github.com/Draradech">Manuel Kasten</a></dt>
   <dd><a rel="noopener" target="_blank" href="https://gist.github.com/Draradech/35d36347312ca6d0887aa7d55f366e30">Jigsaw puzzle generator</a></dd>
+
+  <dt><a rel="noopener" target="_blank" href="https://github.com/nicholaswmin">Nikolas Kyriakides</a></dt>
+  <dd><a ref="noopener" target="_blank" href="https://gist.github.com/nicholaswmin/c2661eb11cad5671d816">Catmull-Rom to Bezier conversion</a></dd>
 
   <dt><a rel="noopener" target="_blank" href="https://github.com/BigBadaboom">Paul LeBeau</a></dt>
   <dd><a rel="noopener" target="_blank" href="https://stackoverflow.com/a/41529480">Black and White filter</a></dd>

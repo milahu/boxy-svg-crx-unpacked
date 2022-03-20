@@ -18,6 +18,9 @@ body {
   --rubber-band-background-color: hsla(var(--accent-color-h), var(--accent-color-s), var(--accent-color-l), 0.2);
   --rubber-band-border-color: hsla(var(--accent-color-h), var(--accent-color-s), calc(var(--accent-color-l) - 10%), 0.3);
 }
+body[data-app="portal"] {
+  background: var(--background-color);
+}
 
 article hr {
   background: rgba(0, 0, 0, 0.15);
@@ -116,12 +119,11 @@ bx-linuxapp::part(menubar) {
  */
 
 bx-webapp::part(header) {
-  background: white;
   border-color: var(--border-color);
 }
-@media all and (display-mode: standalone) {
+@media all and (display-mode: browser), (display-mode: fullscreen) {
   bx-webapp::part(header) {
-    background: none;
+    background: white;
   }
 }
 

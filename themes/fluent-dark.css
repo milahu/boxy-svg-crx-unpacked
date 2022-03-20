@@ -99,7 +99,6 @@ figure[data-type="code"] .cm-operator {
  */
 
 bx-webapp::part(header) {
-  background: var(--background-color);
   border-color: var(--border-color);
 }
 
